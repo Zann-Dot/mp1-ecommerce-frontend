@@ -11,6 +11,6 @@
   themes: false;
 }
 
-@import "../themes/theme.css";
+@import "../node_modules/preline/css/themes/theme.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
