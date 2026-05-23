@@ -1,5 +1,5 @@
 import { NavbarProvider } from "../../../../contexts/NavbarContext";
-import LowerNavSection from "./LowerNavSection";
+import LowerNavSection from "./lowerNavSection/LowerNavSection";
 import UpperNavSection from "./upperNavSection/UpperNavSection";
 
 export default function Navbar() {
