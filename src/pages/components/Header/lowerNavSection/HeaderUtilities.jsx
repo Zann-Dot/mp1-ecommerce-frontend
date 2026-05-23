@@ -5,7 +5,7 @@ export default function HeaderUtilities() {
         <div className="flex items-center gap-5 ms-auto lg:ms-0">
             <div className="w-15 cursor-pointer text-foreground flex flex-col justify-center items-center gap-1 text-xs">
                 <svg
-                    class="zeqf6 shb27 kh2c5"
+                    className="zeqf6 shb27 kh2c5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
                     height="18"
@@ -26,7 +26,7 @@ export default function HeaderUtilities() {
                 <div className="indicator">
                     <span className="indicator-item badge badge-primary scale-70 px-2 py-0 rounded-full text-white text-">2</span>
                     <svg
-                        class="zeqf6 shb27 kh2c5"
+                        className="zeqf6 shb27 kh2c5"
                         xmlns="http://www.w3.org/2000/svg"
                         width="18"
                         height="18"
@@ -48,7 +48,7 @@ export default function HeaderUtilities() {
                 <div className="indicator">
                     <span className="indicator-item badge badge-primary scale-70 px-2 py-0 rounded-full text-white text-">2</span>
                     <svg
-                        class="zeqf6 shb27 kh2c5"
+                        className="zeqf6 shb27 kh2c5"
                         xmlns="http://www.w3.org/2000/svg"
                         width="18"
                         height="18"

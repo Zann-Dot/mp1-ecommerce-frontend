@@ -180,7 +180,7 @@ export default function ChangeLocationButton() {
 
                         <div
                            id="hs-show-hide-collapse-heading"
-                           class="hs-collapse hidden overflow-hidden transition-[height] duration-300"
+                           className="hs-collapse hidden overflow-hidden transition-[height] duration-300"
                            aria-labelledby="hs-show-hide-collapse"
                            role="region"
                         >
@@ -230,18 +230,18 @@ export default function ChangeLocationButton() {
                      <div className="px-6 flex items-center gap-2">
                         <button
                            type="button"
-                           class="hs-collapse-toggle inline-flex items-center gap-x-2 text-sm font-semibold whitespace-nowrap text-primary hover:text-primary-hover hover:underline hover:underline-offset-4 focus:outline-hidden focus:text-primary-focus cursor-pointer"
+                           className="hs-collapse-toggle inline-flex items-center gap-x-2 text-sm font-semibold whitespace-nowrap text-primary hover:text-primary-hover hover:underline hover:underline-offset-4 focus:outline-hidden focus:text-primary-focus cursor-pointer"
                            id="hs-show-hide-collapse"
                            aria-expanded="false"
                            aria-controls="hs-show-hide-collapse-heading"
                            data-hs-collapse="#hs-show-hide-collapse-heading"
                         >
-                           <span class="hs-collapse-open:hidden">See all</span>
-                           <span class="hs-collapse-open:block hidden">See less</span>
+                           <span className="hs-collapse-open:hidden">See all</span>
+                           <span className="hs-collapse-open:block hidden">See less</span>
                         </button>
                         <p className="text-line-3 text-xs mb-0.5">|</p>
                         <a
-                           class="inline-flex items-center gap-x-2 text-sm font-semibold whitespace-nowrap text-primary hover:text-primary-hover hover:underline hover:underline-offset-4 focus:outline-hidden focus:text-primary-focus"
+                           className="inline-flex items-center gap-x-2 text-sm font-semibold whitespace-nowrap text-primary hover:text-primary-hover hover:underline hover:underline-offset-4 focus:outline-hidden focus:text-primary-focus"
                            href="#"
                            aria-current="page"
                         >
@@ -253,13 +253,13 @@ export default function ChangeLocationButton() {
                   <div className="flex flex-col justify-end items-center gap-2 p-6">
                      <button
                         type="button"
-                        class="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
+                        className="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                      >
                         Done
                      </button>
                      <button
                         type="button"
-                        class="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-hover disabled:opacity-50 disabled:pointer-events-none"
+                        className="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-hover disabled:opacity-50 disabled:pointer-events-none"
                         data-hs-overlay="#hs-vertically-centered-scrollable-modal"
                      >
                         Cancel
