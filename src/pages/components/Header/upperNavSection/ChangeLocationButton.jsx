@@ -67,7 +67,7 @@ export default function ChangeLocationButton() {
       <>
          <button
             type="button"
-            className="flex items-center gap-1 text-sm font-semibold cursor-pointer text-foreground"
+            className="flex items-center gap-1 text-sm font-semibold cursor-pointer text-foreground focus:outline-0"
             aria-haspopup="dialog"
             aria-expanded="false"
             aria-controls="hs-vertically-centered-scrollable-modal"
