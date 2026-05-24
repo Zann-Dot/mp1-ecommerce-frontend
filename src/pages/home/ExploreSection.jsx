@@ -19,7 +19,7 @@ export default function ExploreSection() {
 
             </div>
 
-            <button type="button" class="cursor-pointer mt-4 py-3 px-10 inline-flex items-center gap-x-2 text-sm font-medium rounded-full bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none">
+            <button type="button" className="cursor-pointer mt-4 py-3 px-10 inline-flex items-center gap-x-2 text-sm font-medium rounded-full bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none">
                 See more
             </button>
         </div>

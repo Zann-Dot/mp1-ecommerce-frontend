@@ -27,7 +27,7 @@ export default function HeroSection() {
                                     <div className="flex text-md gap-5">
                                         <p>
                                             <a
-                                                class="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
+                                                className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
                                                 href="#"
                                             >
                                                 Shop men
@@ -35,7 +35,7 @@ export default function HeroSection() {
                                         </p>
                                         <p>
                                             <a
-                                                class="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
+                                                className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
                                                 href="#"
                                             >
                                                 Shop women
@@ -59,7 +59,7 @@ export default function HeroSection() {
                                     <div className="flex text-md gap-5">
                                         <p>
                                             <a
-                                                class="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
+                                                className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
                                                 href="#"
                                             >
                                                 Shop men
@@ -67,7 +67,7 @@ export default function HeroSection() {
                                         </p>
                                         <p>
                                             <a
-                                                class="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
+                                                className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
                                                 href="#"
                                             >
                                                 Shop women
@@ -90,7 +90,7 @@ export default function HeroSection() {
                                     <div className="flex text-md gap-5">
                                         <p>
                                             <a
-                                                class="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
+                                                className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
                                                 href="#"
                                             >
                                                 Shop men
@@ -98,7 +98,7 @@ export default function HeroSection() {
                                         </p>
                                         <p>
                                             <a
-                                                class="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
+                                                className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
                                                 href="#"
                                             >
                                                 Shop women
