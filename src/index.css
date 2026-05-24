@@ -12,5 +12,7 @@
 }
 
 @import "../node_modules/preline/css/themes/theme.css";
+@import "../node_modules/preline/css/themes/moon.css";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark
+  (&: where(.dark, .dark *));
