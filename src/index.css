@@ -14,5 +14,6 @@
 @import "../node_modules/preline/css/themes/theme.css";
 @import "../node_modules/preline/css/themes/moon.css";
 
+@custom-variant dark (&:where([data-theme="theme-moon"], [data-theme="theme-moon"] *));
 @custom-variant dark
   (&: where(.dark, .dark *));

@@ -23,7 +23,7 @@ export default function Dashboards() {
                         <button
                             id="hs-mega-menu"
                             type="button"
-                            className="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium w-full bg-primary text-white rounded-full hover:bg-primary-hover focus:outline-hidden"
+                            className="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm text-primary-foreground font-medium w-full bg-primary rounded-full hover:bg-primary-hover focus:outline-hidden"
                             aria-haspopup="menu"
                             aria-expanded="false"
                             aria-label="Dashboard"
