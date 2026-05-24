@@ -3,7 +3,7 @@ import React from "react";
 export default function HeroSection() {
     return (
         <>
-            <div className="px-4 sm:px-6 lg:px-8">
+            <div>
 
                 {/* Carousel */}
                 <div id="hs-carousel" className="relative" data-hs-carousel='{"loadingClasses": "opacity-0", "dotsItemClasses": "hs-carousel-active:bg-foreground-inverse hs-carousel-active:border-foreground-inverse bg-line-3 border-line-2 size-3 border  rounded-full cursor-pointer"}' >
@@ -118,7 +118,7 @@ export default function HeroSection() {
 
                 <div className="grid grid-cols-3 gap-10 my-10">
                     {/* Card */}
-                    <div className="cursor-pointer hover:bg-layer-hover flex bg-card border border-card-line rounded-xl shadow-2xs">
+                    <div className="cursor-pointer hover:bg-layer-hover flex flex-col xl:flex-row bg-card border border-card-line rounded-xl shadow-2xs">
                         <div className="shrink-0 relative w-full rounded-t-xl overflow-hidden pt-[40%] sm:rounded-s-xl sm:max-w-60 sm:rounded-se-none">
                             <img className="size-full absolute top-0 inset-s-0 object-cover object-top" src="https://www.fashiongonerogue.com/wp-content/uploads/2017/05/HM-Summer-Party-Dresses-2017-Inspiration01.jpg" alt="Card Image" />
                         </div>
@@ -132,7 +132,7 @@ export default function HeroSection() {
                         </div>
                     </div>
 
-                    <div className="cursor-pointer hover:bg-layer-hover flex bg-card border border-card-line rounded-xl shadow-2xs">
+                    <div className="cursor-pointer hover:bg-layer-hover flex flex-col xl:flex-row bg-card border border-card-line rounded-xl shadow-2xs">
                         <div className="shrink-0 relative w-full rounded-t-xl overflow-hidden pt-[40%] sm:rounded-s-xl sm:max-w-60 sm:rounded-se-none">
                             <img className="size-full absolute top-0 inset-s-0 object-cover object-top" src="https://image.hm.com/content/dam/regional-local-activities/ame/2026/wk-22/CFUL263C01B-summer-men-drop-1_4x5.png?imwidth=1024" alt="Card Image" />
                         </div>
@@ -146,7 +146,7 @@ export default function HeroSection() {
                         </div>
                     </div>
 
-                    <div className="cursor-pointer hover:bg-layer-hover flex bg-card border border-card-line rounded-xl shadow-2xs">
+                    <div className="cursor-pointer hover:bg-layer-hover flex flex-col xl:flex-row bg-card border border-card-line rounded-xl shadow-2xs">
                         <div className="shrink-0 relative w-full rounded-t-xl overflow-hidden pt-[40%] sm:rounded-s-xl sm:max-w-60 sm:rounded-se-none">
                             <img className="size-full absolute top-0 inset-s-0 object-cover" src="https://image.hm.com/assets/hm/6c/00/6c0013ec04cf329603570b0109c66d7581e58767.jpg" alt="Card Image" />
                         </div>

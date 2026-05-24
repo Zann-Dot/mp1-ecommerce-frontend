@@ -1,11 +1,12 @@
 import React from 'react'
 import HeroSection from './HeroSection'
+import Featured from './Featured'
 
 export default function MainSection() {
     return (
-        <div className='@container my-10'>
+        <div className='my-10 px-4 sm:px-6 lg:px-8'>
             <HeroSection />
-
+            <Featured />
         </div>
     )
 }
