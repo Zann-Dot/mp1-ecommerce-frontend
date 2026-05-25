@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function FeaturedProducts() {
     return (
-        <div className="group cursor-pointer flex flex-col overflow-hidden shadow-2xs transition-all duration-300 hover:shadow-xs">
+        <div className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300">
 
             {/* --- CARD IMAGE HEADER --- */}
-            <div className="relative lg:aspect-square rounded-xl overflow-hidden">
+            <div className="relative xl:aspect-square rounded-xl overflow-hidden">
                 <img
                     className="w-full h-60 xl:h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     src="https://images.unsplash.com/photo-1678652197831-2d180705cd2c?auto=format&fit=crop&w=600&q=80"
@@ -42,7 +42,6 @@ export default function FeaturedProducts() {
 
             {/* --- CARD BODY DETAILS --- */}
             <div className="pt-2 flex flex-col flex-1">
-
                 {/* Title */}
                 <h4 className="font-medium text-foreground text-sm">
                     iPhone 14 Case
@@ -51,8 +50,8 @@ export default function FeaturedProducts() {
                 {/* Pricing & Units Sold Section */}
                 <div className="w-full flex items-baseline gap-x-2 mt-auto mb-3">
 
-                    <span className=" font-semibold text-primary">$59 USD</span>
-                    <span className="text-sm text-muted-foreground-1 line-through">$79</span>
+                    <span className=" font-semibold text-primary">₹5999</span>
+                    <span className="text-sm text-muted-foreground-1 line-through">$7999</span>
                     <span className="text-sm text-muted-foreground-1 ms-auto">
                         200 sold
                     </span>
