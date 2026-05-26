@@ -2,7 +2,7 @@ import useNavbarContext from "../../../../../contexts/NavbarContext";
 import ChangeLocationButton from "./ChangeLocationButton";
 
 export default function UpperNavSection() {
-   const { setDarkMode } = useNavbarContext();
+   const { setThemeMode } = useNavbarContext();
 
    return (
       <div className="w-full px-4 py-2 bg-background-1 dark:bg-[#202020]">
@@ -95,7 +95,8 @@ export default function UpperNavSection() {
                         <input
                            type="checkbox"
                            className="checkbox invisible"
-                           onChange={(e) => setDarkMode(e.target.checked)}
+                           onChange={(e) => setThemeMode(e.target.checked ? "dark" : "light")}
+                           checked={localStorage.theme === 'dark'}
                         />
 
                         {/* sun icon */}

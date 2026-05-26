@@ -9,7 +9,6 @@ import("preline").then(() => {
   createRoot(document.getElementById("root")).render(
     <StrictMode>
       <BrowserRouter>
-        {" "}
         <App />
       </BrowserRouter>
     </StrictMode>,

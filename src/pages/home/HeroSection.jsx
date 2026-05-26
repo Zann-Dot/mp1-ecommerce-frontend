@@ -1,6 +1,7 @@
 import MensCategoryCard from "./CategoryCards/MensCategoryCard";
 import WomensCategoryCard from "./CategoryCards/WomensCategoryCard";
 import AccessoriesCategoryCard from "./CategoryCards/AccessoriesCategoryCard";
+import { Link } from "react-router";
 
 export default function HeroSection() {
     return (
@@ -26,20 +27,20 @@ export default function HeroSection() {
                                     </h1>
                                     <div className="flex text-md gap-5">
                                         <p>
-                                            <a
+                                            <Link
                                                 className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                                href="#"
+                                                to="/products"
                                             >
                                                 Shop men
-                                            </a>
+                                            </Link>
                                         </p>
                                         <p>
-                                            <a
+                                            <Link
                                                 className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                                href="#"
+                                                to="/products"
                                             >
                                                 Shop women
-                                            </a>
+                                            </Link>
                                         </p>
                                     </div>
                                 </div>

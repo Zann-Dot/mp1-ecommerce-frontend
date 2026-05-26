@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router'
 
 export default function Dashboards() {
     return (
@@ -65,12 +65,12 @@ export default function Dashboards() {
                                     >
                                         Services
                                     </a>
-                                    <a
+                                    <Link
                                         className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-dropdown-item-foreground hover:bg-dropdown-item-hover focus:outline-hidden focus:bg-dropdown-item-focus"
-                                        href="#"
+                                        to="/sellers"
                                     >
                                         Sellers Dashboard
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <div className="flex flex-col">

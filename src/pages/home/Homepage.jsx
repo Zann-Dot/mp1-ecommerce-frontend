@@ -4,11 +4,13 @@ import MainSection from "./MainSection";
 
 export default function Homepage() {
 
-    return (
-        <>
-            <Navbar />
+   return (
+      <>
+         <Navbar />
+         <div className="absolute top-42.25">
             <MainSection />
             <Footer />
-        </>
-    );
+         </div>
+      </>
+   );
 }
