@@ -4,6 +4,7 @@ import Homepage from "./pages/home/Homepage";
 import ProductListing from "./pages/productListing/ProductListing";
 import CustomerSignUp from "./pages/users/CustomerSignUp";
 import CustomerSignIn from "./pages/users/CustomerSignIn";
+import Wishlist from "./pages/users/Wishlist";
 
 function App() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<ProductListing />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/customer/signup" element={<CustomerSignUp />} />
         <Route path="/customer/login" element={<CustomerSignIn />} />
       </Routes>
