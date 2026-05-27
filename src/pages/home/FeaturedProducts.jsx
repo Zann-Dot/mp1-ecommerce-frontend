@@ -5,9 +5,9 @@ export default function FeaturedProducts() {
         <div className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300">
 
             {/* --- CARD IMAGE HEADER --- */}
-            <div className="relative xl:aspect-square rounded-xl overflow-hidden">
+            <div className="relative w-full h-80 shrink-0 xl:aspect-square rounded-xl overflow-hidden">
                 <img
-                    className="w-full h-60 xl:h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="size-1/1 object-cover transition-transform duration-500 group-hover:scale-105"
                     src="https://images.unsplash.com/photo-1678652197831-2d180705cd2c?auto=format&fit=crop&w=600&q=80"
                     alt="iPhone 14 Case"
                 />

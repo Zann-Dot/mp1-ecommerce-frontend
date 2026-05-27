@@ -53,7 +53,7 @@ export default function HeaderUtilities() {
             </div>
 
             <div className="w-15 cursor-pointer">
-                <Link to="/checkout" className='text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover'>
+                <Link to="/cart" className='text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover'>
                     <div className="indicator">
                         <span className="indicator-item badge badge-primary scale-70 px-2 py-0 rounded-full text-primary-foreground text-">2</span>
                         <div className="p-0.5">
