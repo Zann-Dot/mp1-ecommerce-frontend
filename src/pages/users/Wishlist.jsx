@@ -6,7 +6,6 @@ import Footer from '../components/Footer/Footer'
 export default function Wishlist() {
     return (
         <>
-
             <Navbar />
             <div className="absolute top-56.25 lg:top-42.25 left-0 right-0">
                 <main className="w-full p-3 mb-20 sm:p-6 md:p-8">
