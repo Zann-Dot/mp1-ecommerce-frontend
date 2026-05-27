@@ -5,7 +5,7 @@ export default function HeaderUtilities() {
     return (
         <div className="flex items-center gap-5 ms-auto lg:ms-0">
             <div className="w-15 cursor-pointer">
-                <Link to="/signup" className='text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover'>
+                <Link to="/customer/login" className='text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover'>
                     <svg
                         className="zeqf6 shb27 kh2c5"
                         xmlns="http://www.w3.org/2000/svg"
