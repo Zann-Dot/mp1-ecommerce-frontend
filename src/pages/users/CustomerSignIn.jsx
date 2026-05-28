@@ -6,7 +6,7 @@ export default function CustomerSignIn() {
     return (
         <>
             <div className="bg-navbar p-4 flex justify-center shadow-sm hover:outline-hidden">
-                <Link to="/" className="cursor-pointer text-xl text-foreground ">ShoppersStop</Link>
+                <Link to="/" className="cursor-pointer text-xl text-foreground font-semibold">ShoppersStop</Link>
             </div>
             <hr />
 

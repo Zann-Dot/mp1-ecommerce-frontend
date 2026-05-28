@@ -1,14 +1,18 @@
-import React from "react";
-import Navbar from "../components/Header/Navbar";
+
 import { Link } from "react-router";
+import DarkModeButton from "../components/Header/upperNavSection/DarkModeButton";
 
 export default function CustomerSignUp() {
     return (
         <>
-            <Navbar />
-            <main className="absolute top-56.25 lg:top-42.25  w-full mx-auto">
+            <div className="bg-navbar p-4 flex justify-center shadow-sm hover:outline-hidden">
+                <Link to="/" className="cursor-pointer text-xl text-foreground font-semibold">ShoppersStop</Link>
+            </div>
+            <hr />
+
+            <main className="w-full mx-auto flex justify-center items-center">
                 {/* Hero */}
-                <div className="relative bg-linear-to-bl from-primary-100 via-transparent dark:from-primary-950 dark:via-transparent">
+                <div className="relative w-full bg-linear-to-bl from-primary-100 via-transparent dark:from-primary-950 dark:via-transparent">
                     <div className="max-w-340 px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                         {/* Grid */}
                         <div className="grid items-center md:grid-cols-2 gap-8 lg:gap-12">
@@ -40,7 +44,7 @@ export default function CustomerSignUp() {
                                         <div className="p-4 sm:p-7 flex flex-col bg-card rounded-2xl shadow-lg">
                                             <div className="text-center">
                                                 <h1 className="block text-2xl font-bold text-foreground">
-                                                    Start your brand new journey
+                                                    Create an account
                                                 </h1>
                                                 <p className="mt-2 text-sm text-muted-foreground-2">
                                                     Already have an account?
@@ -48,7 +52,7 @@ export default function CustomerSignUp() {
                                                         className="ms-1 text-primary decoration-2 hover:underline focus:outline-hidden focus:underline font-medium"
                                                         to="/customer/login"
                                                     >
-                                                        Sign in here
+                                                        Log in
                                                     </Link>
                                                 </p>
                                             </div>
@@ -654,7 +658,7 @@ export default function CustomerSignUp() {
                                                         type="submit"
                                                         className="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                                                     >
-                                                        Get started
+                                                        Create account
                                                     </button>
                                                 </div>
                                             </div>
@@ -680,6 +684,16 @@ export default function CustomerSignUp() {
                 </div>
                 {/* End Hero */}
             </main>
+
+            <div className="bg-navbar short-screen:static absolute bottom-0 left-0 right-0 p-4 flex justify-center">
+                <div className="text-muted-foreground text-xs flex gap-3">
+                    <span>2026 Preline Labs.</span>
+                    <span>Terms</span>
+                    <span>Privacy</span>
+                    <span>Your Privacy Choices</span>
+                    <DarkModeButton />
+                </div>
+            </div>
         </>
     );
 }

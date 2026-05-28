@@ -13,16 +13,16 @@ export default function HeroSection() {
                     className="relative"
                     data-hs-carousel='{"loadingClasses": "opacity-0", "dotsItemClasses": "hs-carousel-active:bg-foreground-inverse hs-carousel-active:border-foreground-inverse bg-line-3 border-line-2 size-3 border  rounded-full cursor-pointer"}'
                 >
-                    <div className="hs-carousel relative overflow-hidden w-full h-120 md:h-[calc(100vh-106px)]  bg-surface rounded-2xl">
+                    <div className="hs-carousel relative overflow-hidden w-full h-120 md:h-[calc(70vh-106px)]  bg-surface rounded-2xl">
                         {/* Carousel Body */}
                         <div className="hs-carousel-body flex flex-nowrap absolute top-0 bottom-0 inset-s-0 transition-transform duration-700 opacity-0">
                             {/* Item */}
                             <div className="hs-carousel-slide">
-                                <div className="h-120 md:h-[calc(100vh-106px)]  flex flex-col items-center justify-center bg-[url('https://images.unsplash.com/photo-1471602514494-6b059b461fa0?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
+                                <div className="h-120 md:h-[calc(70vh-106px)]  flex flex-col items-center justify-center bg-[url('https://images.unsplash.com/photo-1471602514494-6b059b461fa0?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
                                     <h3 className="text-foreground-inverse text-md md:text-lg lg:text-xl mb-3">
                                         SUMMER SALE
                                     </h3>
-                                    <h1 className="text-3xl md:text-5xl lg:text-6xl mb-5 md:mb-6 lg:md-9 font-semibold text-foreground-inverse ">
+                                    <h1 className="text-3xl md:text-4xl lg:text-5xl mb-5 md:mb-6 lg:md-9 font-semibold text-foreground-inverse ">
                                         Up to 50% off
                                     </h1>
                                     <div className="flex text-md gap-5">
@@ -49,8 +49,8 @@ export default function HeroSection() {
 
                             {/* Item */}
                             <div className="hs-carousel-slide">
-                                <div className="h-120 md:h-[calc(100vh-106px)]  flex flex-col items-center justify-center bg-[url('https://images.unsplash.com/photo-1603139635700-04637d0d16bd?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
-                                    <h1 className="text-3xl md:text-5xl lg:text-6xl mb-6 font-semibold text-foreground-inverse ">
+                                <div className="h-120 md:h-[calc(70vh-106px)]  flex flex-col items-center justify-center bg-[url('https://images.unsplash.com/photo-1603139635700-04637d0d16bd?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
+                                    <h1 className="text-3xl md:text-4xl lg:text-5xl mb-6 font-semibold text-foreground-inverse ">
                                         New styles
                                     </h1>
                                     <h3 className="text-foreground-inverse text-md md:text-lg lg:text-xl mb-5 md:mb-6 lg:md-9">
@@ -81,11 +81,11 @@ export default function HeroSection() {
 
                             {/* Item */}
                             <div className="hs-carousel-slide">
-                                <div className="h-120 md:h-[calc(100vh-106px)] flex flex-col items-center justify-center bg-[url('https://images.unsplash.com/photo-1684144064253-bb3b4c8fc700?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
+                                <div className="h-120 md:h-[calc(70vh-106px)] flex flex-col items-center justify-center bg-[url('https://images.unsplash.com/photo-1684144064253-bb3b4c8fc700?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
                                     <h3 className="text-foreground-inverse text-md md:text-lg lg:text-xl mb-3">
                                         SUMMER SALE
                                     </h3>
-                                    <h1 className="text-3xl md:text-5xl lg:text-6xl mb-5 md:mb-6 lg:md-9 font-semibold text-foreground-inverse ">
+                                    <h1 className="text-3xl md:text-4xl lg:text-5xl mb-5 md:mb-6 lg:md-9 font-semibold text-foreground-inverse ">
                                         Up to 50% off
                                     </h1>
                                     <div className="flex text-md gap-5">
@@ -164,7 +164,7 @@ export default function HeroSection() {
                     {/* End Pagination */}
                 </div>
 
-                <div className="grid grid-cols-3 gap-10 my-10">
+                <div className="grid grid-flow-col auto-cols-[100%] sm:auto-cols-[calc(50%-20px)] xl:grid-cols-3 scroll-smooth scrollbar-none overflow-x-auto xl:overflow-hidden gap-10 my-10">
                     <WomensCategoryCard />
                     <MensCategoryCard />
                     <AccessoriesCategoryCard />

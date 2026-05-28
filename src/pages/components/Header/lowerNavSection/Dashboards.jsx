@@ -95,18 +95,18 @@ export default function Dashboards() {
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <a
+                                    <Link
                                         className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-dropdown-item-foreground hover:bg-dropdown-item-hover focus:outline-hidden focus:bg-dropdown-item-focus"
-                                        href="#"
+                                        to="/customer/login"
                                     >
                                         Log In
-                                    </a>
-                                    <a
+                                    </Link>
+                                    <Link
                                         className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-dropdown-item-foreground hover:bg-dropdown-item-hover focus:outline-hidden focus:bg-dropdown-item-focus"
-                                        href="#"
+                                        to="/customer/signup"
                                     >
                                         Sign Up
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
