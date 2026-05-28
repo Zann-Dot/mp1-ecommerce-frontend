@@ -11,7 +11,7 @@ export default function CustomerAccount() {
                 <div className="max-w-250 mx-auto w-full my-10 px-4 sm:px-6 lg:px-8 text-foreground">
                     <h1 className="text-xl font-medium mb-2">Account</h1>
                     <div className="flex flex-col gap-7">
-                        <Link to="/user/account/personalinfo" className="flex justify-between">
+                        <div className="flex justify-between">
                             <section className="flex gap-4">
                                 <img
                                     class="inline-block size-12 rounded-full"
@@ -33,11 +33,11 @@ export default function CustomerAccount() {
                                     Logout
                                 </a>
                             </p>
-                        </Link>
+                        </div>
 
-                        <Link to="/user/account/myorders" className="grid grid-cols-3 gap-5">
+                        <div className="grid grid-cols-3 gap-5">
                             {/* Card */}
-                            <div className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg">
+                            <Link to="/user/account/personalinfo" className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg">
                                 <div className="px-6 py-6">
                                     <span className="">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="User-1-Line--Streamline-Mingcute" height="26" width="26">
@@ -59,10 +59,10 @@ export default function CustomerAccount() {
                                     </p>
 
                                 </div>
-                            </div>
+                            </Link>
                             {/* End Card */}
 
-                            <div className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg">
+                            <Link to="/user/account/myorders" className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg">
                                 <div className="px-6 py-6">
                                     <span className="">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Shopping-Bag-2-Line--Streamline-Mingcute" height="24" width="24">
@@ -84,9 +84,9 @@ export default function CustomerAccount() {
                                     </p>
 
                                 </div>
-                            </div>
+                            </Link>
 
-                            <div className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg">
+                            <Link to="/user/account/addresses" className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg">
                                 <div className="px-6 py-6">
                                     <span className="">
                                         <svg class="zeqf6 c51lg kh2c5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -105,10 +105,10 @@ export default function CustomerAccount() {
                                     </p>
 
                                 </div>
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
 
-                        <Link to="/user/account/addresses" className="flex justify-between">
+                        <div className="flex justify-between">
                             <section className="flex gap-4">
 
                                 <div>
@@ -127,7 +127,7 @@ export default function CustomerAccount() {
                                     Contact us
                                 </a>
                             </p>
-                        </Link>
+                        </div>
                     </div>
                 </div>
                 <hr />

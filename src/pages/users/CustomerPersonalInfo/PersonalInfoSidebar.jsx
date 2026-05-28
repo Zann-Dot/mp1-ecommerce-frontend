@@ -1,0 +1,175 @@
+import React from "react";
+import { Link } from "react-router";
+
+export default function PersonalInfoSidebar() {
+    return (
+        <>
+            {/* Navigation Toggle */}
+            <div className="lg:hidden py-16 text-center">
+                <button
+                    type="button"
+                    className="py-2 px-3 inline-flex justify-center items-center gap-x-2 text-start bg-secondary border border-secondary-line text-secondary-foreground text-sm font-medium rounded-lg shadow-2xs hover:bg-secondary-hover focus:outline-hidden focus:bg-secondary-focus"
+                    aria-haspopup="dialog"
+                    aria-expanded="false"
+                    aria-controls="hs-sidebar-basic-usage"
+                    aria-label="Toggle navigation"
+                    data-hs-overlay="#hs-sidebar-basic-usage"
+                >
+                    Open
+                </button>
+            </div>
+            {/* End Navigation Toggle */}
+
+            {/* Sidebar */}
+            <div
+                id="hs-sidebar-basic-usage"
+                className="hs-overlay [--auto-close:lg] lg:block lg:translate-x-0 lg:inset-e-auto lg:bottom-0
+hs-overlay-open:translate-x-0
+-translate-x-full transition-all duration-300 transform
+h-100 w-100
+hidden inset-s-0 z-60 sm:z-10
+bg-sidebar border-e pe-3 border-sidebar-line"
+                role="dialog"
+                tabindex="-1"
+                aria-label="Sidebar"
+            >
+                <div className="relative flex flex-col h-full max-h-full ">
+                    {/* Header */}
+                    <header className=" p-4 flex justify-between items-center gap-x-2">
+                        <div
+                            className="flex-none font-semibold text-lg text-layer-foreground focus:outline-hidden focus:opacity-80 "
+                            aria-label="Brand"
+                        >
+                            Account
+                        </div>
+
+                        <div className="lg:hidden -me-2">
+                            {/* Close Button */}
+                            <button
+                                type="button"
+                                className="flex justify-center items-center gap-x-3 size-6 bg-layer border border-layer-line text-sm text-muted-foreground-2 hover:bg-layer-hover rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-layer-focus"
+                                data-hs-overlay="#hs-sidebar-basic-usage"
+                            >
+                                <svg
+                                    className="shrink-0 size-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M18 6 6 18" />
+                                    <path d="m6 6 12 12" />
+                                </svg>
+                                <span className="sr-only">Close</span>
+                            </button>
+                            {/* End Close Button */}
+                        </div>
+                    </header>
+                    {/* End Header */}
+
+                    {/* Body */}
+                    <nav className="h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-none [&::-webkit-scrollbar-track]:bg-scrollbar-track [&::-webkit-scrollbar-thumb]:bg-scrollbar-thumb">
+                        <div className=" pb-0 px-2  w-full flex flex-col flex-wrap">
+                            <ul className="space-y-1">
+                                <li>
+                                    <Link
+                                        className=" flex items-center gap-x-3.5 py-2 px-2.5 bg-sidebar-nav-active text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
+                                        to="/user/account/personalinfo"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            id="User-1-Line--Streamline-Mingcute"
+                                            height="16"
+                                            width="16"
+                                        >
+                                            <desc>
+                                                User 1 Line Streamline Icon: https://streamlinehq.com
+                                            </desc>
+                                            <g fill="none" fill-rule="evenodd">
+                                                <path
+                                                    d="M24 0v24H0V0h24ZM12.593 23.258l-0.011 0.002 -0.071 0.035 -0.02 0.004 -0.014 -0.004 -0.071 -0.035c-0.01 -0.004 -0.019 -0.001 -0.024 0.005l-0.004 0.01 -0.017 0.428 0.005 0.02 0.01 0.013 0.104 0.074 0.015 0.004 0.012 -0.004 0.104 -0.074 0.012 -0.016 0.004 -0.017 -0.017 -0.427c-0.002 -0.01 -0.009 -0.017 -0.017 -0.018Zm0.265 -0.113 -0.013 0.002 -0.185 0.093 -0.01 0.01 -0.003 0.011 0.018 0.43 0.005 0.012 0.008 0.007 0.201 0.093c0.012 0.004 0.023 0 0.029 -0.008l0.004 -0.014 -0.034 -0.614c-0.003 -0.012 -0.01 -0.02 -0.02 -0.022Zm-0.715 0.002a0.023 0.023 0 0 0 -0.027 0.006l-0.006 0.014 -0.034 0.614c0 0.012 0.007 0.02 0.017 0.024l0.015 -0.002 0.201 -0.093 0.01 -0.008 0.004 -0.011 0.017 -0.43 -0.003 -0.012 -0.01 -0.01 -0.184 -0.092Z"
+                                                    stroke-width="1"
+                                                ></path>
+                                                <path
+                                                    fill="currentColor"
+                                                    d="M16 14a5 5 0 0 1 4.995 4.783L21 19v2a1 1 0 0 1 -1.993 0.117L19 21v-2a3 3 0 0 0 -2.824 -2.995L16 16H8a3 3 0 0 0 -2.995 2.824L5 19v2a1 1 0 0 1 -1.993 0.117L3 21v-2a5 5 0 0 1 4.783 -4.995L8 14h8ZM12 2a5 5 0 1 1 0 10 5 5 0 0 1 0 -10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0 -6Z"
+                                                    stroke-width="1"
+                                                ></path>
+                                            </g>
+                                        </svg>
+                                        Personal Info
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link
+                                        className=" w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
+                                        to="/user/account/myorders"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 16 16"
+                                            id="Shopping-Bag-2-Line--Streamline-Mingcute"
+                                            height="16"
+                                            width="16"
+                                        >
+                                            <desc>
+                                                Shopping Bag 2 Line Streamline Icon:
+                                                https://streamlinehq.com
+                                            </desc>
+                                            <g fill="none" fill-rule="nonzero">
+                                                <path
+                                                    d="M16 0v16H0V0zM8.395333333333333 15.505333333333333l-0.007333333333333332 0.0013333333333333333 -0.047333333333333324 0.023333333333333334 -0.013333333333333332 0.0026666666666666666 -0.009333333333333332 -0.0026666666666666666 -0.047333333333333324 -0.023333333333333334c-0.006666666666666666 -0.0026666666666666666 -0.012666666666666666 -0.0006666666666666666 -0.016 0.003333333333333333l-0.0026666666666666666 0.006666666666666666 -0.011333333333333334 0.2853333333333333 0.003333333333333333 0.013333333333333332 0.006666666666666666 0.008666666666666666 0.06933333333333333 0.049333333333333326 0.009999999999999998 0.0026666666666666666 0.008 -0.0026666666666666666 0.06933333333333333 -0.049333333333333326 0.008 -0.010666666666666666 0.0026666666666666666 -0.011333333333333334 -0.011333333333333334 -0.2846666666666666c-0.0013333333333333333 -0.006666666666666666 -0.005999999999999999 -0.011333333333333334 -0.011333333333333334 -0.011999999999999999m0.17666666666666667 -0.07533333333333334 -0.008666666666666666 0.0013333333333333333 -0.12333333333333332 0.062 -0.006666666666666666 0.006666666666666666 -0.002 0.007333333333333332 0.011999999999999999 0.2866666666666666 0.003333333333333333 0.008 0.005333333333333333 0.004666666666666666 0.134 0.062c0.008 0.0026666666666666666 0.015333333333333332 0 0.019333333333333334 -0.005333333333333333l0.0026666666666666666 -0.009333333333333332 -0.02266666666666667 -0.4093333333333333c-0.002 -0.008 -0.006666666666666666 -0.013333333333333332 -0.013333333333333332 -0.014666666666666665m-0.4766666666666666 0.0013333333333333333a0.015333333333333332 0.015333333333333332 0 0 0 -0.018 0.004l-0.004 0.009333333333333332 -0.02266666666666667 0.4093333333333333c0 0.008 0.004666666666666666 0.013333333333333332 0.011333333333333334 0.016l0.009999999999999998 -0.0013333333333333333 0.134 -0.062 0.006666666666666666 -0.005333333333333333 0.0026666666666666666 -0.007333333333333332 0.011333333333333334 -0.2866666666666666 -0.002 -0.008 -0.006666666666666666 -0.006666666666666666z"
+                                                    stroke-width="0.6667"
+                                                ></path>
+                                                <path
+                                                    fill="currentColor"
+                                                    d="M12.04 2a1.3333333333333333 1.3333333333333333 0 0 1 1.3199999999999998 1.146l0.011333333333333334 0.104 0.5833333333333333 9.333333333333332a1.3333333333333333 1.3333333333333333 0 0 1 -1.2313333333333332 1.4133333333333333l-0.09999999999999999 0.003333333333333333H3.377333333333333a1.3333333333333333 1.3333333333333333 0 0 1 -1.3333333333333333 -1.3173333333333332l0.002 -0.09933333333333333 0.5833333333333333 -9.333333333333332a1.3333333333333333 1.3333333333333333 0 0 1 1.2266666666666666 -1.246L3.96 2zm0 1.3333333333333333H3.96l-0.5833333333333333 9.333333333333332h9.246666666666666zM10 4.666666666666666a0.6666666666666666 0.6666666666666666 0 0 1 0.6666666666666666 0.6666666666666666 2.6666666666666665 2.6666666666666665 0 0 1 -5.333333333333333 0 0.6666666666666666 0.6666666666666666 0 0 1 1.3333333333333333 0 1.3333333333333333 1.3333333333333333 0 0 0 2.663333333333333 0.09999999999999999L9.333333333333332 5.333333333333333a0.6666666666666666 0.6666666666666666 0 0 1 0.6666666666666666 -0.6666666666666666"
+                                                    stroke-width="0.6667"
+                                                ></path>
+                                            </g>
+                                        </svg>
+                                        My Orders
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        className=" w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
+                                        to="/user/account/addresses"
+                                    >
+                                        <svg
+                                            class="zeqf6 c51lg kh2c5"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.5"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path d="M15 22a1 1 0 0 1-1-1v-4a1 1 0 0 1 .445-.832l3-2a1 1 0 0 1 1.11 0l3 2A1 1 0 0 1 22 17v4a1 1 0 0 1-1 1z"></path>
+                                            <path d="M18 10a8 8 0 0 0-16 0c0 4.993 5.539 10.193 7.399 11.799a1 1 0 0 0 .601.2"></path>
+                                            <path d="M18 22v-3"></path>
+                                            <circle cx="10" cy="10" r="3"></circle>
+                                        </svg>
+                                        Addresses
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    {/* End Body */}
+                </div>
+            </div>
+            {/* End Sidebar */}
+        </>
+    );
+}
