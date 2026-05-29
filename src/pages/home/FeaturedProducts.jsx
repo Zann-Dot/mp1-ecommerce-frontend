@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router";
 
 export default function FeaturedProducts() {
+    const navigate = useNavigate();
     return (
-        <div className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300">
-
-            {/* --- CARD IMAGE HEADER --- */}
+        <div onClick={() => navigate('/products/details')} className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300">
             <div className="relative w-full h-100 shrink-0 xl:aspect-square rounded-xl overflow-hidden">
                 <img
                     className="size-1/1 object-cover transition-transform duration-500 group-hover:scale-105"
@@ -12,16 +12,17 @@ export default function FeaturedProducts() {
                     alt="iPhone 14 Case"
                 />
 
-                {/* Stock Alert Badge (Top Left) */}
                 <div className="absolute top-4 left-4">
                     <span className="inline-flex items-center gap-x-1 py-1.5 px-3 rounded-full text-xs font-semibold text-primary-800 bg-primary-100 dark:bg-primary-600 dark:text-primary-50 backdrop-blur-md">
                         Only 7 left
                     </span>
                 </div>
 
-                {/* Reusable Hover Wishlist Toggle */}
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <button type="button" className="inline-flex justify-center  cursor-pointer items-center size-9 rounded-full bg-line-2 text-foreground shadow-2xs hover:scale-105 transition-transform">
+                    <button
+                        type="button"
+                        className="inline-flex justify-center  cursor-pointer items-center size-9 rounded-full bg-line-2 text-foreground shadow-2xs hover:scale-105 transition-transform"
+                    >
                         <svg
                             className="zeqf6 shb27 kh2c5"
                             xmlns="http://www.w3.org/2000/svg"
@@ -42,51 +43,75 @@ export default function FeaturedProducts() {
 
             {/* --- CARD BODY DETAILS --- */}
             <div className="pt-2 flex flex-col flex-1">
-                {/* Title */}
-                <h4 className="font-medium text-foreground text-sm">
-                    iPhone 14 Case
-                </h4>
+                <h4 className="font-medium text-foreground text-sm">iPhone 14 Case</h4>
 
-                {/* Pricing & Units Sold Section */}
                 <div className="w-full flex items-baseline gap-x-2 mt-auto mb-3">
-
                     <span className=" font-semibold text-primary">₹5999</span>
-                    <span className="text-sm text-muted-foreground-1 line-through">$7999</span>
+                    <span className="text-sm text-muted-foreground-1 line-through">
+                        $7999
+                    </span>
                     <span className="text-sm text-muted-foreground-1 ms-auto">
                         200 sold
                     </span>
                 </div>
 
-                {/* --- STAR RATINGS PANEL --- */}
                 <div className="flex items-center gap-x-1.5">
-
-                    {/* Rating */}
-
                     <div className="flex items-center">
-                        <svg className="shrink-0 size-3.5 text-primary" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <svg
+                            className="shrink-0 size-3.5 text-primary"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                        >
                             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                         </svg>
-                        <svg className="shrink-0 size-3.5 text-primary" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <svg
+                            className="shrink-0 size-3.5 text-primary"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                        >
                             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                         </svg>
-                        <svg className="shrink-0 size-3.5 text-primary" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <svg
+                            className="shrink-0 size-3.5 text-primary"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                        >
                             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                         </svg>
-                        <svg className="shrink-0 size-3.5 text-muted-foreground/50" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <svg
+                            className="shrink-0 size-3.5 text-muted-foreground/50"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                        >
                             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                         </svg>
-                        <svg className="shrink-0 size-3.5 text-muted-foreground/50" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <svg
+                            className="shrink-0 size-3.5 text-muted-foreground/50"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                        >
                             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                         </svg>
                     </div>
 
-                    {/* Review Counter */}
-                    <span className="text-sm font-semibold text-foreground">
-                        (67)
-                    </span>
+                    <span className="text-sm font-semibold text-foreground">(67)</span>
                 </div>
-
             </div>
         </div>
-    )
+    );
 }

@@ -10,7 +10,7 @@ import CustomerAccount from "./pages/users/CustomerAccount";
 import CustomerPersonalInfo from "./pages/users/CustomerPersonalInfo/CustomerPersonalInfo";
 import AddressManagement from "./pages/users/AddressManagement/AddressManagement";
 import MyOrders from "./pages/users/OrderDetails/MyOrders";
-import ProductDetails from "./pages/productListing/ProductDetails";
+import ProductDetails from "./pages/productListing/ProductDetails/ProductDetails";
 
 function App() {
   const location = useLocation();

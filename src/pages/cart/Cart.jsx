@@ -4,7 +4,7 @@ import Footer from '../components/Footer/Footer'
 import CheckoutProducts from './CheckoutProducts'
 import PaymentSummary from './PaymentSummary'
 import IconBlock from './IconBlock'
-import ExploreMore from './ExploreMore'
+import ExploreMore from '../components/ExploreMore'
 
 export default function Cart() {
     return (
