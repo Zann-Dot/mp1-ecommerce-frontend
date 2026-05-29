@@ -8,6 +8,7 @@ import Wishlist from "./pages/users/Wishlist";
 import Cart from "./pages/cart/Cart";
 import CustomerAccount from "./pages/users/CustomerAccount";
 import CustomerPersonalInfo from "./pages/users/CustomerPersonalInfo/CustomerPersonalInfo";
+import AddressManagement from "./pages/users/AddressManagement/AddressManagement";
 
 function App() {
   const location = useLocation();
@@ -25,7 +26,7 @@ function App() {
         <Route path="/user/account" element={<CustomerAccount />} />
         <Route path="/user/account/personalinfo" element={<CustomerPersonalInfo />} />
         <Route path="/user/account/myorders" element={<CustomerAccount />} />
-        <Route path="/user/account/addresses" element={<CustomerAccount />} />
+        <Route path="/user/account/addresses" element={<AddressManagement />} />
         <Route path="/customer/signup" element={<CustomerSignUp />} />
         <Route path="/customer/login" element={<CustomerSignIn />} />
       </Routes>

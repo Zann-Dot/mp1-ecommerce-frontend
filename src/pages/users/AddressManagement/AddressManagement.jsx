@@ -2,9 +2,9 @@ import React from 'react'
 import Navbar from '../../components/Header/Navbar'
 import Footer from '../../components/Footer/Footer'
 import AccountSidebar from '../AccountSidebar'
-import PersonalDetails from './PersonalDetails'
+import AddressDisplay from './AddressDisplay'
 
-export default function CustomerPersonalInfo() {
+export default function AddressManagement() {
     return (
         <>
             <Navbar />
@@ -12,7 +12,7 @@ export default function CustomerPersonalInfo() {
                 <div className="max-w-340 mx-auto w-full my-10 px-4 sm:px-6 lg:px-8 text-foreground">
                     <div className="flex gap-6">
                         <AccountSidebar />
-                        <PersonalDetails />
+                        <AddressDisplay />
                     </div>
                 </div>
                 <hr />

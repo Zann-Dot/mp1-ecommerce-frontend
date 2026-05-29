@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-export default function PersonalInfoSidebar() {
+export default function AccountSidebar() {
     return (
         <>
             {/* Navigation Toggle */}
@@ -78,7 +78,7 @@ bg-sidebar border-e pe-3 border-sidebar-line"
                             <ul className="space-y-1">
                                 <li>
                                     <Link
-                                        className=" flex items-center gap-x-3.5 py-2 px-2.5 bg-sidebar-nav-active text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
+                                        className=" flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
                                         to="/user/account/personalinfo"
                                     >
                                         <svg
