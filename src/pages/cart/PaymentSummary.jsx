@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 export default function PaymentSummary() {
     return (
         <div className='w-full flex flex-col gap-5 text-foreground'>
-            <h1 className='text-md text-foreground font-semibold'>Order Summary</h1>
+            <h1 className='text-base text-foreground font-semibold'>Order Summary</h1>
 
             <div className='flex flex-col gap-3'>
                 <div className='flex justify-between text-sm'>

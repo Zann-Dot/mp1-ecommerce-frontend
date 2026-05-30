@@ -7,7 +7,7 @@ export default function OrderSummary() {
             <div className='py-14 text-foreground flex flex-col gap-10 md:ms-auto md:max-w-sm md:w-full'>
                 {/* payment summary */}
                 <div className='w-full flex flex-col gap-5 text-foreground'>
-                    <h1 className='text-md text-foreground font-semibold'>Order Summary</h1>
+                    <h1 className='text-base text-foreground font-semibold'>Order Summary</h1>
 
                     <div className='flex flex-col gap-3'>
                         <div className='flex justify-between text-sm'>

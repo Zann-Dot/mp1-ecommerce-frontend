@@ -19,7 +19,7 @@ export default function CustomerAccount() {
                                     alt="Avatar"
                                 ></img>
                                 <div>
-                                    <h1 className="font-medium text-md">James Collins</h1>
+                                    <h1 className="font-medium text-base">James Collins</h1>
                                     <h4 className="text-muted-foreground-1 text-sm">
                                         james@gmail.com
                                     </h4>

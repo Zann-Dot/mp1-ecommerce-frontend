@@ -3,7 +3,7 @@ import React from 'react'
 export default function FilterByRating() {
     return (
         <div className="w-full bg-sidebar rounded-lg p-4 flex flex-col gap-4">
-            <p className="text-foreground mb-3 font-medium text-md">Ratings</p>
+            <p className="text-foreground mb-3 font-medium text-base">Ratings</p>
 
             <div className="flex">
                 <input

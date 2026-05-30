@@ -3,7 +3,7 @@ import React from "react";
 export default function FilterByPrice() {
     return (
         <div className="w-full bg-sidebar rounded-lg p-4 flex flex-col gap-4">
-            <p className="text-foreground mb-3 font-medium text-md">Price</p>
+            <p className="text-foreground mb-3 font-medium text-base">Price</p>
 
             <div className="flex">
                 <input

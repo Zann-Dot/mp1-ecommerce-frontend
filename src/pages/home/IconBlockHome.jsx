@@ -17,7 +17,7 @@ export default function IconBlockHome() {
                         </g>
                     </svg>
                     <div className="mt-3">
-                        <h3 className="text-md font-semibold text-foreground">Secure checkout</h3>
+                        <h3 className="text-base font-semibold text-foreground">Secure checkout</h3>
                         <p className="mt-1 text-sm text-muted-foreground-1">Shop with confidence using our encrypted payment system that protects your sensitive information.</p>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ export default function IconBlockHome() {
                         </g>
                     </svg>
                     <div className="mt-3">
-                        <h3 className="text-md font-semibold text-foreground">Free shipping</h3>
+                        <h3 className="text-base font-semibold text-foreground">Free shipping</h3>
                         <p className="mt-1 text-sm text-muted-foreground-1">Enjoy complimentary delivery on all orders, with no minimum purchase required.</p>
                     </div>
                 </div>
@@ -44,7 +44,7 @@ export default function IconBlockHome() {
                         <path d="M3 3v5h5"></path>
                     </svg>
                     <div className="mt-3">
-                        <h3 className="text-md font-semibold text-foreground">30 days return</h3>
+                        <h3 className="text-base font-semibold text-foreground">30 days return</h3>
                         <p className="mt-1 text-sm text-muted-foreground-1">Not satisfied? Return any item within 30 days of purchase for a full refund or exchange.</p>
                     </div>
                 </div>

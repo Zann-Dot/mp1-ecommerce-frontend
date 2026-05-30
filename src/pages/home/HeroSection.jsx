@@ -19,13 +19,13 @@ export default function HeroSection() {
                             {/* Item */}
                             <div className="hs-carousel-slide">
                                 <div className="h-120 md:h-[calc(70vh-106px)]  flex flex-col items-center justify-center bg-[url('https://images.unsplash.com/photo-1471602514494-6b059b461fa0?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
-                                    <h3 className="text-foreground-inverse text-md md:text-lg lg:text-xl mb-3">
+                                    <h3 className="text-foreground-inverse text-base md:text-lg lg:text-xl mb-3">
                                         SUMMER SALE
                                     </h3>
                                     <h1 className="text-3xl md:text-4xl lg:text-5xl mb-5 md:mb-6 lg:md-9 font-semibold text-foreground-inverse ">
                                         Up to 50% off
                                     </h1>
-                                    <div className="flex text-md gap-5">
+                                    <div className="flex text-base gap-5">
                                         <p>
                                             <Link
                                                 className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
@@ -53,11 +53,11 @@ export default function HeroSection() {
                                     <h1 className="text-3xl md:text-4xl lg:text-5xl mb-6 font-semibold text-foreground-inverse ">
                                         New styles
                                     </h1>
-                                    <h3 className="text-foreground-inverse text-md md:text-lg lg:text-xl mb-5 md:mb-6 lg:md-9">
+                                    <h3 className="text-foreground-inverse text-base md:text-lg lg:text-xl mb-5 md:mb-6 lg:md-9">
                                         From lightweight layers to the perfect pair of pants, new
                                         seasonal favorites are here.
                                     </h3>
-                                    <div className="flex text-md gap-5">
+                                    <div className="flex text-base gap-5">
                                         <p>
                                             <a
                                                 className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
@@ -82,13 +82,13 @@ export default function HeroSection() {
                             {/* Item */}
                             <div className="hs-carousel-slide">
                                 <div className="h-120 md:h-[calc(70vh-106px)] flex flex-col items-center justify-center bg-[url('https://images.unsplash.com/photo-1684144064253-bb3b4c8fc700?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
-                                    <h3 className="text-foreground-inverse text-md md:text-lg lg:text-xl mb-3">
+                                    <h3 className="text-foreground-inverse text-base md:text-lg lg:text-xl mb-3">
                                         SUMMER SALE
                                     </h3>
                                     <h1 className="text-3xl md:text-4xl lg:text-5xl mb-5 md:mb-6 lg:md-9 font-semibold text-foreground-inverse ">
                                         Up to 50% off
                                     </h1>
-                                    <div className="flex text-md gap-5">
+                                    <div className="flex text-base gap-5">
                                         <p>
                                             <a
                                                 className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
