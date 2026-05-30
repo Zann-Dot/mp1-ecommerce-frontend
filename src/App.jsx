@@ -11,6 +11,7 @@ import CustomerPersonalInfo from "./pages/users/CustomerPersonalInfo/CustomerPer
 import AddressManagement from "./pages/users/AddressManagement/AddressManagement";
 import MyOrders from "./pages/users/OrderDetails/MyOrders";
 import ProductDetails from "./pages/productListing/ProductDetails/ProductDetails";
+import Checkout from "./pages/checkout/Checkout";
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
         <Route path="/products" element={<ProductListing />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/user/account" element={<CustomerAccount />} />
         <Route path="/user/account/personalinfo" element={<CustomerPersonalInfo />} />
