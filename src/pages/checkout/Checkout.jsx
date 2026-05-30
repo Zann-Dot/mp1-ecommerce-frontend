@@ -9,7 +9,7 @@ export default function Checkout() {
         <>
             <CheckoutHeader />
             <div className="w-full">
-                <main className="relative max-w-270 mx-auto w-full lg:my-10 px-4">
+                <main className="relative max-w-5xl mx-auto w-full px-4">
                     <div className="grid grid-cols-2">
                         <CheckoutForm />
                         <OrderSummary />
