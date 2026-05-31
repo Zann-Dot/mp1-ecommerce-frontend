@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import SelectCountry from "../components/SelectCountry";
+import SelectCountry from "../../components/SelectCountry";
 
 export default function CheckoutForm() {
     return (
