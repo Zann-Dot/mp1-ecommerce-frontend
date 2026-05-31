@@ -36,7 +36,7 @@ export default function UpperNavSection() {
                         <path
                            d="M6 13L10 3"
                            stroke="currentColor"
-                           stroke-linecap="round"
+                           strokeLinecap="round"
                         />
                      </svg>
                   </li>
@@ -59,7 +59,7 @@ export default function UpperNavSection() {
                            <path
                               d="M6 13L10 3"
                               stroke="currentColor"
-                              stroke-linecap="round"
+                              strokeLinecap="round"
                            />
                         </svg>
                      </a>
@@ -83,7 +83,7 @@ export default function UpperNavSection() {
                            <path
                               d="M6 13L10 3"
                               stroke="currentColor"
-                              stroke-linecap="round"
+                              strokeLinecap="round"
                            />
                         </svg>
                      </a>

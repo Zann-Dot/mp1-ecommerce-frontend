@@ -6,7 +6,7 @@ export default function PersonalDetails() {
         <main className="w-full flex flex-col">
             <div className="flex items-center gap-3.5">
                 <img
-                    class="inline-block size-14 rounded-full"
+                    className="inline-block size-14 rounded-full"
                     src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
                     alt="Avatar"
                 />
@@ -57,11 +57,11 @@ export default function PersonalDetails() {
                 </div>
                 <div
                     id="hs-collapse-heading"
-                    class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-400"
+                    className="hs-collapse hidden w-full overflow-hidden transition-[height] duration-400"
                     aria-labelledby="hs-collapse"
                     role="region"
                 >
-                    <div class="mt-5">
+                    <div className="mt-5">
                         <div className="max-w-xs w-full space-y-4 mb-4">
                             <input
                                 id="input-base"
@@ -72,7 +72,7 @@ export default function PersonalDetails() {
                         </div>
                         <button
                             type="button"
-                            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
+                            className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
                         >
                             Saves changes
                         </button>
@@ -100,11 +100,11 @@ export default function PersonalDetails() {
                 </div>
                 <div
                     id="hs-collapse-heading-email"
-                    class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-400"
+                    className="hs-collapse hidden w-full overflow-hidden transition-[height] duration-400"
                     aria-labelledby="hs-collapse"
                     role="region"
                 >
-                    <div class="mt-5">
+                    <div className="mt-5">
                         <div className="max-w-xs w-full space-y-4 mb-4">
                             <input
                                 id="input-base"
@@ -115,7 +115,7 @@ export default function PersonalDetails() {
                         </div>
                         <button
                             type="button"
-                            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
+                            className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
                         >
                             Saves changes
                         </button>
@@ -145,11 +145,11 @@ export default function PersonalDetails() {
                 </div>
                 <div
                     id="hs-collapse-heading-phone"
-                    class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-400"
+                    className="hs-collapse hidden w-full overflow-hidden transition-[height] duration-400"
                     aria-labelledby="hs-collapse"
                     role="region"
                 >
-                    <div class="mt-5">
+                    <div className="mt-5">
                         <div className="max-w-xs w-full space-y-4 mb-4">
                             <input
                                 id="input-base"
@@ -160,7 +160,7 @@ export default function PersonalDetails() {
                         </div>
                         <button
                             type="button"
-                            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
+                            className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
                         >
                             Saves changes
                         </button>
@@ -188,11 +188,11 @@ export default function PersonalDetails() {
                 </div>
                 <div
                     id="hs-collapse-heading-password"
-                    class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-400"
+                    className="hs-collapse hidden w-full overflow-hidden transition-[height] duration-400"
                     aria-labelledby="hs-collapse"
                     role="region"
                 >
-                    <div class="mt-5">
+                    <div className="mt-5">
                         <div className="max-w-xs w-full space-y-4 mb-4">
                             <input
                                 id="input-base"
@@ -215,7 +215,7 @@ export default function PersonalDetails() {
                         </div>
                         <button
                             type="button"
-                            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
+                            className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
                         >
                             Saves changes
                         </button>
@@ -250,23 +250,23 @@ export default function PersonalDetails() {
 
                 <div
                     id="hs-vertically-centered-modal"
-                    class="hs-overlay hidden size-full fixed top-0 inset-s-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none"
+                    className="hs-overlay hidden size-full fixed top-0 inset-s-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none"
                     role="dialog"
-                    tabindex="-1"
+                    tabIndex="-1"
                     aria-labelledby="hs-vertically-centered-modal-label"
                 >
-                    <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-56px)] flex items-center">
-                        <div class="w-full p-4 flex flex-col bg-overlay border border-overlay-line shadow-2xs rounded-xl pointer-events-auto">
-                            <div class="p-4 overflow-y-auto">
+                    <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-56px)] flex items-center">
+                        <div className="w-full p-4 flex flex-col bg-overlay border border-overlay-line shadow-2xs rounded-xl pointer-events-auto">
+                            <div className="p-4 overflow-y-auto">
                                 <h1 className="text-lg font-semibold">Are you sure?</h1>
-                                <p class="text-muted-foreground-2 text-sm">
+                                <p className="text-muted-foreground-2 text-sm">
                                     Are you sure you want to deactivate your account?
                                 </p>
                             </div>
-                            <div class="flex justify-end items-center gap-x-2 py-3 px-4">
+                            <div className="flex justify-end items-center gap-x-2 py-3 px-4">
                                 <button
                                     type="button"
-                                    class="cursor-pointer py-2 px-3 inline-flex items-center gap-x-2 text-xs font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus disabled:opacity-50 disabled:pointer-events-none"
+                                    className="cursor-pointer py-2 px-3 inline-flex items-center gap-x-2 text-xs font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus disabled:opacity-50 disabled:pointer-events-none"
                                     aria-label="Close"
                                     data-hs-overlay="#hs-vertically-centered-modal"
                                 >
@@ -274,7 +274,7 @@ export default function PersonalDetails() {
                                 </button>
                                 <button
                                     type="button"
-                                    class="cursor-pointer py-2 px-3 inline-flex items-center gap-x-2 text-xs font-medium rounded-lg bg-destructive text-white hover:bg-destructive-hover focus:outline-hidden focus:bg-primary-focus disabled:opacity-50 disabled:pointer-events-none"
+                                    className="cursor-pointer py-2 px-3 inline-flex items-center gap-x-2 text-xs font-medium rounded-lg bg-destructive text-white hover:bg-destructive-hover focus:outline-hidden focus:bg-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                                 >
                                     Yes, I'm sure
                                 </button>

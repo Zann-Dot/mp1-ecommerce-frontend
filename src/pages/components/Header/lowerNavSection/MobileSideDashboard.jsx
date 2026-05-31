@@ -24,15 +24,15 @@ export default function MobileSideDashboard() {
                     <g id="Navigation-Menu--Streamline-Ultimate.svg">
                         <path
                             d="M1.5 2.5h21s1 0 1 1v1s0 1 -1 1h-21s-1 0 -1 -1v-1s0 -1 1 -1"
-                            stroke-width="1"
+                            strokeWidth="1"
                         ></path>
                         <path
                             d="M1.5 10.5h21s1 0 1 1v1s0 1 -1 1h-21s-1 0 -1 -1v-1s0 -1 1 -1"
-                            stroke-width="1"
+                            strokeWidth="1"
                         ></path>
                         <path
                             d="M1.5 18.5h21s1 0 1 1v1s0 1 -1 1h-21s-1 0 -1 -1v-1s0 -1 1 -1"
-                            stroke-width="1"
+                            strokeWidth="1"
                         ></path>
                     </g>
                 </svg>
@@ -50,7 +50,7 @@ export default function MobileSideDashboard() {
                             fixed top-0 inset-s-0 bottom-0 z-60
                             bg-sidebar border-e border-sidebar-line"
                 role="dialog"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-label="Sidebar"
             >
                 <div className="relative flex flex-col h-full max-h-full ">
