@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 export default function CheckoutFooter() {
     return (
-        <footer className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-b border-navbar-line">
+        <footer className="sticky bottom-0 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-b border-navbar-line">
             <nav className="max-w-270 w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
                 <Link
                     className="sm:order-1 flex items-center text-sm gap-x-1 font-semibold text-foreground underline underline-offset-4 focus:outline-hidden focus:opacity-80"
@@ -76,7 +76,7 @@ export default function CheckoutFooter() {
                         <span className="sr-only">Toggle</span>
                     </button>
                     <Link
-                        to="/reviewSummary"
+                        to="/checkout/reviewandpay"
                         className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                     >
                         Continue
