@@ -1,12 +1,12 @@
-import CheckoutHeader from '../CheckoutHeader'
 import OrderSummary from '../OrderSummary'
-import CheckoutFooter from '../CheckoutFooter'
 import ReviewAndPaySection from './ReviewAndPaySection'
+import ReviewFooter from './ReviewFooter'
+import ReviewHeader from './ReviewHeader'
 
 export default function ReviewAndPay() {
     return (
         <>
-            <CheckoutHeader />
+            <ReviewHeader />
             <div className="w-full">
                 <main className="relative mx-auto w-full px-4">
                     <div className="grid grid-cols-2 max-w-5xl mx-auto">
@@ -15,7 +15,7 @@ export default function ReviewAndPay() {
                     </div>
                 </main>
                 <hr />
-                <CheckoutFooter />
+                <ReviewFooter />
             </div>
         </>
     )
