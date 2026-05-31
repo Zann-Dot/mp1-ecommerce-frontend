@@ -14,7 +14,7 @@ export default function ReviewInfoCards() {
                             Edit
                         </Link>
                     </div>
-                    <p className="mt-3 text-muted-foreground-1 flex items-center gap-x-4 text-sm">
+                    <div className="mt-3 text-muted-foreground-1 flex items-center gap-x-4 text-sm">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 16 16"
@@ -36,7 +36,7 @@ export default function ReviewInfoCards() {
                             </g>
                         </svg>
                         examapl@aonoa.com
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@ export default function ReviewInfoCards() {
                             Edit
                         </Link>
                     </div>
-                    <p className="mt-3 text-muted-foreground-1 flex gap-x-4 text-sm">
+                    <div className="mt-3 text-muted-foreground-1 flex gap-x-4 text-sm">
                         <svg
                             class="zeqf6 c51lg kh2c5"
                             xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@ export default function ReviewInfoCards() {
                                 New York, Breannabury, OR 45801, US
                             </p>
                         </div>
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -91,7 +91,7 @@ export default function ReviewInfoCards() {
                             Edit
                         </Link>
                     </div>
-                    <p className="mt-3 text-muted-foreground-1 flex items-center gap-x-4 text-sm">
+                    <div className="mt-3 text-muted-foreground-1 flex items-center gap-x-4 text-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" id="Truck-Line--Streamline-Mingcute" height="22" width="22">
                             <desc>
                                 Truck Line Streamline Icon: https://streamlinehq.com
@@ -102,7 +102,7 @@ export default function ReviewInfoCards() {
                             </g>
                         </svg>
                         Free, 2-4 working days
-                    </p>
+                    </div>
                 </div>
             </div>
         </>

@@ -1,8 +1,7 @@
-import React from 'react'
-import CheckoutHeader from './CheckoutHeader'
+import CheckoutHeader from '../CheckoutHeader'
 import CheckoutForm from './CheckoutForm'
-import OrderSummary from './OrderSummary'
-import CheckoutFooter from './CheckoutFooter'
+import OrderSummary from '../OrderSummary'
+import CheckoutFooter from '../CheckoutFooter'
 
 export default function Checkout() {
     return (

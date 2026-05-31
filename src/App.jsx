@@ -11,7 +11,7 @@ import CustomerPersonalInfo from "./pages/users/CustomerPersonalInfo/CustomerPer
 import AddressManagement from "./pages/users/AddressManagement/AddressManagement";
 import MyOrders from "./pages/users/OrderDetails/MyOrders";
 import ProductDetails from "./pages/productListing/ProductDetails/ProductDetails";
-import Checkout from "./pages/checkout/Checkout";
+import Checkout from "./pages/checkout/Checkout/Checkout";
 import ReviewAndPay from "./pages/checkout/ReviewAndPay/ReviewAndPay";
 
 function App() {

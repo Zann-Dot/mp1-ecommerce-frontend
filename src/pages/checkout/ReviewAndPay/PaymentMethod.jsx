@@ -108,7 +108,6 @@ export default function PaymentMethod() {
                         <input
                             id="input-base"
                             type="password"
-
                             className="py-2.5 sm:py-3 px-4 rounded-lg block w-full bg-layer border-layer-line sm:text-sm text-foreground placeholder:text-muted-foreground-1 focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                             placeholder="CVC"
                         />
@@ -142,11 +141,23 @@ export default function PaymentMethod() {
             <div>
                 <h1 className="font-medium mb-3">Billing address</h1>
                 <div class="flex items-center">
-                    <input type="checkbox" className="shrink-0 size-4 bg-transparent border-line-3 rounded-sm shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none" id="hs-checked-checkbox" checked />
-                    <label for="hs-checked-checkbox" class="text-sm ms-3 text-muted-foreground-1">Use my shipping address</label>
+                    <input
+                        type="checkbox"
+                        className="shrink-0 size-4 bg-transparent border-line-3 rounded-sm shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
+                        id="hs-checked-checkbox"
+                        defaultChecked
+                    />
+                    <label
+                        for="hs-checked-checkbox"
+                        className="text-sm ms-3 text-muted-foreground-1"
+                    >
+                        Use my shipping address
+                    </label>
                 </div>
-                <p className="text-muted-foreground-1 mt-1 text-sm">New York, 280 Suzanne Throughway <br />
-                    Breannabury, OR 45801, US</p>
+                <p className="text-muted-foreground-1 mt-1 text-sm">
+                    New York, 280 Suzanne Throughway <br />
+                    Breannabury, OR 45801, US
+                </p>
             </div>
         </div>
     );
