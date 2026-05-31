@@ -1,9 +1,9 @@
 import ChangeLocationButton from "./ChangeLocationButton";
 import DarkModeButton from "./DarkModeButton";
-import useNavbarContext from "../../../../../contexts/NavbarContext";
+import useEcommerceContext from "../../../../../contexts/EcommerceProvider";
 
 export default function UpperNavSection() {
-   const { setThemeMode } = useNavbarContext();
+   const { setThemeMode } = useEcommerceContext();
    return (
       <div className="w-full px-4 py-2 bg-background-1 dark:bg-[#202020]">
          <section className="max-w-340 w-full mx-auto flex items-center justify-between">

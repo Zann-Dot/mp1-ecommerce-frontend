@@ -2,8 +2,11 @@ import { Link } from "react-router";
 import OrderConfirmationSummary from "./OrderConfirmationSummary";
 import DeliveryDetails from "./DeliveryDetails";
 import DarkModeButton from "../../components/Header/upperNavSection/DarkModeButton";
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function OrderConfirmationPage() {
+    const { setThemeMode } = useEcommerceContext();
+
     return (
         <>
             <header className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-b border-navbar-line">
@@ -50,7 +53,7 @@ export default function OrderConfirmationPage() {
                         <span className="font-extrabold">·</span>
                         <p>Your Privacy Choices</p>
                         <span className="font-extrabold">·</span>
-                        <DarkModeButton />
+                        <DarkModeButton setThemeMode={setThemeMode} />
                     </nav>
                 </footer>
             </div>
