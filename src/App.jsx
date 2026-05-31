@@ -13,6 +13,7 @@ import MyOrders from "./pages/users/OrderDetails/MyOrders";
 import ProductDetails from "./pages/productListing/ProductDetails/ProductDetails";
 import Checkout from "./pages/checkout/Checkout/Checkout";
 import ReviewAndPay from "./pages/checkout/ReviewAndPay/ReviewAndPay";
+import OrderConfirmationPage from "./pages/checkout/OrderConfirmation/OrderConfirmationPage";
 
 function App() {
   const location = useLocation();
@@ -29,6 +30,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/checkout/reviewandpay" element={<ReviewAndPay />} />
+        <Route path="/checkout/reviewandpay/orderconfirmation" element={<OrderConfirmationPage />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/user/account" element={<CustomerAccount />} />
         <Route path="/user/account/personalinfo" element={<CustomerPersonalInfo />} />
