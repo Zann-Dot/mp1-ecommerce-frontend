@@ -14,11 +14,27 @@ import ProductDetails from "./pages/productListing/ProductDetails/ProductDetails
 import Checkout from "./pages/checkout/Checkout/Checkout";
 import ReviewAndPay from "./pages/checkout/ReviewAndPay/ReviewAndPay";
 import OrderConfirmationPage from "./pages/checkout/OrderConfirmation/OrderConfirmationPage";
+import useEcommerceContext from "../contexts/EcommerceProvider";
 
 function App() {
+  const { setProducts } = useEcommerceContext();
   const location = useLocation();
+
+  async function fetchProducts() {
+    const response = await fetch('/api/products');
+
+    if (!response.ok)
+      throw new Error('Failed to get products');
+
+    const data = await response.json();
+
+    setProducts(data)
+
+  }
+
   useEffect(() => {
     window.HSStaticMethods.autoInit();
+    fetchProducts();
   }, [location.pathname]);
 
   return (
