@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-export default function FeaturedProducts({ product }) {
+export default function ProductCard({ product }) {
     const navigate = useNavigate();
     return (
         <div
@@ -9,18 +9,12 @@ export default function FeaturedProducts({ product }) {
         >
             <div className="relative w-full h-min md:h-100 shrink-0 xl:aspect-square rounded-xl overflow-hidden">
                 <img
-                    className="size-1/1 object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="size-1/1 object-contain md:object-cover transition-transform duration-500 group-hover:scale-105"
                     src={product.imageUrl}
                     alt="iPhone 14 Case"
                 />
 
-                <div className="absolute top-4 left-4">
-                    <span className="inline-flex items-center gap-x-1 py-1.5 px-3 rounded-full text-xs font-semibold text-primary-800 bg-primary-100 dark:bg-primary-600 dark:text-primary-50 backdrop-blur-md">
-                        Only {Math.round(Math.random() * 10)} left
-                    </span>
-                </div>
-
-                <div className="absolute top-4 right-4 opacity-100 lg:opacity-0  group-hover:opacity-100 transition-opacity duration-200">
+                <div className="absolute top-4 right-4 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     <button
                         type="button"
                         className="inline-flex justify-center  cursor-pointer items-center size-9 rounded-full bg-line-2 text-foreground shadow-2xs hover:scale-105 transition-transform"

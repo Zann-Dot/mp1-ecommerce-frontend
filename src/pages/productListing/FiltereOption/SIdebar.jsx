@@ -6,7 +6,7 @@ export default function Sidebar() {
     return (
         <>
             {/* Breadcrumb */}
-            <div className="short-screen:static fixed top-56.25 inset-x-0 z-20 bg-navbar border-y border-navbar-line px-4 sm:px-6 lg:px-8 lg:hidden">
+            <div className="short-screen:static fixed top-55.75 inset-x-0 z-20 bg-navbar border-b border-navbar-line px-4 sm:px-6 lg:px-8 lg:hidden">
                 <div className="flex items-center py-2">
                     <button
                         type="button"
@@ -81,7 +81,7 @@ export default function Sidebar() {
   -translate-x-full transition-all duration-300 transform
   w-100 max-w-80 h-full border-e hs-overlay-open:px-0
   hidden 
-  bg-sidebar absolute lg:static inset-y-0 inset-s-0 z-60
+  bg-sidebar absolute top-0 lg:static inset-y-0 inset-s-0 z-60
   lg:block lg:translate-x-0 lg:inset-e-auto lg:bottom-0"
                 role="dialog"
                 tabIndex="-1"
