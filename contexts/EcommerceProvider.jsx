@@ -15,9 +15,6 @@ export function EcommerceProvider({ children }) {
         localStorage.setItem('theme', themeMode);
     }
 
-
-
-
     document.documentElement.classList.toggle('dark', localStorage.theme === 'dark');
 
     return (

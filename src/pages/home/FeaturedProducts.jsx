@@ -1,20 +1,22 @@
-import React from "react";
 import { useNavigate } from "react-router";
 
-export default function FeaturedProducts() {
+export default function FeaturedProducts({ product }) {
     const navigate = useNavigate();
     return (
-        <div onClick={() => navigate('/products/details')} className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300">
+        <div
+            onClick={() => navigate("/products/details")}
+            className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300"
+        >
             <div className="relative w-full h-100 shrink-0 xl:aspect-square rounded-xl overflow-hidden">
                 <img
                     className="size-1/1 object-cover transition-transform duration-500 group-hover:scale-105"
-                    src="https://images.unsplash.com/photo-1678652197831-2d180705cd2c?auto=format&fit=crop&w=600&q=80"
+                    src={product.imageUrl}
                     alt="iPhone 14 Case"
                 />
 
                 <div className="absolute top-4 left-4">
                     <span className="inline-flex items-center gap-x-1 py-1.5 px-3 rounded-full text-xs font-semibold text-primary-800 bg-primary-100 dark:bg-primary-600 dark:text-primary-50 backdrop-blur-md">
-                        Only 7 left
+                        Only {Math.round(Math.random() * 10)} left
                     </span>
                 </div>
 
@@ -43,15 +45,15 @@ export default function FeaturedProducts() {
 
             {/* --- CARD BODY DETAILS --- */}
             <div className="pt-2 flex flex-col flex-1">
-                <h4 className="font-medium text-foreground text-sm">iPhone 14 Case</h4>
+                <h4 className="font-medium text-foreground text-sm">{product.productName.split(" ").splice(0, 3).join(" ")}</h4>
 
                 <div className="w-full flex items-baseline gap-x-2 mt-auto mb-3">
-                    <span className=" font-semibold text-primary">₹5999</span>
+                    <span className=" font-semibold text-primary">₹{product.priceRupees}</span>
                     <span className="text-sm text-muted-foreground-1 line-through">
-                        $7999
+                        ₹{product.priceRupees + 1000}
                     </span>
                     <span className="text-sm text-muted-foreground-1 ms-auto">
-                        200 sold
+                        {Math.round(Math.random() * 100)} sold
                     </span>
                 </div>
 
@@ -109,7 +111,7 @@ export default function FeaturedProducts() {
                         </svg>
                     </div>
 
-                    <span className="text-sm font-semibold text-foreground">(67)</span>
+                    <span className="text-sm font-semibold text-foreground">({Math.round(Math.random() * 1000)})</span>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ import { Link } from "react-router";
 export default function HeroSection() {
     return (
         <>
-            <div>
+            <div className="flex flex-col gap-10">
                 {/* Carousel */}
                 <div
                     id="hs-carousel"
@@ -164,7 +164,11 @@ export default function HeroSection() {
                     {/* End Pagination */}
                 </div>
 
-                <div className="grid grid-flow-col auto-cols-[100%] sm:auto-cols-[calc(50%-20px)] xl:grid-cols-3 scroll-smooth scrollbar-none overflow-x-auto xl:overflow-hidden gap-10 my-10">
+                <h1 className="text-foreground text-center font-semibold text-xl">
+                    Explore more
+                </h1>
+
+                <div className="grid grid-flow-col auto-cols-[100%] sm:auto-cols-[calc(50%-20px)] xl:grid-cols-3 scroll-smooth scrollbar-none overflow-x-auto xl:overflow-hidden gap-10">
                     <WomensCategoryCard />
                     <MensCategoryCard />
                     <AccessoriesCategoryCard />
