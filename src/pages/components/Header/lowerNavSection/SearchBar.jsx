@@ -1,6 +1,8 @@
-import React from 'react'
+import { useNavigate } from "react-router"
 
 export default function SearchBar() {
+    const navigate = useNavigate();
+
     return (
         <div className="hidden lg:block relative w-full">
             <input
@@ -13,7 +15,8 @@ export default function SearchBar() {
             <div className="absolute right-1.5 bottom-1 top-1.25">
                 <button
                     type="button"
-                    className="cursor-pointer py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-full bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
+                    onClick={() => navigate('/search-result')}
+                    className="searchbtn cursor-pointer py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-full bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

@@ -15,6 +15,7 @@ import Checkout from "./pages/checkout/Checkout/Checkout";
 import ReviewAndPay from "./pages/checkout/ReviewAndPay/ReviewAndPay";
 import OrderConfirmationPage from "./pages/checkout/OrderConfirmation/OrderConfirmationPage";
 import useEcommerceContext from "../contexts/EcommerceProvider";
+import SearchResult from "./pages/SearchResult";
 
 function App() {
   const { setProducts } = useEcommerceContext();
@@ -45,6 +46,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/search-result" element={<SearchResult />} />
         <Route path="/checkout/reviewandpay" element={<ReviewAndPay />} />
         <Route path="/checkout/reviewandpay/orderconfirmation" element={<OrderConfirmationPage />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
