@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
 
 export default function ProductCard({ product }) {
     const navigate = useNavigate();
@@ -45,11 +46,23 @@ export default function ProductCard({ product }) {
 
                 <div className="w-full flex items-baseline gap-x-2 mt-auto mb-3">
                     <span className=" font-semibold text-primary">
-                        ₹{product.priceRupees}
+                        ₹{" "}
+                        {product.isDiscount
+                            ? calculateDiscountedPrice(product.discount, product.priceRupees)
+                            : product.priceRupees}
                     </span>
-                    <span className="text-sm text-muted-foreground-1 line-through">
-                        ₹{product.priceRupees + 1000}
-                    </span>
+
+                    {product.isDiscount && (
+                        <>
+                            <span className="text-sm text-muted-foreground-1 line-through">
+                                ₹{product.priceRupees}
+                            </span>
+                            <span className="text-xs text-destructive/80 font-bold">
+                                {product.discount}% OFF
+                            </span>
+                        </>
+                    )}
+
                     <span className="text-sm text-muted-foreground-1 ms-auto">
                         {Math.round(Math.random() * 100)} sold
                     </span>
