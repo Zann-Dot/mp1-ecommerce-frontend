@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router"
+import useNavbarContext from "../../../../../contexts/NavbarContext";
 
 export default function SearchBar() {
     const navigate = useNavigate();
+    const { search, setSearch } = useNavbarContext();
 
     return (
         <div className="hidden lg:block relative w-full">
@@ -10,12 +12,14 @@ export default function SearchBar() {
                 type="text"
                 className="w-full py-2.5 sm:py-3 px-4 rounded-full block bg-layer border-line-3 sm:text-sm text-foreground placeholder:text-muted-foreground-1 focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                 placeholder="Search Products"
+                onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && navigate(`/search-result?search=${search || ""}`)}
             />
 
             <div className="absolute right-1.5 bottom-1 top-1.25">
                 <button
                     type="button"
-                    onClick={() => navigate('/search-result')}
+                    onClick={() => navigate(`/search-result?search=${search}`)}
                     className="searchbtn cursor-pointer py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-full bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                 >
                     <svg
