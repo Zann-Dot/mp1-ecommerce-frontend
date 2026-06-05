@@ -11,7 +11,6 @@ export default function SearchResult() {
    const searchQuery = searchParams.get("search");
    const navigate = useNavigate()
 
-
    useEffect(() => {
       if (searchQuery !== "") {
          fetch(`/api/products/search/${searchQuery}`)

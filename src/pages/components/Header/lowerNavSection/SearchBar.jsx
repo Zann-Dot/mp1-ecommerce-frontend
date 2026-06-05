@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { useNavigate } from "react-router"
-import useNavbarContext from "../../../../../contexts/NavbarContext";
 
 export default function SearchBar() {
     const navigate = useNavigate();
-    const { search, setSearch } = useNavbarContext();
+    const [search, setSearch] = useState("");
 
     return (
         <div className="hidden lg:block relative w-full">
@@ -13,7 +13,7 @@ export default function SearchBar() {
                 className="w-full py-2.5 sm:py-3 px-4 rounded-full block bg-layer border-line-3 sm:text-sm text-foreground placeholder:text-muted-foreground-1 focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                 placeholder="Search Products"
                 onChange={(e) => setSearch(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && navigate(`/search-result?search=${search || ""}`)}
+                onKeyDown={(e) => e.key === "Enter" && navigate(`/search-result?search=${search}`)}
             />
 
             <div className="absolute right-1.5 bottom-1 top-1.25">

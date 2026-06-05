@@ -5,11 +5,9 @@ const useNavbarContext = () => useContext(NavbarContext);
 export default useNavbarContext;
 
 export function NavbarProvider({ children }) {
-   const [search, setSearch] = useState()
-   // console.log(search);
 
    return (
-      <NavbarContext.Provider value={{ search, setSearch }}>
+      <NavbarContext.Provider value={{}}>
 
          {children}
       </NavbarContext.Provider>
