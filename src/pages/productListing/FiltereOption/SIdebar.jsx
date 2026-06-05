@@ -1,11 +1,13 @@
 import FilterByRating from "./FilterByRating";
 import FilterByPrice from "./FilterByPrice";
 import FilterByCategory from "./FilterByCategory";
+import useSidebarContext, { SidebarProvider } from "../../../../contexts/SidebarProvider";
+import SubmitFilterButton from "./SubmitFilterButton";
 
 export default function Sidebar() {
+
     return (
-        <>
-            {/* Breadcrumb */}
+        <SidebarProvider>
             <div className="short-screen:static fixed top-55.75 inset-x-0 z-20 bg-navbar border-b border-navbar-line px-4 sm:px-6 lg:px-8 lg:hidden">
                 <div className="flex items-center py-2">
                     <button
@@ -145,46 +147,11 @@ export default function Sidebar() {
                             <FilterByRating />
                             <hr className="w-full" />
 
-                            <div className="w-full inline-flex justify-center gap-3 mt-4">
-                                <button
-                                    type="button"
-                                    className="cursor-pointer py-2 ps-4 pe-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-hover disabled:opacity-50 disabled:pointer-events-none"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 16 16"
-                                        id="Close-Line--Streamline-Mingcute"
-                                        height="16"
-                                        width="16"
-                                    >
-                                        <desc>
-                                            Close Line Streamline Icon: https://streamlinehq.com
-                                        </desc>
-                                        <g fill="none" fillRule="evenodd">
-                                            <path
-                                                d="M16 0v16H0V0h16ZM8.395333333333333 15.505333333333333l-0.007333333333333332 0.0013333333333333333 -0.047333333333333324 0.023333333333333334 -0.013333333333333332 0.0026666666666666666 -0.009333333333333332 -0.0026666666666666666 -0.047333333333333324 -0.023333333333333334c-0.006666666666666666 -0.0026666666666666666 -0.012666666666666666 -0.0006666666666666666 -0.016 0.003333333333333333l-0.0026666666666666666 0.006666666666666666 -0.011333333333333334 0.2853333333333333 0.003333333333333333 0.013333333333333332 0.006666666666666666 0.008666666666666666 0.06933333333333333 0.049333333333333326 0.009999999999999998 0.0026666666666666666 0.008 -0.0026666666666666666 0.06933333333333333 -0.049333333333333326 0.008 -0.010666666666666666 0.0026666666666666666 -0.011333333333333334 -0.011333333333333334 -0.2846666666666666c-0.0013333333333333333 -0.006666666666666666 -0.005999999999999999 -0.011333333333333334 -0.011333333333333334 -0.011999999999999999Zm0.17666666666666667 -0.07533333333333334 -0.008666666666666666 0.0013333333333333333 -0.12333333333333332 0.062 -0.006666666666666666 0.006666666666666666 -0.002 0.007333333333333332 0.011999999999999999 0.2866666666666666 0.003333333333333333 0.008 0.005333333333333333 0.004666666666666666 0.134 0.062c0.008 0.0026666666666666666 0.015333333333333332 0 0.019333333333333334 -0.005333333333333333l0.0026666666666666666 -0.009333333333333332 -0.02266666666666667 -0.4093333333333333c-0.002 -0.008 -0.006666666666666666 -0.013333333333333332 -0.013333333333333332 -0.014666666666666665Zm-0.4766666666666666 0.0013333333333333333a0.015333333333333332 0.015333333333333332 0 0 0 -0.018 0.004l-0.004 0.009333333333333332 -0.02266666666666667 0.4093333333333333c0 0.008 0.004666666666666666 0.013333333333333332 0.011333333333333334 0.016l0.009999999999999998 -0.0013333333333333333 0.134 -0.062 0.006666666666666666 -0.005333333333333333 0.0026666666666666666 -0.007333333333333332 0.011333333333333334 -0.2866666666666666 -0.002 -0.008 -0.006666666666666666 -0.006666666666666666 -0.12266666666666666 -0.06133333333333333Z"
-                                                strokeWidth="0.6667"
-                                            ></path>
-                                            <path
-                                                fill="currentColor"
-                                                d="m8 8.942666666666666 3.771333333333333 3.771333333333333a0.6666666666666666 0.6666666666666666 0 0 0 0.9426666666666665 -0.9426666666666665L8.942666666666666 8l3.771333333333333 -3.771333333333333a0.6666666666666666 0.6666666666666666 0 0 0 -0.9426666666666665 -0.9426666666666665L8 7.057333333333333 4.228666666666666 3.286A0.6666666666666666 0.6666666666666666 0 0 0 3.286666666666666 4.228666666666666L7.057333333333333 8l-3.771333333333333 3.771333333333333a0.6666666666666666 0.6666666666666666 0 1 0 0.9426666666666665 0.9426666666666665L8 8.942666666666666Z"
-                                                strokeWidth="0.6667"
-                                            ></path>
-                                        </g>
-                                    </svg>
-                                    Clear filter
-                                </button>
-                                <button
-                                    type="button"
-                                    className="cursor-pointer py-2 px-6 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
-                                >
-                                    Show items
-                                </button>
-                            </div>
+                            <SubmitFilterButton />
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+        </SidebarProvider>
     );
 }

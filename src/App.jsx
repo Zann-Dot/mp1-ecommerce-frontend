@@ -18,20 +18,8 @@ import useEcommerceContext from "../contexts/EcommerceProvider";
 import SearchResult from "./pages/SearchResult";
 
 function App() {
-  const { setProducts } = useEcommerceContext();
+  const { fetchProducts } = useEcommerceContext();
   const location = useLocation();
-
-  async function fetchProducts() {
-    const response = await fetch('/api/products');
-
-    if (!response.ok)
-      throw new Error('Failed to get products');
-
-    const data = await response.json();
-
-    setProducts(data)
-
-  }
 
   useEffect(() => {
     window.HSStaticMethods.autoInit();
@@ -48,10 +36,16 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/search-result" element={<SearchResult />} />
         <Route path="/checkout/reviewandpay" element={<ReviewAndPay />} />
-        <Route path="/checkout/reviewandpay/orderconfirmation" element={<OrderConfirmationPage />} />
+        <Route
+          path="/checkout/reviewandpay/orderconfirmation"
+          element={<OrderConfirmationPage />}
+        />
         <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/user/account" element={<CustomerAccount />} />
-        <Route path="/user/account/personalinfo" element={<CustomerPersonalInfo />} />
+        <Route
+          path="/user/account/personalinfo"
+          element={<CustomerPersonalInfo />}
+        />
         <Route path="/user/account/myorders" element={<MyOrders />} />
         <Route path="/user/account/addresses" element={<AddressManagement />} />
         <Route path="/customer/signup" element={<CustomerSignUp />} />

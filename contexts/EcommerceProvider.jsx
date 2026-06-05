@@ -19,8 +19,20 @@ export function EcommerceProvider({ children }) {
         localStorage.theme === "dark",
     );
 
+    async function fetchProducts() {
+        const response = await fetch('/api/products');
+
+        if (!response.ok)
+            throw new Error('Failed to get products');
+
+        const data = await response.json();
+
+        setProducts(data)
+
+    }
+
     return (
-        <EcommerceContext.Provider value={{ setThemeMode, products, setProducts }}>
+        <EcommerceContext.Provider value={{ setThemeMode, products, setProducts, fetchProducts }}>
             {children}
         </EcommerceContext.Provider>
     );

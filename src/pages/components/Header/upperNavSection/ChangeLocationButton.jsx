@@ -23,27 +23,7 @@ export default function ChangeLocationButton() {
          isDefault: false,
       },
       {
-         _id: "1685292070",
-         userId: "138983793",
-         address: {
-            addressLine: "wz-251 rajendar place",
-            city: "Delhi",
-            pincode: "112551",
-         },
-         isDefault: false,
-      },
-      {
-         _id: "1685292070",
-         userId: "138983793",
-         address: {
-            addressLine: "wz-251 rajendar place",
-            city: "Delhi",
-            pincode: "112551",
-         },
-         isDefault: false,
-      },
-      {
-         _id: "1685292070",
+         _id: "168523292070",
          userId: "138983793",
          address: {
             addressLine: "wz-251 rajendar place",
