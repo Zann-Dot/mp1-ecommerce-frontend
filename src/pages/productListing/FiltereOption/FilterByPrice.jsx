@@ -1,6 +1,13 @@
-import React from "react";
+import { useEffect, useRef } from "react";
+import rangeSliderLoader from "../../../utilis/rangeSliderLoader";
 
 export default function FilterByPrice() {
+    const sliderRef = useRef(null);
+
+    useEffect(() => {
+        return rangeSliderLoader(sliderRef);
+    }, []);
+
     return (
         <div className="w-full bg-sidebar rounded-lg p-4 flex flex-col gap-4">
             <p className="text-foreground mb-3 font-medium text-base">Price</p>
@@ -33,21 +40,35 @@ export default function FilterByPrice() {
             <div className="w-full my-4">
                 <div className="flex justify-center w-full mb-5">
                     <div className="flex items-center text-sm text-foreground">
-                        <div id="hs-pass-values-to-html-elements-min-target" className="text-center min-w-16">250</div>
+                        <div
+                            id="hs-pass-values-to-html-elements-min-target"
+                            className="text-center min-w-16"
+                        >
+                            250
+                        </div>
                         -
-                        <div id="hs-pass-values-to-html-elements-max-target" className="text-center min-w-16">750</div>
+                        <div
+                            id="hs-pass-values-to-html-elements-max-target"
+                            className="text-center min-w-16"
+                        >
+                            750
+                        </div>
                     </div>
                 </div>
                 <label className="sr-only">Example range</label>
-                <div id="hs-pass-values-to-html-elements" className="--prevent-on-load-init" data-hs-range-slider='{
-                "start": [250, 750],
+                <div
+                    id="hs-pass-values-to-html-elements"
+                    ref={sliderRef}
+                    className="--prevent-on-load-init"
+                    data-hs-range-slider='{
+                "start": [500, 1500],
                 "range": {
                   "min": 0,
-                  "max": 1000
+                  "max": 2000
                 },
                 "formatter": {
                   "type": "integer",
-                  "prefix": "$"
+                  "prefix": "₹"
                 },
                 "connect": true,
                 "cssClasses": {
@@ -59,8 +80,8 @@ export default function FilterByPrice() {
                   "connect": "absolute top-0 inset-e-0 z-1 size-full origin-top-left bg-primary",
                   "touchArea": "absolute -inset-1"
                 }
-              }'>
-                </div>
+              }'
+                ></div>
             </div>
         </div>
     );
