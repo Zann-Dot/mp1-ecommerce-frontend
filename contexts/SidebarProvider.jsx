@@ -1,39 +1,55 @@
 import { createContext, useContext, useState } from "react";
 import useEcommerceContext from "./EcommerceProvider";
-import { useNavigate } from "react-router";
+import { useSearchParams } from "react-router";
 
 const SidebarContext = createContext();
 const useSidebarContext = () => useContext(SidebarContext);
 export default useSidebarContext;
 
-
 export function SidebarProvider({ children }) {
     const [category, setCategory] = useState([]);
-    const navigate = useNavigate();
+    const [minPrice, setMinPrice] = useState(500);
+    const [maxPrice, setMaxPrice] = useState(1500);
+    const [searchParams, setSearchParams] = useSearchParams()
     const { setProducts, fetchProducts } = useEcommerceContext();
+    const params = new URLSearchParams();
 
-    function filterByCategory() {
-        const params = new URLSearchParams();
+    function filterProducts() {
+        if ((minPrice === 0 && maxPrice === 0) || (minPrice === 2000 && maxPrice === 2000)) return;
 
-        if (category.length !== 0) {
-            category.forEach(category => {
-                params.append('c', category);
-            });
-            navigate(`/products?${params.toString()}`)
+        category.forEach((category) => {
+            params.append("c", category);
+        });
 
-            fetch(`/api/products?${params.toString()}`)
-                .then((res) => res.json())
-                .then((data) => setProducts(data))
-                .catch((err) => console.log(err));
+        params.set("min", minPrice);
+        params.set("max", maxPrice);
 
-        } else {
-            fetchProducts();
-        }
+        fetch(`/api/products?${params.toString()}`)
+            .then((res) => res.json())
+            .then((data) => setProducts(data))
+            .catch((err) => console.log(err));
+
+        setSearchParams(params);
+    }
+
+    function resetFilter() {
+        fetchProducts();
+        setSearchParams("");
     }
 
     return (
-        <SidebarContext.Provider value={{ setCategory, filterByCategory }}>
+        <SidebarContext.Provider
+            value={{
+                setCategory,
+                filterProducts,
+                setMaxPrice,
+                setMinPrice,
+                minPrice,
+                maxPrice,
+                resetFilter
+            }}
+        >
             {children}
         </SidebarContext.Provider>
-    )
+    );
 }

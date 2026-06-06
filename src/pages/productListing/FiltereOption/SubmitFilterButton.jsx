@@ -1,12 +1,15 @@
+
 import useSidebarContext from '../../../../contexts/SidebarProvider'
 
 export default function SubmitFilterButton() {
-    const { filterByCategory } = useSidebarContext();
+    const { filterProducts, resetFilter } = useSidebarContext();
+
 
     return (
         <div className="w-full inline-flex justify-center gap-3 mt-4">
             <button
                 type="button"
+                onClick={resetFilter}
                 className="cursor-pointer py-2 ps-4 pe-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-hover disabled:opacity-50 disabled:pointer-events-none"
             >
                 <svg
@@ -33,8 +36,9 @@ export default function SubmitFilterButton() {
                 </svg>
                 Clear filter
             </button>
+
             <button
-                onClick={filterByCategory}
+                onClick={filterProducts}
                 className="cursor-pointer py-2 px-6 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
             >
                 Show items

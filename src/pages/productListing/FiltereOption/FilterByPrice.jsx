@@ -1,11 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import rangeSliderLoader from "../../../utilis/rangeSliderLoader";
+import useSidebarContext from "../../../../contexts/SidebarProvider";
 
 export default function FilterByPrice() {
     const sliderRef = useRef(null);
+    const { minPrice, maxPrice, setMaxPrice, setMinPrice } = useSidebarContext();
 
     useEffect(() => {
-        return rangeSliderLoader(sliderRef);
+        return rangeSliderLoader(sliderRef, setMinPrice, setMaxPrice);
     }, []);
 
     return (
@@ -40,22 +42,11 @@ export default function FilterByPrice() {
             <div className="w-full my-4">
                 <div className="flex justify-center w-full mb-5">
                     <div className="flex items-center text-sm text-foreground">
-                        <div
-                            id="hs-pass-values-to-html-elements-min-target"
-                            className="text-center min-w-16"
-                        >
-                            250
-                        </div>
-                        -
-                        <div
-                            id="hs-pass-values-to-html-elements-max-target"
-                            className="text-center min-w-16"
-                        >
-                            750
-                        </div>
+                        <div className="text-center min-w-16">₹{minPrice}</div>-
+                        <div className="text-center min-w-16">₹{maxPrice}</div>
                     </div>
                 </div>
-                <label className="sr-only">Example range</label>
+
                 <div
                     id="hs-pass-values-to-html-elements"
                     ref={sliderRef}
@@ -68,8 +59,9 @@ export default function FilterByPrice() {
                 },
                 "formatter": {
                   "type": "integer",
-                  "prefix": "₹"
+                  "prefix": ""
                 },
+                 "step": 500,
                 "connect": true,
                 "cssClasses": {
                   "target": "relative h-2 rounded-full bg-surface",
