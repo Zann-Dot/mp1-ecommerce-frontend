@@ -68,7 +68,7 @@ export default function FilterByPrice() {
                     ref={sliderRef}
                     className="--prevent-on-load-init"
                     data-hs-range-slider='{
-                "start": [500, 1500],
+                "start": [0, 2000],
                 "range": {
                   "min": 0,
                   "max": 2000

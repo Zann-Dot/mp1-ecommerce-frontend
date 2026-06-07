@@ -1,7 +1,9 @@
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import useSidebarContext from "../../../../contexts/SidebarProvider";
 
 export default function FilterByCategory() {
     const { setCategory } = useSidebarContext();
+    const { products } = useEcommerceContext();
 
     function handleCategory(e) {
         const { checked, value } = e.target;
@@ -10,8 +12,7 @@ export default function FilterByCategory() {
             : setCategory((prevVal) =>
                 prevVal.filter((category) => category !== value),
             );
-    };
-
+    }
 
     return (
         <div className="w-full bg-sidebar rounded-lg p-4 flex flex-col gap-4">
@@ -26,7 +27,9 @@ export default function FilterByCategory() {
                     onChange={handleCategory}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">Men</span>
-                <span className="text-xs text-muted-foreground-1 ms-auto">(42)</span>
+                <span className="text-xs text-muted-foreground-1 ms-auto">
+                    ( {(products?.filter((i) => i.category === "Men's Clothing")).length} )
+                </span>
             </div>
 
             <div className="flex">
@@ -38,7 +41,9 @@ export default function FilterByCategory() {
                     onChange={handleCategory}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">Women</span>
-                <span className="text-xs text-muted-foreground-1 ms-auto">(42)</span>
+                <span className="text-xs text-muted-foreground-1 ms-auto">
+                    ( {(products?.filter((i) => i.category === "Women's Clothing")).length} )
+                </span>
             </div>
 
             <div className="flex">
@@ -52,7 +57,9 @@ export default function FilterByCategory() {
                 <span className="text-sm ms-3 text-muted-foreground-1">
                     Accessories
                 </span>
-                <span className="text-xs text-muted-foreground-1 ms-auto">(42)</span>
+                <span className="text-xs text-muted-foreground-1 ms-auto">
+                    ( {(products?.filter((i) => i.category === "Accessories")).length} )
+                </span>
             </div>
         </div>
     );
