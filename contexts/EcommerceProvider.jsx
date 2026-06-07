@@ -7,7 +7,7 @@ export default useEcommerceContext;
 export function EcommerceProvider({ children }) {
     const [themeMode, setThemeMode] = useState(localStorage.getItem("theme"));
     const [products, setProducts] = useState([]);
-    const [sort, setSort] = useState("")
+    const [sort, setSort] = useState("");
 
     if (themeMode === "dark") {
         localStorage.setItem("theme", themeMode);
@@ -29,7 +29,14 @@ export function EcommerceProvider({ children }) {
 
     return (
         <EcommerceContext.Provider
-            value={{ setThemeMode, products, sort, setSort, setProducts, fetchProducts }}
+            value={{
+                setThemeMode,
+                products,
+                sort,
+                setSort,
+                setProducts,
+                fetchProducts,
+            }}
         >
             {children}
         </EcommerceContext.Provider>

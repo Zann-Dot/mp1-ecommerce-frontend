@@ -1,4 +1,4 @@
-import useSidebarContext from "../../../../contexts/SidebarProvider"
+import useSidebarContext from "../../../../contexts/SidebarProvider";
 
 export default function FilterByRating() {
     const { setRating } = useSidebarContext();
@@ -23,7 +23,6 @@ export default function FilterByRating() {
                     4 Stars & above
                 </span>
             </div>
-
 
             <div className="flex">
                 <input
@@ -53,7 +52,6 @@ export default function FilterByRating() {
                 </span>
             </div>
 
-
             <div className="flex">
                 <input
                     type="radio"
@@ -67,8 +65,6 @@ export default function FilterByRating() {
                     1 Stars & above
                 </span>
             </div>
-
-
         </div>
-    )
+    );
 }

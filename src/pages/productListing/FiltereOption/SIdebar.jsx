@@ -1,7 +1,7 @@
 import FilterByRating from "./FilterByRating";
 import FilterByPrice from "./FilterByPrice";
 import FilterByCategory from "./FilterByCategory";
-import useSidebarContext, { SidebarProvider } from "../../../../contexts/SidebarProvider";
+import { SidebarProvider } from "../../../../contexts/SidebarProvider";
 import SubmitFilterButton from "./SubmitFilterButton";
 
 export default function Sidebar() {

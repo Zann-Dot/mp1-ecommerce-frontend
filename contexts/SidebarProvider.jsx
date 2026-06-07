@@ -43,7 +43,7 @@ export function SidebarProvider({ children }) {
         setSearchParams("");
     }
 
-    useEffect(() => { }, [sort])
+    useEffect(() => { }, [sort]);
 
     return (
         <SidebarContext.Provider
@@ -55,7 +55,7 @@ export function SidebarProvider({ children }) {
                 minPrice,
                 maxPrice,
                 resetFilter,
-                setRating
+                setRating,
             }}
         >
             {children}

@@ -13,15 +13,12 @@ export default function FilterByPrice() {
 
         if (sort === "asec")
             products?.sort((a, b) => b.priceRupees - a.priceRupees);
-        else
-            products?.sort((a, b) => a.priceRupees - b.priceRupees);
-    };
+        else products?.sort((a, b) => a.priceRupees - b.priceRupees);
+    }
 
     useEffect(() => {
         return rangeSliderLoader(sliderRef, setMinPrice, setMaxPrice);
     }, []);
-
-
 
     return (
         <div className="w-full bg-sidebar rounded-lg p-4 flex flex-col gap-4">
@@ -60,7 +57,9 @@ export default function FilterByPrice() {
                 <div className="flex justify-center w-full mb-5">
                     <div className="flex items-center text-sm text-foreground">
                         <div className="text-center min-w-16">₹{minPrice}</div>-
-                        <div className="text-center min-w-16">₹{maxPrice === 2000 ? "2000+" : maxPrice}</div>
+                        <div className="text-center min-w-16">
+                            ₹{maxPrice === 2000 ? "2000+" : maxPrice}
+                        </div>
                     </div>
                 </div>
 
