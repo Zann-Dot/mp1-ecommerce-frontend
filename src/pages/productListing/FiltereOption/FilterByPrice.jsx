@@ -1,14 +1,28 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import rangeSliderLoader from "../../../utilis/rangeSliderLoader";
 import useSidebarContext from "../../../../contexts/SidebarProvider";
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function FilterByPrice() {
     const sliderRef = useRef(null);
     const { minPrice, maxPrice, setMaxPrice, setMinPrice } = useSidebarContext();
+    const { sort, setSort, products } = useEcommerceContext();
+
+    function handleProductSort(e) {
+        e.target.checked && setSort(e.target.value);
+
+        if (sort === "asec")
+            products?.sort((a, b) => b.priceRupees - a.priceRupees);
+        else
+            products?.sort((a, b) => a.priceRupees - b.priceRupees);
+
+    }
 
     useEffect(() => {
         return rangeSliderLoader(sliderRef, setMinPrice, setMaxPrice);
-    }, []);
+    }, [sort]);
+
+
 
     return (
         <div className="w-full bg-sidebar rounded-lg p-4 flex flex-col gap-4">
@@ -20,6 +34,8 @@ export default function FilterByPrice() {
                     name="hs-default-radio"
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-default-radio"
+                    value="asec"
+                    onChange={handleProductSort}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
                     Price - Low to High
@@ -32,6 +48,8 @@ export default function FilterByPrice() {
                     name="hs-default-radio"
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-default-radio"
+                    value="desc"
+                    onChange={handleProductSort}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
                     Price - High to Low

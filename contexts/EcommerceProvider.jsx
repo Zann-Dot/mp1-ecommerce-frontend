@@ -7,6 +7,7 @@ export default useEcommerceContext;
 export function EcommerceProvider({ children }) {
     const [themeMode, setThemeMode] = useState(localStorage.getItem("theme"));
     const [products, setProducts] = useState([]);
+    const [sort, setSort] = useState("")
 
     if (themeMode === "dark") {
         localStorage.setItem("theme", themeMode);
@@ -20,19 +21,16 @@ export function EcommerceProvider({ children }) {
     );
 
     async function fetchProducts() {
-        const response = await fetch('/api/products');
-
-        if (!response.ok)
-            throw new Error('Failed to get products');
-
+        const response = await fetch("/api/products");
+        if (!response.ok) throw new Error("Failed to get products");
         const data = await response.json();
-
-        setProducts(data)
-
+        setProducts(data);
     }
 
     return (
-        <EcommerceContext.Provider value={{ setThemeMode, products, setProducts, fetchProducts }}>
+        <EcommerceContext.Provider
+            value={{ setThemeMode, products, sort, setSort, setProducts, fetchProducts }}
+        >
             {children}
         </EcommerceContext.Provider>
     );

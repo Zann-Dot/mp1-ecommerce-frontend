@@ -10,12 +10,16 @@ export function SidebarProvider({ children }) {
     const [category, setCategory] = useState([]);
     const [minPrice, setMinPrice] = useState(500);
     const [maxPrice, setMaxPrice] = useState(1500);
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams();
     const { setProducts, fetchProducts } = useEcommerceContext();
     const params = new URLSearchParams();
 
     function filterProducts() {
-        if ((minPrice === 0 && maxPrice === 0) || (minPrice === 2000 && maxPrice === 2000)) return;
+        if (
+            (minPrice === 0 && maxPrice === 0) ||
+            (minPrice === 2000 && maxPrice === 2000)
+        )
+            return;
 
         category.forEach((category) => {
             params.append("c", category);
