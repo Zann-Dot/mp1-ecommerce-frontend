@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import useEcommerceContext from "./EcommerceProvider";
 import { useSearchParams } from "react-router";
 
@@ -8,10 +8,11 @@ export default useSidebarContext;
 
 export function SidebarProvider({ children }) {
     const [category, setCategory] = useState([]);
-    const [minPrice, setMinPrice] = useState(500);
-    const [maxPrice, setMaxPrice] = useState(1500);
+    const [minPrice, setMinPrice] = useState("");
+    const [maxPrice, setMaxPrice] = useState("");
+    const [rating, setRating] = useState("all");
     const [searchParams, setSearchParams] = useSearchParams();
-    const { setProducts, fetchProducts } = useEcommerceContext();
+    const { sort, setProducts, fetchProducts } = useEcommerceContext();
     const params = new URLSearchParams();
 
     function filterProducts() {
@@ -27,6 +28,7 @@ export function SidebarProvider({ children }) {
 
         params.set("min", minPrice);
         params.set("max", maxPrice);
+        params.set("r", rating);
 
         fetch(`/api/products?${params.toString()}`)
             .then((res) => res.json())
@@ -41,6 +43,8 @@ export function SidebarProvider({ children }) {
         setSearchParams("");
     }
 
+    useEffect(() => { }, [sort])
+
     return (
         <SidebarContext.Provider
             value={{
@@ -50,7 +54,8 @@ export function SidebarProvider({ children }) {
                 setMinPrice,
                 minPrice,
                 maxPrice,
-                resetFilter
+                resetFilter,
+                setRating
             }}
         >
             {children}
