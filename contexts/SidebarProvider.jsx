@@ -17,8 +17,8 @@ export function SidebarProvider({ children }) {
 
     function filterProducts() {
         if (
-            (minPrice === 0 && maxPrice === 0) ||
-            (minPrice === 2000 && maxPrice === 2000)
+            (minPrice === "0" && maxPrice === "0") ||
+            (minPrice === "2000" && maxPrice === "2000")
         )
             return;
 
