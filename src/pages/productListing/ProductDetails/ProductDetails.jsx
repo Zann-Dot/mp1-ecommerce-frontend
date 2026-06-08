@@ -4,12 +4,23 @@ import DetailsSection from "./DetailsSection";
 import ImageDisplay from "./ImageDisplay";
 import ExploreMore from "../../components/ExploreMore";
 import { useParams } from "react-router";
-import { useEffect } from "react";
-import useFetch from "../../../hooks/useFetch";
+import { useEffect, useState } from "react";
 
 export default function ProductDetails() {
     const { productId } = useParams();
-    const { data, loading, error } = useFetch(`/api/products/${productId}`);
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState([]);
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        setLoading(true);
+        fetch(`/api/products/${productId}`)
+            .then((res) => res.json())
+            .then((data) => setData(data))
+            .catch((err) => setError(err))
+            .finally(() => setLoading(false));
+    }, [productId])
+
 
     return (
         <>
@@ -34,8 +45,8 @@ export default function ProductDetails() {
 
                     {data && (
                         <div className="px-5 sm:px-10 xl:px-8 pt-5 lg:pt-0 grid grid-cols-5 gap-y-10">
-                            <ImageDisplay data={data} loading={loading} error={error} />
-                            <DetailsSection data={data} loading={loading} error={error} />
+                            <ImageDisplay data={data} />
+                            <DetailsSection data={data} />
                         </div>
                     )}
 

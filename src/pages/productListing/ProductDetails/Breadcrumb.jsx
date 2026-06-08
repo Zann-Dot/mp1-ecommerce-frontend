@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export default function Breadcrumb() {
+export default function Breadcrumb({ data }) {
     return (
         <div className="pb-4">
             <ol className="flex items-center whitespace-nowrap ">
@@ -54,7 +54,7 @@ export default function Breadcrumb() {
                     className="inline-flex items-center text-sm font-semibold text-foreground truncate"
                     aria-current="page"
                 >
-                    Product Name
+                    {data?.productName?.split(" ").splice(0, 3).join(" ")}
                 </li>
             </ol>
         </div>

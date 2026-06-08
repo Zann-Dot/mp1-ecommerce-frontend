@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
 
 export default function ProductCard({ product }) {
-    const navigate = useNavigate();
+
     return (
         <div
             className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300"
@@ -38,7 +38,7 @@ export default function ProductCard({ product }) {
             </div>
 
             {/* --- CARD BODY DETAILS --- */}
-            <div onClick={() => navigate(`/products/${product._id}?name=${product.productName}`)} className="pt-2 flex flex-col flex-1">
+            <Link to={`/products/${product._id}?name=${product.productName}`} className="pt-2 flex flex-col flex-1">
                 <h4 className="font-medium text-foreground text-sm">
                     {product.productName.split(" ").splice(0, 3).join(" ")}
                 </h4>
@@ -126,7 +126,7 @@ export default function ProductCard({ product }) {
                         ({Math.round(Math.random() * 1000)}) Reviews
                     </span>
                 </div>
-            </div>
+            </Link>
         </div>
     );
 }
