@@ -15,7 +15,7 @@ export default function ProductDetails() {
                         <DetailsSection />
                     </div>
                 </main>
-                <section className="max-w-340 mx-auto mt-10 w-full lg:my-10 px-8 sm:px-10 xl:px-8">
+                <section className="max-w-340 mx-auto mt-20 w-full lg:my-10 px-8 sm:px-10 xl:px-8">
                     <ExploreMore />
                 </section>
                 <hr />

@@ -5,7 +5,6 @@ export default function ProductCard({ product }) {
     const navigate = useNavigate();
     return (
         <div
-            onClick={() => navigate("/products/details")}
             className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300"
         >
             <div className="relative w-full h-min md:h-100 shrink-0 xl:aspect-square rounded-xl overflow-hidden">
@@ -39,7 +38,7 @@ export default function ProductCard({ product }) {
             </div>
 
             {/* --- CARD BODY DETAILS --- */}
-            <div className="pt-2 flex flex-col flex-1">
+            <div onClick={() => navigate(`/products/${product._id}?name=${product.productName}`)} className="pt-2 flex flex-col flex-1">
                 <h4 className="font-medium text-foreground text-sm">
                     {product.productName.split(" ").splice(0, 3).join(" ")}
                 </h4>
