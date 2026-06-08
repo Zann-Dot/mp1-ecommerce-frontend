@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function DetailsSection() {
+export default function DetailsSection({ data, loading, error }) {
     return (
         <div className="text-foreground col-span-5 md:col-span-2 px-1 md:px-10">
             <div className="flex flex-col gap-1">
