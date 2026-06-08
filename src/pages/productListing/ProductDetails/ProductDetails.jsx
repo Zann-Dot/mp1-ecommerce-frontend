@@ -3,8 +3,14 @@ import Footer from "../../components/Footer/Footer";
 import DetailsSection from "./DetailsSection";
 import ImageDisplay from "./ImageDisplay";
 import ExploreMore from "../../components/ExploreMore";
+import { useParams } from "react-router";
+import { useEffect } from "react";
+import useFetch from "../../../hooks/useFetch";
 
 export default function ProductDetails() {
+    const { productId } = useParams();
+    const { data, loading, error } = useFetch(`/api/products/${productId}`);
+
     return (
         <>
             <Navbar />
