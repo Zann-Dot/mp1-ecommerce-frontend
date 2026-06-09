@@ -1,13 +1,36 @@
 import { Link } from "react-router";
-import useEcommerceProvider from "../../../contexts/EcommerceProvider"
+import useEcommerceProvider from "../../../contexts/EcommerceProvider";
 import DarkModeButton from "../components/Header/upperNavSection/DarkModeButton";
+import { useState, useEffect } from "react";
+import { motion } from "motion/react"
 
 export default function CustomerSignUp() {
-    const { setThemeMode } = useEcommerceProvider()
+    const { setThemeMode } = useEcommerceProvider();
+    const [newPassword, setNewPassword] = useState("");
+    const [currPassword, setCurrPassword] = useState("");
+    const [passwordMatch, setPasswordMatch] = useState(false);
+
+
+    function handleSignUp(e) {
+        e.preventDefault();
+
+    }
+
+    useEffect(() => {
+        if (newPassword !== "" & currPassword !== "")
+            newPassword === currPassword ? setPasswordMatch(true) : setPasswordMatch(false)
+    }, [currPassword])
+
+
     return (
         <>
             <div className="bg-navbar p-4 flex justify-center shadow-sm hover:outline-hidden">
-                <Link to="/" className="cursor-pointer text-xl text-foreground font-semibold">ShoppersStop</Link>
+                <Link
+                    to="/"
+                    className="cursor-pointer text-xl text-foreground font-semibold"
+                >
+                    ShoppersStop
+                </Link>
             </div>
             <hr />
 
@@ -35,11 +58,9 @@ export default function CustomerSignUp() {
                                 </div>
                                 {/* End Title */}
                             </div>
-                            {/* End Col */}
 
-                            <div>
-                                {/* Form */}
-                                <form>
+                            <div className="form">
+                                <form onSubmit={handleSignUp}>
                                     <div className="lg:max-w-lg lg:mx-auto lg:me-0 ms-auto">
                                         {/* Card */}
                                         <div className="p-4 sm:p-7 flex flex-col bg-card rounded-2xl shadow-lg">
@@ -59,9 +80,7 @@ export default function CustomerSignUp() {
                                             </div>
 
                                             <div className="mt-5">
-                                                {/* Grid */}
                                                 <div className="grid grid-cols-2 gap-4">
-                                                    {/* Input Group */}
                                                     <div>
                                                         {/* Floating Input */}
                                                         <div className="relative">
@@ -76,6 +95,8 @@ export default function CustomerSignUp() {
                       autofill:pt-6
                       autofill:pb-2"
                                                                 placeholder="John"
+                                                                name="firstName"
+                                                                required
                                                             />
                                                             <label
                                                                 htmlFor="hs-hero-signup-form-floating-input-first-name"
@@ -111,6 +132,8 @@ export default function CustomerSignUp() {
                       autofill:pt-6
                       autofill:pb-2"
                                                                 placeholder="Doe"
+                                                                name="lastName"
+                                                                required
                                                             />
                                                             <label
                                                                 htmlFor="hs-hero-signup-form-floating-input-last-name"
@@ -146,6 +169,8 @@ export default function CustomerSignUp() {
                       autofill:pt-6
                       autofill:pb-2"
                                                                 placeholder="you@email.com"
+                                                                name="email"
+                                                                required
                                                             />
                                                             <label
                                                                 htmlFor="hs-hero-signup-form-floating-input-email"
@@ -181,6 +206,8 @@ export default function CustomerSignUp() {
                       autofill:pt-6
                       autofill:pb-2"
                                                                 placeholder="Enter number"
+                                                                name="phoneNumber"
+                                                                required
                                                             />
                                                             <label
                                                                 htmlFor="hs-hero-signup-form-floating-input-company-name"
@@ -216,6 +243,8 @@ export default function CustomerSignUp() {
                       autofill:pt-6
                       autofill:pb-2"
                                                                 placeholder="Enter number"
+                                                                name="addressLine"
+                                                                required
                                                             />
                                                             <label
                                                                 htmlFor="hs-hero-signup-form-floating-input-company-name"
@@ -250,6 +279,8 @@ export default function CustomerSignUp() {
                       autofill:pt-6
                       autofill:pb-2"
                                                                 placeholder="Enter number"
+                                                                name="city"
+                                                                required
                                                             />
                                                             <label
                                                                 htmlFor="hs-hero-signup-form-floating-input-company-name"
@@ -284,6 +315,8 @@ export default function CustomerSignUp() {
                       autofill:pt-6
                       autofill:pb-2"
                                                                 placeholder="Enter number"
+                                                                name="state"
+                                                                required
                                                             />
                                                             <label
                                                                 htmlFor="hs-hero-signup-form-floating-input-company-name"
@@ -318,6 +351,8 @@ export default function CustomerSignUp() {
                       autofill:pt-6
                       autofill:pb-2"
                                                                 placeholder="Enter number"
+                                                                name="pincode"
+                                                                required
                                                             />
                                                             <label
                                                                 htmlFor="hs-hero-signup-form-floating-input-company-name"
@@ -352,6 +387,9 @@ export default function CustomerSignUp() {
                       autofill:pt-6
                       autofill:pb-2"
                                                                 placeholder="********"
+                                                                name="password"
+                                                                onChange={(e) => setNewPassword(e.target.value)}
+                                                                required
                                                             />
                                                             <label
                                                                 htmlFor="hs-hero-signup-form-floating-input-new-password"
@@ -367,16 +405,53 @@ export default function CustomerSignUp() {
                                                             >
                                                                 New password
                                                             </label>
-                                                            <button type="button" data-hs-toggle-password='{
+                                                            <button
+                                                                type="button"
+                                                                data-hs-toggle-password='{
         "target": "#hs-hero-signup-form-floating-input-new-password"
-      }' className="absolute inset-y-0 inset-e-0 flex items-center z-20 px-3 cursor-pointer text-muted-foreground rounded-e-md focus:outline-hidden focus:text-primary-focus">
-                                                                <svg className="shrink-0 size-3.5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                                    <path className="hs-password-active:hidden" d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
-                                                                    <path className="hs-password-active:hidden" d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
-                                                                    <path className="hs-password-active:hidden" d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
-                                                                    <line className="hs-password-active:hidden" x1="2" x2="22" y1="2" y2="22" />
-                                                                    <path className="hidden hs-password-active:block" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                                                                    <circle className="hidden hs-password-active:block" cx="12" cy="12" r="3" />
+      }'
+                                                                className="absolute inset-y-0 inset-e-0 flex items-center z-20 px-3 cursor-pointer text-muted-foreground rounded-e-md focus:outline-hidden focus:text-primary-focus"
+                                                            >
+                                                                <svg
+                                                                    className="shrink-0 size-3.5"
+                                                                    width="24"
+                                                                    height="24"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    strokeWidth="2"
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                >
+                                                                    <path
+                                                                        className="hs-password-active:hidden"
+                                                                        d="M9.88 9.88a3 3 0 1 0 4.24 4.24"
+                                                                    />
+                                                                    <path
+                                                                        className="hs-password-active:hidden"
+                                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"
+                                                                    />
+                                                                    <path
+                                                                        className="hs-password-active:hidden"
+                                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"
+                                                                    />
+                                                                    <line
+                                                                        className="hs-password-active:hidden"
+                                                                        x1="2"
+                                                                        x2="22"
+                                                                        y1="2"
+                                                                        y2="22"
+                                                                    />
+                                                                    <path
+                                                                        className="hidden hs-password-active:block"
+                                                                        d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+                                                                    />
+                                                                    <circle
+                                                                        className="hidden hs-password-active:block"
+                                                                        cx="12"
+                                                                        cy="12"
+                                                                        r="3"
+                                                                    />
                                                                 </svg>
                                                             </button>
 
@@ -619,6 +694,9 @@ export default function CustomerSignUp() {
                       autofill:pt-6
                       autofill:pb-2"
                                                                 placeholder="********"
+                                                                name="currPassword"
+                                                                required
+                                                                onChange={(e) => setCurrPassword(e.target.value)}
                                                             />
                                                             <label
                                                                 htmlFor="hs-hero-signup-form-floating-input-current-password"
@@ -635,20 +713,76 @@ export default function CustomerSignUp() {
                                                                 Current password
                                                             </label>
 
-                                                            <button type="button" data-hs-toggle-password='{
+                                                            <button
+                                                                type="button"
+                                                                data-hs-toggle-password='{
         "target": "#hs-hero-signup-form-floating-input-current-password"
-      }' className="absolute inset-y-0 inset-e-0 flex items-center z-20 px-3 cursor-pointer text-muted-foreground rounded-e-md focus:outline-hidden focus:text-primary-focus">
-                                                                <svg className="shrink-0 size-3.5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                                    <path className="hs-password-active:hidden" d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
-                                                                    <path className="hs-password-active:hidden" d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
-                                                                    <path className="hs-password-active:hidden" d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
-                                                                    <line className="hs-password-active:hidden" x1="2" x2="22" y1="2" y2="22" />
-                                                                    <path className="hidden hs-password-active:block" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                                                                    <circle className="hidden hs-password-active:block" cx="12" cy="12" r="3" />
+      }'
+                                                                className="absolute inset-y-0 inset-e-0 flex items-center z-20 px-3 cursor-pointer text-muted-foreground rounded-e-md focus:outline-hidden focus:text-primary-focus"
+                                                            >
+                                                                <svg
+                                                                    className="shrink-0 size-3.5"
+                                                                    width="24"
+                                                                    height="24"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    strokeWidth="2"
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                >
+                                                                    <path
+                                                                        className="hs-password-active:hidden"
+                                                                        d="M9.88 9.88a3 3 0 1 0 4.24 4.24"
+                                                                    />
+                                                                    <path
+                                                                        className="hs-password-active:hidden"
+                                                                        d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"
+                                                                    />
+                                                                    <path
+                                                                        className="hs-password-active:hidden"
+                                                                        d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"
+                                                                    />
+                                                                    <line
+                                                                        className="hs-password-active:hidden"
+                                                                        x1="2"
+                                                                        x2="22"
+                                                                        y1="2"
+                                                                        y2="22"
+                                                                    />
+                                                                    <path
+                                                                        className="hidden hs-password-active:block"
+                                                                        d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+                                                                    />
+                                                                    <circle
+                                                                        className="hidden hs-password-active:block"
+                                                                        cx="12"
+                                                                        cy="12"
+                                                                        r="3"
+                                                                    />
                                                                 </svg>
                                                             </button>
                                                         </div>
                                                         {/* End Floating Input */}
+                                                        {passwordMatch && (
+                                                            <motion.p
+                                                                className="text-emerald-600 dark:text-emerald-400 text-sm flex items-center gap-x-1 mt-3"
+                                                                initial={{ translateY: -5, opacity: 0 }}
+                                                                animate={{ translateY: 0, opacity: 100 }}
+                                                                transition={{ duration: 0.2, ease: "easeIn" }}
+                                                            >
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="Check-Circle-Line--Streamline-Mingcute" height="16" width="16">
+                                                                    <desc>
+                                                                        Check Circle Line Streamline Icon: https://streamlinehq.com
+                                                                    </desc>
+                                                                    <g fill="none" fill-rule="nonzero">
+                                                                        <path d="M16 0v16H0V0h16ZM8.395333333333333 15.505333333333333l-0.007333333333333332 0.0013333333333333333 -0.047333333333333324 0.023333333333333334 -0.013333333333333332 0.0026666666666666666 -0.009333333333333332 -0.0026666666666666666 -0.047333333333333324 -0.023333333333333334c-0.006666666666666666 -0.0026666666666666666 -0.012666666666666666 -0.0006666666666666666 -0.016 0.003333333333333333l-0.0026666666666666666 0.006666666666666666 -0.011333333333333334 0.2853333333333333 0.003333333333333333 0.013333333333333332 0.006666666666666666 0.008666666666666666 0.06933333333333333 0.049333333333333326 0.009999999999999998 0.0026666666666666666 0.008 -0.0026666666666666666 0.06933333333333333 -0.049333333333333326 0.008 -0.010666666666666666 0.0026666666666666666 -0.011333333333333334 -0.011333333333333334 -0.2846666666666666c-0.0013333333333333333 -0.006666666666666666 -0.005999999999999999 -0.011333333333333334 -0.011333333333333334 -0.011999999999999999Zm0.17666666666666667 -0.07533333333333334 -0.008666666666666666 0.0013333333333333333 -0.12333333333333332 0.062 -0.006666666666666666 0.006666666666666666 -0.002 0.007333333333333332 0.011999999999999999 0.2866666666666666 0.003333333333333333 0.008 0.005333333333333333 0.004666666666666666 0.134 0.062c0.008 0.0026666666666666666 0.015333333333333332 0 0.019333333333333334 -0.005333333333333333l0.0026666666666666666 -0.009333333333333332 -0.02266666666666667 -0.4093333333333333c-0.002 -0.008 -0.006666666666666666 -0.013333333333333332 -0.013333333333333332 -0.014666666666666665Zm-0.4766666666666666 0.0013333333333333333a0.015333333333333332 0.015333333333333332 0 0 0 -0.018 0.004l-0.004 0.009333333333333332 -0.02266666666666667 0.4093333333333333c0 0.008 0.004666666666666666 0.013333333333333332 0.011333333333333334 0.016l0.009999999999999998 -0.0013333333333333333 0.134 -0.062 0.006666666666666666 -0.005333333333333333 0.0026666666666666666 -0.007333333333333332 0.011333333333333334 -0.2866666666666666 -0.002 -0.008 -0.006666666666666666 -0.006666666666666666 -0.12266666666666666 -0.06133333333333333Z" stroke-width="0.6667"></path>
+                                                                        <path fill="currentColor" d="M8 1.3333333333333333c3.6819999999999995 0 6.666666666666666 2.9846666666666666 6.666666666666666 6.666666666666666s-2.9846666666666666 6.666666666666666 -6.666666666666666 6.666666666666666S1.3333333333333333 11.681999999999999 1.3333333333333333 8 4.318 1.3333333333333333 8 1.3333333333333333Zm0 1.3333333333333333a5.333333333333333 5.333333333333333 0 1 0 0 10.666666666666666 5.333333333333333 5.333333333333333 0 0 0 0 -10.666666666666666Zm2.3566666666666665 2.9206666666666665a0.6666666666666666 0.6666666666666666 0 0 1 0.9986666666666666 0.88l-0.05533333333333333 0.06266666666666666 -3.724 3.7246666666666663a0.7333333333333334 0.7333333333333334 0 0 1 -0.9733333333333333 0.05666666666666667l-0.064 -0.05666666666666667 -1.8386666666666667 -1.8386666666666667a0.6666666666666666 0.6666666666666666 0 0 1 0.88 -0.9986666666666666l0.06266666666666666 0.056 1.4146666666666665 1.414 3.3 -3.3Z" stroke-width="0.6667"></path>
+                                                                    </g>
+                                                                </svg>
+                                                                Password matched
+                                                            </motion.p>
+                                                        )}
                                                     </div>
                                                     {/* End Input Group */}
                                                 </div>
@@ -694,13 +828,9 @@ export default function CustomerSignUp() {
                                         {/* End Card */}
                                     </div>
                                 </form>
-                                {/* End Form */}
                             </div>
-                            {/* End Col */}
                         </div>
-                        {/* End Grid */}
 
-                        {/* Clients Section */}
                         <div className="mt-6 md:mt-12 py-3 flex items-center text-sm text-foreground gap-x-1.5 after:flex-1 after:border-t after:border-line-2 after:ms-6">
                             <span className="font-semibold bg-clip-text bg-linear-to-l from-primary to-violet-500 text-transparent dark:to-violet-400">
                                 50,000
@@ -708,9 +838,7 @@ export default function CustomerSignUp() {
                             individuals trust ShoppersStop
                         </div>
                     </div>
-                    {/* End Clients Section */}
                 </div>
-                {/* End Hero */}
             </main>
 
             <div className="bg-navbar short-screen:static sticky bottom-0 left-0 right-0 p-4 flex justify-center">
