@@ -1,8 +1,9 @@
-
 import { Link } from "react-router";
+import useEcommerceProvider from "../../../contexts/EcommerceProvider"
 import DarkModeButton from "../components/Header/upperNavSection/DarkModeButton";
 
 export default function CustomerSignUp() {
+    const { setThemeMode } = useEcommerceProvider()
     return (
         <>
             <div className="bg-navbar p-4 flex justify-center shadow-sm hover:outline-hidden">
@@ -366,6 +367,20 @@ export default function CustomerSignUp() {
                                                             >
                                                                 New password
                                                             </label>
+                                                            <button type="button" data-hs-toggle-password='{
+        "target": "#hs-hero-signup-form-floating-input-new-password"
+      }' className="absolute inset-y-0 inset-e-0 flex items-center z-20 px-3 cursor-pointer text-muted-foreground rounded-e-md focus:outline-hidden focus:text-primary-focus">
+                                                                <svg className="shrink-0 size-3.5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                                    <path className="hs-password-active:hidden" d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
+                                                                    <path className="hs-password-active:hidden" d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
+                                                                    <path className="hs-password-active:hidden" d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
+                                                                    <line className="hs-password-active:hidden" x1="2" x2="22" y1="2" y2="22" />
+                                                                    <path className="hidden hs-password-active:block" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                                                                    <circle className="hidden hs-password-active:block" cx="12" cy="12" r="3" />
+                                                                </svg>
+                                                            </button>
+
+                                                            {/* End Form Group */}
                                                         </div>
                                                         {/* End Floating Input */}
 
@@ -619,6 +634,19 @@ export default function CustomerSignUp() {
                                                             >
                                                                 Current password
                                                             </label>
+
+                                                            <button type="button" data-hs-toggle-password='{
+        "target": "#hs-hero-signup-form-floating-input-current-password"
+      }' className="absolute inset-y-0 inset-e-0 flex items-center z-20 px-3 cursor-pointer text-muted-foreground rounded-e-md focus:outline-hidden focus:text-primary-focus">
+                                                                <svg className="shrink-0 size-3.5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                                    <path className="hs-password-active:hidden" d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
+                                                                    <path className="hs-password-active:hidden" d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
+                                                                    <path className="hs-password-active:hidden" d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
+                                                                    <line className="hs-password-active:hidden" x1="2" x2="22" y1="2" y2="22" />
+                                                                    <path className="hidden hs-password-active:block" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                                                                    <circle className="hidden hs-password-active:block" cx="12" cy="12" r="3" />
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                         {/* End Floating Input */}
                                                     </div>
@@ -685,13 +713,13 @@ export default function CustomerSignUp() {
                 {/* End Hero */}
             </main>
 
-            <div className="bg-navbar short-screen:static absolute bottom-0 left-0 right-0 p-4 flex justify-center">
+            <div className="bg-navbar short-screen:static sticky bottom-0 left-0 right-0 p-4 flex justify-center">
                 <div className="text-muted-foreground text-xs flex gap-3">
                     <span>2026 Preline Labs.</span>
                     <span>Terms</span>
                     <span>Privacy</span>
                     <span>Your Privacy Choices</span>
-                    <DarkModeButton />
+                    <DarkModeButton setThemeMode={setThemeMode} />
                 </div>
             </div>
         </>
