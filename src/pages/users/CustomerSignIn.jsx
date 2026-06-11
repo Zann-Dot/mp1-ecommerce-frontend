@@ -5,6 +5,45 @@ import useEcommerceContext from "../../../contexts/EcommerceProvider";
 export default function CustomerSignIn() {
     const { setThemeMode } = useEcommerceContext();
 
+    async function handleLogIn(formData) {
+        const emailOrPassword = formData.get("email-username");
+        const password = formData.get("password");
+
+        const payload = {
+            emailOrPassword,
+            password
+        }
+
+        try {
+            const response = await fetch("/api/user/customer/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify(payload)
+            });
+            const data = await response.json();
+
+            if (!response.ok) {
+
+                if (response.status === 404) {
+                    console.log(data.message);
+                }
+
+                if (response.status === 401) {
+                    console.log(data.error);
+                }
+
+                throw new Error(data.error);
+            }
+
+            if (data.success)
+                console.log(data.message);
+
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
+
     return (
         <>
             <div className="bg-navbar p-4 flex justify-center shadow-sm hover:outline-hidden">
@@ -26,22 +65,21 @@ export default function CustomerSignIn() {
                         </div>
 
                         {/* Form */}
-                        <form>
+                        <form action={handleLogIn}>
                             <div className="grid gap-y-4">
                                 {/* Form Group */}
                                 <div>
 
                                     <div className="relative">
                                         <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
+                                            type="text"
+                                            name="email-username"
                                             className="py-2.5 sm:py-3 px-4 block w-full bg-layer border-layer-line rounded-lg sm:text-sm text-foreground placeholder:text-muted-foreground-1 focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                                             required
                                             aria-describedby="email-error"
-                                            placeholder="Email"
+                                            placeholder="Email or Username"
                                         />
-                                        <div className="hidden absolute inset-y-0 inset-e-0 pointer-events-none pe-3">
+                                        <div className="hidden absolute inset-y-3 inset-e-0 pointer-events-none pe-3">
                                             <svg
                                                 className="size-5 text-red-500"
                                                 width="16"
@@ -91,7 +129,7 @@ export default function CustomerSignIn() {
                                                 <circle className="hidden hs-password-active:block" cx="12" cy="12" r="3" />
                                             </svg>
                                         </button>
-                                        <div className="hidden absolute inset-y-0 inset-e-0 pointer-events-none pe-3">
+                                        <div className="hidden absolute inset-y-3 inset-e-0 pointer-events-none pe-3">
                                             <svg
                                                 className="size-5 text-red-500"
                                                 width="16"
@@ -120,6 +158,7 @@ export default function CustomerSignIn() {
                                             id="checkbox"
                                             name="checkbox"
                                             type="checkbox"
+                                            required
                                             className="shrink-0 size-4 bg-transparent border-line-3 rounded-sm shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                                         />
                                     </div>
@@ -137,7 +176,7 @@ export default function CustomerSignIn() {
 
                                 <button
                                     type="submit"
-                                    className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus disabled:opacity-50 disabled:pointer-events-none"
+                                    className="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                                 >
                                     Log in
                                 </button>

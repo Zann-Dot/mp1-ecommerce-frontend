@@ -18,12 +18,13 @@ import useEcommerceContext from "../contexts/EcommerceProvider";
 import SearchResult from "./pages/SearchResult";
 
 function App() {
-  const { fetchProducts } = useEcommerceContext();
+  const { fetchProducts, getUser } = useEcommerceContext();
   const location = useLocation();
 
   useEffect(() => {
     window.HSStaticMethods.autoInit();
     fetchProducts();
+    getUser();
   }, [location.pathname]);
 
   return (

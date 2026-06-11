@@ -7,6 +7,7 @@ export default useEcommerceContext;
 export function EcommerceProvider({ children }) {
     const [themeMode, setThemeMode] = useState(localStorage.getItem("theme"));
     const [products, setProducts] = useState([]);
+    const [user, setUser] = useState({});
     const [sort, setSort] = useState("");
 
     if (themeMode === "dark") {
@@ -19,6 +20,23 @@ export function EcommerceProvider({ children }) {
         "dark",
         localStorage.theme === "dark",
     );
+
+    async function getUser() {
+        try {
+            const response = await fetch("/api/user/profile/customer");
+            if (!response.ok) setUser({ userId: null, mode: "guest" });
+
+            if (response.status === 401 || response.status === 403 || response.status === 500) {
+                const error = await response.json();
+                console.log(error.error);
+            }
+
+            const userData = await response.json();
+            setUser(userData);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     async function fetchProducts() {
         const response = await fetch("/api/products");
@@ -36,6 +54,8 @@ export function EcommerceProvider({ children }) {
                 setSort,
                 setProducts,
                 fetchProducts,
+                getUser,
+                user,
             }}
         >
             {children}
