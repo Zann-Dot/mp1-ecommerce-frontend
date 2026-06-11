@@ -1,9 +1,13 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import DarkModeButton from "../components/Header/upperNavSection/DarkModeButton";
 import useEcommerceContext from "../../../contexts/EcommerceProvider";
+import { useState } from "react";
+import ErrorAlert from "./ErrorAlert";
 
 export default function CustomerSignIn() {
     const { setThemeMode } = useEcommerceContext();
+    const navigate = useNavigate();
+    const [error, setError] = useState("");
 
     async function handleLogIn(formData) {
         const emailOrPassword = formData.get("email-username");
@@ -11,43 +15,43 @@ export default function CustomerSignIn() {
 
         const payload = {
             emailOrPassword,
-            password
-        }
+            password,
+        };
 
         try {
             const response = await fetch("/api/user/customer/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
-                body: JSON.stringify(payload)
+                body: JSON.stringify(payload),
             });
             const data = await response.json();
 
             if (!response.ok) {
-
-                if (response.status === 404) {
-                    console.log(data.message);
-                }
-
-                if (response.status === 401) {
-                    console.log(data.error);
-                }
-
+                if (response.status === 404) setError(data.message);
+                if (response.status === 401) setError(data.error);
                 throw new Error(data.error);
             }
 
-            if (data.success)
+            if (data.success) {
                 console.log(data.message);
-
+                navigate("/");
+            }
         } catch (error) {
-            console.error(error.message)
+            console.error(error.message);
         }
     }
+
 
     return (
         <>
             <div className="bg-navbar p-4 flex justify-center shadow-sm hover:outline-hidden">
-                <Link to="/" className="cursor-pointer text-xl text-foreground font-semibold">ShoppersStop</Link>
+                <Link
+                    to="/"
+                    className="cursor-pointer text-xl text-foreground font-semibold"
+                >
+                    ShoppersStop
+                </Link>
             </div>
             <hr />
 
@@ -67,9 +71,7 @@ export default function CustomerSignIn() {
                         {/* Form */}
                         <form action={handleLogIn}>
                             <div className="grid gap-y-4">
-                                {/* Form Group */}
                                 <div>
-
                                     <div className="relative">
                                         <input
                                             type="text"
@@ -79,7 +81,7 @@ export default function CustomerSignIn() {
                                             aria-describedby="email-error"
                                             placeholder="Email or Username"
                                         />
-                                        <div className="hidden absolute inset-y-3 inset-e-0 pointer-events-none pe-3">
+                                        <div className={`${error !== "" && !error.split(" ").includes("password") ? "block" : "hidden"} absolute inset-y-3 inset-e-0 pointer-events-none pe-3`}>
                                             <svg
                                                 className="size-5 text-red-500"
                                                 width="16"
@@ -92,21 +94,10 @@ export default function CustomerSignIn() {
                                             </svg>
                                         </div>
                                     </div>
-                                    <p
-                                        className="hidden text-xs text-red-600 mt-2"
-                                        id="email-error"
-                                    >
-                                        Please include a valid email address so we can get back to
-                                        you
-                                    </p>
                                 </div>
-                                {/* End Form Group */}
 
-                                {/* Form Group */}
                                 <div>
-                                    <div className="flex flex-wrap items-center gap-2">
-
-                                    </div>
+                                    <div className="flex flex-wrap items-center gap-2"></div>
                                     <div className="relative">
                                         <input
                                             type="password"
@@ -117,19 +108,56 @@ export default function CustomerSignIn() {
                                             aria-describedby="password-error"
                                             placeholder="Password"
                                         />
-                                        <button type="button" data-hs-toggle-password='{
+                                        <button
+                                            type="button"
+                                            data-hs-toggle-password='{
         "target": "#password"
-      }' className="absolute inset-y-0 inset-e-0 flex items-center z-20 px-3 cursor-pointer text-muted-foreground rounded-e-md focus:outline-hidden focus:text-primary-focus">
-                                            <svg className="shrink-0 size-3.5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                <path className="hs-password-active:hidden" d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
-                                                <path className="hs-password-active:hidden" d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
-                                                <path className="hs-password-active:hidden" d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
-                                                <line className="hs-password-active:hidden" x1="2" x2="22" y1="2" y2="22" />
-                                                <path className="hidden hs-password-active:block" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                                                <circle className="hidden hs-password-active:block" cx="12" cy="12" r="3" />
+      }'
+                                            className={`absolute inset-y-0 inset-e-0 ${error !== "" && error.split(" ").includes("password") ? "hidden" : "flex"} items-center z-20 px-3 cursor-pointer text-muted-foreground rounded-e-md focus:outline-hidden focus:text-primary-focus`}
+                                        >
+                                            <svg
+                                                className="shrink-0 size-3.5"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            >
+                                                <path
+                                                    className="hs-password-active:hidden"
+                                                    d="M9.88 9.88a3 3 0 1 0 4.24 4.24"
+                                                />
+                                                <path
+                                                    className="hs-password-active:hidden"
+                                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"
+                                                />
+                                                <path
+                                                    className="hs-password-active:hidden"
+                                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"
+                                                />
+                                                <line
+                                                    className="hs-password-active:hidden"
+                                                    x1="2"
+                                                    x2="22"
+                                                    y1="2"
+                                                    y2="22"
+                                                />
+                                                <path
+                                                    className="hidden hs-password-active:block"
+                                                    d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+                                                />
+                                                <circle
+                                                    className="hidden hs-password-active:block"
+                                                    cx="12"
+                                                    cy="12"
+                                                    r="3"
+                                                />
                                             </svg>
                                         </button>
-                                        <div className="hidden absolute inset-y-3 inset-e-0 pointer-events-none pe-3">
+                                        <div className={`${error !== "" && error.split(" ").includes("password") ? "block" : "hidden"} absolute inset-y-3 inset-e-0 pointer-events-none pe-3`}>
                                             <svg
                                                 className="size-5 text-red-500"
                                                 width="16"
@@ -142,16 +170,9 @@ export default function CustomerSignIn() {
                                             </svg>
                                         </div>
                                     </div>
-                                    <p
-                                        className="hidden text-xs text-red-600 mt-2"
-                                        id="password-error"
-                                    >
-                                        8+ characters required
-                                    </p>
-                                </div>
-                                {/* End Form Group */}
 
-                                {/* Checkbox */}
+                                </div>
+
                                 <div className="flex items-center mb-5">
                                     <div className="flex">
                                         <input
@@ -170,9 +191,10 @@ export default function CustomerSignIn() {
                                             Remember me
                                         </label>
                                     </div>
-                                    <div className="text-xs text-muted-foreground-1 sm:text-sm underline underline-offset-3 ms-auto">Forgot your password?</div>
+                                    <div className="text-xs text-muted-foreground-1 sm:text-sm underline underline-offset-3 ms-auto">
+                                        Forgot your password?
+                                    </div>
                                 </div>
-                                {/* End Checkbox */}
 
                                 <button
                                     type="submit"
@@ -180,16 +202,20 @@ export default function CustomerSignIn() {
                                 >
                                     Log in
                                 </button>
-                                <Link to="/customer/signup" className="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-hover disabled:opacity-50 disabled:pointer-events-none">
+                                <Link
+                                    to="/customer/signup"
+                                    className="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-hover disabled:opacity-50 disabled:pointer-events-none"
+                                >
                                     Create account
                                 </Link>
                             </div>
                         </form>
-                        {/* End Form */}
                     </div>
-                    {/* End Sign In */}
                 </div>
             </main>
+
+            {error !== "" && <ErrorAlert error={error} setError={setError} />}
+
 
             <div className="bg-navbar short-screen:static absolute bottom-0 left-0 right-0 p-4 flex justify-center">
                 <div className="text-muted-foreground text-xs flex gap-3">
