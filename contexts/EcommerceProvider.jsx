@@ -47,6 +47,8 @@ export function EcommerceProvider({ children }) {
         setProducts(data);
     }
 
+
+
     return (
         <EcommerceContext.Provider
             value={{

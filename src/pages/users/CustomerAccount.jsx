@@ -1,11 +1,16 @@
-import React from "react";
+import { useEffect } from "react";
 import Navbar from "../components/Header/Navbar";
 import Footer from "../components/Footer/Footer";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useEcommerceContext from "../../../contexts/EcommerceProvider";
 
 export default function CustomerAccount() {
     const { user } = useEcommerceContext();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        user?.mode === "guest" && navigate('/')
+    }, [user])
 
     return (
         <>
