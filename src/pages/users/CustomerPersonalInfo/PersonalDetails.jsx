@@ -1,38 +1,36 @@
-import React from "react";
-import { Link } from "react-router";
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function PersonalDetails() {
+    const { user } = useEcommerceContext();
+
     return (
         <main className="w-full flex flex-col">
             <div className="flex items-center gap-3.5">
-                <img
-                    className="inline-block size-14 rounded-full"
-                    src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-                    alt="Avatar"
-                />
-                <button
-                    type="button"
-                    className="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-medium rounded-lg bg-sidebar-nav-hover border border-primary-line text-foreground hover:bg-sidebar-2-nav-hover hover:border-sidebar-nav-hover focus:outline-hidden cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
-                    data-hs-file-upload-trigger
+                <div
+                    className="inline-flex items-center justify-center size-12 rounded-full border border-line-4"
                 >
                     <svg
-                        className="shrink-0 size-4"
                         xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                        viewBox="0 0 36 36"
+                        id="User-3-Line--Streamline-Mingcute"
+                        height="30"
+                        width="30"
                     >
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="17 8 12 3 7 8"></polyline>
-                        <line x1="12" x2="12" y1="3" y2="15"></line>
+                        <desc>User 3 Line Streamline Icon: https://streamlinehq.com</desc>
+                        <g fill="none" fillRule="evenodd">
+                            <path
+                                d="M36 0v36H0V0h36ZM18.889499999999998 34.887l-0.0165 0.003 -0.10649999999999998 0.052500000000000005 -0.03 0.006 -0.021 -0.006 -0.10649999999999998 -0.052500000000000005c-0.015 -0.006 -0.028499999999999998 -0.0015 -0.036000000000000004 0.0075l-0.006 0.015 -0.025500000000000002 0.642 0.0075 0.03 0.015 0.0195 0.156 0.11099999999999999 0.0225 0.006 0.018000000000000002 -0.006 0.156 -0.11099999999999999 0.018000000000000002 -0.024 0.006 -0.025500000000000002 -0.025500000000000002 -0.6405c-0.003 -0.015 -0.013499999999999998 -0.025500000000000002 -0.025500000000000002 -0.026999999999999996Zm0.3975 -0.1695 -0.0195 0.003 -0.27749999999999997 0.1395 -0.015 0.015 -0.0045000000000000005 0.0165 0.026999999999999996 0.645 0.0075 0.018000000000000002 0.012 0.0105 0.3015 0.1395c0.018000000000000002 0.006 0.0345 0 0.043500000000000004 -0.012l0.006 -0.021 -0.051000000000000004 -0.921c-0.0045000000000000005 -0.018000000000000002 -0.015 -0.03 -0.03 -0.033Zm-1.0725 0.003a0.0345 0.0345 0 0 0 -0.0405 0.009000000000000001l-0.009000000000000001 0.021 -0.051000000000000004 0.921c0 0.018000000000000002 0.0105 0.03 0.025500000000000002 0.036000000000000004l0.0225 -0.003 0.3015 -0.1395 0.015 -0.012 0.006 -0.0165 0.025500000000000002 -0.645 -0.0045000000000000005 -0.018000000000000002 -0.015 -0.015 -0.276 -0.138Z"
+                                strokeWidth="1.5"
+                            ></path>
+                            <path
+                                fill="currentColor"
+                                d="M18 19.5c3.594 0 6.862500000000001 1.041 9.267 2.508 1.2000000000000002 0.732 2.226 1.596 2.967 2.535 0.729 0.9225 1.266 2.0265 1.266 3.207 0 1.2675 -0.6164999999999999 2.2664999999999997 -1.5044999999999997 2.979 -0.8400000000000001 0.675 -1.9485 1.1219999999999999 -3.1260000000000003 1.434 -2.367 0.6255 -5.526 0.8370000000000001 -8.8695 0.8370000000000001s-6.5024999999999995 -0.21000000000000002 -8.8695 -0.8370000000000001c-1.1775 -0.312 -2.286 -0.759 -3.1260000000000003 -1.434C5.115 30.015 4.5 29.0175 4.5 27.75c0 -1.1805 0.5369999999999999 -2.2845 1.266 -3.2085 0.741 -0.9375 1.7655 -1.7999999999999998 2.967 -2.535C11.1375 20.5425 14.4075 19.5 18 19.5Zm0 3c-3.0345000000000004 0 -5.7645 0.885 -7.704000000000001 2.0685000000000002 -0.9705 0.591 -1.7025000000000001 1.2329999999999999 -2.175 1.833 -0.486 0.615 -0.621 1.08 -0.621 1.3485 0 0.183 0.055499999999999994 0.3765 0.3825 0.639 0.3735 0.30000000000000004 1.0230000000000001 0.6104999999999999 2.016 0.873C11.875499999999999 29.787 14.7165 30 18 30c3.285 0 6.1245 -0.21449999999999997 8.100000000000001 -0.738 0.9945 -0.26249999999999996 1.6440000000000001 -0.573 2.0175 -0.873 0.327 -0.26249999999999996 0.3825 -0.45599999999999996 0.3825 -0.639 0 -0.27 -0.135 -0.7335 -0.6194999999999999 -1.3485 -0.474 -0.6000000000000001 -1.206 -1.242 -2.1765 -1.833C23.764499999999998 23.3835 21.0345 22.5 18 22.5Zm0 -19.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0 -15Zm0 3a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0 -9Z"
+                                strokeWidth="1.5"
+                            ></path>
+                        </g>
                     </svg>
-                    Upload photo
-                </button>
+                </div>
+                <h1 className="font-semibold">{user?.firstName} {user?.lastName}</h1>
             </div>
 
             <br />
@@ -42,7 +40,7 @@ export default function PersonalDetails() {
                 <div className="flex items-center">
                     <section>
                         <h1 className="text-sm text-foreground font-medium">Name</h1>
-                        <p className="text-sm text-muted-foreground-1">James collin</p>
+                        <p className="text-sm text-muted-foreground-1">{user?.firstName} {user?.lastName}</p>
                     </section>
 
                     <div
@@ -85,7 +83,7 @@ export default function PersonalDetails() {
                 <div className="flex items-center">
                     <section>
                         <h1 className="text-sm text-foreground font-medium">Email</h1>
-                        <p className="text-sm text-muted-foreground-1">James@gmail.com</p>
+                        <p className="text-sm text-muted-foreground-1">{user?.email}</p>
                     </section>
 
                     <div
@@ -130,7 +128,7 @@ export default function PersonalDetails() {
                         <h1 className="text-sm text-foreground font-medium">
                             Phone number
                         </h1>
-                        <p className="text-sm text-muted-foreground-1">+91998413950</p>
+                        <p className="text-sm text-muted-foreground-1">{user?.ISDCode}{user?.phoneNumber}</p>
                     </section>
 
                     <div

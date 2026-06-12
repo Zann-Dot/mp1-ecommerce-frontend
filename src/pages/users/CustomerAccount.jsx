@@ -2,26 +2,48 @@ import React from "react";
 import Navbar from "../components/Header/Navbar";
 import Footer from "../components/Footer/Footer";
 import { Link } from "react-router";
+import useEcommerceContext from "../../../contexts/EcommerceProvider";
 
 export default function CustomerAccount() {
+    const { user } = useEcommerceContext();
+
     return (
         <>
             <Navbar />
             <div className="w-full absolute top-42.25 left-0 right-0">
                 <div className="max-w-250 mx-auto w-full my-10 px-4 sm:px-6 lg:px-8 text-foreground">
-                    <h1 className="text-xl font-medium mb-2">Account</h1>
+                    <h1 className="text-xl font-medium mb-4">Account</h1>
                     <div className="flex flex-col gap-7">
                         <div className="flex justify-between">
                             <section className="flex gap-4">
-                                <img
-                                    className="inline-block size-12 rounded-full"
-                                    src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-                                    alt="Avatar"
-                                ></img>
+                                <div
+                                    className="inline-flex items-center justify-center size-12 rounded-full border border-line-4"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 36 36"
+                                        id="User-3-Line--Streamline-Mingcute"
+                                        height="30"
+                                        width="30"
+                                    >
+                                        <desc>User 3 Line Streamline Icon: https://streamlinehq.com</desc>
+                                        <g fill="none" fillRule="evenodd">
+                                            <path
+                                                d="M36 0v36H0V0h36ZM18.889499999999998 34.887l-0.0165 0.003 -0.10649999999999998 0.052500000000000005 -0.03 0.006 -0.021 -0.006 -0.10649999999999998 -0.052500000000000005c-0.015 -0.006 -0.028499999999999998 -0.0015 -0.036000000000000004 0.0075l-0.006 0.015 -0.025500000000000002 0.642 0.0075 0.03 0.015 0.0195 0.156 0.11099999999999999 0.0225 0.006 0.018000000000000002 -0.006 0.156 -0.11099999999999999 0.018000000000000002 -0.024 0.006 -0.025500000000000002 -0.025500000000000002 -0.6405c-0.003 -0.015 -0.013499999999999998 -0.025500000000000002 -0.025500000000000002 -0.026999999999999996Zm0.3975 -0.1695 -0.0195 0.003 -0.27749999999999997 0.1395 -0.015 0.015 -0.0045000000000000005 0.0165 0.026999999999999996 0.645 0.0075 0.018000000000000002 0.012 0.0105 0.3015 0.1395c0.018000000000000002 0.006 0.0345 0 0.043500000000000004 -0.012l0.006 -0.021 -0.051000000000000004 -0.921c-0.0045000000000000005 -0.018000000000000002 -0.015 -0.03 -0.03 -0.033Zm-1.0725 0.003a0.0345 0.0345 0 0 0 -0.0405 0.009000000000000001l-0.009000000000000001 0.021 -0.051000000000000004 0.921c0 0.018000000000000002 0.0105 0.03 0.025500000000000002 0.036000000000000004l0.0225 -0.003 0.3015 -0.1395 0.015 -0.012 0.006 -0.0165 0.025500000000000002 -0.645 -0.0045000000000000005 -0.018000000000000002 -0.015 -0.015 -0.276 -0.138Z"
+                                                strokeWidth="1.5"
+                                            ></path>
+                                            <path
+                                                fill="currentColor"
+                                                d="M18 19.5c3.594 0 6.862500000000001 1.041 9.267 2.508 1.2000000000000002 0.732 2.226 1.596 2.967 2.535 0.729 0.9225 1.266 2.0265 1.266 3.207 0 1.2675 -0.6164999999999999 2.2664999999999997 -1.5044999999999997 2.979 -0.8400000000000001 0.675 -1.9485 1.1219999999999999 -3.1260000000000003 1.434 -2.367 0.6255 -5.526 0.8370000000000001 -8.8695 0.8370000000000001s-6.5024999999999995 -0.21000000000000002 -8.8695 -0.8370000000000001c-1.1775 -0.312 -2.286 -0.759 -3.1260000000000003 -1.434C5.115 30.015 4.5 29.0175 4.5 27.75c0 -1.1805 0.5369999999999999 -2.2845 1.266 -3.2085 0.741 -0.9375 1.7655 -1.7999999999999998 2.967 -2.535C11.1375 20.5425 14.4075 19.5 18 19.5Zm0 3c-3.0345000000000004 0 -5.7645 0.885 -7.704000000000001 2.0685000000000002 -0.9705 0.591 -1.7025000000000001 1.2329999999999999 -2.175 1.833 -0.486 0.615 -0.621 1.08 -0.621 1.3485 0 0.183 0.055499999999999994 0.3765 0.3825 0.639 0.3735 0.30000000000000004 1.0230000000000001 0.6104999999999999 2.016 0.873C11.875499999999999 29.787 14.7165 30 18 30c3.285 0 6.1245 -0.21449999999999997 8.100000000000001 -0.738 0.9945 -0.26249999999999996 1.6440000000000001 -0.573 2.0175 -0.873 0.327 -0.26249999999999996 0.3825 -0.45599999999999996 0.3825 -0.639 0 -0.27 -0.135 -0.7335 -0.6194999999999999 -1.3485 -0.474 -0.6000000000000001 -1.206 -1.242 -2.1765 -1.833C23.764499999999998 23.3835 21.0345 22.5 18 22.5Zm0 -19.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0 -15Zm0 3a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0 -9Z"
+                                                strokeWidth="1.5"
+                                            ></path>
+                                        </g>
+                                    </svg>
+                                </div>
                                 <div>
-                                    <h1 className="font-medium text-base">James Collins</h1>
+                                    <h1 className="font-medium text-base">Welcome, {user?.firstName}</h1>
                                     <h4 className="text-muted-foreground-1 text-sm">
-                                        james@gmail.com
+                                        {user?.email}
                                     </h4>
                                 </div>
                             </section>
@@ -36,7 +58,7 @@ export default function CustomerAccount() {
                         </div>
 
                         <div className="grid grid-cols-3 gap-5">
-                            {/* Card */}
+
                             <Link to="/user/account/personalinfo" className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg">
                                 <div className="px-6 py-6">
                                     <span className="">
@@ -60,7 +82,6 @@ export default function CustomerAccount() {
 
                                 </div>
                             </Link>
-                            {/* End Card */}
 
                             <Link to="/user/account/myorders" className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg">
                                 <div className="px-6 py-6">

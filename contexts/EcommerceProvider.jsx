@@ -24,14 +24,16 @@ export function EcommerceProvider({ children }) {
     async function getUser() {
         try {
             const response = await fetch("/api/user/profile/customer");
-            if (!response.ok) setUser({ userId: null, mode: "guest" });
+            const userData = await response.json();
+            if (!response.ok) {
+                setUser({ userId: null, mode: "guest" });
 
-            if (response.status === 401 || response.status === 403 || response.status === 500) {
-                const error = await response.json();
-                console.log(error.error);
+                if (response.status === 401 || response.status === 403 || response.status === 500) {
+                    console.error(userData.error);
+                }
+                return;
             }
 
-            const userData = await response.json();
             setUser(userData);
         } catch (error) {
             console.error(error);

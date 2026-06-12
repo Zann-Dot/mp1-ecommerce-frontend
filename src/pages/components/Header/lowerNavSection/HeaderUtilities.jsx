@@ -7,7 +7,7 @@ export default function HeaderUtilities() {
     return (
         <div className="flex items-center gap-5 ms-auto lg:ms-0">
             <div className="w-15 cursor-pointer">
-                {!user && Object.keys(user).length === 0 && (
+                {user.mode === "guest" && (
                     <Link
                         to="/customer/login"
                         className="text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover"
@@ -31,12 +31,12 @@ export default function HeaderUtilities() {
                     </Link>
                 )}
 
-                {user && (
+                {user.mode !== "guest" && (
                     <Link
                         to="/user/account"
                         className="text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover"
                     >
-                        <div className="p-1 border border-line-4 rounded-full">
+                        <div className="">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 36 36"
