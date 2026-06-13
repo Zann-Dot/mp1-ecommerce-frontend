@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import useEcommerceContext from "../../../../../contexts/EcommerceProvider";
 
 export default function HeaderUtilities() {
-    const { user } = useEcommerceContext();
+    const { user, wishlist } = useEcommerceContext();
 
     return (
         <div className="flex items-center gap-5 ms-auto lg:ms-0">
@@ -69,9 +69,11 @@ export default function HeaderUtilities() {
                     className="text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover"
                 >
                     <div className="indicator">
-                        <span className="indicator-item badge badge-primary scale-70 px-2 py-0 rounded-full text-primary-foreground text-">
-                            2
-                        </span>
+                        {wishlist.length !== 0 && (
+                            <span className="indicator-item badge badge-primary scale-70 px-2 py-0 rounded-full text-primary-foreground text-">
+                                {wishlist?.length}
+                            </span>
+                        )}
                         <div className="p-0.5">
                             <svg
                                 className="zeqf6 shb27 kh2c5"

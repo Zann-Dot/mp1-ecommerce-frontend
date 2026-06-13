@@ -4,8 +4,8 @@ import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
 import useEcommerceContext from "../../../contexts/EcommerceProvider";
 
 export default function ProductCard({ product }) {
-    const [wishlist, setWishlist] = useState(product.isWishlist);
-    const { user } = useEcommerceContext();
+    const [wishlistState, setWishlistState] = useState(product.isWishlist);
+    const { user, fetchWishlistProducts } = useEcommerceContext();
     const navigate = useNavigate();
 
     async function updateWishlist(newWishlistState) {
@@ -28,13 +28,14 @@ export default function ProductCard({ product }) {
         }
     }
 
-    function handleWishlist() {
+    async function handleWishlist() {
         if (user.mode === "guest") {
             navigate("/customer/login");
         } else {
-            const newWishlistState = !wishlist;
-            setWishlist(newWishlistState);
-            updateWishlist(newWishlistState);
+            const newWishlistState = !wishlistState;
+            setWishlistState(newWishlistState);
+            await updateWishlist(newWishlistState);
+            fetchWishlistProducts();
         }
     };
 
@@ -59,8 +60,8 @@ export default function ProductCard({ product }) {
                             width="18"
                             height="18"
                             viewBox="0 0 24 24"
-                            fill={wishlist ? "#F5788B" : "none"}
-                            stroke={wishlist ? "#F5788B" : "currentColor"}
+                            fill={wishlistState ? "#F5788B" : "none"}
+                            stroke={wishlistState ? "#F5788B" : "currentColor"}
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"

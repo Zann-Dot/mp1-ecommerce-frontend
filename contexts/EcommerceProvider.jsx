@@ -9,6 +9,7 @@ export function EcommerceProvider({ children }) {
     const [products, setProducts] = useState([]);
     const [user, setUser] = useState({});
     const [sort, setSort] = useState("");
+    const [wishlist, setWishlist] = useState([]);
 
     if (themeMode === "dark") {
         localStorage.setItem("theme", themeMode);
@@ -47,6 +48,19 @@ export function EcommerceProvider({ children }) {
         setProducts(data);
     }
 
+    async function fetchWishlistProducts() {
+        try {
+            const response = await fetch("/api/wishlist");
+            const data = await response.json();
+            if (!response.ok) {
+                setWishlist([])
+                throw new Error(data.error);
+            }
+            setWishlist(data);
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
 
     return (
@@ -60,6 +74,8 @@ export function EcommerceProvider({ children }) {
                 fetchProducts,
                 getUser,
                 user,
+                fetchWishlistProducts,
+                wishlist,
             }}
         >
             {children}
