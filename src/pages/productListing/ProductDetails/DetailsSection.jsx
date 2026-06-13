@@ -1,5 +1,11 @@
+import { useState } from "react";
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function DetailsSection({ data }) {
+    const [wishlistState, setWishlistState] = useState(data.isWishlist);
+    const { handleWishlist } = useEcommerceContext();
+    const productId = data?._id;
+
     return (
         <div className="text-foreground col-span-5 md:col-span-2 px-1 md:px-10">
             <div className="flex flex-col gap-1">
@@ -109,7 +115,8 @@ export default function DetailsSection({ data }) {
                 </button>
                 <button
                     type="button"
-                    className="cursor-pointer py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-layer-line bg-layer text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus  disabled:opacity-50 disabled:pointer-events-none"
+                    onClick={() => handleWishlist(wishlistState, setWishlistState, productId)}
+                    className="wishlist cursor-pointer py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-layer-line bg-layer text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus  disabled:opacity-50 disabled:pointer-events-none"
                 >
                     <svg
                         className="zeqf6 shb27 kh2c5"
@@ -117,8 +124,8 @@ export default function DetailsSection({ data }) {
                         width="18"
                         height="18"
                         viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
+                        fill={wishlistState ? "#F5788B" : "none"}
+                        stroke={wishlistState ? "#F5788B" : "currentColor"}
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -241,11 +248,11 @@ export default function DetailsSection({ data }) {
             </div>
 
             <div className="hs-accordion-group mt-8">
-                <div className=" hs-accordion" id="hs-basic-heading-two">
+                <div className=" hs-accordion" id="hs-basic-heading-one">
                     <button
                         className="hs-accordion-toggle hs-accordion-active:text-primary-active py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-foreground hover:text-muted-foreground-1 focus:outline-hidden focus:text-muted-foreground-1 rounded-lg disabled:opacity-50 disabled:pointer-events-none"
                         aria-expanded="false"
-                        aria-controls="hs-basic-collapse-two"
+                        aria-controls="hs-basic-collapse-one"
                     >
                         Description
                         <svg
@@ -278,13 +285,13 @@ export default function DetailsSection({ data }) {
                         </svg>
                     </button>
                     <div
-                        id="hs-basic-collapse-two"
+                        id="hs-basic-collapse-one"
                         className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                         role="region"
-                        aria-labelledby="hs-basic-heading-two"
+                        aria-labelledby="hs-basic-heading-one"
                     >
                         <ul className="list-disc list-outside ps-5 text-muted-foreground-1 text-sm">
-                            {data.description?.map((line, i) => (
+                            {data?.description?.map((line, i) => (
                                 <li key={i}>
                                     {line}
                                 </li>

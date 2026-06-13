@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function ProductDetails() {
     const { productId } = useParams();
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
     const [error, setError] = useState();
 
     useEffect(() => {

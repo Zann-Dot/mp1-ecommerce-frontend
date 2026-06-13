@@ -29,7 +29,11 @@ export function EcommerceProvider({ children }) {
             if (!response.ok) {
                 setUser({ userId: null, mode: "guest" });
 
-                if (response.status === 401 || response.status === 403 || response.status === 500) {
+                if (
+                    response.status === 401 ||
+                    response.status === 403 ||
+                    response.status === 500
+                ) {
                     console.error(userData.error);
                 }
                 return;
@@ -53,15 +57,38 @@ export function EcommerceProvider({ children }) {
             const response = await fetch("/api/wishlist");
             const data = await response.json();
             if (!response.ok) {
-                setWishlist([])
+                setWishlist([]);
                 throw new Error(data.error);
             }
             setWishlist(data);
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
     }
 
+    async function updateWishlist(newWishlistState, productId) {
+        try {
+            const response = await fetch(`/api/wishlist`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    productId: productId,
+                    isWishlist: newWishlistState,
+                }),
+            });
+            const data = await response.json();
+            if (!response.ok) console.error(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async function handleWishlist(wishlistState, setWishlistState, productId) {
+        const newWishlistState = !wishlistState;
+        setWishlistState(newWishlistState);
+        await updateWishlist(newWishlistState, productId);
+        fetchWishlistProducts();
+    }
 
     return (
         <EcommerceContext.Provider
@@ -76,6 +103,7 @@ export function EcommerceProvider({ children }) {
                 user,
                 fetchWishlistProducts,
                 wishlist,
+                handleWishlist,
             }}
         >
             {children}

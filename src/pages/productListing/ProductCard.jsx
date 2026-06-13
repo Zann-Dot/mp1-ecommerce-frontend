@@ -1,43 +1,12 @@
-import { Link, useNavigate } from "react-router";
-import { useEffect, useState } from "react";
+import { Link } from "react-router";
+import { useState } from "react";
 import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
 import useEcommerceContext from "../../../contexts/EcommerceProvider";
 
 export default function ProductCard({ product }) {
     const [wishlistState, setWishlistState] = useState(product.isWishlist);
-    const { user, fetchWishlistProducts } = useEcommerceContext();
-    const navigate = useNavigate();
-
-    async function updateWishlist(newWishlistState) {
-        try {
-            const response = await fetch(`/api/wishlist`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    productId: product._id,
-                    isWishlist: newWishlistState
-                })
-            });
-            const data = await response.json();
-
-            if (!response.ok) console.error(data);
-            console.log(data);
-
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    async function handleWishlist() {
-        if (user.mode === "guest") {
-            navigate("/customer/login");
-        } else {
-            const newWishlistState = !wishlistState;
-            setWishlistState(newWishlistState);
-            await updateWishlist(newWishlistState);
-            fetchWishlistProducts();
-        }
-    };
+    const { handleWishlist } = useEcommerceContext();
+    const productId = product._id;
 
     return (
         <div className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300">
@@ -51,7 +20,9 @@ export default function ProductCard({ product }) {
                 <div className="absolute top-4 right-4 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     <button
                         type="button"
-                        onClick={handleWishlist}
+                        onClick={() =>
+                            handleWishlist(wishlistState, setWishlistState, productId)
+                        }
                         className="inline-flex justify-center cursor-pointer items-center size-9 rounded-full bg-line-2 text-foreground shadow-2xs hover:scale-105 transition-transform"
                     >
                         <svg
