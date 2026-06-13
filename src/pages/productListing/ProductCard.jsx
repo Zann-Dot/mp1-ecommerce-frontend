@@ -1,12 +1,45 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useEffect, useState } from "react";
 import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
+import useEcommerceContext from "../../../contexts/EcommerceProvider";
 
 export default function ProductCard({ product }) {
+    const [wishlist, setWishlist] = useState(product.isWishlist);
+    const { user } = useEcommerceContext();
+    const navigate = useNavigate();
+
+    async function updateWishlist(newWishlistState) {
+        try {
+            const response = await fetch(`/api/wishlist`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    productId: product._id,
+                    isWishlist: newWishlistState
+                })
+            });
+            const data = await response.json();
+
+            if (!response.ok) console.error(data);
+            console.log(data);
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    function handleWishlist() {
+        if (user.mode === "guest") {
+            navigate("/customer/login");
+        } else {
+            const newWishlistState = !wishlist;
+            setWishlist(newWishlistState);
+            updateWishlist(newWishlistState);
+        }
+    };
 
     return (
-        <div
-            className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300"
-        >
+        <div className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300">
             <div className="relative w-full h-min md:h-100 shrink-0 xl:aspect-square rounded-xl overflow-hidden">
                 <img
                     className="size-1/1 object-contain md:object-cover transition-transform duration-500 group-hover:scale-105"
@@ -17,7 +50,8 @@ export default function ProductCard({ product }) {
                 <div className="absolute top-4 right-4 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     <button
                         type="button"
-                        className="inline-flex justify-center  cursor-pointer items-center size-9 rounded-full bg-line-2 text-foreground shadow-2xs hover:scale-105 transition-transform"
+                        onClick={handleWishlist}
+                        className="inline-flex justify-center cursor-pointer items-center size-9 rounded-full bg-line-2 text-foreground shadow-2xs hover:scale-105 transition-transform"
                     >
                         <svg
                             className="zeqf6 shb27 kh2c5"
@@ -25,8 +59,8 @@ export default function ProductCard({ product }) {
                             width="18"
                             height="18"
                             viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
+                            fill={wishlist ? "#F5788B" : "none"}
+                            stroke={wishlist ? "#F5788B" : "currentColor"}
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -38,7 +72,10 @@ export default function ProductCard({ product }) {
             </div>
 
             {/* --- CARD BODY DETAILS --- */}
-            <Link to={`/products/${product._id}?name=${product.productName}`} className="pt-2 flex flex-col flex-1">
+            <Link
+                to={`/products/${product._id}?name=${product.productName}`}
+                className="pt-2 flex flex-col flex-1"
+            >
                 <h4 className="font-medium text-foreground text-sm">
                     {product.productName.split(" ").splice(0, 3).join(" ")}
                 </h4>
