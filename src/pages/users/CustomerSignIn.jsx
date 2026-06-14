@@ -10,11 +10,11 @@ export default function CustomerSignIn() {
     const [error, setError] = useState("");
 
     async function handleLogIn(formData) {
-        const emailOrPassword = formData.get("email-username");
+        const emailOrUsername = formData.get("email-username");
         const password = formData.get("password");
 
         const payload = {
-            emailOrPassword,
+            emailOrUsername,
             password,
         };
 

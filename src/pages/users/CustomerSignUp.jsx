@@ -50,21 +50,23 @@ export default function CustomerSignUp() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
             });
+            const data = await response.json();
 
-            if (response.status === 400) {
-                const error = await response.json();
-                setErrorAlert(error.message);
-            }
+            if (!response.ok) {
 
-            if (response.status === 500) {
-                const error = await response.json();
-                setErrorAlert(error.error.split(" ").slice(4).join(" "))
-            }
+                if (response.status === 400) {
+                    setErrorAlert(data.message);
+                    throw new Error(data.message)
+                }
 
-            if (response.ok) {
-                const data = await response.json();
-                data.success && navigate(`/customer/login`);
-            }
+                if (response.status === 500) {
+                    setErrorAlert(data.error.split(" ").slice(4).join(" "));
+                    throw new Error(data.error);
+                }
+            };
+
+            data.success && navigate(`/customer/login`);
+
         } catch (error) {
             console.error(error.message);
         }
