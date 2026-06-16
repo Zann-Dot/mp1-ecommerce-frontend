@@ -1,16 +1,11 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
 const useCartContext = () => useContext(CartContext);
 export default useCartContext;
 
-
 export function CartProvider({ children }) {
-    function cartReducer() {
-
-    }
-
-    const [cart, dispatch] = useReducer(cartReducer, []);
+    const [cart, setCart] = useState([]);
 
     async function loadCart() {
         try {
@@ -19,15 +14,15 @@ export function CartProvider({ children }) {
             if (!response.ok)
                 throw new Error("Failed to get cart", data.message);
 
-            console.log(data);
+            setCart(data);
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
     }
 
     return (
-        <CartContext.Provider value={{ loadCart }}>
+        <CartContext.Provider value={{ loadCart, cart }}>
             {children}
         </CartContext.Provider>
-    )
+    );
 }

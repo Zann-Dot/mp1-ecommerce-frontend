@@ -1,42 +1,44 @@
-import { useEffect } from 'react'
-import useCartContext from '../../../contexts/CartProvider'
-import useEcommerceContext from '../../../contexts/EcommerceProvider'
-import ExploreMore from '../components/ExploreMore'
-import CheckoutProducts from './CheckoutProducts'
-import IconBlock from './IconBlock'
-import PaymentSummary from './PaymentSummary'
+import { useEffect } from "react";
+import useCartContext from "../../../contexts/CartProvider";
+import useEcommerceContext from "../../../contexts/EcommerceProvider";
+import ExploreMore from "../components/ExploreMore";
+import CheckoutProducts from "./CheckoutProducts";
+import IconBlock from "./IconBlock";
+import PaymentSummary from "./PaymentSummary";
 
 export default function CartMainSection() {
     const { user } = useEcommerceContext();
-    const { loadCart } = useCartContext();
+    const { loadCart, cart } = useCartContext();
 
     useEffect(() => {
         loadCart();
-    }, [])
+    }, []);
+
     return (
         <main className="max-w-340 w-full mx-auto p-3 mb-20 sm:p-6 md:p-8">
             {user.mode !== "guest" && (
                 <div className="grid grid-cols-3 gap-10">
                     {/* cart section */}
-                    <div className='col-span-2 flex flex-col gap-5'>
-                        <h1 className='text-2xl font-semibold text-foreground'>
+                    <div className="col-span-2 flex flex-col gap-5">
+                        <h1 className="text-2xl font-semibold text-foreground">
                             Shopping bag
                         </h1>
 
-                        <CheckoutProducts />
-                        <hr className='my-1' />
-                        <CheckoutProducts />
-                        <hr className='my-1' />
-                        <CheckoutProducts />
-                        <hr className='my-1' />
-                        <IconBlock />
+                        {cart &&
+                            cart.length !== 0 &&
+                            cart?.map((cartItem) => (
+                                <div key={cartItem._id} className="flex flex-col gap-5">
+                                    <CheckoutProducts cartItem={cartItem} />
+                                    <hr className="my-1" />
+                                </div>
+                            ))}
 
+                        <IconBlock />
                     </div>
                     <PaymentSummary />
                     <ExploreMore />
                 </div>
             )}
-
         </main>
-    )
+    );
 }
