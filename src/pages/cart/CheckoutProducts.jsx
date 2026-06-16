@@ -5,7 +5,7 @@ export default function CheckoutProducts({ cartItem }) {
 
     return (
         <div className="relative flex flex-row gap-5 items-start sm:items-center">
-            <Link to={`/products/${cartItem?.product._id}`} className="relative w-32 rounded-xl overflow-hidden bg-neutral-100 shrink-0 dark:bg-neutral-800">
+            <Link to={`/products/${cartItem?.product._id}?name=${cartItem?.product.productName}`} className="relative w-32 rounded-xl overflow-hidden bg-neutral-100 shrink-0 dark:bg-neutral-800">
                 <img
                     src={cartItem?.product.imageUrl}
                     alt="Nike Air Force 1"
