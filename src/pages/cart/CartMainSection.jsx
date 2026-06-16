@@ -8,10 +8,11 @@ import PaymentSummary from "./PaymentSummary";
 
 export default function CartMainSection() {
     const { user } = useEcommerceContext();
-    const { loadCart, cart } = useCartContext();
+    const { loadCart, cart, getPaymentSummary } = useCartContext();
 
     useEffect(() => {
         loadCart();
+        getPaymentSummary();
     }, []);
 
     return (
