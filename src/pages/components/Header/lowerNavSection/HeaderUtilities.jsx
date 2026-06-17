@@ -99,7 +99,7 @@ export default function HeaderUtilities() {
 
             <div className="w-15 cursor-pointer">
                 <Link
-                    to={user.mode === "guest" ? "/" : "/cart"}
+                    to={user.mode === "guest" ? "#" : "/cart"}
                     className="text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover"
                 >
                     <div className="indicator">

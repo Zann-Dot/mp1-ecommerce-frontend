@@ -21,8 +21,8 @@ import useCartContext from "../contexts/CartProvider";
 function App() {
     const { fetchProducts, getUser, fetchWishlistProducts } =
         useEcommerceContext();
-    const location = useLocation();
     const { loadCart } = useCartContext();
+    const location = useLocation();
 
 
     useEffect(() => {
