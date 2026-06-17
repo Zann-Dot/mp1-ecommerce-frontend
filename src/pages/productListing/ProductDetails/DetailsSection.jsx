@@ -1,10 +1,51 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
+import { useNavigate, useSearchParams } from "react-router";
+import useCartContext from "../../../../contexts/CartProvider";
 
 export default function DetailsSection({ data }) {
-    const [wishlistState, setWishlistState] = useState(data.isWishlist);
-    const { handleWishlist } = useEcommerceContext();
     const productId = data?._id;
+    const [wishlistState, setWishlistState] = useState(data.isWishlist);
+    const [goToCart, setGoToCart] = useState(false);
+    const { handleWishlist, user } = useEcommerceContext();
+    const { addToCart } = useCartContext();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
+    const params = new URLSearchParams(searchParams);
+
+    useEffect(() => {
+        params.delete("quantity");
+        params.delete("size");
+        setSearchParams(params);
+    }, [productId]);
+
+    function handleSize(e) {
+        params.set("size", e.target.value);
+        setSearchParams(params);
+    }
+
+    function handleQuantity(e) {
+        params.set("quantity", e.target.value);
+        setSearchParams(params);
+    }
+
+    async function handleAddToCart() {
+        if (user.mode !== "guest") {
+            const size = searchParams.get("size");
+            const quantity = parseInt(searchParams.get("quantity") ?? 1);
+            const payload = {
+                size,
+                quantity,
+                product: productId,
+                userId: user._id,
+            };
+            const response = addToCart(payload);
+            response.success && setGoToCart(true);
+            goToCart && navigate("/cart");
+        } else {
+            navigate("/customer/login");
+        }
+    }
 
     return (
         <div className="text-foreground col-span-5 md:col-span-2 px-1 md:px-10">
@@ -67,7 +108,6 @@ export default function DetailsSection({ data }) {
                     >
                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                     </svg>
-
                 </div>
                 ({Math.round(Math.random() * 10000)})
             </div>
@@ -77,45 +117,47 @@ export default function DetailsSection({ data }) {
 
             <h3 className="text-lg mt-5 font-medium mb-2">Size</h3>
             <div className="grid grid-cols-4 gap-2">
-                <div className="hover:bg-surface p-1 cursor-pointer border border-line-3 rounded-lg grid place-items-center">
-                    S
-                </div>
-                <div className="hover:bg-surface p-1 cursor-pointer border border-line-3 rounded-lg grid place-items-center">
-                    M
-                </div>
-                <div className="hover:bg-surface p-1 cursor-pointer border border-line-3 rounded-lg grid place-items-center">
-                    L
-                </div>
-                <div className="hover:bg-surface p-1 cursor-pointer border border-line-3 rounded-lg grid place-items-center">
-                    XL
-                </div>
-                <div className="hover:bg-surface p-1 cursor-pointer border border-line-3 rounded-lg grid place-items-center">
-                    XXL
-                </div>
+                {["S", "M", "L", "XL", "XXL"].map((size) => (
+                    <label
+                        key={size}
+                        className="hover:bg-surface p-1 cursor-pointer border border-line-3 rounded-lg grid place-items-center has-checked:bg-surface has-checked:border-primary"
+                    >
+                        <input
+                            type="radio"
+                            name="size"
+                            value={size}
+                            className="appearance-none hidden"
+                            onChange={handleSize}
+                        />
+                        {size}
+                    </label>
+                ))}
             </div>
 
             <div className="flex items-center mt-8 gap-2">
-                <select className="py-3 px-4 hover:bg-layer-hover cursor-pointer pe-9 block bg-layer border-layer-line rounded-lg text-sm text-foreground focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
+                <select
+                    onChange={handleQuantity}
+                    value={searchParams.get("quantity") ?? 1}
+                    className="py-3 px-4 hover:bg-layer-hover cursor-pointer pe-9 block bg-layer border-layer-line rounded-lg text-sm text-foreground focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
+                >
+                    {Array.from({ length: 10 }, (_, i) => (
+                        <option key={i + 1} value={i + 1}>
+                            {i + 1}
+                        </option>
+                    ))}
                 </select>
                 <button
                     type="button"
+                    onClick={handleAddToCart}
                     className="cursor-pointer py-3 px-4 w-full text-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
                 >
-                    Add to cart
+                    {goToCart ? "Go to cart" : "Add to cart"}
                 </button>
                 <button
                     type="button"
-                    onClick={() => handleWishlist(wishlistState, setWishlistState, productId)}
+                    onClick={() =>
+                        handleWishlist(wishlistState, setWishlistState, productId)
+                    }
                     className="wishlist cursor-pointer py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-layer-line bg-layer text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus  disabled:opacity-50 disabled:pointer-events-none"
                 >
                     <svg
@@ -223,7 +265,9 @@ export default function DetailsSection({ data }) {
                             height="20"
                             width="20"
                         >
-                            <desc>Wallet 4 Line Streamline Icon: https://streamlinehq.com</desc>
+                            <desc>
+                                Wallet 4 Line Streamline Icon: https://streamlinehq.com
+                            </desc>
                             <g fill="none" fillRule="evenodd">
                                 <path
                                     d="M18 0v18H0V0zM9.444749999999999 17.4435l-0.00825 0.0015 -0.05324999999999999 0.026250000000000002 -0.015 0.003 -0.0105 -0.003 -0.05324999999999999 -0.026250000000000002c-0.0075 -0.003 -0.014249999999999999 -0.00075 -0.018000000000000002 0.00375l-0.003 0.0075 -0.012750000000000001 0.321 0.00375 0.015 0.0075 0.00975 0.078 0.055499999999999994 0.01125 0.003 0.009000000000000001 -0.003 0.078 -0.055499999999999994 0.009000000000000001 -0.012 0.003 -0.012750000000000001 -0.012750000000000001 -0.32025c-0.0015 -0.0075 -0.006749999999999999 -0.012750000000000001 -0.012750000000000001 -0.013499999999999998m0.19875 -0.08475 -0.00975 0.0015 -0.13874999999999998 0.06975 -0.0075 0.0075 -0.0022500000000000003 0.00825 0.013499999999999998 0.3225 0.00375 0.009000000000000001 0.006 0.00525 0.15075 0.06975c0.009000000000000001 0.003 0.01725 0 0.021750000000000002 -0.006l0.003 -0.0105 -0.025500000000000002 -0.4605c-0.0022500000000000003 -0.009000000000000001 -0.0075 -0.015 -0.015 -0.0165m-0.53625 0.0015a0.01725 0.01725 0 0 0 -0.02025 0.0045000000000000005l-0.0045000000000000005 0.0105 -0.025500000000000002 0.4605c0 0.009000000000000001 0.00525 0.015 0.012750000000000001 0.018000000000000002l0.01125 -0.0015 0.15075 -0.06975 0.0075 -0.006 0.003 -0.00825 0.012750000000000001 -0.3225 -0.0022500000000000003 -0.009000000000000001 -0.0075 -0.0075z"
@@ -292,9 +336,7 @@ export default function DetailsSection({ data }) {
                     >
                         <ul className="list-disc list-outside ps-5 text-muted-foreground-1 text-sm">
                             {data?.description?.map((line, i) => (
-                                <li key={i}>
-                                    {line}
-                                </li>
+                                <li key={i}>{line}</li>
                             ))}
                         </ul>
                     </div>
@@ -395,14 +437,19 @@ export default function DetailsSection({ data }) {
                         aria-labelledby="hs-basic-heading-three"
                     >
                         <p className="text-muted-foreground-1 text-sm">
-                            Free standard shipping on orders over $50 and free 30-day returns. <span className="underline underline-offset-4 cursor-pointer">Learn more</span>. <br />
+                            Free standard shipping on orders over $50 and free 30-day returns.{" "}
+                            <span className="underline underline-offset-4 cursor-pointer">
+                                Learn more
+                            </span>
+                            . <br />
                             <br />
-                            Returns must be received within 30 days of shipping confirmation. In order to process your return, items must be unworn and tags must be attached.
+                            Returns must be received within 30 days of shipping confirmation.
+                            In order to process your return, items must be unworn and tags
+                            must be attached.
                         </p>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }

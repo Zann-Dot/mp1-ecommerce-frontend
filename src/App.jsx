@@ -16,45 +16,50 @@ import ReviewAndPay from "./pages/checkout/ReviewAndPay/ReviewAndPay";
 import OrderConfirmationPage from "./pages/checkout/OrderConfirmation/OrderConfirmationPage";
 import useEcommerceContext from "../contexts/EcommerceProvider";
 import SearchResult from "./pages/SearchResult";
+import useCartContext from "../contexts/CartProvider";
 
 function App() {
-  const { fetchProducts, getUser, fetchWishlistProducts } = useEcommerceContext();
-  const location = useLocation();
+    const { fetchProducts, getUser, fetchWishlistProducts } =
+        useEcommerceContext();
+    const location = useLocation();
+    const { loadCart } = useCartContext();
 
-  useEffect(() => {
-    window.HSStaticMethods.autoInit();
-    fetchProducts();
-    getUser();
-    fetchWishlistProducts();
-  }, [location.pathname]);
 
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/products" element={<ProductListing />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/search-result" element={<SearchResult />} />
-        <Route path="/checkout/reviewandpay" element={<ReviewAndPay />} />
-        <Route
-          path="/checkout/reviewandpay/orderconfirmation"
-          element={<OrderConfirmationPage />}
-        />
-        <Route path="/products/:productId" element={<ProductDetails />} />
-        <Route path="/user/account" element={<CustomerAccount />} />
-        <Route
-          path="/user/account/personalinfo"
-          element={<CustomerPersonalInfo />}
-        />
-        <Route path="/user/account/myorders" element={<MyOrders />} />
-        <Route path="/user/account/addresses" element={<AddressManagement />} />
-        <Route path="/customer/signup" element={<CustomerSignUp />} />
-        <Route path="/customer/login" element={<CustomerSignIn />} />
-      </Routes>
-    </>
-  );
+    useEffect(() => {
+        window.HSStaticMethods.autoInit();
+        fetchProducts();
+        getUser();
+        fetchWishlistProducts();
+        loadCart();
+    }, [location.pathname]);
+
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/products" element={<ProductListing />} />
+                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/search-result" element={<SearchResult />} />
+                <Route path="/checkout/reviewandpay" element={<ReviewAndPay />} />
+                <Route
+                    path="/checkout/reviewandpay/orderconfirmation"
+                    element={<OrderConfirmationPage />}
+                />
+                <Route path="/products/:productId" element={<ProductDetails />} />
+                <Route path="/user/account" element={<CustomerAccount />} />
+                <Route
+                    path="/user/account/personalinfo"
+                    element={<CustomerPersonalInfo />}
+                />
+                <Route path="/user/account/myorders" element={<MyOrders />} />
+                <Route path="/user/account/addresses" element={<AddressManagement />} />
+                <Route path="/customer/signup" element={<CustomerSignUp />} />
+                <Route path="/customer/login" element={<CustomerSignIn />} />
+            </Routes>
+        </>
+    );
 }
 
 export default App;

@@ -7,6 +7,8 @@ export default useCartContext;
 export function CartProvider({ children }) {
     const [cart, setCart] = useState([]);
     const [paymentSummary, setPaymentSummary] = useState(null);
+    const totalQuantity = cart?.reduce((acc, item) => acc + item.quantity, 0);
+
 
     async function loadCart() {
         try {
@@ -32,9 +34,33 @@ export function CartProvider({ children }) {
         }
     }
 
+    async function addToCart(payload) {
+        try {
+            const res = await fetch("/api/cart", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+            const data = await res.json();
+
+            if (!res.ok) throw new Error(data.message);
+            await loadCart();
+            return data;
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     return (
         <CartContext.Provider
-            value={{ loadCart, cart, getPaymentSummary, paymentSummary }}
+            value={{
+                loadCart,
+                cart,
+                getPaymentSummary,
+                paymentSummary,
+                addToCart,
+                totalQuantity,
+            }}
         >
             {children}
         </CartContext.Provider>

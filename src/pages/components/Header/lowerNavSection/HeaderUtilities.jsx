@@ -1,8 +1,10 @@
 import { Link } from "react-router";
 import useEcommerceContext from "../../../../../contexts/EcommerceProvider";
+import useCartContext from "../../../../../contexts/CartProvider";
 
 export default function HeaderUtilities() {
     const { user, wishlist } = useEcommerceContext();
+    const { totalQuantity } = useCartContext();
 
     return (
         <div className="flex items-center gap-5 ms-auto lg:ms-0">
@@ -102,7 +104,7 @@ export default function HeaderUtilities() {
                 >
                     <div className="indicator">
                         <span className="indicator-item badge badge-primary scale-70 px-2 py-0 rounded-full text-primary-foreground text-">
-                            2
+                            {totalQuantity}
                         </span>
                         <div className="p-0.5">
                             <svg
