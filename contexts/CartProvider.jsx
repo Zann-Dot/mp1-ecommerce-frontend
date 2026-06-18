@@ -14,8 +14,11 @@ export function CartProvider({ children }) {
         try {
             const response = await fetch("/api/cart");
             const data = await response.json();
-            if (!response.ok) throw new Error("Failed to get cart", data.message);
 
+            if (!response.ok) {
+                response.status === 404 && setCart([]);
+                throw new Error("Failed to get cart", data.message);
+            }
             setCart(data);
         } catch (error) {
             console.error(error);
@@ -51,6 +54,17 @@ export function CartProvider({ children }) {
         }
     }
 
+    async function handleDeleteFromCart(productId) {
+        const res = await fetch(`/api/cart/${productId}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" }
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message);
+        await loadCart();
+        await getPaymentSummary();
+    }
+
     return (
         <CartContext.Provider
             value={{
@@ -60,6 +74,7 @@ export function CartProvider({ children }) {
                 paymentSummary,
                 addToCart,
                 totalQuantity,
+                handleDeleteFromCart
             }}
         >
             {children}

@@ -1,7 +1,10 @@
+import useCartContext from "../../../contexts/CartProvider";
 import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
 import { Link } from "react-router";
 
 export default function CheckoutProducts({ cartItem }) {
+    const { handleDeleteFromCart } = useCartContext();
+
     return (
         <div className="relative flex flex-row gap-5 items-start sm:items-center">
             <Link
@@ -58,16 +61,9 @@ export default function CheckoutProducts({ cartItem }) {
                             className="p-2 pe-9 block w-15 bg-layer border-line-3 rounded-lg text-xs text-foreground focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                             defaultValue={cartItem?.quantity}
                         >
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
+                            {Array.from({ length: 10 }, (_, i) => (
+                                <option key={i + 1} value={i + 1}>{i + 1}</option>
+                            ))}
                         </select>
                     </div>
                 </div>
@@ -75,6 +71,7 @@ export default function CheckoutProducts({ cartItem }) {
                 <div className="pt-1">
                     <button
                         type="button"
+                        onClick={() => handleDeleteFromCart(cartItem.product._id)}
                         className="cursor-pointer inline-flex items-center gap-x-1.5 text-sm text-foreground underline decoration-1 underline-offset-4 hover:text-red-600 hover:decoration-red-600 transition-colors duration-75 dark:text-neutral-300 dark:hover:text-red-400"
                     >
                         <svg
