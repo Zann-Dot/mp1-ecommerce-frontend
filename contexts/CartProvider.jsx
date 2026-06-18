@@ -54,7 +54,7 @@ export function CartProvider({ children }) {
         }
     }
 
-    async function handleDeleteFromCart(productId) {
+    async function deleteFromCart(productId) {
         const res = await fetch(`/api/cart/${productId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" }
@@ -74,7 +74,7 @@ export function CartProvider({ children }) {
                 paymentSummary,
                 addToCart,
                 totalQuantity,
-                handleDeleteFromCart
+                deleteFromCart
             }}
         >
             {children}
