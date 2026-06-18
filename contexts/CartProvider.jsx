@@ -6,6 +6,7 @@ export default useCartContext;
 
 export function CartProvider({ children }) {
     const [cart, setCart] = useState([]);
+    const [emptyCart, setEmptyCart] = useState("");
     const [paymentSummary, setPaymentSummary] = useState(null);
     const totalQuantity = cart?.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -17,8 +18,10 @@ export function CartProvider({ children }) {
 
             if (!response.ok) {
                 response.status === 404 && setCart([]);
-                throw new Error("Failed to get cart", data.message);
+                setEmptyCart(data.message);
+                throw (data.message);
             }
+            setEmptyCart("");
             setCart(data);
         } catch (error) {
             console.error(error);
@@ -74,7 +77,8 @@ export function CartProvider({ children }) {
                 paymentSummary,
                 addToCart,
                 totalQuantity,
-                deleteFromCart
+                deleteFromCart,
+                emptyCart
             }}
         >
             {children}

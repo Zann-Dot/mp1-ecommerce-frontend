@@ -8,7 +8,7 @@ import PaymentSummary from "./PaymentSummary";
 
 export default function CartMainSection() {
     const { user } = useEcommerceContext();
-    const { cart, getPaymentSummary } = useCartContext();
+    const { cart, emptyCart, getPaymentSummary } = useCartContext();
 
     useEffect(() => {
         getPaymentSummary();
@@ -22,6 +22,10 @@ export default function CartMainSection() {
                         <h1 className="text-2xl font-semibold text-foreground">
                             Shopping bag
                         </h1>
+
+                        {emptyCart && (
+                            <p className="pb-50 text-lg text-foreground">{emptyCart}</p>
+                        )}
 
                         {cart &&
                             cart.length !== 0 &&
