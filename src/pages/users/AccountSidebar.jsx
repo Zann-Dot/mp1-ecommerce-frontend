@@ -79,7 +79,7 @@ bg-sidebar border-e pe-3 border-sidebar-line"
                                 <li>
                                     <Link
                                         className=" flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
-                                        to="/user/account/personalinfo"
+                                        to="/user/account/personal-information"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
