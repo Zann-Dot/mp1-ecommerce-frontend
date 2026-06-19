@@ -1,6 +1,7 @@
-import React from 'react'
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function ShippingMethod() {
+    const { updateCheckoutForm } = useEcommerceContext();
     return (
         <div className="max-w-sm w-full space-y-3">
             <h1 className="col-span-full font-medium">Shipping method</h1>
@@ -13,6 +14,8 @@ export default function ShippingMethod() {
                     name="hs-vertical-radio-in-form"
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="vertical-radio-checked-in-form"
+                    value={0}
+                    onChange={(e) => updateCheckoutForm({ shipping: Number(e.target.value), deliveryTime: 172800000 })}
                     defaultChecked
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
@@ -30,6 +33,8 @@ export default function ShippingMethod() {
                     name="hs-vertical-radio-in-form"
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-vertical-radio-in-form"
+                    value={49}
+                    onChange={(e) => updateCheckoutForm({ shipping: Number(e.target.value), deliveryTime: 86400000 })}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
                     Next day
@@ -46,6 +51,8 @@ export default function ShippingMethod() {
                     name="hs-vertical-radio-in-form"
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-vertical-radio-in-form"
+                    value={89}
+                    onChange={(e) => updateCheckoutForm({ shipping: Number(e.target.value), deliveryTime: 18000000 })}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
                     Same day

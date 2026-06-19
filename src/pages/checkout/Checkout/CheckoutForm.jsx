@@ -13,7 +13,9 @@ export default function CheckoutForm() {
                 email: user.email,
                 fullName: user.firstName + " " + user?.lastName,
                 address,
-                phoneNumber: user.phoneNumber
+                phoneNumber: user.phoneNumber,
+                shipping: 0,
+                deliveryTime: 172800000
             });
         }
     }, [user?._id, address]);
