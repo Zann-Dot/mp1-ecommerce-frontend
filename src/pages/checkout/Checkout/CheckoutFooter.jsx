@@ -1,11 +1,12 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function CheckoutFooter() {
     const { checkoutForm, address, updateCheckoutForm } = useEcommerceContext();
+    const navigate = useNavigate();
     function handleCheckoutForm() {
         if (address) updateCheckoutForm({ address });
-        console.log(checkoutForm);
+        navigate('/checkout/review-and-pay')
     }
     return (
         <footer className="sticky bottom-0 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-b border-navbar-line">

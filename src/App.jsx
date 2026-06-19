@@ -42,15 +42,15 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/search-result" element={<SearchResult />} />
-                <Route path="/checkout/reviewandpay" element={<ReviewAndPay />} />
+                <Route path="/checkout/review-and-pay" element={<ReviewAndPay />} />
                 <Route
-                    path="/checkout/reviewandpay/orderconfirmation"
+                    path="/checkout/review-and-pay/order-confirmation"
                     element={<OrderConfirmationPage />}
                 />
                 <Route path="/products/:productId" element={<ProductDetails />} />
                 <Route path="/user/account" element={<CustomerAccount />} />
                 <Route
-                    path="/user/account/personalinfo"
+                    path="/user/account/personal-information"
                     element={<CustomerPersonalInfo />}
                 />
                 <Route path="/user/account/myorders" element={<MyOrders />} />
