@@ -1,7 +1,6 @@
 import { Link } from "react-router";
-import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 import { useEffect } from "react";
-import useCartContext from "../../../../contexts/CartProvider";
+import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 
 export default function ReviewInfoCards() {
     const { reviewInfo, getCheckoutData } = useCheckoutContext();
@@ -9,7 +8,6 @@ export default function ReviewInfoCards() {
     useEffect(() => {
         getCheckoutData();
     }, []);
-
 
     return (
         <>
