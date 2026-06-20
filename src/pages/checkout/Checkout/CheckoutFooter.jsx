@@ -4,8 +4,23 @@ import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 export default function CheckoutFooter() {
     const { checkoutForm, address, updateCheckoutForm } = useEcommerceContext();
     const navigate = useNavigate();
-    function handleCheckoutForm() {
+
+    async function handleCheckoutForm() {
         if (address) updateCheckoutForm({ address });
+        console.log(checkoutForm);
+
+        try {
+            const res = await fetch("/api/checkout", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(checkoutForm)
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.message);
+        } catch (error) {
+            console.error(error.message)
+        }
+
         navigate('/checkout/review-and-pay')
     }
     return (

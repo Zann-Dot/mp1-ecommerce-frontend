@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function PaymentMethod() {
     return (
         <div className="flex flex-col gap-5">
@@ -127,7 +125,7 @@ export default function PaymentMethod() {
                             id="hs-default-checkbox"
                         />
                         <label
-                            for="hs-default-checkbox"
+                            htmlFor="hs-default-checkbox"
                             className="text-sm ms-3 text-muted-foreground-1"
                         >
                             Set as default payment method
@@ -148,7 +146,7 @@ export default function PaymentMethod() {
                         defaultChecked
                     />
                     <label
-                        for="hs-checked-checkbox"
+                        htmlFor="hs-checked-checkbox"
                         className="text-sm ms-3 text-muted-foreground-1"
                     >
                         Use my shipping address
