@@ -1,4 +1,8 @@
+import useCheckoutContext from "../../../../contexts/CheckoutProvider";
+
 export default function PaymentMethod() {
+    const { reviewInfo } = useCheckoutContext();
+
     return (
         <div className="flex flex-col gap-5">
             {/* payment option toggle */}
@@ -8,7 +12,7 @@ export default function PaymentMethod() {
                 <div className="grid grid-cols-3 gap-2">
                     <button
                         type="button"
-                        className="cursor-pointer py-2  inline-flex items-center justify-center gap-x-3 text-sm font-medium rounded-lg border border-line-3 text-foreground focus:outline-hidden disabled:opacity-50 focus:border-2 focus:border-line-4 disabled:pointer-events-none"
+                        className="cursor-pointer py-2  inline-flex items-center justify-center gap-x-3 text-sm font-medium rounded-lg border-2 border-line-4 text-foreground focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -153,8 +157,8 @@ export default function PaymentMethod() {
                     </label>
                 </div>
                 <p className="text-muted-foreground-1 mt-1 text-sm">
-                    New York, 280 Suzanne Throughway <br />
-                    Breannabury, OR 45801, US
+                    {reviewInfo[0]?.address.city}, {reviewInfo[0]?.address.addressLine} <br />
+                    {reviewInfo[0]?.address.state}, {reviewInfo[0]?.address.pincode}, IN
                 </p>
             </div>
         </div>

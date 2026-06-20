@@ -75,7 +75,7 @@ export default function ReviewFooter() {
                         <span className="sr-only">Toggle</span>
                     </button>
                     <Link
-                        to="/checkout/reviewandpay/orderconfirmation"
+                        to="/checkout/review-and-pay/order-confirmation"
                         className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                         data-hs-stepper-
                     >
