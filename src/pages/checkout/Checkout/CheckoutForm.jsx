@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import EmailForm from "./EmailForm";
 import ShippingAddress from "./ShippingAddress";
 import ShippingMethod from "./ShippingMethod";
+import useCheckoutContext from "../../../../contexts/CheckoutProvider";
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function CheckoutForm() {
-    const { user, address, updateCheckoutForm } = useEcommerceContext();
+    const { user } = useEcommerceContext();
+    const { address, updateCheckoutForm } = useCheckoutContext();
 
     useEffect(() => {
         if (user) {
@@ -26,8 +28,8 @@ export default function CheckoutForm() {
             <h1 className="font-medium text-lg">Checkout as {user?.firstName}</h1>
 
             <form className="grid grid-flow-row gap-15">
-                <EmailForm user={user} />
-                <ShippingAddress user={user} />
+                <EmailForm />
+                <ShippingAddress />
                 <ShippingMethod />
             </form>
         </div>

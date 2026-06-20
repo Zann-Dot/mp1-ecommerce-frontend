@@ -1,8 +1,8 @@
-import useEcommerceContext from "../../../../contexts/EcommerceProvider";
+import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 import SelectCountry from "../../components/SelectCountry";
 
-export default function ShippingAddress({ user }) {
-    const { dispatch, address, checkoutForm, updateCheckoutForm } = useEcommerceContext();
+export default function ShippingAddress() {
+    const { dispatch, address, checkoutForm, updateCheckoutForm } = useCheckoutContext();
 
     return (
         <div className="grid grid-cols-2 gap-2">

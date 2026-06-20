@@ -1,7 +1,7 @@
-import useEcommerceContext from "../../../../contexts/EcommerceProvider"
+import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 
-export default function EmailForm({ user }) {
-    const { updateCheckoutForm, checkoutForm } = useEcommerceContext();
+export default function EmailForm() {
+    const { updateCheckoutForm, checkoutForm } = useCheckoutContext();
 
     return (
         <div className="max-w-sm w-full space-y-3">

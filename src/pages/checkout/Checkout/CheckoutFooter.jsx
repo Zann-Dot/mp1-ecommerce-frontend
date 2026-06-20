@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router";
-import useEcommerceContext from "../../../../contexts/EcommerceProvider";
+import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 
 export default function CheckoutFooter() {
-    const { checkoutForm, address, updateCheckoutForm } = useEcommerceContext();
+    const { checkoutForm, address, updateCheckoutForm } = useCheckoutContext();
     const navigate = useNavigate();
 
     async function handleCheckoutForm() {

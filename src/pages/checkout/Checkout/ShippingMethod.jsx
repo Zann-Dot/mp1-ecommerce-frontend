@@ -1,7 +1,7 @@
-import useEcommerceContext from "../../../../contexts/EcommerceProvider";
+import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 
 export default function ShippingMethod() {
-    const { updateCheckoutForm } = useEcommerceContext();
+    const { updateCheckoutForm } = useCheckoutContext();
     return (
         <div className="max-w-sm w-full space-y-3">
             <h1 className="col-span-full font-medium">Shipping method</h1>
