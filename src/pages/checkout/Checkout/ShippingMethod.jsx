@@ -1,7 +1,9 @@
+import useCartContext from "../../../../contexts/CartProvider";
 import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 
 export default function ShippingMethod() {
     const { updateCheckoutForm } = useCheckoutContext();
+    const { getPaymentSummary } = useCartContext();
     return (
         <div className="max-w-sm w-full space-y-3">
             <h1 className="col-span-full font-medium">Shipping method</h1>
@@ -15,7 +17,10 @@ export default function ShippingMethod() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="vertical-radio-checked-in-form"
                     value={0}
-                    onChange={(e) => updateCheckoutForm({ shipping: Number(e.target.value), deliveryTime: 172800000 })}
+                    onChange={(e) => {
+                        updateCheckoutForm({ shipping: Number(e.target.value), deliveryTime: 172800000 })
+                        getPaymentSummary()
+                    }}
                     defaultChecked
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
@@ -34,7 +39,10 @@ export default function ShippingMethod() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-vertical-radio-in-form"
                     value={49}
-                    onChange={(e) => updateCheckoutForm({ shipping: Number(e.target.value), deliveryTime: 86400000 })}
+                    onChange={(e) => {
+                        updateCheckoutForm({ shipping: Number(e.target.value), deliveryTime: 86400000 })
+                        getPaymentSummary(e.target.value)
+                    }}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
                     Next day
@@ -52,7 +60,10 @@ export default function ShippingMethod() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-vertical-radio-in-form"
                     value={89}
-                    onChange={(e) => updateCheckoutForm({ shipping: Number(e.target.value), deliveryTime: 18000000 })}
+                    onChange={(e) => {
+                        updateCheckoutForm({ shipping: Number(e.target.value), deliveryTime: 18000000 })
+                        getPaymentSummary(e.target.value)
+                    }}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
                     Same day

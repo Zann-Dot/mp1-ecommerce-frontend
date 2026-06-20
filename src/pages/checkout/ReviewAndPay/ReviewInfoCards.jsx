@@ -1,6 +1,16 @@
 import { Link } from "react-router";
+import useCheckoutContext from "../../../../contexts/CheckoutProvider";
+import { useEffect } from "react";
+import useCartContext from "../../../../contexts/CartProvider";
 
 export default function ReviewInfoCards() {
+    const { reviewInfo, getCheckoutData } = useCheckoutContext();
+
+    useEffect(() => {
+        getCheckoutData();
+    }, []);
+
+
     return (
         <>
             <div className="flex flex-col bg-card border border-card-line shadow-2xs rounded-xl">
@@ -35,7 +45,7 @@ export default function ReviewInfoCards() {
                                 ></path>
                             </g>
                         </svg>
-                        examapl@aonoa.com
+                        {reviewInfo[0]?.email}
                     </div>
                 </div>
             </div>
@@ -71,9 +81,9 @@ export default function ReviewInfoCards() {
                         </svg>
 
                         <div className="flex flex-col">
-                            <p>ames Collins</p>
-                            <p>280 Suzanne Throughway<br />
-                                New York, Breannabury, OR 45801, US
+                            <p>{reviewInfo[0]?.fullName}</p>
+                            <p>{reviewInfo[0]?.address.addressLine}<br />
+                                {reviewInfo[0]?.address.city}, {reviewInfo[0]?.address.state}, {reviewInfo[0]?.address.pincode}
                             </p>
                         </div>
                     </div>
@@ -101,7 +111,9 @@ export default function ReviewInfoCards() {
                                 <path fill="currentColor" d="M13.75 3.6666666666666665a1.8333333333333333 1.8333333333333333 0 0 1 1.8333333333333333 1.8333333333333333v0.9166666666666666h1.3933333333333333a1.8333333333333333 1.8333333333333333 0 0 1 1.4309166666666666 0.6875l1.3566666666666667 1.69675a1.8333333333333333 1.8333333333333333 0 0 1 0.40241666666666664 1.1458333333333333V13.75a1.8333333333333333 1.8333333333333333 0 0 1 -1.8333333333333333 1.8333333333333333 2.75 2.75 0 1 1 -5.5 0h-3.6666666666666665a2.75 2.75 0 1 1 -5.5 0 1.8333333333333333 1.8333333333333333 0 0 1 -1.8333333333333333 -1.8333333333333333V5.5a1.8333333333333333 1.8333333333333333 0 0 1 1.8333333333333333 -1.8333333333333333h10.083333333333332ZM6.416666666666666 14.666666666666666a0.9166666666666666 0.9166666666666666 0 1 0 0 1.8333333333333333 0.9166666666666666 0.9166666666666666 0 0 0 0 -1.8333333333333333Zm9.166666666666666 0a0.9166666666666666 0.9166666666666666 0 1 0 0 1.8333333333333333 0.9166666666666666 0.9166666666666666 0 0 0 0 -1.8333333333333333ZM13.75 5.5H3.6666666666666665v8.25h0.7003333333333334c0.5041666666666667 -0.5628333333333333 1.2356666666666667 -0.9166666666666666 2.049666666666667 -0.9166666666666666 0.7516666666666666 0 1.43275 0.3025 1.9295833333333332 0.7901666666666666l0.12008333333333333 0.1265h5.067333333333333l0.10541666666666667 -0.11091666666666666 0.11091666666666666 -0.10541666666666667V5.5Zm3.2266666666666666 2.75H15.583333333333332v4.583333333333333c0.7516666666666666 0 1.43275 0.3025 1.9295833333333332 0.7901666666666666l0.12008333333333333 0.1265H18.333333333333332v-3.8041666666666667L16.976666666666667 8.25Z" strokeWidth="0.9167"></path>
                             </g>
                         </svg>
-                        Free, 2-4 working days
+                        {reviewInfo[0]?.shipping === 0 && "Free, 2-4 working days"}
+                        {reviewInfo[0]?.shipping === 49 && `₹${reviewInfo[0]?.shipping} Next day delivery`}
+                        {reviewInfo[0]?.shipping === 89 && `₹${reviewInfo[0]?.shipping} Same day delivery`}
                     </div>
                 </div>
             </div>

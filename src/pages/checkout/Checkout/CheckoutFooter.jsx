@@ -7,7 +7,6 @@ export default function CheckoutFooter() {
 
     async function handleCheckoutForm() {
         if (address) updateCheckoutForm({ address });
-        console.log(checkoutForm);
 
         try {
             const res = await fetch("/api/checkout", {

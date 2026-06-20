@@ -5,6 +5,7 @@ const useCheckoutContext = () => useContext(CheckoutContext);
 export default useCheckoutContext;
 
 export function CheckoutProvider({ children }) {
+    const [reviewInfo, setReviewInfo] = useState([]);
     const [checkoutForm, setCheckoutForm] = useState({
         email: "",
         fullName: "",
@@ -45,6 +46,16 @@ export function CheckoutProvider({ children }) {
 
     const [address, dispatch] = useReducer(addressReducer, checkoutForm.address);
 
+    async function getCheckoutData() {
+        try {
+            const response = await fetch("/api/checkout");
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.message);
+            setReviewInfo(data);
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
     return (
         <CheckoutContext.Provider
             value={{
@@ -52,6 +63,8 @@ export function CheckoutProvider({ children }) {
                 updateCheckoutForm,
                 address,
                 dispatch,
+                getCheckoutData,
+                reviewInfo,
             }}
         >
             {children}
