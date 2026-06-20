@@ -5,6 +5,7 @@ import { EcommerceProvider } from "../contexts/EcommerceProvider.jsx";
 import "./index.css";
 import App from "./App.jsx";
 import { CartProvider } from "../contexts/CartProvider.jsx";
+import { CheckoutProvider } from "../contexts/CheckoutProvider.jsx";
 
 
 import("preline").then(() => {
@@ -12,9 +13,11 @@ import("preline").then(() => {
     <StrictMode>
       <EcommerceProvider>
         <CartProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <CheckoutProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </CheckoutProvider>
         </CartProvider>
       </EcommerceProvider>
     </StrictMode>,

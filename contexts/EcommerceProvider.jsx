@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const EcommerceContext = createContext();
 const useEcommerceContext = () => useContext(EcommerceContext);
@@ -10,46 +10,6 @@ export function EcommerceProvider({ children }) {
     const [user, setUser] = useState({});
     const [sort, setSort] = useState("");
     const [wishlist, setWishlist] = useState([]);
-    const [checkoutForm, setCheckoutForm] = useState({
-        email: "",
-        fullName: "",
-        address: {
-            addressLine: "",
-            city: "",
-            state: "",
-            pincode: ""
-        },
-        shipping: 0
-    })
-
-    function updateCheckoutForm(updates) {
-        setCheckoutForm((prev) => ({ ...prev, ...updates }));
-    }
-
-    function addressReducer(address, action) {
-        switch (action.type) {
-            case "addressLine":
-                return { ...address, addressLine: action.value }
-
-            case "addressLine2":
-                return { ...address, addressLine2: action.value }
-
-            case "city":
-                return { ...address, city: action.value }
-
-            case "state":
-                return { ...address, state: action.value }
-
-            case "pincode":
-                return { ...address, pincode: action.value }
-
-            default:
-                break;
-        }
-    }
-
-    const [address, dispatch] = useReducer(addressReducer, checkoutForm.address);
-
 
     if (themeMode === "dark") {
         localStorage.setItem("theme", themeMode);
@@ -144,10 +104,6 @@ export function EcommerceProvider({ children }) {
                 fetchWishlistProducts,
                 wishlist,
                 handleWishlist,
-                checkoutForm,
-                updateCheckoutForm,
-                address,
-                dispatch,
             }}
         >
             {children}
