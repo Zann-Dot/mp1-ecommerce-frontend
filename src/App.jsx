@@ -17,12 +17,14 @@ import OrderConfirmationPage from "./pages/checkout/OrderConfirmation/OrderConfi
 import useEcommerceContext from "../contexts/EcommerceProvider";
 import SearchResult from "./pages/SearchResult";
 import useCartContext from "../contexts/CartProvider";
+import useCheckoutContext from "../contexts/CheckoutProvider";
 
 function App() {
     const { fetchProducts, getUser, fetchWishlistProducts } =
         useEcommerceContext();
-    const { loadCart } = useCartContext();
+    const { loadCart, getPaymentSummary } = useCartContext();
     const location = useLocation();
+    const { reviewInfo } = useCheckoutContext();
 
 
     useEffect(() => {
@@ -31,7 +33,8 @@ function App() {
         getUser();
         fetchWishlistProducts();
         loadCart();
-    }, [location.pathname]);
+        getPaymentSummary(reviewInfo[0]?.shipping);
+    }, [location.pathname, reviewInfo[0]]);
 
     return (
         <>

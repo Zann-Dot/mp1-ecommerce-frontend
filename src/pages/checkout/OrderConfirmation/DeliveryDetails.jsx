@@ -1,7 +1,14 @@
-import React from "react";
 import { Link } from "react-router";
+import useCheckoutContext from "../../../../contexts/CheckoutProvider";
+import { format } from "date-fns";
+import { useEffect } from "react";
 
 export default function DeliveryDetails() {
+    const { reviewInfo, getCheckoutData } = useCheckoutContext();
+    useEffect(() => {
+        getCheckoutData();
+    }, [])
+
     return (
         <div className="py-14 flex flex-col gap-20">
             <div className="flex flex-col text-foreground gap-8">
@@ -17,7 +24,7 @@ export default function DeliveryDetails() {
                     <p className="text-sm">
                         An order confirmation has been sent to{" "}
                         <span className="text-foreground font-medium">
-                            nadboab@moad.com
+                            {reviewInfo[0]?.email}
                         </span>
                     </p>
                 </div>
@@ -90,7 +97,7 @@ export default function DeliveryDetails() {
                                 </span>
                             </div>
                             <p className="text-sm text-muted-foreground-1">
-                                5 Jun, 2026
+                                {format(new Date(), "d EEE yyyy")}
                             </p>
                         </div>
                     </li>

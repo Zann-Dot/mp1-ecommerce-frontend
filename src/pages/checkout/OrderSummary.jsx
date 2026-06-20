@@ -1,15 +1,10 @@
-import { useEffect } from "react";
 import useCartContext from "../../../contexts/CartProvider";
 import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
-import useCheckoutContext from "../../../contexts/CheckoutProvider";
 
 export default function OrderSummary() {
-    const { paymentSummary, getPaymentSummary, cart } = useCartContext();
-    const { reviewInfo } = useCheckoutContext();
+    const { paymentSummary, cart } = useCartContext();
+    console.log(paymentSummary);
 
-    useEffect(() => {
-        getPaymentSummary(reviewInfo[0]?.shipping);
-    }, [reviewInfo[0]]);
     return (
         <div className="before:hidden md:before:block before:absolute before:inset-y-0 before:inset-s-1/2 before:-z-1 before:inset-e-0 before:bg-background-1">
             <div className="py-14 text-foreground flex flex-col gap-10 md:ms-auto md:max-w-sm md:w-full">
