@@ -1,6 +1,26 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 
 export default function ReviewFooter() {
+    const { getOrdersBody } = useCheckoutContext();
+    const navigate = useNavigate();
+
+    async function postOrder() {
+        const ordersBody = getOrdersBody();
+        try {
+            const res = await fetch("/api/orders", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(ordersBody)
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error);
+            data.success && navigate("/checkout/review-and-pay/order-confirmation")
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
+
     return (
         <footer className="sticky bottom-0 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-b border-navbar-line">
             <nav className="max-w-270 w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
@@ -74,8 +94,8 @@ export default function ReviewFooter() {
                         </svg>
                         <span className="sr-only">Toggle</span>
                     </button>
-                    <Link
-                        to="/checkout/review-and-pay/order-confirmation"
+                    <button
+                        onClick={postOrder}
                         className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                         data-hs-stepper-
                     >
@@ -100,7 +120,7 @@ export default function ReviewFooter() {
                                 ></path>
                             </g>
                         </svg>
-                    </Link>
+                    </button>
                 </div>
 
                 <div className="flex w-100 order-2 gap-2">

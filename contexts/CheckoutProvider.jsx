@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer, useState } from "react";
+import useCartContext from "./CartProvider";
 
 const CheckoutContext = createContext();
 const useCheckoutContext = () => useContext(CheckoutContext);
@@ -6,6 +7,7 @@ export default useCheckoutContext;
 
 export function CheckoutProvider({ children }) {
     const [reviewInfo, setReviewInfo] = useState([]);
+    const { cart } = useCartContext();
     const [checkoutForm, setCheckoutForm] = useState({
         email: "",
         fullName: "",
@@ -53,8 +55,22 @@ export function CheckoutProvider({ children }) {
             if (!response.ok) throw new Error(data.message);
             setReviewInfo(data);
         } catch (error) {
-            console.error(error.message)
+            console.error(error.message);
         }
+    }
+
+    function getOrdersBody() {
+        let orderSummary = {};
+        const productSummary = cart?.map((item) => item.product._id);
+        orderSummary.orderDate = Date();
+        orderSummary.orderQuantity = cart?.map((item) => ({
+            productId: item.product._id,
+            quantity: item.quantity,
+        }));
+        orderSummary.deliveryAddress = reviewInfo[0]?.address;
+        orderSummary.deliveryTime = reviewInfo[0]?.deliveryTime;
+
+        return { productSummary, orderSummary };
     }
     return (
         <CheckoutContext.Provider
@@ -65,6 +81,7 @@ export function CheckoutProvider({ children }) {
                 dispatch,
                 getCheckoutData,
                 reviewInfo,
+                getOrdersBody,
             }}
         >
             {children}
