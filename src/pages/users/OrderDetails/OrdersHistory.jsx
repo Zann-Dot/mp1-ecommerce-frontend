@@ -1,7 +1,9 @@
-import React from "react";
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import OrderCard from "./OrderCard";
 
 export default function OrdersHistory() {
+    const { orders } = useEcommerceContext();
+
     return (
         <main className="w-full">
             <h1 className="text-lg font-semibold text-foreground ps-2">
@@ -31,8 +33,10 @@ export default function OrdersHistory() {
 
             {/* order history */}
             <div className="flex flex-col mt-6 gap-10">
-                <OrderCard />
-                <OrderCard />
+                {orders?.map(order => (
+                    <OrderCard key={order._id} order={order} />
+                ))}
+
             </div>
         </main>
     );

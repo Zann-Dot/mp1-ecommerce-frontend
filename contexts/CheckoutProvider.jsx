@@ -1,6 +1,5 @@
 import { createContext, useContext, useReducer, useState } from "react";
 import useCartContext from "./CartProvider";
-import useFetch from "../src/hooks/useFetch";
 
 const CheckoutContext = createContext();
 const useCheckoutContext = () => useContext(CheckoutContext);
@@ -8,7 +7,6 @@ export default useCheckoutContext;
 
 export function CheckoutProvider({ children }) {
     const [reviewInfo, setReviewInfo] = useState([]);
-    const [order, setOrder] = useState([]);
     const { cart } = useCartContext();
     const [checkoutForm, setCheckoutForm] = useState({
         email: "",
@@ -83,16 +81,6 @@ export function CheckoutProvider({ children }) {
         return { productSummary, orderSummary, orderNumber };
     }
 
-    async function getOrdersDetails() {
-        try {
-            const response = await fetch("/api/orders");
-            const data = await response.json();
-            if (!response.ok) throw new Error(data.error);
-            setOrder(data);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
     return (
         <CheckoutContext.Provider
             value={{
@@ -103,8 +91,6 @@ export function CheckoutProvider({ children }) {
                 getCheckoutData,
                 reviewInfo,
                 getOrdersBody,
-                getOrdersDetails,
-                order,
             }}
         >
             {children}

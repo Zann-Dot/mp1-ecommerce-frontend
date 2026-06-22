@@ -20,12 +20,11 @@ import useCartContext from "../contexts/CartProvider";
 import useCheckoutContext from "../contexts/CheckoutProvider";
 
 function App() {
-    const { fetchProducts, getUser, fetchWishlistProducts } =
+    const { fetchProducts, getUser, fetchWishlistProducts, getOrdersDetails } =
         useEcommerceContext();
     const { loadCart, getPaymentSummary } = useCartContext();
     const location = useLocation();
     const { reviewInfo } = useCheckoutContext();
-
 
     useEffect(() => {
         window.HSStaticMethods.autoInit();
@@ -34,6 +33,7 @@ function App() {
         fetchWishlistProducts();
         loadCart();
         getPaymentSummary(reviewInfo[0]?.shipping);
+        getOrdersDetails();
     }, [location.pathname, reviewInfo[0]]);
 
     return (

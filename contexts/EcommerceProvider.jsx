@@ -6,6 +6,7 @@ export default useEcommerceContext;
 
 export function EcommerceProvider({ children }) {
     const [themeMode, setThemeMode] = useState(localStorage.getItem("theme"));
+    const [orders, setOrders] = useState([]);
     const [products, setProducts] = useState([]);
     const [user, setUser] = useState({});
     const [sort, setSort] = useState("");
@@ -90,6 +91,17 @@ export function EcommerceProvider({ children }) {
         fetchWishlistProducts();
     }
 
+    async function getOrdersDetails() {
+        try {
+            const response = await fetch("/api/orders");
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error);
+            setOrders(data);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     return (
         <EcommerceContext.Provider
             value={{
@@ -104,6 +116,8 @@ export function EcommerceProvider({ children }) {
                 fetchWishlistProducts,
                 wishlist,
                 handleWishlist,
+                getOrdersDetails,
+                orders
             }}
         >
             {children}
