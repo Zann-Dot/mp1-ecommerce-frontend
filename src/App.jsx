@@ -47,7 +47,7 @@ function App() {
                 <Route path="/search-result" element={<SearchResult />} />
                 <Route path="/checkout/review-and-pay" element={<ReviewAndPay />} />
                 <Route
-                    path="/checkout/review-and-pay/order-confirmation"
+                    path="/checkout/review-and-pay/order-confirmation/:orderNumber"
                     element={<OrderConfirmationPage />}
                 />
                 <Route path="/products/:productId" element={<ProductDetails />} />

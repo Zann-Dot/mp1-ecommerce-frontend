@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useState } from "react";
 import useCartContext from "./CartProvider";
+import useFetch from "../src/hooks/useFetch";
 
 const CheckoutContext = createContext();
 const useCheckoutContext = () => useContext(CheckoutContext);
@@ -7,6 +8,7 @@ export default useCheckoutContext;
 
 export function CheckoutProvider({ children }) {
     const [reviewInfo, setReviewInfo] = useState([]);
+    const [order, setOrder] = useState([]);
     const { cart } = useCartContext();
     const [checkoutForm, setCheckoutForm] = useState({
         email: "",
@@ -59,8 +61,16 @@ export function CheckoutProvider({ children }) {
         }
     }
 
+    function getOrderNumber() {
+        const now = new Date();
+        const datePart = `${now.getFullYear()}${String(now.getMonth() * 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`;
+        const random = Math.floor((Math.random() * 9000) + 1000)
+        return parseInt(`${datePart}${random}`);
+    }
+
     function getOrdersBody() {
         let orderSummary = {};
+        const orderNumber = getOrderNumber();
         const productSummary = cart?.map((item) => item.product._id);
         orderSummary.orderDate = Date();
         orderSummary.orderQuantity = cart?.map((item) => ({
@@ -70,7 +80,18 @@ export function CheckoutProvider({ children }) {
         orderSummary.deliveryAddress = reviewInfo[0]?.address;
         orderSummary.deliveryTime = reviewInfo[0]?.deliveryTime;
 
-        return { productSummary, orderSummary };
+        return { productSummary, orderSummary, orderNumber };
+    }
+
+    async function getOrdersDetails() {
+        try {
+            const response = await fetch("/api/orders");
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error);
+            setOrder(data);
+        } catch (error) {
+            console.error(error.message);
+        }
     }
     return (
         <CheckoutContext.Provider
@@ -82,6 +103,8 @@ export function CheckoutProvider({ children }) {
                 getCheckoutData,
                 reviewInfo,
                 getOrdersBody,
+                getOrdersDetails,
+                order,
             }}
         >
             {children}

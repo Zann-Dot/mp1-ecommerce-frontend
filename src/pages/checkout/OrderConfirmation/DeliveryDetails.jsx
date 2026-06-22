@@ -1,10 +1,11 @@
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 import { format } from "date-fns";
 import { useEffect } from "react";
 
 export default function DeliveryDetails() {
     const { reviewInfo, getCheckoutData } = useCheckoutContext();
+    const { orderNumber } = useParams();
     useEffect(() => {
         getCheckoutData();
     }, []);
@@ -19,7 +20,7 @@ export default function DeliveryDetails() {
                     </p>
                     <p className="text-sm">
                         Your order number is{" "}
-                        <span className="text-foreground font-medium">72813820</span>
+                        <span className="text-foreground font-medium">{orderNumber}</span>
                     </p>
                     <p className="text-sm">
                         An order confirmation has been sent to{" "}
@@ -30,8 +31,8 @@ export default function DeliveryDetails() {
                 </div>
 
                 <div className="inline-flex flex-wrap gap-3">
-                    <button
-                        type="button"
+                    <Link
+                        to="/user/account/myorders"
                         className="cursor-pointer py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="Print-Line--Streamline-Mingcute" height="16" width="16">
@@ -45,7 +46,7 @@ export default function DeliveryDetails() {
                         </svg>
                         Print confirmation
 
-                    </button>
+                    </Link>
                     <Link
                         to="/"
                         className="cursor-pointer py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-hover disabled:opacity-50 disabled:pointer-events-none"

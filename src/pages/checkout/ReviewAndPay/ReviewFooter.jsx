@@ -15,7 +15,7 @@ export default function ReviewFooter() {
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error);
-            data.success && navigate("/checkout/review-and-pay/order-confirmation")
+            data.success && navigate(`/checkout/review-and-pay/order-confirmation/${ordersBody.orderNumber}`)
         } catch (error) {
             console.error(error.message)
         }
