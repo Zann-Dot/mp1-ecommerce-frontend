@@ -157,7 +157,9 @@ export default function PaymentMethod() {
                     </label>
                 </div>
                 <p className="text-muted-foreground-1 mt-1 text-sm">
-                    {reviewInfo[0]?.address.city}, {reviewInfo[0]?.address.addressLine} <br />
+                    {reviewInfo[0]?.address.city}, {reviewInfo[0]?.address.addressLine}{" "}
+                    {reviewInfo[0]?.address.addressLine2}
+                    <br />
                     {reviewInfo[0]?.address.state}, {reviewInfo[0]?.address.pincode}, IN
                 </p>
             </div>

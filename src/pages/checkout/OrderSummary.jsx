@@ -3,7 +3,6 @@ import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
 
 export default function OrderSummary() {
     const { paymentSummary, cart } = useCartContext();
-    console.log(paymentSummary);
 
     return (
         <div className="before:hidden md:before:block before:absolute before:inset-y-0 before:inset-s-1/2 before:-z-1 before:inset-e-0 before:bg-background-1">

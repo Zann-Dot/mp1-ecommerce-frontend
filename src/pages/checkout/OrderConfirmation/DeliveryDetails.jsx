@@ -7,7 +7,7 @@ export default function DeliveryDetails() {
     const { reviewInfo, getCheckoutData } = useCheckoutContext();
     useEffect(() => {
         getCheckoutData();
-    }, [])
+    }, []);
 
     return (
         <div className="py-14 flex flex-col gap-20">
