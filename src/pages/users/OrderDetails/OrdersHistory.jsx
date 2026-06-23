@@ -33,6 +33,9 @@ export default function OrdersHistory() {
 
             {/* order history */}
             <div className="flex flex-col mt-6 gap-10">
+                {!orders || orders.length === 0 && (
+                    <p className="text-2xl ps-2 font-medium">No Orders!</p>
+                )}
                 {orders?.map(order => (
                     <OrderCard key={order._id} order={order} />
                 ))}

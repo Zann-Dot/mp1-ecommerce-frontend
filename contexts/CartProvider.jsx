@@ -68,6 +68,18 @@ export function CartProvider({ children }) {
         await getPaymentSummary();
     }
 
+    async function deleteCart() {
+        const res = await fetch(`/api/cart`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" }
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message);
+        await loadCart();
+        await getPaymentSummary();
+        return data.success;
+    }
+
     return (
         <CartContext.Provider
             value={{
@@ -78,7 +90,8 @@ export function CartProvider({ children }) {
                 addToCart,
                 totalQuantity,
                 deleteFromCart,
-                emptyCart
+                emptyCart,
+                deleteCart
             }}
         >
             {children}

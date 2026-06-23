@@ -75,7 +75,7 @@ export default function OrderSummary() {
                                                 item.product.discount,
                                                 item.product.priceRupees,
                                             )
-                                            : product.priceRupees}
+                                            : item.product.priceRupees}
                                     </h2>
                                 </div>
                             </div>

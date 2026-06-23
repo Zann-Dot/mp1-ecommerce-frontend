@@ -1,13 +1,10 @@
 import { format } from "date-fns";
-import useCartContext from "../../../../contexts/CartProvider";
 import { useEffect } from "react";
 import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 import calculateDiscountedPrice from "../../../utilis/calculateDiscountedPrice";
 
 export default function OrderCard({ order }) {
-    const { paymentSummary } = useCartContext();
     const { getCheckoutData } = useCheckoutContext();
-
     useEffect(() => {
         getCheckoutData();
     }, []);
@@ -69,7 +66,7 @@ export default function OrderCard({ order }) {
                 <div>
                     <h1 className="font-normal text-muted-foreground-1 text-xs">Total</h1>
                     <span className="text-foreground text-[13px]">
-                        ₹{paymentSummary?.netTotal}
+                        ₹
                     </span>
                 </div>
             </div>
@@ -209,14 +206,14 @@ export default function OrderCard({ order }) {
                 </div>
                 <hr />
 
-                {order?.productSummary?.map((product) => (
-                    <div key={product._id}>
+                {order?.orderSummary.cartItems?.map((item) => (
+                    <div key={item._id}>
                         <section>
                             <div className="h-45 full flex flex-col sm:flex-row gap-5 items-start">
                                 <div className="h-full w-35 rounded-xl overflow-hidden shrink-0">
                                     <img
-                                        src={product.imageUrl}
-                                        alt={product.productName.split(" ").splice(0, 3).join(" ")}
+                                        src={item.product.imageUrl}
+                                        alt={item.product.productName.split(" ").splice(0, 3).join(" ")}
                                         className="size-1/1 object-cover"
                                     />
                                 </div>
@@ -224,16 +221,16 @@ export default function OrderCard({ order }) {
                                 <div className="flex-1 w-full flex flex-col justify-between self-stretch gap-1">
                                     <div>
                                         <h4 className="text-base text-foreground tracking-wide">
-                                            {product.productName}
+                                            {item.product.productName}
                                         </h4>
                                         <p className="text-base text-foreground mt-1">
                                             ₹
-                                            {product.isDiscount
+                                            {item.product.isDiscount
                                                 ? calculateDiscountedPrice(
-                                                    product.discount,
-                                                    product.priceRupees,
+                                                    item.product.discount,
+                                                    item.product.priceRupees,
                                                 )
-                                                : product.priceRupees}
+                                                : item.product.priceRupees}
                                         </p>
                                     </div>
 
@@ -245,19 +242,13 @@ export default function OrderCard({ order }) {
                                         <div className="flex flex-col gap-y-0.5">
                                             <span className="text-muted-foreground">Size</span>
                                             <span>
-                                                {/* {order?.orderSummary.orderQuantity.map(
-                                                    (item) =>
-                                                        item.productId === product._id && item.size,
-                                                )} */}
+                                                {item.size}
                                             </span>
                                         </div>
                                         <div className="flex flex-col gap-y-0.5">
                                             <span className="text-muted-foreground">Quantity</span>
                                             <span>
-                                                {order?.orderSummary.cartItems.map(
-                                                    (item) =>
-                                                        item.productId === product._id && item.quantity,
-                                                )}
+                                                {item.quantity}
                                             </span>
                                         </div>
                                     </div>
@@ -279,7 +270,7 @@ export default function OrderCard({ order }) {
                                 </div>
                             </div>
                         </section>
-                        {order?.productSummary.length > 1 && <hr />}
+                        {order?.orderSummary.cartItems?.length > 1 && <hr className="mt-7" />}
                     </div>
                 ))}
             </div>

@@ -69,17 +69,16 @@ export function CheckoutProvider({ children }) {
     function getOrdersBody() {
         let orderSummary = {};
         const orderNumber = getOrderNumber();
-        const productSummary = cart?.map((item) => item.product._id);
-        orderSummary.orderDate = Date();
+        orderSummary.orderDate = new Date().getTime();
         orderSummary.cartItems = cart?.map((item) => ({
-            productId: item.product._id,
+            product: item.product._id,
             quantity: item.quantity,
             size: item.size
         }));
         orderSummary.deliveryAddress = reviewInfo[0]?.address;
         orderSummary.deliveryTime = reviewInfo[0]?.deliveryTime;
 
-        return { productSummary, orderSummary, orderNumber };
+        return { orderSummary, orderNumber };
     };
 
     return (
