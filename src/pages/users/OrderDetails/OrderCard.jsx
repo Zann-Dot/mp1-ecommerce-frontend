@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import useCartContext from "../../../../contexts/CartProvider";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 import calculateDiscountedPrice from "../../../utilis/calculateDiscountedPrice";
 
@@ -39,9 +39,11 @@ export default function OrderCard({ order }) {
                         Status
                     </h1>
                     <div className="inline-flex items-center">
-                        <span className="size-2 inline-block bg-green-500 rounded-full me-2"></span>
+                        {!isDelivered && (
+                            <span className="size-2 inline-block bg-green-500 rounded-full me-2"></span>
+                        )}
                         <span className="text-foreground text-[13px]">
-                            Order in progress
+                            {isDelivered ? "Delivered" : "Order in progress"}
                         </span>
                     </div>
                 </div>

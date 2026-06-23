@@ -74,12 +74,13 @@ export function CheckoutProvider({ children }) {
         orderSummary.orderQuantity = cart?.map((item) => ({
             productId: item.product._id,
             quantity: item.quantity,
+            size: item.size
         }));
         orderSummary.deliveryAddress = reviewInfo[0]?.address;
         orderSummary.deliveryTime = reviewInfo[0]?.deliveryTime;
 
         return { productSummary, orderSummary, orderNumber };
-    }
+    };
 
     return (
         <CheckoutContext.Provider
