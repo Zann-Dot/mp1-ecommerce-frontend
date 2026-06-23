@@ -4,9 +4,11 @@ import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 import calculateDiscountedPrice from "../../../utilis/calculateDiscountedPrice";
 
 export default function OrderCard({ order }) {
-    const { getCheckoutData } = useCheckoutContext();
+    const { getCheckoutData, getTotalOrderAmount, totalOrderAmount } = useCheckoutContext();
     useEffect(() => {
         getCheckoutData();
+        getTotalOrderAmount(order?.orderNumber);
+
     }, []);
 
     function calculateDeliveryTime() {
@@ -66,7 +68,7 @@ export default function OrderCard({ order }) {
                 <div>
                     <h1 className="font-normal text-muted-foreground-1 text-xs">Total</h1>
                     <span className="text-foreground text-[13px]">
-                        ₹
+                        ₹{totalOrderAmount}
                     </span>
                 </div>
             </div>

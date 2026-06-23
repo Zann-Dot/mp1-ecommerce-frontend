@@ -7,6 +7,7 @@ export default useCheckoutContext;
 
 export function CheckoutProvider({ children }) {
     const [reviewInfo, setReviewInfo] = useState([]);
+    const [totalOrderAmount, setTotalOrderAmount] = useState(null);
     const { cart } = useCartContext();
     const [checkoutForm, setCheckoutForm] = useState({
         email: "",
@@ -70,16 +71,27 @@ export function CheckoutProvider({ children }) {
         let orderSummary = {};
         const orderNumber = getOrderNumber();
         orderSummary.orderDate = new Date().getTime();
+        orderSummary.deliveryAddress = reviewInfo[0]?.address;
+        orderSummary.deliveryTime = reviewInfo[0]?.deliveryTime;
         orderSummary.cartItems = cart?.map((item) => ({
             product: item.product._id,
             quantity: item.quantity,
             size: item.size
         }));
-        orderSummary.deliveryAddress = reviewInfo[0]?.address;
-        orderSummary.deliveryTime = reviewInfo[0]?.deliveryTime;
 
         return { orderSummary, orderNumber };
     };
+
+    async function getTotalOrderAmount(orderNumber) {
+        try {
+            const res = await fetch(`/api/paymentSummary/order/${orderNumber}`);
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error);
+            setTotalOrderAmount(data.totalOrderAmount)
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
 
     return (
         <CheckoutContext.Provider
@@ -91,6 +103,8 @@ export function CheckoutProvider({ children }) {
                 getCheckoutData,
                 reviewInfo,
                 getOrdersBody,
+                getTotalOrderAmount,
+                totalOrderAmount
             }}
         >
             {children}
