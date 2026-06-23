@@ -71,7 +71,7 @@ export function CheckoutProvider({ children }) {
         const orderNumber = getOrderNumber();
         const productSummary = cart?.map((item) => item.product._id);
         orderSummary.orderDate = Date();
-        orderSummary.orderQuantity = cart?.map((item) => ({
+        orderSummary.cartItems = cart?.map((item) => ({
             productId: item.product._id,
             quantity: item.quantity,
             size: item.size

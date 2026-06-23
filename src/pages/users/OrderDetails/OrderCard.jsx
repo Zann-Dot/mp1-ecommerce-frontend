@@ -254,7 +254,7 @@ export default function OrderCard({ order }) {
                                         <div className="flex flex-col gap-y-0.5">
                                             <span className="text-muted-foreground">Quantity</span>
                                             <span>
-                                                {order?.orderSummary.orderQuantity.map(
+                                                {order?.orderSummary.cartItems.map(
                                                     (item) =>
                                                         item.productId === product._id && item.quantity,
                                                 )}
