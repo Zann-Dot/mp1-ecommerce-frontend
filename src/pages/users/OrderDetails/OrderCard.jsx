@@ -8,11 +8,11 @@ export default function OrderCard({ order }) {
     useEffect(() => {
         getCheckoutData();
         getTotalOrderAmount(order?.orderNumber);
-
     }, []);
+    console.log(order);
 
     function calculateDeliveryTime() {
-        const orderDate = new Date(order?.orderSummary.orderDate).getTime();
+        const orderDate = order?.orderSummary.orderDate;
         const deliveryTime = order?.orderSummary.deliveryTime;
         const expectedTime = new Date(orderDate + deliveryTime);
         return expectedTime;
@@ -25,8 +25,7 @@ export default function OrderCard({ order }) {
 
     const isDelivered = calculateDeliveryTime() <= new Date();
     const timePassed =
-        order?.orderSummary.deliveryTime / 2 +
-        new Date(order?.orderSummary.orderDate).getTime();
+        order?.orderSummary.deliveryTime / 2 + order?.orderSummary.orderDate;
     const isShipped = new Date().getTime() >= timePassed;
 
     return (

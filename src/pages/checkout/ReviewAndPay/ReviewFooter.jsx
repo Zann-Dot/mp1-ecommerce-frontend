@@ -9,6 +9,8 @@ export default function ReviewFooter() {
 
     async function postOrder() {
         const ordersBody = getOrdersBody();
+        console.log(ordersBody);
+
         try {
             const res = await fetch("/api/orders", {
                 method: "POST",
