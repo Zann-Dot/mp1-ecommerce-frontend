@@ -4,12 +4,12 @@ import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 import calculateDiscountedPrice from "../../../utilis/calculateDiscountedPrice";
 
 export default function OrderCard({ order }) {
-    const { getCheckoutData, getTotalOrderAmount, totalOrderAmount } = useCheckoutContext();
+    const { getCheckoutData, getTotalOrderAmount, totalOrderAmount } =
+        useCheckoutContext();
     useEffect(() => {
         getCheckoutData();
         getTotalOrderAmount(order?.orderNumber);
     }, []);
-    console.log(order);
 
     function calculateDeliveryTime() {
         const orderDate = order?.orderSummary.orderDate;
@@ -214,7 +214,10 @@ export default function OrderCard({ order }) {
                                 <div className="h-full w-35 rounded-xl overflow-hidden shrink-0">
                                     <img
                                         src={item.product.imageUrl}
-                                        alt={item.product.productName.split(" ").splice(0, 3).join(" ")}
+                                        alt={item.product.productName
+                                            .split(" ")
+                                            .splice(0, 3)
+                                            .join(" ")}
                                         className="size-1/1 object-cover"
                                     />
                                 </div>
@@ -242,15 +245,11 @@ export default function OrderCard({ order }) {
                                         </div>
                                         <div className="flex flex-col gap-y-0.5">
                                             <span className="text-muted-foreground">Size</span>
-                                            <span>
-                                                {item.size}
-                                            </span>
+                                            <span>{item.size}</span>
                                         </div>
                                         <div className="flex flex-col gap-y-0.5">
                                             <span className="text-muted-foreground">Quantity</span>
-                                            <span>
-                                                {item.quantity}
-                                            </span>
+                                            <span>{item.quantity}</span>
                                         </div>
                                     </div>
 
@@ -271,7 +270,9 @@ export default function OrderCard({ order }) {
                                 </div>
                             </div>
                         </section>
-                        {order?.orderSummary.cartItems?.length > 1 && <hr className="mt-7" />}
+                        {order?.orderSummary.cartItems?.length > 1 && (
+                            <hr className="mt-7" />
+                        )}
                     </div>
                 ))}
             </div>
