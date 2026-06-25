@@ -3,23 +3,23 @@ import AddressFormModel from "./AddressFormModel";
 
 export default function AddressDisplay() {
     const { user } = useEcommerceContext();
-    console.log(user);
-
     return (
         <main className="w-full">
             <h1 className="text-lg font-semibold text-foreground">Addresses</h1>
             <div className="grid grid-cols-3 gap-4 mt-5">
                 {user?.address?.map((address) => (
-                    <div className="relative p-1.25  bg-surface rounded-2xl">
+                    <div key={address._id} className="relative p-1.25  bg-surface rounded-2xl">
                         <div className="flex flex-col pb-6 bg-card shadow-2xs rounded-xl">
                             <div className="p-4  ">
                                 <div className="flex items-center">
                                     <h3 className="font-semibold text-base text-foreground">
                                         New Delhi
                                     </h3>
-                                    <span className="inline-flex items-center gap-x-1.5 py-1 px-3 ms-auto rounded-full text-[11px] font-medium bg-primary-100 text-primary-800 dark:bg-primary-500/20 dark:text-primary-400">
-                                        Default
-                                    </span>
+                                    {address.isDefault && (
+                                        <span className="inline-flex items-center gap-x-1.5 py-1 px-3 ms-auto rounded-full text-[11px] font-medium bg-primary-100 text-primary-800 dark:bg-primary-500/20 dark:text-primary-400">
+                                            Default
+                                        </span>
+                                    )}
                                 </div>
                                 <div className="mt-1 text-muted-foreground-2 text-sm flex flex-col gap-px">
                                     <span>
@@ -67,7 +67,7 @@ export default function AddressDisplay() {
 
                 <div className="relative p-1.25  bg-surface rounded-2xl">
                     <div className="flex flex-col pb-6 bg-card shadow-2xs rounded-xl">
-                        <div className="p-4  ">
+                        <div className="p-4">
                             <div className="flex items-center">
                                 <h3 className="font-semibold text-base text-foreground">
                                     New Delhi
@@ -119,7 +119,7 @@ export default function AddressDisplay() {
                     aria-expanded="false"
                     aria-controls="hs-scroll-inside-body-modal"
                     data-hs-overlay="#hs-scroll-inside-body-modal"
-                    className="p-1.25 border border-line-2 border-dashed cursor-pointer hover:border-line-4 rounded-2xl flex flex-col items-center justify-center gap-2"
+                    className="h-56.25 p-1.25 border border-line-2 border-dashed cursor-pointer hover:border-line-4 rounded-2xl flex flex-col items-center justify-center gap-2"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +143,7 @@ export default function AddressDisplay() {
                     </svg>
                     <h2>Add address</h2>
                 </button>
-                <AddressFormModel />
+                <AddressFormModel user={user} />
             </div>
         </main>
     );
