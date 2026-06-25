@@ -13,7 +13,7 @@ export default function AddressDisplay() {
                             <div className="p-4  ">
                                 <div className="flex items-center">
                                     <h3 className="font-semibold text-base text-foreground">
-                                        New Delhi
+                                        {address.city}
                                     </h3>
                                     {address.isDefault && (
                                         <span className="inline-flex items-center gap-x-1.5 py-1 px-3 ms-auto rounded-full text-[11px] font-medium bg-primary-100 text-primary-800 dark:bg-primary-500/20 dark:text-primary-400">
