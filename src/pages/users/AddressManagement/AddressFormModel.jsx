@@ -127,18 +127,33 @@ export default function AddressFormModel() {
                                         placeholder="Phone number"
                                     />
                                 </div>
+
+                                <div className="w-full col-span-2 flex gap-x-2 items-center">
+                                    <input
+                                        type="checkbox"
+                                        className="shrink-0 size-4 bg-transparent border-line-3 rounded-sm shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
+                                        id="hs-default-checkbox"
+                                    />
+
+                                    <label
+                                        htmlFor="input-base"
+                                        className="block text-sm font-medium text-foreground"
+                                    >
+                                        Make this my default address
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div className="flex flex-col justify-end gap-2 items-center gap-x-2 p-8 pt-2">
                             <button
                                 type="button"
-                                className="w-full py-3 px-3 inline-flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus disabled:opacity-50 disabled:pointer-events-none"
+                                className="cursor-pointer w-full py-3 px-3 inline-flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                             >
                                 Add address
                             </button>
                             <button
                                 type="button"
-                                className="w-full py-3 px-3 inline-flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus disabled:opacity-50 disabled:pointer-events-none"
+                                className="cursor-pointer w-full py-3 px-3 inline-flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus disabled:opacity-50 disabled:pointer-events-none"
                                 data-hs-overlay="#hs-scroll-inside-body-modal"
                             >
                                 Cancel
