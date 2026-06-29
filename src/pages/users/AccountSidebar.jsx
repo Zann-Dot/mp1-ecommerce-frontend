@@ -1,22 +1,43 @@
-import React from "react";
 import { Link } from "react-router";
 
 export default function AccountSidebar() {
     return (
         <>
             {/* Navigation Toggle */}
-            <div className="lg:hidden py-16 text-center">
-                <button
-                    type="button"
-                    className="py-2 px-3 inline-flex justify-center items-center gap-x-2 text-start bg-secondary border border-secondary-line text-secondary-foreground text-sm font-medium rounded-lg shadow-2xs hover:bg-secondary-hover focus:outline-hidden focus:bg-secondary-focus"
-                    aria-haspopup="dialog"
-                    aria-expanded="false"
-                    aria-controls="hs-sidebar-basic-usage"
-                    aria-label="Toggle navigation"
-                    data-hs-overlay="#hs-sidebar-basic-usage"
-                >
-                    Open
-                </button>
+            <div className="lg:hidden text-center">
+                <ol className="flex items-center whitespace-nowrap ">
+                    <li className="inline-flex items-center">
+                        <Link
+                            className="flex items-center text-sm text-muted-foreground-1 hover:text-primary-focus focus:outline-hidden focus:text-primary-focus"
+                            to="/user/account"
+                        >
+                            Account
+                        </Link>
+                        <svg
+                            className="shrink-0 mx-2 size-5 text-muted-foreground"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M6 13L10 3"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                            />
+                        </svg>
+                    </li>
+                    <li className="inline-flex items-center">
+                        <Link
+                            className="flex items-center text-sm text-muted-foreground-1 hover:text-primary-focus focus:outline-hidden focus:text-primary-focus"
+                            to="/user/account/addresses"
+                        >
+                            My Address
+                        </Link>
+                    </li>
+                </ol>
             </div>
             {/* End Navigation Toggle */}
 
@@ -41,33 +62,6 @@ bg-sidebar border-e pe-3 border-sidebar-line"
                             aria-label="Brand"
                         >
                             Account
-                        </div>
-
-                        <div className="lg:hidden -me-2">
-                            {/* Close Button */}
-                            <button
-                                type="button"
-                                className="flex justify-center items-center gap-x-3 size-6 bg-layer border border-layer-line text-sm text-muted-foreground-2 hover:bg-layer-hover rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-layer-focus"
-                                data-hs-overlay="#hs-sidebar-basic-usage"
-                            >
-                                <svg
-                                    className="shrink-0 size-4"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <path d="M18 6 6 18" />
-                                    <path d="m6 6 12 12" />
-                                </svg>
-                                <span className="sr-only">Close</span>
-                            </button>
-                            {/* End Close Button */}
                         </div>
                     </header>
                     {/* End Header */}

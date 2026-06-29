@@ -3,16 +3,19 @@ import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import AddressFormModel from "./AddressFormModel";
 
 export default function AddressDisplay() {
-    const { user, setAddressToDefault } = useEcommerceContext();
+    const { user, setAddressToDefault, removeAddress } = useEcommerceContext();
     const [currentAddress, setCurrentAddress] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <main className="w-full">
             <h1 className="text-lg font-semibold text-foreground">Addresses</h1>
-            <div className="grid grid-cols-3 gap-4 mt-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-5">
                 {user?.address?.map((address) => (
-                    <div key={address._id} className="relative p-1.25  bg-surface rounded-2xl">
+                    <div
+                        key={address._id}
+                        className="relative p-1.25  bg-surface rounded-2xl"
+                    >
                         <div className="flex flex-col pb-6 bg-card shadow-2xs rounded-xl">
                             <div className="p-4  ">
                                 <div className="flex items-center">
@@ -46,7 +49,10 @@ export default function AddressDisplay() {
                             <button
                                 type="button"
                                 className="cursor-pointer text-foreground underline underline-offset-4 decoration-foreground hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                onClick={() => { setCurrentAddress(address); setIsOpen(true); }}
+                                onClick={() => {
+                                    setCurrentAddress(address);
+                                    setIsOpen(true);
+                                }}
                             >
                                 Edit
                             </button>
@@ -56,6 +62,7 @@ export default function AddressDisplay() {
                             <button
                                 className="cursor-pointer disabled:no-underline disabled:text-muted-foreground disabled:hover:opacity-100 text-foreground underline underline-offset-4 decoration-foreground hover:opacity-80 focus:outline-hidden focus:opacity-80"
                                 disabled={address?.isDefault}
+                                onClick={() => removeAddress(address?._id)}
                             >
                                 Remove
                             </button>
@@ -76,7 +83,8 @@ export default function AddressDisplay() {
                 <button
                     type="button"
                     onClick={() => {
-                        setCurrentAddress(null); setIsOpen(true);
+                        setCurrentAddress(null);
+                        setIsOpen(true);
                     }}
                     className="h-56.25 p-1.25 border border-line-2 border-dashed cursor-pointer hover:border-line-4 rounded-2xl flex flex-col items-center justify-center gap-2"
                 >
@@ -103,7 +111,11 @@ export default function AddressDisplay() {
                     <h2>Add address</h2>
                 </button>
 
-                <AddressFormModel user={user} currentAddress={currentAddress} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+                <AddressFormModel
+                    currentAddress={currentAddress}
+                    isOpen={isOpen}
+                    onClose={() => setIsOpen(false)}
+                />
             </div>
         </main>
     );

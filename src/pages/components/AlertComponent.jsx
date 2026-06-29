@@ -2,7 +2,7 @@ import { motion } from "motion/react"
 export default function AlertComponent({ headingMessage, subHeadingMessage }) {
     return (
         <motion.div
-            className="flex flex-col gap-y-2 absolute top-5 left-1/4 right-1/4 z-200"
+            className="flex flex-col gap-y-2 absolute top-5 left-2 right-2 lg:left-1/4 lg:right-1/4 z-200"
             initial={{ translateY: -15 }}
             animate={{ translateY: 0 }}
             transition={{ ease: "easeOut", duration: 0.1 }}

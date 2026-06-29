@@ -1,20 +1,19 @@
-import AlertComponent from "./AlertComponent";
+import AlertComponent from "../../components/AlertComponent";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import { useEffect } from "react";
+import ErrorAlert from "../../components/ErrorAlert";
 
 export default function AddressFormModel({
-   user,
    currentAddress,
    isOpen,
    onClose,
 }) {
-   const { getUser, setAddressToDefault, alert, dispatch } =
+   const { getUser, setAddressToDefault, alert, updateAddressList } =
       useEcommerceContext();
 
    useEffect(() => {
       getUser();
    }, [alert]);
-
 
    async function saveNewAddress(formData) {
       const addressLine = formData.get("addressLine");
@@ -33,27 +32,7 @@ export default function AddressFormModel({
          altPhoneNumber,
       };
 
-      try {
-         const response = await fetch(
-            `/api/user/address/${user?._id}${currentAddress ? `?addressId=${currentAddress._id}` : ""}`,
-            {
-               method: "PUT",
-               headers: { "Content-Type": "application/json" },
-               body: JSON.stringify(updatedAddress),
-            },
-         );
-         const data = await response.json();
-         if (!response.ok) throw new Error(data.error);
-         data.success &&
-            dispatch({
-               type: "addressUpdateForm",
-               heading: "Address updated successfully",
-               subHeading: "You have successfully updated your address.",
-            });
-
-      } catch (error) {
-         console.error(error.message);
-      }
+      await updateAddressList(currentAddress, updatedAddress);
    }
 
    if (!isOpen) return null;
@@ -68,6 +47,12 @@ export default function AddressFormModel({
                if (e.target === e.currentTarget) onClose();
             }}
          >
+            {alert?.type === "addressUpdateFormError" && (
+               <ErrorAlert
+                  headingMessage={alert?.headingMessage}
+                  subHeadingMessage={alert?.subHeadingMessage}
+               />
+            )}
             {alert?.type === "addressUpdateForm" && (
                <AlertComponent
                   headingMessage={alert?.headingMessage}

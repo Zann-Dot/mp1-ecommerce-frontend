@@ -4,7 +4,7 @@ const EcommerceContext = createContext();
 const useEcommerceContext = () => useContext(EcommerceContext);
 export default useEcommerceContext;
 
-function alertReducer(action) {
+function alertReducer(alert, action) {
     switch (action.type) {
         case "setToDefault":
             return {
@@ -20,6 +20,19 @@ function alertReducer(action) {
                 subHeadingMessage: action.subHeading
             };
 
+        case "removeAddress":
+            return {
+                type: action.type,
+                headingMessage: action.heading,
+                subHeadingMessage: action.subHeading
+            };
+
+        case "addressUpdateFormError":
+            return {
+                type: action.type,
+                headingMessage: action.heading,
+                subHeadingMessage: action.subHeading
+            };
     }
 }
 
@@ -138,10 +151,41 @@ export function EcommerceProvider({ children }) {
             );
             const data = await res.json();
             if (!res.ok) throw new Error(data.error);
+
             data.success && dispatch({
                 type: "setToDefault",
                 heading: "Address set to default",
                 subHeading: "You have successfully updated your address to default"
+            });
+
+            setTimeout(() => {
+                dispatch({
+                    type: "",
+                    headingMessage: "",
+                    subHeadingMessage: "",
+                })
+            }, 3000);
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    async function removeAddress(addressId) {
+        try {
+            const res = await fetch(
+                `/api/user/remove/${user?._id}/${addressId}`,
+                {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                },
+            );
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error);
+            data.success && dispatch({
+                type: "removeAddress",
+                heading: "Address removed successfully",
+                subHeading: "You have successfully removed your address."
             });
 
             setTimeout(() => {
@@ -157,6 +201,54 @@ export function EcommerceProvider({ children }) {
         }
     }
 
+    async function updateAddressList(currentAddress, updatedAddress) {
+        try {
+            const response = await fetch(
+                `/api/user/address/${user?._id}${currentAddress ? `?addressId=${currentAddress._id}` : ""}`,
+                {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(updatedAddress),
+                },
+            );
+            const data = await response.json();
+
+            if (!response.ok) {
+                dispatch({
+                    type: "addressUpdateFormError",
+                    heading: "Incomplete Address",
+                    subHeading: data.error,
+                });
+
+                setTimeout(() => {
+                    dispatch({
+                        type: "",
+                        headingMessage: "",
+                        subHeadingMessage: "",
+                    });
+                }, 1700);
+
+                throw new Error(data.error)
+            };
+
+            data.success &&
+                dispatch({
+                    type: "addressUpdateForm",
+                    heading: "Address updated successfully",
+                    subHeading: "You have successfully updated your address.",
+                });
+
+            setTimeout(() => {
+                dispatch({
+                    type: "",
+                    headingMessage: "",
+                    subHeadingMessage: "",
+                });
+            }, 3000);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
     return (
         <EcommerceContext.Provider
             value={{
@@ -175,7 +267,9 @@ export function EcommerceProvider({ children }) {
                 orders,
                 setAddressToDefault,
                 alert,
-                dispatch
+                dispatch,
+                removeAddress,
+                updateAddressList
             }}
         >
             {children}
