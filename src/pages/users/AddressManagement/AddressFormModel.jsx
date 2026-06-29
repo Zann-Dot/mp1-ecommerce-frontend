@@ -3,41 +3,45 @@ import AlertComponent from "./AlertComponent";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import { useEffect } from "react";
 
-export default function AddressFormModel({ user }) {
+export default function AddressFormModel({
+   user,
+   currentAddress,
+   isOpen,
+   onClose,
+}) {
    const [alert, setAlert] = useState(false);
    const { getUser } = useEcommerceContext();
    useEffect(() => {
       getUser();
    }, [alert]);
+   console.log(currentAddress);
 
    async function saveNewAddress(formData) {
       const addressLine = formData.get("addressLine");
       const city = formData.get("city");
       const state = formData.get("state");
       const pincode = formData.get("pincode");
-      const phoneNumber = formData.get("phoneNumber");
+      const altPhoneNumber = formData.get("phoneNumber");
       const isDefault = formData.get("default") === "on";
 
       const updatedAddress = {
-         address: [
-            ...user?.address,
-            {
-               addressLine,
-               city,
-               state,
-               pincode,
-               phoneNumber,
-               isDefault,
-            },
-         ],
+         addressLine,
+         city,
+         state,
+         pincode,
+         isDefault,
+         altPhoneNumber,
       };
 
       try {
-         const response = await fetch(`/api/user/${user?._id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(updatedAddress),
-         });
+         const response = await fetch(
+            `/api/user/address/${user?._id}${currentAddress ? `?addressId=${currentAddress._id}` : ""}`,
+            {
+               method: "PUT",
+               headers: { "Content-Type": "application/json" },
+               body: JSON.stringify(updatedAddress),
+            },
+         );
          const data = await response.json();
          if (!response.ok) throw new Error(data.error);
          data.success && setAlert(true);
@@ -45,17 +49,37 @@ export default function AddressFormModel({ user }) {
          console.error(error.message);
       }
    }
+
+   async function setAddressToDefault(e) {
+      try {
+         const res = await fetch(`/api/user/defaultAddress/${user?._id}/${currentAddress?._id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ isDefault: e.target.checked })
+         });
+         const data = await res.json();
+         if (!res.ok) throw new Error(data.error);
+         console.log(data);
+
+      } catch (error) {
+         console.error(error.message)
+      }
+   }
+
+   if (!isOpen) return null;
    return (
       <>
          <div
-            id="hs-scroll-inside-body-modal"
-            className="hs-overlay hidden size-full fixed top-0 inset-s-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none"
+            className="size-full fixed top-0 inset-s-0 z-80 overflow-x-hidden overflow-y-auto bg-black/50 flex items-center justify-center"
             role="dialog"
             tabIndex="-1"
             aria-labelledby="hs-scroll-inside-body-modal-label"
+            onClick={(e) => {
+               if (e.target === e.currentTarget) onClose();
+            }}
          >
             {alert && <AlertComponent />}
-            <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-xl sm:w-full m-3 h-[calc(100%-56px)] sm:mx-auto">
+            <div className="sm:max-w-xl sm:w-full m-3 h-[calc(100%-56px)] sm:mx-auto">
                <div className="max-h-full overflow-hidden flex flex-col bg-overlay border border-overlay-line shadow-2xs rounded-xl pointer-events-auto">
                   <div className="flex justify-between px-8 items-center py-4 border-b border-overlay-header">
                      <h3
@@ -68,7 +92,7 @@ export default function AddressFormModel({ user }) {
                         type="button"
                         className="size-8 inline-flex justify-center items-center gap-x-2 rounded-full bg-surface border border-surface-line text-surface-foreground hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus disabled:opacity-50 disabled:pointer-events-none"
                         aria-label="Close"
-                        data-hs-overlay="#hs-scroll-inside-body-modal"
+                        onClick={onClose}
                      >
                         <span className="sr-only">Close</span>
                         <svg
@@ -105,6 +129,7 @@ export default function AddressFormModel({ user }) {
                                  className="py-2.5 sm:py-3 px-4 rounded-lg block w-full bg-layer border-layer-line sm:text-sm text-foreground placeholder:text-muted-foreground-1 focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                                  placeholder="Address line"
                                  name="addressLine"
+                                 defaultValue={currentAddress?.addressLine ?? ""}
                               />
                            </div>
                            <div className="w-full space-y-3 col-span-2">
@@ -120,6 +145,7 @@ export default function AddressFormModel({ user }) {
                                  className="py-2.5 sm:py-3 px-4 rounded-lg block w-full bg-layer border-layer-line sm:text-sm text-foreground placeholder:text-muted-foreground-1 focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                                  placeholder="City"
                                  name="city"
+                                 defaultValue={currentAddress?.city ?? ""}
                               />
                            </div>
                            <div className="w-full space-y-3 col-span-1">
@@ -135,6 +161,7 @@ export default function AddressFormModel({ user }) {
                                  className="py-2.5 sm:py-3 px-4 rounded-lg block w-full bg-layer border-layer-line sm:text-sm text-foreground placeholder:text-muted-foreground-1 focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                                  placeholder="State"
                                  name="state"
+                                 defaultValue={currentAddress?.state ?? ""}
                               />
                            </div>
                            <div className="w-full space-y-3 col-span-1">
@@ -150,6 +177,7 @@ export default function AddressFormModel({ user }) {
                                  className="py-2.5 sm:py-3 px-4 rounded-lg block w-full bg-layer border-layer-line sm:text-sm text-foreground placeholder:text-muted-foreground-1 focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                                  placeholder="Pincode"
                                  name="pincode"
+                                 defaultValue={currentAddress?.pincode ?? ""}
                               />
                            </div>
                            <div className="w-full space-y-3 col-span-2">
@@ -165,6 +193,7 @@ export default function AddressFormModel({ user }) {
                                  className="py-2.5 sm:py-3 px-4 rounded-lg block w-full bg-layer border-layer-line sm:text-sm text-foreground placeholder:text-muted-foreground-1 focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                                  placeholder="Phone number"
                                  name="phoneNumber"
+                                 defaultValue={currentAddress?.altPhoneNumber ?? ""}
                               />
                            </div>
 
@@ -174,8 +203,9 @@ export default function AddressFormModel({ user }) {
                                  className="shrink-0 size-4 bg-transparent border-line-3 rounded-sm shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                                  id="hs-default-checkbox"
                                  name="default"
+                                 defaultChecked={currentAddress?.isDefault}
+                                 onChange={setAddressToDefault}
                               />
-
                               <label
                                  htmlFor="input-base"
                                  className="block text-sm font-medium text-foreground"
@@ -195,7 +225,7 @@ export default function AddressFormModel({ user }) {
                         <button
                            type="button"
                            className="cursor-pointer w-full py-3 px-3 inline-flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus disabled:opacity-50 disabled:pointer-events-none"
-                           data-hs-overlay="#hs-scroll-inside-body-modal"
+                           onClick={onClose}
                         >
                            Cancel
                         </button>

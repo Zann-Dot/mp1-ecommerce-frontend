@@ -1,8 +1,11 @@
+import { useState } from "react";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import AddressFormModel from "./AddressFormModel";
 
 export default function AddressDisplay() {
     const { user } = useEcommerceContext();
+    const [currentAddress, setCurrentAddress] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <main className="w-full">
             <h1 className="text-lg font-semibold text-foreground">Addresses</h1>
@@ -29,20 +32,23 @@ export default function AddressDisplay() {
                                     <span>
                                         {address.city}, {address.state}, {address.pincode}, IN
                                     </span>
-                                    <span className="mt-2">
-                                        {user?.ISDCode} {user?.phoneNumber}
-                                    </span>
+                                    {address.altPhoneNumber && (
+                                        <span className="mt-2">
+                                            {user?.ISDCode} {address.altPhoneNumber}
+                                        </span>
+                                    )}
                                 </div>
                             </div>
                         </div>
 
                         <div className="flex items-center justify-center gap-2 py-3 text-xs font-medium">
-                            <a
-                                className="text-foreground underline underline-offset-4 decoration-foreground hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                href="#"
+                            <button
+                                type="button"
+                                className="cursor-pointer text-foreground underline underline-offset-4 decoration-foreground hover:opacity-80 focus:outline-hidden focus:opacity-80"
+                                onClick={() => { setCurrentAddress(address); setIsOpen(true); }}
                             >
                                 Edit
-                            </a>
+                            </button>
                             <span className="mx-1 text-muted-foreground opacity-30 text-xs">
                                 |
                             </span>
@@ -115,10 +121,9 @@ export default function AddressDisplay() {
 
                 <button
                     type="button"
-                    aria-haspopup="dialog"
-                    aria-expanded="false"
-                    aria-controls="hs-scroll-inside-body-modal"
-                    data-hs-overlay="#hs-scroll-inside-body-modal"
+                    onClick={() => {
+                        setCurrentAddress(null); setIsOpen(true);
+                    }}
                     className="h-56.25 p-1.25 border border-line-2 border-dashed cursor-pointer hover:border-line-4 rounded-2xl flex flex-col items-center justify-center gap-2"
                 >
                     <svg
@@ -143,7 +148,8 @@ export default function AddressDisplay() {
                     </svg>
                     <h2>Add address</h2>
                 </button>
-                <AddressFormModel user={user} />
+
+                <AddressFormModel user={user} currentAddress={currentAddress} isOpen={isOpen} onClose={() => setIsOpen(false)} />
             </div>
         </main>
     );
