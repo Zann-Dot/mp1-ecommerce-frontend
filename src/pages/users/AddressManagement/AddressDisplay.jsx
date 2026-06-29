@@ -3,9 +3,10 @@ import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import AddressFormModel from "./AddressFormModel";
 
 export default function AddressDisplay() {
-    const { user } = useEcommerceContext();
+    const { user, setAddressToDefault } = useEcommerceContext();
     const [currentAddress, setCurrentAddress] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
+
     return (
         <main className="w-full">
             <h1 className="text-lg font-semibold text-foreground">Addresses</h1>
@@ -52,72 +53,25 @@ export default function AddressDisplay() {
                             <span className="mx-1 text-muted-foreground opacity-30 text-xs">
                                 |
                             </span>
-                            <a
-                                className="text-foreground underline underline-offset-4 decoration-foreground hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                href="#"
+                            <button
+                                className="cursor-pointer disabled:no-underline disabled:text-muted-foreground disabled:hover:opacity-100 text-foreground underline underline-offset-4 decoration-foreground hover:opacity-80 focus:outline-hidden focus:opacity-80"
+                                disabled={address?.isDefault}
                             >
                                 Remove
-                            </a>
+                            </button>
                             <span className="mx-1 text-muted-foreground opacity-30 text-xs">
                                 |
                             </span>
-                            <a
-                                className="text-foreground underline underline-offset-4 decoration-primary hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                href="#"
+                            <button
+                                className="cursor-pointer disabled:no-underline disabled:text-muted-foreground disabled:hover:opacity-100 text-foreground underline underline-offset-4 decoration-primary hover:opacity-80 focus:outline-hidden focus:opacity-80"
+                                disabled={address?.isDefault}
+                                onClick={() => setAddressToDefault(true, address?._id)}
                             >
                                 Set as default
-                            </a>
+                            </button>
                         </div>
                     </div>
                 ))}
-
-                <div className="relative p-1.25  bg-surface rounded-2xl">
-                    <div className="flex flex-col pb-6 bg-card shadow-2xs rounded-xl">
-                        <div className="p-4">
-                            <div className="flex items-center">
-                                <h3 className="font-semibold text-base text-foreground">
-                                    New Delhi
-                                </h3>
-                                <span className="inline-flex items-center gap-x-1.5 py-1 px-3 ms-auto rounded-full text-[11px] font-medium bg-primary-100 text-primary-800 dark:bg-primary-500/20 dark:text-primary-400">
-                                    Default
-                                </span>
-                            </div>
-                            <div className="mt-1 text-muted-foreground-2 text-sm flex flex-col gap-px">
-                                <span>Anay Karn</span>
-                                <span>280 Suzanne Throughway</span>
-                                <span>New York, Breannabury, OR 45801, US</span>
-                                <span className="mt-2">+44 000 000 0001</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="flex items-center justify-center gap-2 py-3 text-xs font-medium">
-                        <a
-                            className="text-foreground underline underline-offset-4 decoration-foreground hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                            href="#"
-                        >
-                            Edit
-                        </a>
-                        <span className="mx-1 text-muted-foreground opacity-30 text-xs">
-                            |
-                        </span>
-                        <button
-                            className="text-foreground disabled:no-underline disabled:text-muted-foreground disabled:hover:opacity-100 underline underline-offset-4 decoration-foreground hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                            disabled
-                        >
-                            Remove
-                        </button>
-                        <span className="mx-1 text-muted-foreground opacity-30 text-xs">
-                            |
-                        </span>
-                        <button
-                            className="disabled:no-underline disabled:text-muted-foreground disabled:hover:opacity-100 text-foreground underline underline-offset-4 decoration-primary hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                            disabled
-                        >
-                            Set as default
-                        </button>
-                    </div>
-                </div>
 
                 <button
                     type="button"

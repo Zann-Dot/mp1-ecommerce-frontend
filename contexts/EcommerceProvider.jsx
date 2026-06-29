@@ -1,8 +1,20 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 
 const EcommerceContext = createContext();
 const useEcommerceContext = () => useContext(EcommerceContext);
 export default useEcommerceContext;
+
+function alertReducer(alert, action) {
+    switch (action.type) {
+        case "setToDefault":
+            return {
+                type: action.type,
+                headingMessage: action.heading,
+                subHeadingMessage: action.subHeading
+            };
+
+    }
+}
 
 export function EcommerceProvider({ children }) {
     const [themeMode, setThemeMode] = useState(localStorage.getItem("theme"));
@@ -11,6 +23,11 @@ export function EcommerceProvider({ children }) {
     const [user, setUser] = useState({});
     const [sort, setSort] = useState("");
     const [wishlist, setWishlist] = useState([]);
+    const [alert, dispatch] = useReducer(alertReducer, {
+        type: "",
+        headingMessage: "",
+        subHeadingMessage: "",
+    });
 
     if (themeMode === "dark") {
         localStorage.setItem("theme", themeMode);
@@ -102,6 +119,37 @@ export function EcommerceProvider({ children }) {
         }
     }
 
+    async function setAddressToDefault(isDefault, addressId) {
+        try {
+            const res = await fetch(
+                `/api/user/defaultAddress/${user?._id}/${addressId}`,
+                {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ isDefault }),
+                },
+            );
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error);
+            data.success && dispatch({
+                type: "setToDefault",
+                heading: "Address set to default",
+                subHeading: "You have successfully updated your address to default"
+            });
+
+            setTimeout(() => {
+                dispatch({
+                    type: "",
+                    headingMessage: "",
+                    subHeadingMessage: "",
+                })
+            }, 3000)
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     return (
         <EcommerceContext.Provider
             value={{
@@ -117,7 +165,10 @@ export function EcommerceProvider({ children }) {
                 wishlist,
                 handleWishlist,
                 getOrdersDetails,
-                orders
+                orders,
+                setAddressToDefault,
+                alert,
+                dispatch
             }}
         >
             {children}

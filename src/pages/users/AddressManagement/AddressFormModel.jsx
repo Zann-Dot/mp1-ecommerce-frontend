@@ -9,12 +9,12 @@ export default function AddressFormModel({
    isOpen,
    onClose,
 }) {
-   const [alert, setAlert] = useState(false);
-   const { getUser } = useEcommerceContext();
+   const { getUser, setAddressToDefault, alert, dispatch } =
+      useEcommerceContext();
+
    useEffect(() => {
       getUser();
    }, [alert]);
-   console.log(currentAddress);
 
    async function saveNewAddress(formData) {
       const addressLine = formData.get("addressLine");
@@ -44,25 +44,21 @@ export default function AddressFormModel({
          );
          const data = await response.json();
          if (!response.ok) throw new Error(data.error);
-         data.success && setAlert(true);
+         data.success &&
+            dispatch({
+               type: "addressUpdateForm",
+               heading: "Address updated successfully",
+               subHeading: "You have successfully updated your address.",
+            });
+         setTimeout(() => {
+            dispatch({
+               type: "",
+               headingMessage: "",
+               subHeadingMessage: "",
+            });
+         }, 3000);
       } catch (error) {
          console.error(error.message);
-      }
-   }
-
-   async function setAddressToDefault(e) {
-      try {
-         const res = await fetch(`/api/user/defaultAddress/${user?._id}/${currentAddress?._id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ isDefault: e.target.checked })
-         });
-         const data = await res.json();
-         if (!res.ok) throw new Error(data.error);
-         console.log(data);
-
-      } catch (error) {
-         console.error(error.message)
       }
    }
 
@@ -78,7 +74,12 @@ export default function AddressFormModel({
                if (e.target === e.currentTarget) onClose();
             }}
          >
-            {alert && <AlertComponent />}
+            {alert?.type === "addressUpdateForm" && (
+               <AlertComponent
+                  headingMessage={alert?.headingMessage}
+                  subHeadingMessage={alert?.subHeadingMessage}
+               />
+            )}
             <div className="sm:max-w-xl sm:w-full m-3 h-[calc(100%-56px)] sm:mx-auto">
                <div className="max-h-full overflow-hidden flex flex-col bg-overlay border border-overlay-line shadow-2xs rounded-xl pointer-events-auto">
                   <div className="flex justify-between px-8 items-center py-4 border-b border-overlay-header">
@@ -204,7 +205,12 @@ export default function AddressFormModel({
                                  id="hs-default-checkbox"
                                  name="default"
                                  defaultChecked={currentAddress?.isDefault}
-                                 onChange={setAddressToDefault}
+                                 onChange={(e) =>
+                                    setAddressToDefault(
+                                       e.target.checked,
+                                       currentAddress?._id,
+                                    )
+                                 }
                               />
                               <label
                                  htmlFor="input-base"

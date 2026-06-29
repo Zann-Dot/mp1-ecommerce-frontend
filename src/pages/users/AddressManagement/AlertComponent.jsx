@@ -1,16 +1,16 @@
 import { motion } from "motion/react"
-export default function AlertComponent() {
+export default function AlertComponent({ headingMessage, subHeadingMessage }) {
     return (
         <motion.div
-            className="flex flex-col gap-y-2 absolute bottom-10 left-10"
-            initial={{ translateX: -150 }}
-            animate={{ translateX: 0 }}
+            className="flex flex-col gap-y-2 absolute top-5 left-1/4 right-1/4 z-200"
+            initial={{ translateY: -15 }}
+            animate={{ translateY: 0 }}
             transition={{ ease: "easeOut", duration: 0.1 }}
         >
             <div
-                className="bg-teal-50 border-t-2 border-teal-500 rounded-lg p-4 dark:bg-teal-800/30"
+                className="bg-teal-50 border-t-2 border-teal-500 rounded-lg p-4 dark:bg-teal-800/80"
                 role="alert"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-labelledby="hs-bordered-success-style-label"
             >
                 <div className="flex">
@@ -38,10 +38,10 @@ export default function AlertComponent() {
                             id="hs-bordered-success-style-label"
                             className="text-foreground font-semibold"
                         >
-                            Successfully updated.
+                            {headingMessage}
                         </h3>
                         <p className="text-sm text-foreground">
-                            You have successfully updated your new address.
+                            {subHeadingMessage}
                         </p>
                     </div>
                 </div>
