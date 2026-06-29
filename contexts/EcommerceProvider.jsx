@@ -4,9 +4,16 @@ const EcommerceContext = createContext();
 const useEcommerceContext = () => useContext(EcommerceContext);
 export default useEcommerceContext;
 
-function alertReducer(alert, action) {
+function alertReducer(action) {
     switch (action.type) {
         case "setToDefault":
+            return {
+                type: action.type,
+                headingMessage: action.heading,
+                subHeadingMessage: action.subHeading
+            };
+
+        case "addressUpdateForm":
             return {
                 type: action.type,
                 headingMessage: action.heading,

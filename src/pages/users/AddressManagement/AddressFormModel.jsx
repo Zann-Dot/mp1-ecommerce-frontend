@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AlertComponent from "./AlertComponent";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import { useEffect } from "react";
@@ -15,6 +14,7 @@ export default function AddressFormModel({
    useEffect(() => {
       getUser();
    }, [alert]);
+
 
    async function saveNewAddress(formData) {
       const addressLine = formData.get("addressLine");
@@ -50,13 +50,7 @@ export default function AddressFormModel({
                heading: "Address updated successfully",
                subHeading: "You have successfully updated your address.",
             });
-         setTimeout(() => {
-            dispatch({
-               type: "",
-               headingMessage: "",
-               subHeadingMessage: "",
-            });
-         }, 3000);
+
       } catch (error) {
          console.error(error.message);
       }
