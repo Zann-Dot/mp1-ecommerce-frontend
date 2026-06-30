@@ -29,9 +29,9 @@ export default function OrderCard({ order }) {
     const isShipped = new Date().getTime() >= timePassed;
 
     return (
-        <div className="relative p-1.25  bg-surface rounded-2xl">
+        <div className="relative p-1.25 bg-surface rounded-2xl">
             {/* upper order section */}
-            <div className="flex items-center gap-30 grow ps-5 py-3 pb-5 font-medium">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-y-2 px-5 py-3 font-medium">
                 <div>
                     <h1 className="font-normal text-muted-foreground-1 text-xs">
                         Status
@@ -74,9 +74,9 @@ export default function OrderCard({ order }) {
 
             {/* order details */}
             <div className="flex flex-col justify-center gap-6 p-6 bg-card shadow-2xs rounded-xl">
-                <section className="flex items-center justify-between">
-                    <div className="flex flex-col">
-                        <div className="flex items-center text-muted-foreground-2 text-sm gap-2">
+                <section className="flex gap-y-3 items-center justify-between flex-wrap">
+                    <div className="flex flex-col gap-y-2">
+                        <div className="flex items-center text-muted-foreground-2 text-sm gap-2 me-2">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 16 16"
@@ -171,8 +171,8 @@ export default function OrderCard({ order }) {
                     </div>
 
                     {/* --- STAGE 2: ACTIVE / IN PROGRESS --- */}
-                    <div className={`space-y-2.5`}>
-                        <div className="flex items-center gap-x-1.5 text-xs sm:text-sm  text-neutral-800 dark:text-neutral-200">
+                    <div className={`space-y-2.5 content-end`}>
+                        <div className={`${!isDelivered ? "opacity-100" : "opacity-0"} md:opacity-100 flex items-center gap-x-1.5 text-xs sm:text-sm  text-neutral-800 dark:text-neutral-200`}>
                             <span className="size-2 rounded-full bg-neutral-500 shrink-0 mix-blend-difference dark:bg-neutral-400" />
                             <span className="truncate">Preparing order</span>
                         </div>
@@ -183,10 +183,10 @@ export default function OrderCard({ order }) {
 
                     {/* --- STAGE 3: INACTIVE / UPCOMING --- */}
                     <div
-                        className={`space-y-2.5 ${isShipped ? "opacity-100" : "opacity-35"} transition-opacity`}
+                        className={`space-y-2.5 content-end ${isShipped ? "opacity-100" : "opacity-35"} transition-opacity`}
                     >
                         <div className="flex items-center gap-x-1.5 text-xs sm:text-sm text-foreground">
-                            <span className="truncate">Shipped</span>
+                            <span className={`truncate ${!isDelivered ? "opacity-100" : "opacity-0"} md:opacity-100`}>Shipped</span>
                         </div>
                         <div
                             className={`h-1.5 w-full ${isShipped ? "bg-primary-800 dark:bg-neutral-300" : "bg-primary-400"} rounded-full`}
@@ -209,9 +209,9 @@ export default function OrderCard({ order }) {
 
                 {order?.orderSummary.cartItems?.map((item) => (
                     <div key={item._id}>
-                        <section>
-                            <div className="h-45 full flex flex-col sm:flex-row gap-5 items-start">
-                                <div className="h-full w-35 rounded-xl overflow-hidden shrink-0">
+                        <section className="pb-8">
+                            <div className="w-full flex flex-row gap-5 items-start">
+                                <div className="h-full w-25 md:w-30 rounded-xl overflow-hidden shrink-0">
                                     <img
                                         src={item.product.imageUrl}
                                         alt={item.product.productName
@@ -222,7 +222,7 @@ export default function OrderCard({ order }) {
                                     />
                                 </div>
 
-                                <div className="flex-1 w-full flex flex-col justify-between self-stretch gap-1">
+                                <div className="flex-1 w-full flex flex-col justify-between self-stretch gap-y-4">
                                     <div>
                                         <h4 className="text-base text-foreground tracking-wide">
                                             {item.product.productName}
@@ -238,7 +238,7 @@ export default function OrderCard({ order }) {
                                         </p>
                                     </div>
 
-                                    <div className="w-full flex justify-between gap-x-4 max-w-md text-sm text-foreground">
+                                    <div className="w-full flex gap-x-4 max-w-md text-sm text-foreground">
                                         <div className="flex flex-col gap-y-0.5">
                                             <span className="text-muted-foreground">Color</span>
                                             {/* <span>{product.color}</span> */}
@@ -253,7 +253,7 @@ export default function OrderCard({ order }) {
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-wrap gap-2 pt-1 text-sm">
+                                    <div className="flex flex-wrap gap-2 pt-1 text-xs lg:text-sm">
                                         <button
                                             type="button"
                                             className="hover:bg-layer-hover py-1.5 px-2 inline-flex justify-center items-center rounded-lg border border-layer-line transition cursor-pointer"

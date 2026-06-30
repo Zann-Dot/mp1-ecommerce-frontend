@@ -29,14 +29,6 @@ export default function AccountSidebar() {
                             />
                         </svg>
                     </li>
-                    <li className="inline-flex items-center">
-                        <Link
-                            className="flex items-center text-sm text-muted-foreground-1 hover:text-primary-focus focus:outline-hidden focus:text-primary-focus"
-                            to="/user/account/addresses"
-                        >
-                            My Address
-                        </Link>
-                    </li>
                 </ol>
             </div>
             {/* End Navigation Toggle */}
