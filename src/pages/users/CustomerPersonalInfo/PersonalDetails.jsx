@@ -223,7 +223,7 @@ export default function PersonalDetails() {
 
             <hr />
             <div className="py-4">
-                <div className="flex items-center">
+                <div className="flex flex-wrap gap-y-2 items-center">
                     <section>
                         <h1 className="text-sm text-foreground font-medium">
                             Deactivate your account
@@ -235,7 +235,7 @@ export default function PersonalDetails() {
                     </section>
 
                     <div
-                        className="hs-collapse-toggle ms-auto text-red-500 text-sm underline decoration-red-500 underline-offset-4 cursor-pointer hover:opacity-98 focus:outline-hidden focus:opacity-80"
+                        className="hs-collapse-toggle min-[775px]:ms-auto text-red-500 text-sm underline decoration-red-500 underline-offset-4 cursor-pointer hover:opacity-98 focus:outline-hidden focus:opacity-80"
                         id="hs-collapse"
                         aria-haspopup="dialog"
                         aria-expanded="false"

@@ -15,13 +15,13 @@ export default function CustomerAccount() {
     return (
         <>
             <Navbar />
-            <div className="w-full absolute top-42.25 left-0 right-0">
+            <div className="w-full absolute top-56.25 lg:top-42.25 left-0 right-0">
                 <div className="max-w-250 mx-auto w-full my-10 px-4 sm:px-6 lg:px-8 text-foreground">
                     <h1 className="text-xl font-medium mb-4">Account</h1>
                     <div className="flex flex-col gap-7">
                         <div className="flex justify-between">
                             <section className="flex gap-4">
-                                <div className="inline-flex items-center justify-center size-12 rounded-full border border-line-4">
+                                <div className="hidden sm:inline-flex items-center justify-center size-12 rounded-full border border-line-4">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 36 36"
@@ -64,7 +64,7 @@ export default function CustomerAccount() {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                             <Link
                                 to="/user/account/personal-information"
                                 className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg"
