@@ -2,14 +2,11 @@ import AlertComponent from "../../components/AlertComponent";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import { useEffect } from "react";
 import ErrorAlert from "../../components/ErrorAlert";
+import useAddressContext from "../../../../contexts/AddressProvider";
 
-export default function AddressFormModel({
-   currentAddress,
-   isOpen,
-   onClose,
-}) {
-   const { getUser, setAddressToDefault, alert, updateAddressList } =
-      useEcommerceContext();
+export default function AddressFormModel({ currentAddress, isOpen, onClose }) {
+   const { getUser, alert } = useEcommerceContext();
+   const { setAddressToDefault, updateAddressList } = useAddressContext();
 
    useEffect(() => {
       getUser();

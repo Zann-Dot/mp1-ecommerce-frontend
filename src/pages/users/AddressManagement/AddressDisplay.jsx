@@ -1,11 +1,13 @@
 import { useState } from "react";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import AddressFormModel from "./AddressFormModel";
+import useAddressContext from "../../../../contexts/AddressProvider";
 
 export default function AddressDisplay() {
-    const { user, setAddressToDefault, removeAddress } = useEcommerceContext();
     const [currentAddress, setCurrentAddress] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
+    const { user } = useEcommerceContext();
+    const { setAddressToDefault, removeAddress } = useAddressContext();
 
     return (
         <main className="w-full">
