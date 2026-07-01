@@ -5,7 +5,7 @@ export default function PaymentSummary() {
     const { paymentSummary } = useCartContext();
 
     return (
-        <div className="w-full flex flex-col gap-5 text-foreground">
+        <div className="w-full col-span-3 lg:col-span-1 flex flex-col gap-5 text-foreground">
             <h1 className="text-base text-foreground font-semibold">Order Summary</h1>
 
             <div className="flex flex-col gap-3">

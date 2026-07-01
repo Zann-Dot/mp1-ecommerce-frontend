@@ -22,7 +22,7 @@ export default function Wishlist() {
                             </p>
                         )}
 
-                        <div className="relative mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-12">
+                        <div className="relative mt-5 grid grid-cols-2 max-[1160px]:sm:grid-cols-3 min-[1160px]:grid-cols-4 gap-x-6 gap-y-12">
                             {wishlist?.map((product) => (
                                 <ProductCard key={product._id} product={product} />
                             ))}

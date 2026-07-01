@@ -4,7 +4,7 @@ export default function EmailForm() {
     const { updateCheckoutForm, checkoutForm } = useCheckoutContext();
 
     return (
-        <div className="max-w-sm w-full space-y-3">
+        <div className="max-w-svw w-full space-y-3">
             <label
                 htmlFor="input-base"
                 className="block mb-2 font-medium text-foreground"

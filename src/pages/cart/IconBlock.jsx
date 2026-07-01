@@ -1,11 +1,9 @@
-import React from 'react'
-
 export default function IconBlock() {
     return (
         <div>
             {/* Icon Blocks */}
             <div className="max-w-340 mx-auto">
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 items-center gap-6">
+                <div className="grid grid-cols-3 items-center gap-6">
 
                     <div className="flex text-foreground items-start gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="Safety-Certificate-Line--Streamline-Mingcute" height="24" width="24">

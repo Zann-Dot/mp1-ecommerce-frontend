@@ -23,10 +23,10 @@ export default function CheckoutFooter() {
         navigate('/checkout/review-and-pay')
     }
     return (
-        <footer className="sticky bottom-0 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-b border-navbar-line">
-            <nav className="max-w-270 w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
+        <footer className="sticky bottom-0 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-t border-navbar-line">
+            <nav className="max-w-270 w-full mx-auto px-4 flex flex-wrap gap-2 basis-full items-center sm:justify-between">
                 <Link
-                    className="sm:order-1 flex items-center text-sm gap-x-1 font-semibold text-foreground underline underline-offset-4 focus:outline-hidden focus:opacity-80"
+                    className="order-2 sm:order-1 flex items-center text-xs md:text-sm gap-x-1 font-semibold text-foreground underline underline-offset-4 focus:outline-hidden focus:opacity-80"
                     to="/cart"
                 >
                     <svg
@@ -56,7 +56,7 @@ export default function CheckoutFooter() {
                 <button
                     type="button"
                     onClick={handleCheckoutForm}
-                    className="sm:order-3 py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
+                    className="order-3 py-2 px-3 inline-flex items-center gap-x-2 text-xs md:text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                 >
                     Continue
                     <svg
@@ -82,7 +82,7 @@ export default function CheckoutFooter() {
                 </button>
 
 
-                <div className="flex w-100 order-2 gap-2">
+                <div className="flex grow px-2 max-w-100 order-1 md:order-2 gap-1 md:gap-2">
                     <div className="w-1/3 bg-primary rounded-3xl p-0.5"></div>
                     <div className="w-1/3 bg-muted-foreground rounded-3xl p-0.5"></div>
                     <div className="w-1/3 bg-muted-foreground rounded-3xl p-0.5"></div>

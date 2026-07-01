@@ -26,7 +26,7 @@ export default function DetailsSection({ data }) {
     }
 
     return (
-        <div className="text-foreground col-span-5 md:col-span-2 px-1 md:px-10">
+        <div className="text-foreground col-span-5 short-screen:col-span-5 md:col-span-2 px-1 md:px-10">
             <div className="flex flex-col gap-1">
                 <p className="text-sm text-muted-foreground-1">{data.category}</p>
                 <h1 className="text-3xl font-medium">{data.productName}</h1>

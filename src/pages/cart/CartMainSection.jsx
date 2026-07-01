@@ -18,7 +18,7 @@ export default function CartMainSection() {
         <main className="max-w-340 w-full mx-auto p-3 mb-20 sm:p-6 md:p-8">
             {user.mode !== "guest" && (
                 <div className="grid grid-cols-3 gap-10">
-                    <div className="col-span-2 flex flex-col gap-5">
+                    <div className="col-span-3 lg:col-span-2 flex flex-col gap-5">
                         <h1 className="text-2xl font-semibold text-foreground">
                             Shopping bag
                         </h1>

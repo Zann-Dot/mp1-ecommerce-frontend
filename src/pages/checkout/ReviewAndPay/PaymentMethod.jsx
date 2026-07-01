@@ -4,7 +4,7 @@ export default function PaymentMethod() {
     const { reviewInfo } = useCheckoutContext();
 
     return (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5     ">
             {/* payment option toggle */}
             <div>
                 <h1 className="font-medium mb-3">Payment methods</h1>
@@ -57,7 +57,7 @@ export default function PaymentMethod() {
             <div>
                 <h1 className="font-medium mb-3">Card details</h1>
 
-                <div className="max-w-sm w-full grid grid-cols-2 gap-y-3 gap-x-2">
+                <div className="max-w-full w-full grid grid-cols-2 gap-y-3 gap-x-2">
                     <div className="relative col-span-2">
                         <input
                             type="text"
@@ -98,7 +98,7 @@ export default function PaymentMethod() {
                         </div>
                     </div>
 
-                    <div className="max-w-sm w-full space-y-3">
+                    <div className="max-w-full w-full space-y-3">
                         <input
                             id="input-base"
                             type="text"
@@ -106,7 +106,7 @@ export default function PaymentMethod() {
                             placeholder="Expiration"
                         />
                     </div>
-                    <div className="max-w-sm w-full space-y-3">
+                    <div className="max-w-full w-full space-y-3">
                         <input
                             id="input-base"
                             type="password"
@@ -114,7 +114,7 @@ export default function PaymentMethod() {
                             placeholder="CVC"
                         />
                     </div>
-                    <div className="max-w-sm w-full space-y-3 col-span-2">
+                    <div className="max-w-full w-full space-y-3 col-span-2">
                         <input
                             id="input-base"
                             type="text"

@@ -44,7 +44,7 @@ export default function ProductDetails() {
                     )}
 
                     {data && (
-                        <div className="px-5 sm:px-10 xl:px-8 pt-5 lg:pt-0 grid grid-cols-5 gap-y-10">
+                        <div className=" pt-5 lg:pt-0 grid grid-cols-5 gap-y-10">
                             <ImageDisplay data={data} />
                             <DetailsSection data={data} />
                         </div>

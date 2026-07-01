@@ -6,7 +6,7 @@ export default function OrderSummary() {
 
     return (
         <div className="before:hidden md:before:block before:absolute before:inset-y-0 before:inset-s-1/2 before:-z-1 before:inset-e-0 before:bg-background-1">
-            <div className="py-14 text-foreground flex flex-col gap-10 md:ms-auto md:max-w-sm md:w-full">
+            <div className="py-14 sm:ps-5 md:ps-10 sm:pe-5 lg:ps-0 text-foreground flex flex-col gap-10 md:ms-auto md:max-w-sm md:w-full">
                 {/* payment summary */}
                 <div className="w-full flex flex-col gap-5 text-foreground">
                     <h1 className="text-base text-foreground font-semibold">

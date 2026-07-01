@@ -5,11 +5,11 @@ export default function ShippingMethod() {
     const { updateCheckoutForm } = useCheckoutContext();
     const { getPaymentSummary } = useCartContext();
     return (
-        <div className="max-w-sm w-full space-y-3">
+        <div className="max-w-svw w-full space-y-3">
             <h1 className="col-span-full font-medium">Shipping method</h1>
             <label
                 htmlFor="vertical-radio-checked-in-form"
-                className="max-w-xs flex items-center p-3 w-full bg-layer border border-layer-line rounded-lg text-sm focus:border-primary-focus focus:ring-primary-focus"
+                className="max-w-full flex items-center p-3 w-full bg-layer border border-layer-line rounded-lg text-sm focus:border-primary-focus focus:ring-primary-focus"
             >
                 <input
                     type="radio"
@@ -31,7 +31,7 @@ export default function ShippingMethod() {
 
             <label
                 htmlFor="hs-vertical-radio-in-form"
-                className="max-w-xs flex items-center p-3 w-full bg-layer border border-layer-line rounded-lg text-sm focus:border-primary-focus focus:ring-primary-focus"
+                className="max-w-full flex items-center p-3 w-full bg-layer border border-layer-line rounded-lg text-sm focus:border-primary-focus focus:ring-primary-focus"
             >
                 <input
                     type="radio"
@@ -52,7 +52,7 @@ export default function ShippingMethod() {
 
             <label
                 htmlFor="hs-vertical-radio-in-form"
-                className="max-w-xs flex items-center p-3 w-full bg-layer border border-layer-line rounded-lg text-sm focus:border-primary-focus focus:ring-primary-focus"
+                className="max-w-full flex items-center p-3 w-full bg-layer border border-layer-line rounded-lg text-sm focus:border-primary-focus focus:ring-primary-focus"
             >
                 <input
                     type="radio"

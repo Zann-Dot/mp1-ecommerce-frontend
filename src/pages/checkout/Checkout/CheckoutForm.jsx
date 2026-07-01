@@ -24,7 +24,7 @@ export default function CheckoutForm() {
 
 
     return (
-        <div className="py-14 text-foreground flex flex-col gap-10 md:me-auto md:max-w-sm md:w-full">
+        <div className="py-14 md:pe-10 sm:px-5 lg:ps-0 lg:pe-0 text-foreground flex flex-col gap-10 md:me-auto md:max-w-sm md:w-full">
             <h1 className="font-medium text-lg">Checkout as {user?.firstName}</h1>
 
             <form className="grid grid-flow-row gap-15">

@@ -52,7 +52,7 @@ export default function OrderConfirmationPage() {
 
             <div className="w-full flex-1 flex flex-col">
                 <main className="relative mx-auto w-full px-4">
-                    <div className="grid grid-cols-2 max-w-5xl mx-auto">
+                    <div className="grid md:grid-cols-2 max-w-5xl mx-auto">
                         <DeliveryDetails />
                         <OrderConfirmationSummary />
                     </div>

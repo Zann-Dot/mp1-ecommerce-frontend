@@ -9,7 +9,7 @@ export default function ReviewAndPay() {
             <ReviewHeader />
             <div className="w-full">
                 <main className="relative mx-auto w-full px-4">
-                    <div className="grid grid-cols-2 max-w-5xl mx-auto">
+                    <div className="grid md:grid-cols-2 max-w-5xl mx-auto">
                         <ReviewAndPaySection />
                         <OrderSummary />
                     </div>

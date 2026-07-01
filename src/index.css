@@ -37,3 +37,4 @@
 }
 
 @custom-variant short-screen (@media (max-height: 500px));
+@custom-variant wide-screen (@media (min-height: 500px));

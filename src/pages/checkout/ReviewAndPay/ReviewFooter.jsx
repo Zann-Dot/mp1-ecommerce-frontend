@@ -25,10 +25,10 @@ export default function ReviewFooter() {
     }
 
     return (
-        <footer className="sticky bottom-0 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-b border-navbar-line">
-            <nav className="max-w-270 w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
+        <footer className="sticky bottom-0 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-t border-navbar-line">
+            <nav className="max-w-270 w-full mx-auto px-4 flex flex-wrap gap-2 basis-full items-center sm:justify-between">
                 <Link
-                    className="sm:order-1 flex items-center text-sm gap-x-1 font-semibold text-foreground underline underline-offset-4 focus:outline-hidden focus:opacity-80"
+                    className="order-2 sm:order-1 flex items-center text-xs md:text-sm gap-x-1 font-semibold text-foreground underline underline-offset-4 focus:outline-hidden focus:opacity-80"
                     to="/checkout"
                 >
                     <svg
@@ -54,53 +54,10 @@ export default function ReviewFooter() {
                     Back
                 </Link>
 
-                <div className="sm:order-3 flex items-center gap-x-2">
-                    <button
-                        type="button"
-                        className="sm:hidden hs-collapse-toggle relative size-9 flex justify-center items-center gap-x-2 rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus disabled:opacity-50 disabled:pointer-events-none"
-                        id="hs-navbar-alignment-collapse"
-                        aria-expanded="false"
-                        aria-controls="hs-navbar-alignment"
-                        aria-label="Toggle navigation"
-                        data-hs-collapse="#hs-navbar-alignment"
-                    >
-                        <svg
-                            className="hs-collapse-open:hidden shrink-0 size-4"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <line x1="3" x2="21" y1="6" y2="6" />
-                            <line x1="3" x2="21" y1="12" y2="12" />
-                            <line x1="3" x2="21" y1="18" y2="18" />
-                        </svg>
-                        <svg
-                            className="hs-collapse-open:block hidden shrink-0 size-4"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="M18 6 6 18" />
-                            <path d="m6 6 12 12" />
-                        </svg>
-                        <span className="sr-only">Toggle</span>
-                    </button>
+                <div className="order-3 flex items-center gap-x-2">
                     <button
                         onClick={postOrder}
-                        className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
-                        data-hs-stepper-
+                        className="py-2 px-3 inline-flex items-center gap-x-2 text-xs md:text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                     >
                         Continue
                         <svg
@@ -126,7 +83,7 @@ export default function ReviewFooter() {
                     </button>
                 </div>
 
-                <div className="flex w-100 order-2 gap-2">
+                <div className="flex grow px-2 max-w-100 order-1 md:order-2 gap-1 md:gap-2">
                     <div className="w-1/3 bg-muted-foreground rounded-3xl p-0.5"></div>
                     <div className="w-1/3 bg-primary rounded-3xl p-0.5"></div>
                     <div className="w-1/3 bg-muted-foreground rounded-3xl p-0.5"></div>
