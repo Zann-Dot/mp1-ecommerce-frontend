@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router";
 import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
+import useWishlistContext from "../../../contexts/WishlistProvider";
+import { useState } from "react";
 
 export default function FeaturedProducts({ product }) {
+    const [wishlistState, setWishlistState] = useState(product.isWishlist);
+    const { handleWishlist } = useWishlistContext();
+    const productId = product._id;
     const navigate = useNavigate();
     return (
         <div className="group cursor-pointer flex flex-col overflow-hidden transition-all duration-300">
@@ -18,9 +23,12 @@ export default function FeaturedProducts({ product }) {
                     </span>
                 </div>
 
-                <div className="absolute top-4 right-4 opacity-100 lg:opacity-0  group-hover:opacity-100 transition-opacity duration-200">
+                <div className="absolute top-4 right-4 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     <button
                         type="button"
+                        onClick={() =>
+                            handleWishlist(wishlistState, setWishlistState, productId)
+                        }
                         className="inline-flex justify-center  cursor-pointer items-center size-9 rounded-full bg-line-2 text-foreground shadow-2xs hover:scale-105 transition-transform"
                     >
                         <svg
@@ -29,8 +37,8 @@ export default function FeaturedProducts({ product }) {
                             width="18"
                             height="18"
                             viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
+                            fill={wishlistState ? "#F5788B" : "none"}
+                            stroke={wishlistState ? "#F5788B" : "currentColor"}
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -44,31 +52,34 @@ export default function FeaturedProducts({ product }) {
             {/* --- CARD BODY DETAILS --- */}
             <div
                 className="pt-2 flex flex-col flex-1"
-                onClick={() => navigate("/products/details")}
+                onClick={() => navigate(`/products/${product._id}?name=${product.productName}`)}
             >
                 <h4 className="font-medium text-foreground text-sm">
                     {product.productName.split(" ").splice(0, 3).join(" ")}
                 </h4>
 
-                <div className="w-full flex items-baseline gap-x-2 mt-auto mb-3">
-                    <span className=" font-semibold text-primary">
-                        ₹
-                        {product.isDiscount
-                            ? calculateDiscountedPrice(product.discount, product.priceRupees)
-                            : product.priceRupees}
-                    </span>
+                <div className="w-full flex items-baseline sm:gap-x-2 mb-3">
+                    <div className="grid">
+                        <span className="font-semibold text-primary">
+                            ₹{" "}
+                            {product.isDiscount
+                                ? calculateDiscountedPrice(product.discount, product.priceRupees)
+                                : product.priceRupees}
+                        </span>
 
-                    {product.isDiscount && (
-                        <>
-                            <span className="text-sm text-muted-foreground-1 line-through">
-                                ₹{product.priceRupees}
+                        {product.isDiscount && (
+                            <span className="inline-flex items-center gap-x-2">
+                                <span className="text-sm text-muted-foreground-1 line-through">
+                                    ₹{product.priceRupees}
+                                </span>
+                                <span className="text-xs text-destructive/80 font-bold">
+                                    {product.discount}% OFF
+                                </span>
                             </span>
-                            <span className="text-xs text-destructive/80 font-bold">
-                                {product.discount}% OFF
-                            </span>
-                        </>
-                    )}
-                    <span className="text-sm text-muted-foreground-1 ms-auto">
+                        )}
+                    </div>
+
+                    <span className="opacity-0 md:opacity-100 text-sm text-muted-foreground-1 ms-auto">
                         {Math.round(Math.random() * 100)} sold
                     </span>
                 </div>
