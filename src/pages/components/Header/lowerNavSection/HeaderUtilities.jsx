@@ -1,9 +1,11 @@
 import { Link } from "react-router";
 import useEcommerceContext from "../../../../../contexts/EcommerceProvider";
 import useCartContext from "../../../../../contexts/CartProvider";
+import useWishlistContext from "../../../../../contexts/WishlistProvider";
 
 export default function HeaderUtilities() {
-    const { user, wishlist } = useEcommerceContext();
+    const { user } = useEcommerceContext();
+    const { wishlist } = useWishlistContext();
     const { totalQuantity, cart } = useCartContext();
 
     return (

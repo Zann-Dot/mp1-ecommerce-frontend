@@ -1,11 +1,11 @@
 import { Link } from "react-router";
 import { useState } from "react";
 import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
-import useEcommerceContext from "../../../contexts/EcommerceProvider";
+import useWishlistContext from "../../../contexts/WishlistProvider";
 
 export default function ProductCard({ product }) {
     const [wishlistState, setWishlistState] = useState(product.isWishlist);
-    const { handleWishlist } = useEcommerceContext();
+    const { handleWishlist } = useWishlistContext();
     const productId = product._id;
 
     return (

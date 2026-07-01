@@ -1,10 +1,10 @@
 import Navbar from '../components/Header/Navbar'
 import Footer from '../components/Footer/Footer'
 import ProductCard from '../productListing/ProductCard'
-import useEcommerceContext from '../../../contexts/EcommerceProvider'
+import useWishlistContext from '../../../contexts/WishlistProvider';
 
 export default function Wishlist() {
-    const { wishlist } = useEcommerceContext();
+    const { wishlist } = useWishlistContext();
 
     return (
         <>

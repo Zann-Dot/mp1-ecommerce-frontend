@@ -10,28 +10,28 @@ function alertReducer(alert, action) {
             return {
                 type: action.type,
                 headingMessage: action.heading,
-                subHeadingMessage: action.subHeading
+                subHeadingMessage: action.subHeading,
             };
 
         case "addressUpdateForm":
             return {
                 type: action.type,
                 headingMessage: action.heading,
-                subHeadingMessage: action.subHeading
+                subHeadingMessage: action.subHeading,
             };
 
         case "removeAddress":
             return {
                 type: action.type,
                 headingMessage: action.heading,
-                subHeadingMessage: action.subHeading
+                subHeadingMessage: action.subHeading,
             };
 
         case "addressUpdateFormError":
             return {
                 type: action.type,
                 headingMessage: action.heading,
-                subHeadingMessage: action.subHeading
+                subHeadingMessage: action.subHeading,
             };
     }
 }
@@ -42,7 +42,6 @@ export function EcommerceProvider({ children }) {
     const [products, setProducts] = useState([]);
     const [user, setUser] = useState({});
     const [sort, setSort] = useState("");
-    const [wishlist, setWishlist] = useState([]);
     const [alert, dispatch] = useReducer(alertReducer, {
         type: "",
         headingMessage: "",
@@ -90,44 +89,6 @@ export function EcommerceProvider({ children }) {
         setProducts(data);
     }
 
-    async function fetchWishlistProducts() {
-        try {
-            const response = await fetch("/api/wishlist");
-            const data = await response.json();
-            if (!response.ok) {
-                setWishlist([]);
-                throw new Error(data.error);
-            }
-            setWishlist(data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    async function updateWishlist(newWishlistState, productId) {
-        try {
-            const response = await fetch(`/api/wishlist`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    productId: productId,
-                    isWishlist: newWishlistState,
-                }),
-            });
-            const data = await response.json();
-            if (!response.ok) console.error(data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    async function handleWishlist(wishlistState, setWishlistState, productId) {
-        const newWishlistState = !wishlistState;
-        setWishlistState(newWishlistState);
-        await updateWishlist(newWishlistState, productId);
-        fetchWishlistProducts();
-    }
-
     async function getOrdersDetails() {
         try {
             const response = await fetch("/api/orders");
@@ -138,7 +99,6 @@ export function EcommerceProvider({ children }) {
             console.error(error.message);
         }
     }
-
 
     return (
         <EcommerceContext.Provider
@@ -151,9 +111,6 @@ export function EcommerceProvider({ children }) {
                 fetchProducts,
                 getUser,
                 user,
-                fetchWishlistProducts,
-                wishlist,
-                handleWishlist,
                 getOrdersDetails,
                 orders,
                 alert,

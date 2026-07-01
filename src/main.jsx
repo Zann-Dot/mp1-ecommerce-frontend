@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import { CartProvider } from "../contexts/CartProvider.jsx";
 import { CheckoutProvider } from "../contexts/CheckoutProvider.jsx";
 import { AddressProvider } from "../contexts/AddressProvider.jsx";
+import { WishlistProvider } from "../contexts/WishlistProvider.jsx";
 
 
 import("preline").then(() => {
@@ -14,13 +15,15 @@ import("preline").then(() => {
     <StrictMode>
       <EcommerceProvider>
         <AddressProvider>
-          <CartProvider>
-            <CheckoutProvider>
-              <BrowserRouter>
-                <App />
-              </BrowserRouter>
-            </CheckoutProvider>
-          </CartProvider>
+          <WishlistProvider>
+            <CartProvider>
+              <CheckoutProvider>
+                <BrowserRouter>
+                  <App />
+                </BrowserRouter>
+              </CheckoutProvider>
+            </CartProvider>
+          </WishlistProvider>
         </AddressProvider>
       </EcommerceProvider>
     </StrictMode>,
