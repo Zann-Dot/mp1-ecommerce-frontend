@@ -5,9 +5,10 @@ import ExploreMore from "../components/ExploreMore";
 import CheckoutProducts from "./CheckoutProducts";
 import IconBlock from "./IconBlock";
 import PaymentSummary from "./PaymentSummary";
+import CartItemSkeleton from "./CartItemSkeleton";
 
 export default function CartMainSection() {
-    const { user } = useEcommerceContext();
+    const { user, loading } = useEcommerceContext();
     const { cart, emptyCart, getPaymentSummary } = useCartContext();
 
     useEffect(() => {
@@ -22,12 +23,13 @@ export default function CartMainSection() {
                         <h1 className="text-2xl font-semibold text-foreground">
                             Shopping bag
                         </h1>
+                        {loading && (<CartItemSkeleton />)}
 
-                        {emptyCart && (
+                        {!loading && emptyCart && (
                             <p className="pb-50 text-lg text-foreground">{emptyCart}</p>
                         )}
 
-                        {cart &&
+                        {!loading && cart &&
                             cart.length !== 0 &&
                             cart?.map((cartItem) => (
                                 <div key={cartItem._id} className="flex flex-col gap-5">
