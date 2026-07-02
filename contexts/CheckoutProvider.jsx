@@ -7,7 +7,6 @@ export default useCheckoutContext;
 
 export function CheckoutProvider({ children }) {
     const [reviewInfo, setReviewInfo] = useState([]);
-    const [totalOrderAmount, setTotalOrderAmount] = useState(null);
     const { cart } = useCartContext();
     const [checkoutForm, setCheckoutForm] = useState({
         email: "",
@@ -82,17 +81,6 @@ export function CheckoutProvider({ children }) {
         return { orderSummary, orderNumber };
     };
 
-    async function getTotalOrderAmount(orderNumber) {
-        try {
-            const res = await fetch(`/api/paymentSummary/order/${orderNumber}`);
-            const data = await res.json();
-            if (!res.ok) throw new Error(data.error);
-            setTotalOrderAmount(data.totalOrderAmount)
-        } catch (error) {
-            console.error(error.message)
-        }
-    }
-
     return (
         <CheckoutContext.Provider
             value={{
@@ -102,9 +90,7 @@ export function CheckoutProvider({ children }) {
                 dispatch,
                 getCheckoutData,
                 reviewInfo,
-                getOrdersBody,
-                getTotalOrderAmount,
-                totalOrderAmount
+                getOrdersBody
             }}
         >
             {children}

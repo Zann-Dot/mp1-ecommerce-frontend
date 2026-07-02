@@ -42,6 +42,7 @@ export function EcommerceProvider({ children }) {
     const [products, setProducts] = useState([]);
     const [user, setUser] = useState({});
     const [sort, setSort] = useState("");
+    const [loading, setLoading] = useState(false);
     const [alert, dispatch] = useReducer(alertReducer, {
         type: "",
         headingMessage: "",
@@ -82,21 +83,32 @@ export function EcommerceProvider({ children }) {
         }
     }
 
+
     async function fetchProducts() {
-        const response = await fetch("/api/products");
-        if (!response.ok) throw new Error("Failed to get products");
-        const data = await response.json();
-        setProducts(data);
+        try {
+            setLoading(true);
+            const response = await fetch("/api/products");
+            if (!response.ok) throw new Error("Failed to get products");
+            const data = await response.json();
+            setProducts(data);
+        } catch (error) {
+            console.error(error.message)
+        } finally {
+            setLoading(false);
+        }
     }
 
     async function getOrdersDetails() {
         try {
+            setLoading(true);
             const response = await fetch("/api/orders");
             const data = await response.json();
             if (!response.ok) throw new Error(data.error);
             setOrders(data);
         } catch (error) {
             console.error(error.message);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -115,6 +127,8 @@ export function EcommerceProvider({ children }) {
                 orders,
                 alert,
                 dispatch,
+                loading,
+                setLoading
             }}
         >
             {children}

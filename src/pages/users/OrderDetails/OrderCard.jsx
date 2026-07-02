@@ -1,15 +1,11 @@
 import { format } from "date-fns";
-import { useEffect } from "react";
-import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 import calculateDiscountedPrice from "../../../utilis/calculateDiscountedPrice";
 
 export default function OrderCard({ order }) {
-    const { getCheckoutData, getTotalOrderAmount, totalOrderAmount } =
-        useCheckoutContext();
-    useEffect(() => {
-        getCheckoutData();
-        getTotalOrderAmount(order?.orderNumber);
-    }, []);
+    const totalOrderAmount = order?.orderSummary?.cartItems?.reduce(
+        (prev, curr) => prev + (curr.quantity * curr.product.priceRupees),
+        0
+    ) || 0;
 
     function calculateDeliveryTime() {
         const orderDate = order?.orderSummary.orderDate;

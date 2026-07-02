@@ -12,7 +12,7 @@ export function SidebarProvider({ children }) {
     const [maxPrice, setMaxPrice] = useState("");
     const [rating, setRating] = useState("all");
     const [searchParams, setSearchParams] = useSearchParams();
-    const { sort, setProducts, fetchProducts } = useEcommerceContext();
+    const { sort, setProducts, fetchProducts, setLoading } = useEcommerceContext();
     const params = new URLSearchParams();
 
     function filterProducts() {
@@ -30,10 +30,13 @@ export function SidebarProvider({ children }) {
         params.set("max", maxPrice);
         params.set("r", rating);
 
+        setLoading(true);
         fetch(`/api/products?${params.toString()}`)
             .then((res) => res.json())
             .then((data) => setProducts(data))
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(err))
+            .finally(() => setLoading(false));
+
 
         setSearchParams(params);
     }
