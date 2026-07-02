@@ -8,7 +8,7 @@ export default function ErrorAlert({ headingMessage, subHeadingMessage }) {
             transition={{ ease: "easeOut", duration: 0.1 }}
         >
             <div
-                className="bg-teal-50 border-t-2 border-red-500 rounded-lg p-4 dark:bg-red-950"
+                className="bg-red-100 border-t-2 border-red-500 rounded-lg p-4 dark:bg-red-950"
                 role="alert"
                 tabIndex="-1"
                 aria-labelledby="hs-bordered-success-style-label"

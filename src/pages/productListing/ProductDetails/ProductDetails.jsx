@@ -5,12 +5,15 @@ import ImageDisplay from "./ImageDisplay";
 import ExploreMore from "../../components/ExploreMore";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
+import AlertComponent from "../../components/AlertComponent";
 
 export default function ProductDetails() {
     const { productId } = useParams();
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState(null);
     const [error, setError] = useState();
+    const { alert } = useEcommerceContext();
 
     useEffect(() => {
         setLoading(true);
@@ -24,6 +27,12 @@ export default function ProductDetails() {
 
     return (
         <>
+            {alert?.type === "addedToCart" && (
+                <AlertComponent
+                    headingMessage={alert?.headingMessage}
+                    subHeadingMessage={alert?.subHeadingMessage}
+                />
+            )}
             <Navbar />
             <div className="w-full absolute top-56.25 lg:top-42.25 left-0 right-0">
                 <main className="max-w-270 mx-auto w-full lg:my-10 px-4 sm:px-6 lg:px-0">

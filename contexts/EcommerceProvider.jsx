@@ -33,6 +33,27 @@ function alertReducer(alert, action) {
                 headingMessage: action.heading,
                 subHeadingMessage: action.subHeading,
             };
+
+        case "quantityUpdate":
+            return {
+                type: action.type,
+                headingMessage: action.heading,
+                subHeadingMessage: action.subHeading,
+            };
+
+        case "addedToCart":
+            return {
+                type: action.type,
+                headingMessage: action.heading,
+                subHeadingMessage: action.subHeading,
+            };
+
+        case "removedItemFromCart":
+            return {
+                type: action.type,
+                headingMessage: action.heading,
+                subHeadingMessage: action.subHeading,
+            };
     }
 }
 

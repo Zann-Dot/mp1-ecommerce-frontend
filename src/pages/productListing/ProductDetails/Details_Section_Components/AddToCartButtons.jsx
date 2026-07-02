@@ -8,7 +8,7 @@ export default function AddToCartButtons({ data, params, productId }) {
     const [wishlistState, setWishlistState] = useState(data.isWishlist);
     const [goToCart, setGoToCart] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
-    const { handleWishlist, user } = useEcommerceContext();
+    const { handleWishlist, user, dispatch, loading } = useEcommerceContext();
     const { addToCart, cart } = useCartContext();
     const cartItemQty = cart?.find((i) => i.product._id === productId)?.quantity;
     const currentQty = searchParams.get("quantity") || cartItemQty;
@@ -29,7 +29,23 @@ export default function AddToCartButtons({ data, params, productId }) {
                 userId: user._id,
             };
             const response = await addToCart(payload);
-            response.success && setGoToCart(true);
+            if (response.success) {
+                dispatch({
+                    type: "addedToCart",
+                    heading: "Item added to cart successfully",
+                    subHeading: "",
+                });
+
+                setTimeout(() => {
+                    dispatch({
+                        type: "",
+                        heading: "",
+                        subHeading: "",
+                    });
+                }, 2500);
+
+                setGoToCart(true);
+            }
             goToCart && navigate("/cart");
         } else {
             navigate("/customer/login");
@@ -51,9 +67,18 @@ export default function AddToCartButtons({ data, params, productId }) {
             <button
                 type="button"
                 onClick={handleAddToCart}
-                className="cursor-pointer py-3 px-4 w-full text-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
+                className={`cursor-pointer py-3 px-4 w-full text-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none`}
             >
-                {goToCart ? "Go to cart" : "Add to cart"}
+                {loading && (
+                    <div
+                        className="animate-spin inline-block size-4 border-3 border-border border-t-transparent rounded-[999px] text-muted-foreground-2"
+                        role="status"
+                        aria-label="loading"
+                    >
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                )}
+                {!loading && (goToCart ? "Go to cart" : "Add to cart")}
             </button>
             <button
                 type="button"
@@ -78,5 +103,5 @@ export default function AddToCartButtons({ data, params, productId }) {
                 </svg>
             </button>
         </div>
-    )
+    );
 }

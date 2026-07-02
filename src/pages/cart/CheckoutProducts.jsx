@@ -1,10 +1,35 @@
 import useCartContext from "../../../contexts/CartProvider";
+import useEcommerceContext from "../../../contexts/EcommerceProvider";
 import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
 import { Link } from "react-router";
 
 export default function CheckoutProducts({ cartItem }) {
-    const { deleteFromCart } = useCartContext();
+    const { deleteFromCart, addToCart } = useCartContext();
+    const { dispatch } = useEcommerceContext();
 
+    async function handleQuantityUpdate(e) {
+        const payload = {
+            size: cartItem?.size,
+            quantity: e.target.value,
+            product: cartItem?.product?._id,
+            userId: cartItem?.userId,
+        };
+        const response = await addToCart(payload);
+        response.success &&
+            dispatch({
+                type: "quantityUpdate",
+                heading: "Quantity updated successfully",
+                subHeading: "",
+            });
+
+        setTimeout(() => {
+            dispatch({
+                type: "",
+                heading: "",
+                subHeading: "",
+            });
+        }, 2500);
+    }
     return (
         <div className="relative flex flex-row gap-5 items-start sm:items-center">
             <Link
@@ -60,9 +85,12 @@ export default function CheckoutProducts({ cartItem }) {
                         <select
                             className="p-2 pe-9 block w-15 bg-layer border-line-3 rounded-lg text-xs text-foreground focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
                             defaultValue={cartItem?.quantity}
+                            onChange={handleQuantityUpdate}
                         >
                             {Array.from({ length: 10 }, (_, i) => (
-                                <option key={i + 1} value={i + 1}>{i + 1}</option>
+                                <option key={i + 1} value={i + 1}>
+                                    {i + 1}
+                                </option>
                             ))}
                         </select>
                     </div>

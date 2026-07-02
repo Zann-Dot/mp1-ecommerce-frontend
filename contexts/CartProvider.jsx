@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import useEcommerceContext from "./EcommerceProvider";
 
 const CartContext = createContext();
 const useCartContext = () => useContext(CartContext);
@@ -9,7 +10,7 @@ export function CartProvider({ children }) {
     const [emptyCart, setEmptyCart] = useState("");
     const [paymentSummary, setPaymentSummary] = useState(null);
     const totalQuantity = cart?.reduce((acc, item) => acc + item.quantity, 0);
-
+    const { setLoading, dispatch } = useEcommerceContext();
 
     async function loadCart() {
         try {
@@ -19,7 +20,7 @@ export function CartProvider({ children }) {
             if (!response.ok) {
                 response.status === 404 && setCart([]);
                 setEmptyCart(data.message);
-                throw (data.message);
+                throw data.message;
             }
             setEmptyCart("");
             setCart(data);
@@ -42,6 +43,7 @@ export function CartProvider({ children }) {
 
     async function addToCart(payload) {
         try {
+            setLoading(true)
             const res = await fetch("/api/cart", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -51,27 +53,52 @@ export function CartProvider({ children }) {
 
             if (!res.ok) throw new Error(data.message);
             await loadCart();
+            await getPaymentSummary();
             return data;
         } catch (error) {
             console.error(error.message);
+        } finally {
+            setLoading(false)
         }
     }
 
     async function deleteFromCart(productId) {
-        const res = await fetch(`/api/cart/${productId}`, {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" }
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.message);
-        await loadCart();
-        await getPaymentSummary();
+        try {
+            setLoading(true);
+            const res = await fetch(`/api/cart/${productId}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.message);
+
+            data.success && dispatch({
+                type: "removedItemFromCart",
+                heading: "Successfully removed item from cart",
+                subHeading: ""
+            });
+
+            setTimeout(() => {
+                dispatch({
+                    type: "",
+                    heading: "",
+                    subHeading: ""
+                });
+            }, 2500);
+
+            await loadCart();
+            await getPaymentSummary();
+        } catch (error) {
+            console.error(error)
+        } finally {
+            setLoading(false);
+        }
     }
 
     async function deleteCart() {
         const res = await fetch(`/api/cart`, {
             method: "DELETE",
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.message);
@@ -91,7 +118,7 @@ export function CartProvider({ children }) {
                 totalQuantity,
                 deleteFromCart,
                 emptyCart,
-                deleteCart
+                deleteCart,
             }}
         >
             {children}
