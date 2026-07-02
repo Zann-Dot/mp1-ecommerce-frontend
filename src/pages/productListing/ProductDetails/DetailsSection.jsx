@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router";
 import Accordian from "./Details_Section_Components/Accordian";
 import Utilities from "./Details_Section_Components/Utilities";
@@ -17,7 +17,7 @@ export default function DetailsSection({ data }) {
     useEffect(() => {
         params.delete("quantity");
         params.delete("size");
-        setSearchParams(params);
+        window.scrollTo(top);
     }, [productId]);
 
     function handleSize(e) {
