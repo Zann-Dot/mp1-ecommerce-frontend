@@ -10,6 +10,8 @@ export default function Cart() {
 
     return (
         <>
+            <link rel="icon" type="image/svg+xml" href="/Solana-Sol-Line--Streamline-Mingcute.svg" />
+            <title>Cart</title>
             {alert?.type === "quantityUpdate" && (
                 <AlertComponent
                     headingMessage={alert?.headingMessage}

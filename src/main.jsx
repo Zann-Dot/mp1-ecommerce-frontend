@@ -8,7 +8,10 @@ import { CartProvider } from "../contexts/CartProvider.jsx";
 import { CheckoutProvider } from "../contexts/CheckoutProvider.jsx";
 import { AddressProvider } from "../contexts/AddressProvider.jsx";
 import { WishlistProvider } from "../contexts/WishlistProvider.jsx";
+import noUiSlider from "nouislider";
+import "nouislider/dist/nouislider.css";
 
+window.noUiSlider = noUiSlider;
 
 import("preline").then(() => {
   createRoot(document.getElementById("root")).render(

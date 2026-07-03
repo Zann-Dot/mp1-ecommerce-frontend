@@ -27,6 +27,8 @@ export default function ProductDetails() {
 
     return (
         <>
+            <link rel="icon" type="image/svg+xml" href="/Solana-Sol-Line--Streamline-Mingcute.svg" />
+            <title>Products</title>
             {alert?.type === "addedToCart" && (
                 <AlertComponent
                     headingMessage={alert?.headingMessage}

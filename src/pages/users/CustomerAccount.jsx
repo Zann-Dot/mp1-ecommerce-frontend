@@ -14,6 +14,8 @@ export default function CustomerAccount() {
 
     return (
         <>
+            <link rel="icon" type="image/svg+xml" href="/Solana-Sol-Line--Streamline-Mingcute.svg" />
+            <title>Account</title>
             <Navbar />
             <div className="w-full absolute top-56.25 lg:top-42.25 left-0 right-0">
                 <div className="max-w-250 mx-auto w-full my-10 px-4 sm:px-6 lg:px-8 text-foreground">

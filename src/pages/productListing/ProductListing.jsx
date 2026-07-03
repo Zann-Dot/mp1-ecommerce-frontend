@@ -9,6 +9,8 @@ export default function ProductListing() {
 
     return (
         <>
+            <link rel="icon" type="image/svg+xml" href="/Solana-Sol-Line--Streamline-Mingcute.svg" />
+            <title>Products</title>
             <Navbar />
             <div className="w-full absolute top-55.75 lg:top-42.25 left-0 right-0">
                 <main className="relative max-w-340 mx-auto w-full lg:my-10 px-4 sm:px-6 lg:px-0">

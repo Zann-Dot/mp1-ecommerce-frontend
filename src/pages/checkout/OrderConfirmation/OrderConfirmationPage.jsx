@@ -9,6 +9,8 @@ export default function OrderConfirmationPage() {
 
     return (
         <>
+            <link rel="icon" type="image/svg+xml" href="/Solana-Sol-Line--Streamline-Mingcute.svg" />
+            <title>Order Confirmed</title>
             <header className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-b border-navbar-line">
                 <nav className="max-w-270 w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
                     <Link

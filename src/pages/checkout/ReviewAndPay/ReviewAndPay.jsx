@@ -6,6 +6,8 @@ import ReviewHeader from './ReviewHeader'
 export default function ReviewAndPay() {
     return (
         <>
+            <link rel="icon" type="image/svg+xml" href="/Solana-Sol-Line--Streamline-Mingcute.svg" />
+            <title>Checkout</title>
             <ReviewHeader />
             <div className="w-full">
                 <main className="relative mx-auto w-full px-4">
