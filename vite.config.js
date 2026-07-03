@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://mp1-ecommerce-backend.vercel.app/",
+        target: "https://shopperstore-api.vercel.app",
         changeOrigin: true,
         secure: false
       }

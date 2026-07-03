@@ -1,3 +1,5 @@
+
+
 export default function rangeSliderLoader(sliderRef, setMinPrice, setMaxPrice) {
     const range = sliderRef.current;
     if (!range) return;
