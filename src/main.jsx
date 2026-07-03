@@ -9,7 +9,6 @@ import { CheckoutProvider } from "../contexts/CheckoutProvider.jsx";
 import { AddressProvider } from "../contexts/AddressProvider.jsx";
 import { WishlistProvider } from "../contexts/WishlistProvider.jsx";
 import noUiSlider from "nouislider";
-import "nouislider/dist/nouislider.css";
 
 window.noUiSlider = noUiSlider;
 
