@@ -8,6 +8,8 @@ export default function Wishlist() {
 
     return (
         <>
+            <link rel="icon" type="image/svg+xml" href="/Solana-Sol-Line--Streamline-Mingcute.svg" />
+            <title>Wishlist</title>
             <Navbar />
             <div className="max-w-340 w-full mx-auto absolute top-56.25 lg:top-42.25 left-0 right-0">
                 <main className="w-full p-3 mb-20 sm:p-6 md:p-8">
