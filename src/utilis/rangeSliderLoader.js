@@ -1,4 +1,4 @@
-
+import { HSRangeSlider } from "preline";
 
 export default function rangeSliderLoader(sliderRef, setMinPrice, setMaxPrice) {
     const range = sliderRef.current;
