@@ -31,15 +31,7 @@ export default function HeroSection() {
                                                 className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
                                                 to="/products"
                                             >
-                                                Shop men
-                                            </Link>
-                                        </p>
-                                        <p>
-                                            <Link
-                                                className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                                to="/products"
-                                            >
-                                                Shop women
+                                                Shop products
                                             </Link>
                                         </p>
                                     </div>
@@ -59,20 +51,12 @@ export default function HeroSection() {
                                     </h3>
                                     <div className="flex text-base gap-5">
                                         <p>
-                                            <a
+                                            <Link
                                                 className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                                href="#"
+                                                to="/products"
                                             >
-                                                Shop men
-                                            </a>
-                                        </p>
-                                        <p>
-                                            <a
-                                                className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                                href="#"
-                                            >
-                                                Shop women
-                                            </a>
+                                                Shop products
+                                            </Link>
                                         </p>
                                     </div>
                                 </div>
@@ -90,20 +74,12 @@ export default function HeroSection() {
                                     </h1>
                                     <div className="flex text-base gap-5">
                                         <p>
-                                            <a
+                                            <Link
                                                 className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                                href="#"
+                                                to="/products"
                                             >
-                                                Shop men
-                                            </a>
-                                        </p>
-                                        <p>
-                                            <a
-                                                className="text-foreground-inverse underline underline-offset-4 decoration-foreground-inverse  hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                                href="#"
-                                            >
-                                                Shop women
-                                            </a>
+                                                Shop products
+                                            </Link>
                                         </p>
                                     </div>
                                 </div>

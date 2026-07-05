@@ -7,12 +7,8 @@ const useSidebar = () => useContext(SidebarContext);
 export default useSidebar;
 
 export function SidebarProvider({ children }) {
-    const {
-        setProducts,
-        fetchProducts,
-        setLoading,
-        getProductsByCategory,
-    } = useEcommerceContext();
+    const { setProducts, fetchProducts, setLoading, getProductsByCategory } =
+        useEcommerceContext();
 
     const location = useLocation();
 
@@ -34,9 +30,7 @@ export function SidebarProvider({ children }) {
         )
             return;
 
-        isPageCategory
-            ? params.set("c", productByCategory)
-            : params.delete("c");
+        isPageCategory ? params.set("c", productByCategory) : params.delete("c");
 
         category.forEach((category) => {
             params.append("c", category);
@@ -64,6 +58,7 @@ export function SidebarProvider({ children }) {
         isPageCategory
             ? setSearchParams(`c=${productByCategory}`)
             : setSearchParams("");
+
         isPageCategory ? getProductsByCategory(productByCategory) : fetchProducts();
     }
 

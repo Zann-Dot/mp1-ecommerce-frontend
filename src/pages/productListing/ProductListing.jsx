@@ -13,9 +13,9 @@ export default function ProductListing() {
             <title>Products</title>
             <Navbar />
             <div className="w-full absolute top-55.75 lg:top-42.25 left-0 right-0">
-                <main className="relative max-w-340 mx-auto w-full lg:my-10 px-4 sm:px-6 lg:px-0">
+                <main className="relative max-w-340 mx-auto w-full px-4 sm:px-6 lg:px-0">
                     <div className="lg:flex">
-                        <div className="lg:pt-0">
+                        <div className="lg:pt-0 border-e">
                             <Sidebar />
                         </div>
                         <div className="overflow-hidden pt-16 pb-10 lg:pt-5 px-0 lg:px-8 lg:ps-4 xl:ps-8">
@@ -35,9 +35,15 @@ export default function ProductListing() {
                                         </div>
                                     </div>
                                 ))}
-                                {!loading && products?.map(product => (
-                                    <ProductCard key={product._id} product={product} />
-                                ))}
+                                {!products || products?.length === 0 || products.error ?
+                                    (!loading && <p className="font-medium text-muted-foreground text-2xl">Cannot find any products!</p>)
+                                    :
+                                    (
+                                        !loading && products?.map(product => (
+                                            <ProductCard key={product._id} product={product} />
+                                        ))
+                                    )
+                                }
                             </div>
                         </div>
                     </div>

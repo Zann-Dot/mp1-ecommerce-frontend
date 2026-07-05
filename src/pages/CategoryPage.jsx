@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router"
 import Navbar from "./components/Header/Navbar";
 import Footer from "./components/Footer/Footer";
