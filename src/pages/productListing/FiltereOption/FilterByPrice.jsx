@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
 import rangeSliderLoader from "../../../utilis/rangeSliderLoader";
-import useSidebarContext from "../../../../contexts/SidebarProvider";
+import useSidebar from "../../../../contexts/SidebarProvider";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function FilterByPrice() {
     const sliderRef = useRef(null);
-    const { minPrice, maxPrice, setMaxPrice, setMinPrice } = useSidebarContext();
+    const { minPrice, maxPrice, setMaxPrice, setMinPrice } = useSidebar();
     const { sort, setSort, products } = useEcommerceContext();
 
     function handleProductSort(e) {
@@ -21,7 +21,7 @@ export default function FilterByPrice() {
     }, []);
 
     return (
-        <div className="w-full bg-sidebar rounded-lg p-4 flex flex-col gap-4">
+        <div className="w-full bg-sidebar border-t p-6 flex flex-col gap-4">
             <p className="text-foreground mb-3 font-medium text-base">Price</p>
 
             <div className="flex">

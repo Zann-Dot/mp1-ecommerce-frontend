@@ -1,4 +1,4 @@
-
+import { Link } from "react-router";
 
 export default function AccessoriesCategoryCard() {
     return (
@@ -27,9 +27,9 @@ export default function AccessoriesCategoryCard() {
                 <div className="text-muted-foreground-1 text-sm mb-4">
                     Starting from ₹399
                 </div>
-                <a className="underline underline-offset-4 text-sm" href="#">
+                <Link className="underline underline-offset-4 text-sm" to={`/category?c=Accessories`}>
                     View all
-                </a>
+                </Link>
             </div>
         </div>
     )

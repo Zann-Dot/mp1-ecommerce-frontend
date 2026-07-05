@@ -1,33 +1,53 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useEcommerceContext from "./EcommerceProvider";
-import { useSearchParams } from "react-router";
+import { useLocation, useSearchParams } from "react-router";
 
 const SidebarContext = createContext();
-const useSidebarContext = () => useContext(SidebarContext);
-export default useSidebarContext;
+const useSidebar = () => useContext(SidebarContext);
+export default useSidebar;
 
 export function SidebarProvider({ children }) {
+    const {
+        setProducts,
+        fetchProducts,
+        setLoading,
+        getProductsByCategory,
+    } = useEcommerceContext();
+
+    const location = useLocation();
+
     const [category, setCategory] = useState([]);
     const [minPrice, setMinPrice] = useState("");
     const [maxPrice, setMaxPrice] = useState("");
     const [rating, setRating] = useState("all");
+
     const [searchParams, setSearchParams] = useSearchParams();
-    const { sort, setProducts, fetchProducts, setLoading } = useEcommerceContext();
-    const params = new URLSearchParams();
+    const productByCategory = searchParams.get("c");
+
+    const isPageCategory = location.pathname === "/category" && productByCategory;
 
     function filterProducts() {
+        const params = new URLSearchParams();
         if (
             (minPrice === "0" && maxPrice === "0") ||
             (minPrice === "2000" && maxPrice === "2000")
         )
             return;
 
+        isPageCategory
+            ? params.set("c", productByCategory)
+            : params.delete("c");
+
         category.forEach((category) => {
             params.append("c", category);
         });
 
-        params.set("min", minPrice);
-        params.set("max", maxPrice);
+        if (minPrice) params.set("min", minPrice);
+        else params.delete("min");
+
+        if (maxPrice) params.set("max", maxPrice);
+        else params.delete("max");
+
         params.set("r", rating);
 
         setLoading(true);
@@ -37,16 +57,15 @@ export function SidebarProvider({ children }) {
             .catch((err) => console.log(err))
             .finally(() => setLoading(false));
 
-
         setSearchParams(params);
     }
 
     function resetFilter() {
-        fetchProducts();
-        setSearchParams("");
+        isPageCategory
+            ? setSearchParams(`c=${productByCategory}`)
+            : setSearchParams("");
+        isPageCategory ? getProductsByCategory(productByCategory) : fetchProducts();
     }
-
-    useEffect(() => { }, [sort]);
 
     return (
         <SidebarContext.Provider

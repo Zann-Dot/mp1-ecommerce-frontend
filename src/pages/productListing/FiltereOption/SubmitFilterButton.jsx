@@ -1,10 +1,10 @@
-import useSidebarContext from "../../../../contexts/SidebarProvider";
+import useSidebar from "../../../../contexts/SidebarProvider";
 
 export default function SubmitFilterButton() {
-    const { filterProducts, resetFilter } = useSidebarContext();
+    const { filterProducts, resetFilter } = useSidebar();
 
     return (
-        <div className="w-full inline-flex justify-center gap-3 mt-4">
+        <div className="w-full inline-flex justify-center gap-3 mt-4 border-t pt-5">
             <button
                 type="button"
                 onClick={resetFilter}

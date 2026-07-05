@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router";
 
 export default function WomensCategoryCard() {
     return (
@@ -27,9 +27,9 @@ export default function WomensCategoryCard() {
                 <div className="text-muted-foreground-1 text-sm mb-4">
                     Starting from ₹1399
                 </div>
-                <a className="underline underline-offset-4 text-sm" href="#">
+                <Link className="underline underline-offset-4 text-sm" to={`/category?c=Women's Clothing`}>
                     View all
-                </a>
+                </Link>
             </div>
         </div>
     );

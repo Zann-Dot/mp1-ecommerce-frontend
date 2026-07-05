@@ -133,6 +133,19 @@ export function EcommerceProvider({ children }) {
         }
     }
 
+    async function getProductsByCategory(category) {
+        try {
+            if (category !== "") {
+                const response = await fetch(`/api/category?category=${category}`);
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error);
+                setProducts(data);
+            }
+        } catch (error) {
+            console.error(error.message)
+        }
+    };
+
     return (
         <EcommerceContext.Provider
             value={{
@@ -149,7 +162,8 @@ export function EcommerceProvider({ children }) {
                 alert,
                 dispatch,
                 loading,
-                setLoading
+                setLoading,
+                getProductsByCategory
             }}
         >
             {children}

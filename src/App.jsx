@@ -19,6 +19,7 @@ import SearchResult from "./pages/SearchResult";
 import useCartContext from "../contexts/CartProvider";
 import useCheckoutContext from "../contexts/CheckoutProvider";
 import useWishlistContext from "../contexts/WishlistProvider";
+import CategoryPage from "./pages/CategoryPage";
 
 function App() {
     const { fetchProducts, getUser, getOrdersDetails } = useEcommerceContext();
@@ -61,6 +62,7 @@ function App() {
                 <Route path="/user/account/addresses" element={<AddressManagement />} />
                 <Route path="/customer/signup" element={<CustomerSignUp />} />
                 <Route path="/customer/login" element={<CustomerSignIn />} />
+                <Route path="/category" element={<CategoryPage />} />
             </Routes>
         </>
     );

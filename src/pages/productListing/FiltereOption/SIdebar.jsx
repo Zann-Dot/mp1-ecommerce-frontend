@@ -81,10 +81,10 @@ export default function Sidebar() {
                 className="hs-overlay [--auto-close:lg]
   hs-overlay-open:translate-x-0 
   -translate-x-full transition-all duration-300 transform
-  w-100 max-w-80 h-full border-e hs-overlay-open:px-0
+  w-100 max-w-80 h-svh hs-overlay-open:px-0
   hidden 
-  bg-sidebar absolute top-0 lg:static inset-y-0 inset-s-0 z-60
-  lg:block lg:translate-x-0 lg:inset-e-auto lg:bottom-0"
+  bg-sidebar absolute top-0 z-60 lg:static lg:bottom-0 inset-y-0
+  lg:block lg:translate-x-0"
                 role="dialog"
                 tabIndex="-1"
                 aria-label="Sidebar"
@@ -116,7 +116,7 @@ export default function Sidebar() {
                         Filter
                         <button
                             type="button"
-                            className="ms-auto cursor-pointer flex justify-center items-center gap-x-3 size-6 bg-layer border border-layer-line text-sm text-muted-foreground-2 hover:bg-layer-hover rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-layer-focus"
+                            className="lg:hidden ms-auto cursor-pointer flex justify-center items-center gap-x-3 size-6 bg-layer border border-layer-line text-sm text-muted-foreground-2 hover:bg-layer-hover rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-layer-focus"
                             data-hs-overlay="#hs-application-sidebar"
                         >
                             <svg
@@ -138,15 +138,11 @@ export default function Sidebar() {
                         </button>
                     </div>
 
-                    <div className="pb-20 bg-sidebar h-screen overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-none [&::-webkit-scrollbar-track]:bg-scrollbar-track [&::-webkit-scrollbar-thumb]:bg-scrollbar-thumb">
-                        <div className="flex flex-col items-center justify-start gap-2 p-2">
+                    <div className="pb-2 bg-sidebar h-screen overflow-y-auto scrollbar-none">
+                        <div className="flex flex-col items-center justify-start gap-2">
                             <FilterByCategory />
-                            <hr className="w-full" />
                             <FilterByPrice />
-                            <hr className="w-full" />
                             <FilterByRating />
-                            <hr className="w-full" />
-
                             <SubmitFilterButton />
                         </div>
                     </div>

@@ -1,8 +1,8 @@
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
-import useSidebarContext from "../../../../contexts/SidebarProvider";
+import useSidebar from "../../../../contexts/SidebarProvider";
 
 export default function FilterByCategory() {
-    const { setCategory } = useSidebarContext();
+    const { setCategory } = useSidebar();
     const { products } = useEcommerceContext();
 
     function handleCategory(e) {
@@ -15,7 +15,7 @@ export default function FilterByCategory() {
     }
 
     return (
-        <div className="w-full bg-sidebar rounded-lg p-4 flex flex-col gap-4">
+        <div className="w-full bg-sidebar border-t p-6 flex flex-col gap-4">
             <p className="text-foreground mb-3 font-medium text-base">Category</p>
 
             <div className="flex">
@@ -28,7 +28,11 @@ export default function FilterByCategory() {
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">Men</span>
                 <span className="text-xs text-muted-foreground-1 ms-auto">
-                    ( {(products?.filter((i) => i.category === "Men's Clothing")).length} )
+                    ( {products?.error ?
+                        ("")
+                        :
+                        (products?.filter((i) => i.category === "Men's Clothing")).length
+                    } )
                 </span>
             </div>
 
@@ -42,7 +46,11 @@ export default function FilterByCategory() {
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">Women</span>
                 <span className="text-xs text-muted-foreground-1 ms-auto">
-                    ( {(products?.filter((i) => i.category === "Women's Clothing")).length} )
+                    ( {products?.error ?
+                        ("")
+                        :
+                        (products?.filter((i) => i.category === "Women's Clothing")).length
+                    } )
                 </span>
             </div>
 
@@ -58,7 +66,11 @@ export default function FilterByCategory() {
                     Accessories
                 </span>
                 <span className="text-xs text-muted-foreground-1 ms-auto">
-                    ( {(products?.filter((i) => i.category === "Accessories")).length} )
+                    ( {products?.error ?
+                        ("")
+                        :
+                        (products?.filter((i) => i.category === "Accessories")).length
+                    } )
                 </span>
             </div>
         </div>

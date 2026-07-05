@@ -1,13 +1,13 @@
-import useSidebarContext from "../../../../contexts/SidebarProvider";
+import useSidebar from "../../../../contexts/SidebarProvider";
 
 export default function FilterByRating() {
-    const { setRating } = useSidebarContext();
+    const { setRating } = useSidebar();
     function handleRating(e) {
         e.target.checked && setRating(e.target.value);
     }
 
     return (
-        <div className="w-full bg-sidebar rounded-lg p-4 flex flex-col gap-4">
+        <div className="w-full bg-sidebar p-6 flex flex-col border-t gap-4">
             <p className="text-foreground mb-3 font-medium text-base">Ratings</p>
 
             <div className="flex">
