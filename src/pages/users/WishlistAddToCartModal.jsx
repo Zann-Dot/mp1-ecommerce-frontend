@@ -1,10 +1,7 @@
-import { useSearchParams } from "react-router";
 import SelectQuantity from "../productListing/ProductDetails/Details_Section_Components/SelectQuantity";
+import SelectSize from "../productListing/ProductDetails/Details_Section_Components/SelectSize";
 
-export default function WishlistAddToCartModal() {
-    const [searchParams] = useSearchParams();
-    const productId = searchParams.get("id");
-    const params = new URLSearchParams(searchParams);
+export default function WishlistAddToCartModal({ params, productId }) {
 
     return (
         <div
@@ -49,24 +46,7 @@ export default function WishlistAddToCartModal() {
                     </div>
                     <div className="p-4 overflow-y-auto">
                         <label>Select Size:</label>
-                        <div className="grid grid-cols-4 gap-2">
-                            {["S", "M", "L", "XL", "XXL"].map((size) => (
-                                <label
-                                    key={size}
-                                    className={`hover:bg-surface p-1 cursor-pointer border border-line-3 rounded-lg grid place-items-center has-checked:bg-surface has-checked:border-primary`}
-                                >
-                                    <input
-                                        type="radio"
-                                        name="size"
-                                        value={size}
-                                        className="appearance-none hidden"
-                                    // onChange={handleSize}
-                                    // checked={currentSize === size}
-                                    />
-                                    {size}
-                                </label>
-                            ))}
-                        </div>
+                        <SelectSize params={params} productId={productId} />
                     </div>
                     <label className="px-4">Select Quantity:</label>
                     <div className="grid grid-cols-2 gap-x-2 py-3 px-4 border-overlay-footer">

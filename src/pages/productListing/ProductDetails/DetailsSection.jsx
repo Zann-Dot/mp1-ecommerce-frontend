@@ -3,27 +3,19 @@ import { useSearchParams } from "react-router";
 import Accordian from "./Details_Section_Components/Accordian";
 import Utilities from "./Details_Section_Components/Utilities";
 import AddToCartButtons from "./Details_Section_Components/AddToCartButtons";
-import useCartContext from "../../../../contexts/CartProvider";
 import Ratings from "./Details_Section_Components/Ratings";
+import SelectSize from "./Details_Section_Components/SelectSize";
 
 export default function DetailsSection({ data }) {
     const productId = data?._id;
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const params = new URLSearchParams(searchParams);
-    const { cart } = useCartContext();
-    const cartItemSize = cart?.find((i) => i.product._id === productId)?.size;
-    const currentSize = searchParams.get("size") || cartItemSize;
 
     useEffect(() => {
         params.delete("quantity");
         params.delete("size");
         window.scrollTo(top);
     }, [productId]);
-
-    function handleSize(e) {
-        params.set("size", e.target.value);
-        setSearchParams(params);
-    }
 
     return (
         <div className="text-foreground col-span-5 short-screen:col-span-5 md:col-span-2 px-1 md:px-10">
@@ -39,24 +31,7 @@ export default function DetailsSection({ data }) {
             </p>
 
             <h3 className="text-lg mt-5 font-medium mb-2">Size</h3>
-            <div className="grid grid-cols-4 gap-2">
-                {["S", "M", "L", "XL", "XXL"].map((size) => (
-                    <label
-                        key={size}
-                        className={`hover:bg-surface p-1 cursor-pointer border border-line-3 rounded-lg grid place-items-center has-checked:bg-surface has-checked:border-primary`}
-                    >
-                        <input
-                            type="radio"
-                            name="size"
-                            value={size}
-                            className="appearance-none hidden"
-                            onChange={handleSize}
-                            checked={currentSize === size}
-                        />
-                        {size}
-                    </label>
-                ))}
-            </div>
+            <SelectSize params={params} productId={productId} />
 
             <AddToCartButtons data={data} params={params} productId={productId} />
             <h3 className="mt-8 font-medium">Shipping</h3>

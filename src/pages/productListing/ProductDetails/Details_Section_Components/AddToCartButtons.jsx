@@ -46,6 +46,7 @@ export default function AddToCartButtons({ data, params, productId }) {
             navigate("/customer/login");
         }
     }
+
     return (
         <div className="flex items-center mt-8 gap-2">
             <SelectQuantity params={params} productId={productId} />

@@ -5,11 +5,21 @@ import useWishlistContext from '../../../contexts/WishlistProvider';
 import useEcommerceContext from '../../../contexts/EcommerceProvider';
 import AlertComponent from '../components/AlertComponent';
 import WishlistAddToCartModal from './WishlistAddToCartModal';
+import { useSearchParams } from 'react-router';
+import { useEffect } from 'react';
 
 export default function Wishlist() {
     const { wishlist } = useWishlistContext();
     const { alert } = useEcommerceContext();
 
+    const [searchParams, setSearchParams] = useSearchParams();
+    const params = new URLSearchParams(searchParams);
+    const productId = searchParams.get("id");
+
+    useEffect(() => {
+        params.delete("size");
+        setSearchParams(params)
+    }, [productId]);
     return (
         <>
             {alert.type !== "" && (
@@ -39,7 +49,7 @@ export default function Wishlist() {
                                 <ProductCard key={product._id} product={product} />
                             ))}
                         </div>
-                        <WishlistAddToCartModal />
+                        <WishlistAddToCartModal params={params} productId={productId} />
 
                     </div>
                 </main>
