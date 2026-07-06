@@ -13,7 +13,7 @@ export default function SelectSize({ params, productId }) {
     };
 
     return (
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid col-span-6 sm:max-lg:col-span-3 grid-cols-4 gap-2">
             {["S", "M", "L", "XL", "XXL"].map((size) => (
                 <label
                     key={size}
