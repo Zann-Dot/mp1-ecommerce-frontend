@@ -1,11 +1,13 @@
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { useState } from "react";
 import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
 import useWishlistContext from "../../../contexts/WishlistProvider";
 
 export default function ProductCard({ product }) {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const params = new URLSearchParams(searchParams);
     const [wishlistState, setWishlistState] = useState(product.isWishlist);
-    const { handleWishlist } = useWishlistContext();
+    const { handleWishlist, wishlistLoading } = useWishlistContext();
     const productId = product._id;
 
     return (
@@ -25,20 +27,30 @@ export default function ProductCard({ product }) {
                         }
                         className="inline-flex justify-center cursor-pointer items-center size-9 rounded-full bg-line-2 text-foreground shadow-2xs hover:scale-105 transition-transform"
                     >
-                        <svg
-                            className="zeqf6 shb27 kh2c5"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill={wishlistState ? "#F5788B" : "none"}
-                            stroke={wishlistState ? "#F5788B" : "currentColor"}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                        </svg>
+                        {!wishlistLoading ? (
+                            <svg
+                                className="zeqf6 shb27 kh2c5"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill={wishlistState ? "#F5788B" : "none"}
+                                stroke={wishlistState ? "#F5788B" : "currentColor"}
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                            </svg>
+                        ) : (
+                            <div
+                                className="animate-spin inline-block size-4 border-2 border-current border-t-transparent rounded-[999px] text-muted-foreground-2"
+                                role="status"
+                                aria-label="loading"
+                            >
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                        )}
                     </button>
                 </div>
             </div>
@@ -57,7 +69,10 @@ export default function ProductCard({ product }) {
                         <span className="font-semibold text-primary">
                             ₹{" "}
                             {product.isDiscount
-                                ? calculateDiscountedPrice(product.discount, product.priceRupees)
+                                ? calculateDiscountedPrice(
+                                    product.discount,
+                                    product.priceRupees,
+                                )
                                 : product.priceRupees}
                         </span>
 
@@ -138,6 +153,22 @@ export default function ProductCard({ product }) {
                     </span>
                 </div>
             </Link>
+
+            <button
+                onClick={() => {
+                    params.set("id", productId);
+                    params.set("quantity", 1);
+                    setSearchParams(params);
+                }}
+                type="button"
+                className="cursor-pointer mt-4 py-3 px-4 inline-flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-primary-100 text-primary-800 hover:bg-primary-200 focus:outline-hidden focus:bg-primary-200  disabled:opacity-50 disabled:pointer-events-none dark:bg-primary-500/20 dark:text-primary-400 dark:hover:bg-primary-500/30 dark:focus:bg-primary-500/30"
+                aria-haspopup="dialog"
+                aria-expanded="false"
+                aria-controls="hs-slide-up-animation-modal"
+                data-hs-overlay="#hs-slide-up-animation-modal"
+            >
+                Move to cart
+            </button>
         </div>
     );
 }

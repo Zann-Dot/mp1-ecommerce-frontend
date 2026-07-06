@@ -3,12 +3,20 @@ import Sidebar from "./FiltereOption/SIdebar";
 import Footer from "../components/Footer/Footer";
 import ProductCard from "./ProductCard";
 import useEcommerceContext from "../../../contexts/EcommerceProvider";
+import AlertComponent from "../components/AlertComponent";
 
 export default function ProductListing() {
-    const { products, loading } = useEcommerceContext();
+    const { products, loading, alert } = useEcommerceContext();
 
     return (
         <>
+            {alert.type !== "" && (
+                <AlertComponent
+                    headingMessage={alert?.headingMessage}
+                    subHeadingMessage={alert?.subHeadingMessage}
+                />
+            )}
+
             <link rel="icon" type="image/svg+xml" href="/Solana-Sol-Line--Streamline-Mingcute.svg" />
             <title>Products</title>
             <Navbar />

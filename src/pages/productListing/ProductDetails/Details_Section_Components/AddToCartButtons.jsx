@@ -2,21 +2,16 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import useEcommerceContext from "../../../../../contexts/EcommerceProvider";
 import useCartContext from "../../../../../contexts/CartProvider";
+import SelectQuantity from "./SelectQuantity";
 
 export default function AddToCartButtons({ data, params, productId }) {
     const navigate = useNavigate();
     const [wishlistState, setWishlistState] = useState(data.isWishlist);
     const [goToCart, setGoToCart] = useState(false);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const { handleWishlist, user, dispatch, loading } = useEcommerceContext();
-    const { addToCart, cart } = useCartContext();
-    const cartItemQty = cart?.find((i) => i.product._id === productId)?.quantity;
-    const currentQty = searchParams.get("quantity") || cartItemQty;
+    const { addToCart } = useCartContext();
 
-    function handleQuantity(e) {
-        params.set("quantity", e.target.value);
-        setSearchParams(params);
-    }
 
     async function handleAddToCart() {
         if (user.mode !== "guest") {
@@ -53,17 +48,8 @@ export default function AddToCartButtons({ data, params, productId }) {
     }
     return (
         <div className="flex items-center mt-8 gap-2">
-            <select
-                onChange={handleQuantity}
-                value={currentQty ?? 1}
-                className="py-3 px-4 hover:bg-layer-hover cursor-pointer pe-9 block bg-layer border-layer-line rounded-lg text-sm text-foreground focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none"
-            >
-                {Array.from({ length: 10 }, (_, i) => (
-                    <option key={i + 1} value={i + 1}>
-                        {i + 1}
-                    </option>
-                ))}
-            </select>
+            <SelectQuantity params={params} productId={productId} />
+
             <button
                 type="button"
                 onClick={handleAddToCart}
@@ -80,6 +66,7 @@ export default function AddToCartButtons({ data, params, productId }) {
                 )}
                 {!loading && (goToCart ? "Go to cart" : "Add to cart")}
             </button>
+
             <button
                 type="button"
                 onClick={() =>

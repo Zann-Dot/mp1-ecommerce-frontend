@@ -5,11 +5,12 @@ import Footer from "./components/Footer/Footer";
 import ProductCard from "./productListing/ProductCard";
 import useEcommerceContext from "../../contexts/EcommerceProvider";
 import Sidebar from "./productListing/FiltereOption/SIdebar";
+import AlertComponent from "./components/AlertComponent";
 
 export default function CategoryPage() {
     const [searchParams] = useSearchParams();
     const category = searchParams.get("c");
-    const { loading, products, getProductsByCategory } = useEcommerceContext();
+    const { loading, products, getProductsByCategory, alert } = useEcommerceContext();
 
     useEffect(() => {
         getProductsByCategory(category);
@@ -18,6 +19,12 @@ export default function CategoryPage() {
 
     return (
         <>
+            {alert.type !== "" && (
+                <AlertComponent
+                    headingMessage={alert?.headingMessage}
+                    subHeadingMessage={alert?.subHeadingMessage}
+                />
+            )}
             <link rel="icon" type="image/svg+xml" href="/Solana-Sol-Line--Streamline-Mingcute.svg" />
             <title>Products</title>
             <Navbar />

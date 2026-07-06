@@ -2,12 +2,22 @@ import Navbar from '../components/Header/Navbar'
 import Footer from '../components/Footer/Footer'
 import ProductCard from '../productListing/ProductCard'
 import useWishlistContext from '../../../contexts/WishlistProvider';
+import useEcommerceContext from '../../../contexts/EcommerceProvider';
+import AlertComponent from '../components/AlertComponent';
+import WishlistAddToCartModal from './WishlistAddToCartModal';
 
 export default function Wishlist() {
     const { wishlist } = useWishlistContext();
+    const { alert } = useEcommerceContext();
 
     return (
         <>
+            {alert.type !== "" && (
+                <AlertComponent
+                    headingMessage={alert?.headingMessage}
+                    subHeadingMessage={alert?.subHeadingMessage}
+                />
+            )}
             <link rel="icon" type="image/svg+xml" href="/Solana-Sol-Line--Streamline-Mingcute.svg" />
             <title>Wishlist</title>
             <Navbar />
@@ -29,6 +39,8 @@ export default function Wishlist() {
                                 <ProductCard key={product._id} product={product} />
                             ))}
                         </div>
+                        <WishlistAddToCartModal />
+
                     </div>
                 </main>
                 <hr />

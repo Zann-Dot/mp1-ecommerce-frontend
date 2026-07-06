@@ -5,56 +5,11 @@ const useEcommerceContext = () => useContext(EcommerceContext);
 export default useEcommerceContext;
 
 function alertReducer(alert, action) {
-    switch (action.type) {
-        case "setToDefault":
-            return {
-                type: action.type,
-                headingMessage: action.heading,
-                subHeadingMessage: action.subHeading,
-            };
-
-        case "addressUpdateForm":
-            return {
-                type: action.type,
-                headingMessage: action.heading,
-                subHeadingMessage: action.subHeading,
-            };
-
-        case "removeAddress":
-            return {
-                type: action.type,
-                headingMessage: action.heading,
-                subHeadingMessage: action.subHeading,
-            };
-
-        case "addressUpdateFormError":
-            return {
-                type: action.type,
-                headingMessage: action.heading,
-                subHeadingMessage: action.subHeading,
-            };
-
-        case "quantityUpdate":
-            return {
-                type: action.type,
-                headingMessage: action.heading,
-                subHeadingMessage: action.subHeading,
-            };
-
-        case "addedToCart":
-            return {
-                type: action.type,
-                headingMessage: action.heading,
-                subHeadingMessage: action.subHeading,
-            };
-
-        case "removedItemFromCart":
-            return {
-                type: action.type,
-                headingMessage: action.heading,
-                subHeadingMessage: action.subHeading,
-            };
-    }
+    return {
+        type: action.type,
+        headingMessage: action.heading,
+        subHeadingMessage: action.subHeading,
+    };
 }
 
 export function EcommerceProvider({ children }) {
