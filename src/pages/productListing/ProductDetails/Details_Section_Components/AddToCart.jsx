@@ -27,7 +27,7 @@ export default function AddToCart({ productId }) {
 
             const response = await addToCart(payload);
 
-            if (response.success) {
+            if (response?.success) {
                 location.pathname === "/wishlist" &&
                     (await handleWishlist(wishlistState, setWishlistState, productId));
 

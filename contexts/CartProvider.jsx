@@ -50,8 +50,24 @@ export function CartProvider({ children }) {
                 body: JSON.stringify(payload),
             });
             const data = await res.json();
+            if (!res.ok) {
+                dispatch({
+                    type: "selectSize",
+                    heading: "Please select size",
+                    subHeading: ""
+                })
 
-            if (!res.ok) throw new Error(data.message);
+                setTimeout(() => {
+                    dispatch({
+                        type: "",
+                        heading: "",
+                        subHeading: ""
+                    });
+                }, 3000);
+
+                throw new Error(data.message)
+            };
+
             await loadCart();
             await getPaymentSummary();
             return data;

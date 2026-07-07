@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import AlertComponent from "../../components/AlertComponent";
+import ErrorAlert from "../../components/ErrorAlert";
 
 export default function ProductDetails() {
     const { productId } = useParams();
@@ -31,6 +32,13 @@ export default function ProductDetails() {
             <title>Products</title>
             {alert?.type === "addedToCart" && (
                 <AlertComponent
+                    headingMessage={alert?.headingMessage}
+                    subHeadingMessage={alert?.subHeadingMessage}
+                />
+            )}
+
+            {alert?.type === "selectSize" && (
+                <ErrorAlert
                     headingMessage={alert?.headingMessage}
                     subHeadingMessage={alert?.subHeadingMessage}
                 />
