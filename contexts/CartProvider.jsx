@@ -84,7 +84,7 @@ export function CartProvider({ children }) {
                     heading: "",
                     subHeading: ""
                 });
-            }, 2500);
+            }, 3000);
 
             await loadCart();
             await getPaymentSummary();

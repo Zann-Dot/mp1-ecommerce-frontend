@@ -1,11 +1,15 @@
+import { useState } from "react";
 import useCartContext from "../../../contexts/CartProvider";
 import useEcommerceContext from "../../../contexts/EcommerceProvider";
+import useWishlistContext from "../../../contexts/WishlistProvider";
 import calculateDiscountedPrice from "../../utilis/calculateDiscountedPrice";
 import { Link } from "react-router";
 
 export default function CheckoutProducts({ cartItem }) {
     const { deleteFromCart, addToCart } = useCartContext();
     const { dispatch } = useEcommerceContext();
+    const { handleWishlist } = useWishlistContext();
+    const [wishlistState, setWishlistState] = useState(false);
 
     async function handleQuantityUpdate(e) {
         const payload = {
@@ -96,7 +100,7 @@ export default function CheckoutProducts({ cartItem }) {
                     </div>
                 </div>
 
-                <div className="pt-1">
+                <div className="pt-1 flex items-center gap-x-2">
                     <button
                         type="button"
                         onClick={() => deleteFromCart(cartItem.product._id)}
@@ -123,6 +127,17 @@ export default function CheckoutProducts({ cartItem }) {
                             </g>
                         </svg>
                         Remove
+                    </button>
+
+                    <button
+                        onClick={() => {
+                            deleteFromCart(cartItem.product._id);
+                            handleWishlist(wishlistState, setWishlistState, cartItem.product._id);
+                        }}
+                        type="button"
+                        className="cursor-pointer py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-primary-600 hover:bg-primary-100 focus:outline-hidden hover:text-primary-800 focus:bg-primary-100 focus:text-primary-800 disabled:opacity-50 disabled:pointer-events-none dark:text-primary-400/70 dark:hover:bg-primary-500/20 dark:hover:text-primary-400 dark:focus:bg-primary-500/20 dark:focus:text-primary-400"
+                    >
+                        Move to Wishlist
                     </button>
                 </div>
             </div>
