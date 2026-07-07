@@ -3,7 +3,6 @@ import FeaturedProducts from "./FeaturedProducts";
 
 export default function Featured() {
     const { products } = useEcommerceContext();
-    const featuredProducts = products.filter((p) => products.indexOf(p) <= 3);
 
     return (
         <div className="flex flex-col my-10 gap-10">
@@ -11,9 +10,12 @@ export default function Featured() {
                 Featured
             </h1>
             <div className=" grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-12">
-                {featuredProducts.map((product) => (
-                    <FeaturedProducts key={product._id} product={product} />
-                ))}
+                {!products?.error &&
+                    products
+                        ?.filter((p) => products.indexOf(p) <= 3)
+                        .map((product) => (
+                            <FeaturedProducts key={product._id} product={product} />
+                        ))}
             </div>
         </div>
     );
