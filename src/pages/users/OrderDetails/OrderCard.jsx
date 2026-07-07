@@ -56,7 +56,7 @@ export default function OrderCard({ order }) {
                         Order date
                     </h1>
                     <span className="text-foreground text-[13px]">
-                        {format(order?.orderSummary.orderDate, "d EEE yyyy")}
+                        {format(order?.orderSummary.orderDate, "d MMM yyyy")}
                     </span>
                 </div>
 
@@ -98,7 +98,7 @@ export default function OrderCard({ order }) {
                             <h3>
                                 Estimated delivery:{" "}
                                 <span className="font-semibold">
-                                    {format(calculateDeliveryTime(), "EEEEEEEE d, yyyy")}
+                                    {format(calculateDeliveryTime(), "EEEEEEEE d MMM, yyyy")}
                                 </span>
                             </h3>
                         </div>
