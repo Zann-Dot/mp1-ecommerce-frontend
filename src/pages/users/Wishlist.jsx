@@ -17,9 +17,12 @@ export default function Wishlist() {
     const productId = searchParams.get("id");
 
     useEffect(() => {
-        params.delete("size");
-        setSearchParams(params)
-    }, [productId]);
+        if (searchParams.has("size")) {
+            params.delete("size");
+            setSearchParams(params, { replace: true });
+        }
+    }, [productId, searchParams]);
+
     return (
         <>
             {alert.type !== "" && (
