@@ -30,7 +30,7 @@ export default function Breadcrumb({ data }) {
                 <li className="inline-flex items-center">
                     <Link
                         className="flex items-center text-sm text-muted-foreground-1 hover:text-primary-focus focus:outline-hidden focus:text-primary-focus"
-                        to="/category"
+                        to={`/category?c=${data?.category}`}
                     >
                         Category
                         <svg

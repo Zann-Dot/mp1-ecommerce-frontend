@@ -154,21 +154,23 @@ export default function ProductCard({ product }) {
                 </div>
             </Link>
 
-            <button
-                onClick={() => {
-                    params.set("id", productId);
-                    params.set("quantity", 1);
-                    setSearchParams(params);
-                }}
-                type="button"
-                className="cursor-pointer mt-4 py-3 px-4 inline-flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-primary-100 text-primary-800 hover:bg-primary-200 focus:outline-hidden focus:bg-primary-200  disabled:opacity-50 disabled:pointer-events-none dark:bg-primary-500/20 dark:text-primary-400 dark:hover:bg-primary-500/30 dark:focus:bg-primary-500/30"
-                aria-haspopup="dialog"
-                aria-expanded="false"
-                aria-controls="hs-slide-up-animation-modal"
-                data-hs-overlay="#hs-slide-up-animation-modal"
-            >
-                Move to cart
-            </button>
+            {location.pathname === "/wishlist" && (
+                <button
+                    onClick={() => {
+                        params.set("id", productId);
+                        params.set("quantity", 1);
+                        setSearchParams(params);
+                    }}
+                    type="button"
+                    className="cursor-pointer mt-4 py-3 px-4 inline-flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-primary-100 text-primary-800 hover:bg-primary-200 focus:outline-hidden focus:bg-primary-200  disabled:opacity-50 disabled:pointer-events-none dark:bg-primary-500/20 dark:text-primary-400 dark:hover:bg-primary-500/30 dark:focus:bg-primary-500/30"
+                    aria-haspopup="dialog"
+                    aria-expanded="false"
+                    aria-controls="hs-slide-up-animation-modal"
+                    data-hs-overlay="#hs-slide-up-animation-modal"
+                >
+                    Move to cart
+                </button>
+            )}
         </div>
     );
 }

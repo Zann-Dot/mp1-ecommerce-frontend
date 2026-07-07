@@ -38,7 +38,7 @@ export default function ProductDetails() {
             <Navbar />
             <div className="w-full absolute top-56.25 lg:top-42.25 left-0 right-0">
                 <main className="max-w-270 mx-auto w-full lg:my-10 px-4 sm:px-6 lg:px-0">
-                    {error && (
+                    {!loading && error && (
                         <p className="text-5xl/snug text-center font-bold text-primary-300 dark:text-primary-600">Opss! Cannot get product <br />details</p>
                     )}
 
@@ -55,7 +55,7 @@ export default function ProductDetails() {
                     )}
 
                     {data && (
-                        <div className=" pt-5 lg:pt-0 grid grid-cols-5 gap-y-10">
+                        <div className="pt-5 lg:pt-0 grid grid-cols-5 gap-y-10">
                             <ImageDisplay data={data} />
                             <DetailsSection data={data} />
                         </div>

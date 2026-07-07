@@ -36,12 +36,8 @@ export function SidebarProvider({ children }) {
             params.append("c", category);
         });
 
-        if (minPrice) params.set("min", minPrice);
-        else params.delete("min");
-
-        if (maxPrice) params.set("max", maxPrice);
-        else params.delete("max");
-
+        params.set("min", minPrice);
+        params.set("max", maxPrice);
         params.set("r", rating);
 
         setLoading(true);
