@@ -5,12 +5,43 @@ import { Link, useNavigate } from "react-router";
 import useEcommerceContext from "../../../contexts/EcommerceProvider";
 
 export default function CustomerAccount() {
-    const { user } = useEcommerceContext();
+    const { user, dispatch } = useEcommerceContext();
     const navigate = useNavigate();
 
     useEffect(() => {
         user?.mode === "guest" && navigate("/");
     }, [user]);
+
+    async function handleLogOut() {
+        try {
+            const res = await fetch("/api/user/logout", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" }
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error("Failed to log out user");
+
+            if (data.success) {
+                navigate("/");
+                dispatch({
+                    type: "userLogout",
+                    heading: "Logged out",
+                    subHeading: "You have signed out successfully."
+                });
+            }
+
+            setTimeout(() => {
+                dispatch({
+                    type: "",
+                    heading: "",
+                    subHeading: ""
+                })
+            }, 2500);
+
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
 
     return (
         <>
@@ -57,12 +88,12 @@ export default function CustomerAccount() {
                                 </div>
                             </section>
                             <p>
-                                <a
-                                    className="font-medium text-primary text-sm underline underline-offset-4 decoration-line-8 hover:opacity-80 focus:outline-hidden focus:opacity-80"
-                                    href="#"
+                                <button
+                                    className="cursor-pointer font-medium text-primary text-sm underline underline-offset-4 decoration-line-8 hover:opacity-80 focus:outline-hidden focus:opacity-80"
+                                    onClick={handleLogOut}
                                 >
                                     Logout
-                                </a>
+                                </button>
                             </p>
                         </div>
 
