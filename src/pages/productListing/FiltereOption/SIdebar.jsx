@@ -140,7 +140,7 @@ export default function Sidebar() {
 
                     <div className="pb-2 bg-sidebar h-screen overflow-y-auto scrollbar-none">
                         <div className="flex flex-col items-center justify-start gap-2">
-                            <FilterByCategory />
+                            {location.pathname !== "/category" && (<FilterByCategory />)}
                             <FilterByPrice />
                             <FilterByRating />
                             <SubmitFilterButton />
