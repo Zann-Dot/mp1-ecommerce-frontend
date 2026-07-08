@@ -37,7 +37,7 @@ export default function SubmitFilterButton() {
                 onClick={filterProducts}
                 className="cursor-pointer py-2 px-6 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
             >
-                Show items
+                Apply filter
             </button>
         </div>
     );
