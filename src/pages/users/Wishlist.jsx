@@ -21,7 +21,7 @@ export default function Wishlist() {
             params.delete("size");
             setSearchParams(params, { replace: true });
         }
-    }, [productId, searchParams]);
+    }, [productId]);
 
     return (
         <>
