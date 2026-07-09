@@ -1,11 +1,11 @@
 import { useState } from "react";
-import useEcommerceContext from "../../../../../contexts/EcommerceProvider";
 import SelectQuantity from "./SelectQuantity";
 import AddToCart from "./AddToCart";
+import useWishlistContext from "../../../../../contexts/WishlistProvider";
 
 export default function AddToCartButtons({ data, params, productId }) {
     const [wishlistState, setWishlistState] = useState(data.isWishlist);
-    const { handleWishlist } = useEcommerceContext();
+    const { handleWishlist } = useWishlistContext();
 
     return (
         <div className="flex items-center mt-8 gap-2">

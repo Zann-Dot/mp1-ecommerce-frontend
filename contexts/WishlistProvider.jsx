@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import useEcommerceContext from "./EcommerceProvider";
+import useCartContext from "./CartProvider";
 
 const WishlistContext = createContext();
 const useWishlistContext = () => useContext(WishlistContext);
@@ -7,8 +8,9 @@ export default useWishlistContext;
 
 export function WishlistProvider({ children }) {
     const [wishlist, setWishlist] = useState([]);
-    const { dispatch } = useEcommerceContext();
     const [wishlistLoading, setWishlistLoading] = useState(false);
+    const { dispatch } = useEcommerceContext();
+    const { cart } = useCartContext();
 
     async function fetchWishlistProducts() {
         try {
@@ -23,6 +25,11 @@ export function WishlistProvider({ children }) {
             console.error(error);
         }
     }
+    const wishlists = cart
+        ? wishlist?.filter((product) =>
+            !cart.find((item) => item.product._id === product._id),
+        )
+        : wishlist;
 
     async function updateWishlist(newWishlistState, productId) {
         try {
@@ -75,7 +82,7 @@ export function WishlistProvider({ children }) {
         <WishlistContext.Provider
             value={{
                 fetchWishlistProducts,
-                wishlist,
+                wishlists,
                 handleWishlist,
                 wishlistLoading,
                 updateWishlist

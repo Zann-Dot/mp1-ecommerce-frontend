@@ -17,15 +17,15 @@ import("preline").then(() => {
     <StrictMode>
       <EcommerceProvider>
         <AddressProvider>
-          <WishlistProvider>
-            <CartProvider>
+          <CartProvider>
+            <WishlistProvider>
               <CheckoutProvider>
                 <BrowserRouter>
                   <App />
                 </BrowserRouter>
               </CheckoutProvider>
-            </CartProvider>
-          </WishlistProvider>
+            </WishlistProvider>
+          </CartProvider>
         </AddressProvider>
       </EcommerceProvider>
     </StrictMode>,
