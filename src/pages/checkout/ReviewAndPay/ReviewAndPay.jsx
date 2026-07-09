@@ -16,7 +16,6 @@ export default function ReviewAndPay() {
                         <OrderSummary />
                     </div>
                 </main>
-                <hr />
                 <ReviewFooter />
             </div>
         </>

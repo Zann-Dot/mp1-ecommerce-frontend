@@ -1,11 +1,20 @@
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import OrderConfirmationSummary from "./OrderConfirmationSummary";
 import DeliveryDetails from "./DeliveryDetails";
 import DarkModeButton from "../../components/Header/upperNavSection/DarkModeButton";
+import { useParams } from "react-router";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
+import { useEffect } from "react";
 
 export default function OrderConfirmationPage() {
-    const { setThemeMode } = useEcommerceContext();
+    const { setThemeMode, getOrderDetails } = useEcommerceContext();
+    const { orderNumber } = useParams();
+    const [searchParams] = useSearchParams();
+    const userId = searchParams.get("userId");
+
+    useEffect(() => {
+        getOrderDetails(orderNumber, userId);
+    }, [])
 
     return (
         <>
@@ -60,9 +69,7 @@ export default function OrderConfirmationPage() {
                     </div>
                 </main>
 
-                <hr className="my-3" />
-
-                <footer className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-navbar-line">
+                <footer className="flex fixed bottom-0 flex-wrap sm:justify-start sm:flex-nowrap border-t w-full py-3 bg-navbar border-navbar-line">
                     <nav className="max-w-270 w-full mx-auto px-4 text-muted-foreground-1 text-sm flex flex-wrap basis-full items-center justify-center gap-x-3">
                         <p>&copy; 2026 ShoppersStop</p>
                         <span className="font-extrabold">·</span>

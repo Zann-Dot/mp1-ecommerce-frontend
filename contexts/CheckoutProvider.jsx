@@ -8,7 +8,7 @@ export default useCheckoutContext;
 
 export function CheckoutProvider({ children }) {
     const [reviewInfo, setReviewInfo] = useState([]);
-    const { cart } = useCartContext();
+    const { cart, paymentSummary } = useCartContext();
     const { user } = useEcommerceContext();
     const [checkoutForm, setCheckoutForm] = useState({
         email: "",
@@ -75,6 +75,7 @@ export function CheckoutProvider({ children }) {
         orderSummary.orderDate = new Date().getTime();
         orderSummary.deliveryAddress = reviewInfo[0]?.address;
         orderSummary.deliveryTime = reviewInfo[0]?.deliveryTime;
+        orderSummary.paymentSummary = paymentSummary;
         orderSummary.cartItems = cart?.map((item) => ({
             product: item.product._id,
             quantity: item.quantity,

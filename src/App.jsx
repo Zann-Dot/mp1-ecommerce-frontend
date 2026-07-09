@@ -59,11 +59,11 @@ function App() {
                 <Route path="/products/:productId" element={<ProductDetails />} />
                 <Route path="/user/account" element={<CustomerAccount />} />
                 <Route
-                    path="/user/account/personal-information"
+                    path="/user/:userId/account/personal-information"
                     element={<CustomerPersonalInfo />}
                 />
-                <Route path="/user/account/myorders" element={<MyOrders />} />
-                <Route path="/user/account/addresses" element={<AddressManagement />} />
+                <Route path="/user/:userId/account/myorders" element={<MyOrders />} />
+                <Route path="/user/:userId/account/addresses" element={<AddressManagement />} />
                 <Route path="/customer/signup" element={<CustomerSignUp />} />
                 <Route path="/customer/login" element={<CustomerSignIn />} />
                 <Route path="/category" element={<CategoryPage />} />

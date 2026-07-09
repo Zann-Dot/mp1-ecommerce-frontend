@@ -1,8 +1,10 @@
-import useCartContext from "../../../../contexts/CartProvider"
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import calculateDiscountedPrice from "../../../utilis/calculateDiscountedPrice";
 
 export default function OrderConfirmationSummary() {
-    const { paymentSummary, cart } = useCartContext();
+    const { order } = useEcommerceContext();
+    const cart = order?.orderSummary.cartItems;
+    const paymentSummary = order?.orderSummary.paymentSummary;
 
     return (
         <div className='py-14 text-foreground flex flex-col gap-10 md:ms-auto md:max-w-sm md:w-full'>
@@ -63,36 +65,34 @@ export default function OrderConfirmationSummary() {
 
             {/* Order Summary */}
             <div className="grid grid-flow-row gap-5">
-                {cart.length !== 0 &&
-                    cart &&
-                    cart.map((item) => (
-                        <div key={item._id} className="flex items-center gap-4">
-                            <div className="relative w-25 h-28 rounded-xl overflow-hidden">
-                                <img
-                                    src={item.product.imageUrl}
-                                    alt="Nike Air Force 1"
-                                    className="size-1/1 object-cover"
-                                />
-                            </div>
-                            <div className="flex flex-col gap-1 h-full text-muted-foreground-1 text-xs">
-                                <h1 className="text-foreground text-base">
-                                    {item.product.productName.split(" ").splice(0, 3).join(" ")}
-                                </h1>
-                                <h4>Color: red</h4>
-                                <h4>Size: {item.size}</h4>
-                                <h4>Qty: {item.quantity}</h4>
-                                <h2 className="text-foreground text-base">
-                                    ₹
-                                    {item.product.isDiscount
-                                        ? calculateDiscountedPrice(
-                                            item.product.discount,
-                                            item.product.priceRupees,
-                                        )
-                                        : product.priceRupees}
-                                </h2>
-                            </div>
+                {cart?.map((item) => (
+                    <div key={item._id} className="flex items-center gap-4">
+                        <div className="relative w-25 h-28 rounded-xl overflow-hidden">
+                            <img
+                                src={item.product.imageUrl}
+                                alt="Nike Air Force 1"
+                                className="size-1/1 object-cover"
+                            />
                         </div>
-                    ))}
+                        <div className="flex flex-col gap-1 h-full text-muted-foreground-1 text-xs">
+                            <h1 className="text-foreground text-base">
+                                {item.product.productName.split(" ").splice(0, 3).join(" ")}
+                            </h1>
+                            <h4>Color: </h4>
+                            <h4>Size: {item.size}</h4>
+                            <h4>Qty: {item.quantity}</h4>
+                            <h2 className="text-foreground text-base">
+                                ₹
+                                {item.product.isDiscount
+                                    ? calculateDiscountedPrice(
+                                        item.product.discount,
+                                        item.product.priceRupees,
+                                    )
+                                    : product.priceRupees}
+                            </h2>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
 

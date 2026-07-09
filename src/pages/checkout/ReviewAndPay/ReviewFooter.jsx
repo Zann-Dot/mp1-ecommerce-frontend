@@ -1,10 +1,12 @@
 import { Link, useNavigate } from "react-router";
 import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 import useCartContext from "../../../../contexts/CartProvider";
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function ReviewFooter() {
     const { getOrdersBody } = useCheckoutContext();
     const { deleteCart } = useCartContext();
+    const { user } = useEcommerceContext();
     const navigate = useNavigate();
 
     async function postOrder() {
@@ -18,7 +20,8 @@ export default function ReviewFooter() {
             const data = await res.json();
             if (!res.ok) throw new Error(data.error);
             const isCartDeleted = await deleteCart() || false;
-            isCartDeleted && data.success && navigate(`/checkout/review-and-pay/order-confirmation/${ordersBody.orderNumber}`)
+            isCartDeleted && data.success
+                && navigate(`/checkout/review-and-pay/order-confirmation/${ordersBody.orderNumber}?userId=${user?._id}`)
         } catch (error) {
             console.error(error.message)
         }

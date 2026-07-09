@@ -4,6 +4,7 @@ import OrderCardSkeleton from "./OrderCardSkeleton";
 
 export default function OrdersHistory() {
     const { orders, loading } = useEcommerceContext();
+    console.log(orders);
 
     return (
         <main className="w-full">

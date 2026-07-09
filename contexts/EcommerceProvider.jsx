@@ -16,9 +16,10 @@ export function EcommerceProvider({ children }) {
     const [themeMode, setThemeMode] = useState(localStorage.getItem("theme"));
     const [orders, setOrders] = useState([]);
     const [products, setProducts] = useState([]);
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
     const [sort, setSort] = useState("");
     const [loading, setLoading] = useState(false);
+    const [order, setOrder] = useState(null);
     const [alert, dispatch] = useReducer(alertReducer, {
         type: "",
         headingMessage: "",
@@ -101,6 +102,16 @@ export function EcommerceProvider({ children }) {
         }
     };
 
+    async function getOrderDetails(orderNumber, userId) {
+        try {
+            const response = await fetch(`/api/orders/${orderNumber}/${userId}`);
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error);
+            setOrder(data);
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
     return (
         <EcommerceContext.Provider
             value={{
@@ -118,7 +129,9 @@ export function EcommerceProvider({ children }) {
                 dispatch,
                 loading,
                 setLoading,
-                getProductsByCategory
+                getProductsByCategory,
+                getOrderDetails,
+                order
             }}
         >
             {children}

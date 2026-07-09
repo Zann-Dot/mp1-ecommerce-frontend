@@ -11,7 +11,7 @@ export default function HeaderUtilities() {
     return (
         <div className="flex items-center gap-5 ms-auto lg:ms-0">
             <div className="w-15 cursor-pointer">
-                {user.mode === "guest" && (
+                {user?.mode === "guest" && (
                     <Link
                         to="/customer/login"
                         className="text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover"
@@ -35,7 +35,7 @@ export default function HeaderUtilities() {
                     </Link>
                 )}
 
-                {user.mode !== "guest" && (
+                {user?.mode !== "guest" && (
                     <Link
                         to="/user/account"
                         className="text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover"
@@ -101,11 +101,11 @@ export default function HeaderUtilities() {
 
             <div className="w-15 cursor-pointer">
                 <Link
-                    to={user.mode === "guest" ? "#" : "/cart"}
+                    to={user?.mode === "guest" ? "/" : "/cart"}
                     className="text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover"
                 >
                     <div className="indicator">
-                        {user.mode !== "guest" && cart.length !== 0 && (
+                        {user?.mode !== "guest" && cart.length !== 0 && (
                             <span className="indicator-item badge badge-primary scale-70 px-2 py-0 rounded-full text-primary-foreground text-">
                                 {totalQuantity}
                             </span>
