@@ -10,10 +10,9 @@ import AlertComponent from "./components/AlertComponent";
 export default function CategoryPage() {
     const [searchParams] = useSearchParams();
     const category = searchParams.get("c");
-    const { loading, products, getProductsByCategory, alert } = useEcommerceContext();
+    const { loading, products, alert } = useEcommerceContext();
 
     useEffect(() => {
-        getProductsByCategory(category);
         window.scrollTo(top);
     }, []);
 

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useSearchParams } from "react-router-dom";
 import Homepage from "./pages/home/Homepage";
 import ProductListing from "./pages/productListing/ProductListing";
 import CustomerSignUp from "./pages/users/CustomerSignUp";
@@ -22,15 +22,19 @@ import useWishlistContext from "../contexts/WishlistProvider";
 import CategoryPage from "./pages/CategoryPage";
 
 function App() {
-    const { fetchProducts, getUser, getOrdersDetails } = useEcommerceContext();
+    const { fetchProducts, getUser, getOrdersDetails, getProductsByCategory } =
+        useEcommerceContext();
     const { loadCart, getPaymentSummary } = useCartContext();
     const { reviewInfo } = useCheckoutContext();
     const { fetchWishlistProducts } = useWishlistContext();
     const location = useLocation();
+    const [searchParams] = useSearchParams();
 
     useEffect(() => {
         window.HSStaticMethods.autoInit();
-        fetchProducts();
+        searchParams.has("c")
+            ? getProductsByCategory(searchParams.get("c"))
+            : fetchProducts();
         getUser();
         fetchWishlistProducts();
         loadCart();
