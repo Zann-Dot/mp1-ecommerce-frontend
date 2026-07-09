@@ -161,7 +161,7 @@ export default function PaymentSummary() {
 
             <div className="flex flex-col gap-3">
                 <Link
-                    to="/checkout"
+                    to={paymentSummary?.subTotal === 0 ? "/cart" : "/checkout"}
                     className="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                 >
                     Checkout
