@@ -8,7 +8,7 @@ export default function UpperNavSection() {
       <div className="w-full px-4 py-2 bg-background-1 dark:bg-[#202020]">
          <section className="max-w-340 w-full mx-auto flex items-center justify-between">
             <div className="flex items-center">
-               <ChangeLocationButton />
+               {/* <ChangeLocationButton /> */}
             </div>
             <div>
                <ol className="flex items-center whitespace-nowrap">

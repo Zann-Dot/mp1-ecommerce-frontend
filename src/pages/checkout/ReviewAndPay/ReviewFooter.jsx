@@ -25,7 +25,7 @@ export default function ReviewFooter() {
     }
 
     return (
-        <footer className="sticky bottom-0 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-t border-navbar-line">
+        <footer className="fixed bottom-0 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-navbar border-t border-navbar-line">
             <nav className="max-w-270 w-full mx-auto px-4 flex flex-wrap gap-2 basis-full items-center sm:justify-between">
                 <Link
                     className="order-2 sm:order-1 flex items-center text-xs md:text-sm gap-x-1 font-semibold text-foreground underline underline-offset-4 focus:outline-hidden focus:opacity-80"

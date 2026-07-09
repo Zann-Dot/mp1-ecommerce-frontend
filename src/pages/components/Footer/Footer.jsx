@@ -9,15 +9,15 @@ export default function Footer() {
                         href="#"
                         aria-label="Brand"
                     >
-                        ShoppersStop
+                        ShopperStop
                     </a>
                     <p className="mt-3 text-xs sm:text-sm text-muted-foreground-2">
                         © 2026 ShoppersStop Inc.
                     </p>
                 </div>
-                {/* End Col */}
 
-                <div>
+
+                {/* <div>
                     <h3 className="text-xs font-semibold text-foreground uppercase">
                         Product
                     </h3>
@@ -57,7 +57,7 @@ export default function Footer() {
                         </p>
                     </div>
                 </div>
-                {/* End Col */}
+
 
                 <div>
                     <h3 className="text-xs font-semibold text-foreground uppercase">
@@ -116,7 +116,7 @@ export default function Footer() {
                         </p>
                     </div>
                 </div>
-                {/* End Col */}
+        
 
                 <div>
                     <h3 className="text-xs font-semibold text-foreground uppercase">
@@ -165,9 +165,9 @@ export default function Footer() {
                             </a>
                         </p>
                     </div>
-                </div>
-                {/* End Col */}
+                </div> 
 
+           
                 <div>
                     <h3 className="text-xs font-semibold text-foreground uppercase">
                         Developers
@@ -223,15 +223,15 @@ export default function Footer() {
                             </a>
                         </p>
                     </div>
-                </div>
-                {/* End Col */}
+                </div> */}
+
             </div>
             {/* End Grid */}
 
-            <div className="pt-5 mt-5 border-t border-line-2">
+            {/* <div className="pt-5 mt-5 border-t border-line-2">
                 <div className="sm:flex sm:justify-between sm:items-center">
                     <div className="flex flex-wrap items-center gap-3">
-                        {/* Language Dropdown */}
+         
                         <div className="hs-dropdown [--placement:top-left] relative inline-flex">
                             <button
                                 id="hs-footer-language-dropdown"
@@ -436,7 +436,7 @@ export default function Footer() {
                                 </a>
                             </div>
                         </div>
-                        {/* End Language Dropdown */}
+     
 
                         <div className="space-x-4 text-sm">
                             <a
@@ -474,7 +474,7 @@ export default function Footer() {
                             </p>
                         </div>
 
-                        {/* Social Brands */}
+        
                         <div className="space-x-4">
                             <a
                                 className="inline-block text-muted-foreground-1 hover:text-foreground focus:outline-hidden focus:text-foreground"
@@ -522,11 +522,10 @@ export default function Footer() {
                                 </svg>
                             </a>
                         </div>
-                        {/* End Social Brands */}
+           
                     </div>
-                    {/* End Col */}
                 </div>
-            </div>
+            </div> */}
         </footer>
     );
 }

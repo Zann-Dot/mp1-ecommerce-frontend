@@ -5,7 +5,7 @@ export default function CategorySection() {
         <div className='max-w-340 w-full mx-auto px-4 pb-2'>
             <div className="relative flex items-center gap-1 basis-full">
                 <div className="flex flex-row items-center gap-1 overflow-x-auto scrollbar-none">
-                    <button type="button" className="relative w-full text-start whitespace-nowrap cursor-pointer py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2 hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
+                    {/* <button type="button" className="relative w-full text-start whitespace-nowrap py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2  focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" className='stroke-muted-foreground-2' viewBox="0 0 24 24" id="Layers-Stacked--Streamline-Ultimate" height="14" width="14">
                             <desc>
                                 Layers Stacked Streamline Icon: https://streamlinehq.com
@@ -15,9 +15,9 @@ export default function CategorySection() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M0.757996 12.75 11.285 17.828c0.2189 0.113 0.4616 0.172 0.708 0.172 0.2463 0 0.4891 -0.059 0.708 -0.172l10.557 -5.078" strokeWidth="1.5"></path>
                         </svg>
                         Pages
-                    </button>
+                    </button> */}
 
-                    <button type="button" className="relative w-full text-start whitespace-nowrap cursor-pointer py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2 hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
+                    <button type="button" className="relative w-full text-start whitespace-nowrap py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2  focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" className='stroke-muted-foreground-2' viewBox="0 0 24 24" id="Discount--Streamline-Ultimate" height="12" width="12">
                             <desc>
                                 Discount Streamline Icon: https://streamlinehq.com
@@ -29,7 +29,7 @@ export default function CategorySection() {
                         Sales
                     </button>
 
-                    <button type="button" className="relative w-full text-start whitespace-nowrap cursor-pointer py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2 hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
+                    <button type="button" className="relative w-full text-start whitespace-nowrap py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2  focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
                         <svg className="stroke-muted-foreground-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M7 10v12"></path>
                             <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"></path>
@@ -37,7 +37,7 @@ export default function CategorySection() {
                         Best Sellers
                     </button>
 
-                    <button type="button" className="relative w-full text-start whitespace-nowrap cursor-pointer py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2 hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
+                    <button type="button" className="relative w-full text-start whitespace-nowrap py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2  focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
                         <svg className="zeqf6 r390y" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M16 16h6"></path>
                             <path d="M19 13v6"></path>
@@ -49,7 +49,7 @@ export default function CategorySection() {
                         New Arrivals
                     </button>
 
-                    <button type="button" className="relative w-full text-start whitespace-nowrap cursor-pointer py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2 hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
+                    <button type="button" className="relative w-full text-start whitespace-nowrap py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2  focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
                         <svg xmlns="http://www.w3.org/2000/svg" className='fill-muted-foreground-2' viewBox="0 0 16 16" id="Shoe-2-Line--Streamline-Mingcute" height="22" width="22">
                             <desc>
                                 Shoe 2 Line Streamline Icon: https://streamlinehq.com
@@ -62,14 +62,14 @@ export default function CategorySection() {
                         Footwear
                     </button>
 
-                    <button type="button" className="relative w-full text-start whitespace-nowrap cursor-pointer py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2 hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
+                    <button type="button" className="relative w-full text-start whitespace-nowrap py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2  focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
                         <svg className="stroke-muted-foreground-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path>
                         </svg>
                         Clothings
                     </button>
 
-                    <button type="button" className="relative w-full text-start whitespace-nowrap cursor-pointer py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2 hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
+                    <button type="button" className="relative w-full text-start whitespace-nowrap py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent text-muted-foreground-2  focus:outline-hidden focus:bg-muted-focus disabled:opacity-50 disabled:pointer-events-none">
                         <svg className="stroke-muted-foreground-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <rect x="3" y="8" width="18" height="4" rx="1"></rect>
                             <path d="M12 8v13"></path>
