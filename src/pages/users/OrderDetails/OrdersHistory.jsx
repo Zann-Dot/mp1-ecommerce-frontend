@@ -23,7 +23,7 @@ export default function OrdersHistory() {
                 >
                     Orders
                 </button>
-                <button
+                {/* <button
                     type="button"
                     className="px-2 py-1 cursor-pointer inline-flex items-center gap-x-2 text-sm rounded-lg border border-transparent text-muted-foreground-1 hover:bg-primary-100 hover:text-primary focus:outline-hidden focus:bg-primary-100 focus:text-primary-800 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-primary-500/20 dark:focus:bg-primary-500/20 dark:focus:text-primary"
                 >
@@ -34,7 +34,7 @@ export default function OrdersHistory() {
                     className="px-2 py-1 cursor-pointer inline-flex items-center gap-x-2 text-sm rounded-lg border border-transparent text-muted-foreground-1 hover:bg-primary-100 hover:text-primary focus:outline-hidden focus:bg-primary-100 focus:text-primary-800 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-primary-500/20 dark:focus:bg-primary-500/20 dark:focus:text-primary"
                 >
                     Cancelled orders
-                </button>
+                </button> */}
             </div>
             <hr className="mt-2 ms-2" />
 

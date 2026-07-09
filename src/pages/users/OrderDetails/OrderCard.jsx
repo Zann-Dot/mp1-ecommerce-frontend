@@ -1,7 +1,9 @@
 import { format } from "date-fns";
 import calculateDiscountedPrice from "../../../utilis/calculateDiscountedPrice";
+import { useNavigate } from "react-router";
 
 export default function OrderCard({ order }) {
+    const navigate = useNavigate();
     const totalOrderAmount = order.orderSummary.paymentSummary.subTotal
 
     function calculateDeliveryTime() {
@@ -124,6 +126,7 @@ export default function OrderCard({ order }) {
 
                     <button
                         type="button"
+                        onClick={() => navigate(`/checkout/review-and-pay/order-confirmation/${order.orderNumber}?userId=${order.userId}`)}
                         className="px-2 py-1 cursor-pointer inline-flex items-center gap-x-2 text-sm rounded-md bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-focus  disabled:opacity-50 disabled:pointer-events-none"
                     >
                         Order Details
