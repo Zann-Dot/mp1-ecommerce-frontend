@@ -75,10 +75,10 @@ export function EcommerceProvider({ children }) {
         }
     }
 
-    async function getOrdersDetails() {
+    async function getOrdersDetails(userId) {
         try {
             setLoading(true);
-            const response = await fetch(`/api/orders/${user?._id}`);
+            const response = await fetch(`/api/orders/${userId}`);
             const data = await response.json();
             if (!response.ok) throw new Error(data.error);
             setOrders(data);

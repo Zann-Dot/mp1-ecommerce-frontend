@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router";
+import useEcommerceContext from "../../../../../contexts/EcommerceProvider";
 
 export default function MobileSideDashboard() {
+   const { user } = useEcommerceContext();
    const overlayRef = useRef(null);
    useEffect(() => {
       return () => {
@@ -175,7 +177,7 @@ bg-sidebar border-e border-sidebar-line"
                               >
                                  <li className="hs-accordion" id="users-accordion-sub-2">
                                     <Link
-                                       to="/user/account/personal-information"
+                                       to={`/user/${user?._id}/account/personal-information`}
                                        className="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
                                        aria-expanded="true"
                                        aria-controls="users-accordion-sub-2-collapse-1"
@@ -186,7 +188,7 @@ bg-sidebar border-e border-sidebar-line"
 
                                  <li className="hs-accordion" id="users-accordion-sub-1">
                                     <Link
-                                       to="/user/account/myorders"
+                                       to={`/user/${user?._id}/account/myorders`}
                                        className="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
                                        aria-expanded="true"
                                        aria-controls="users-accordion-sub-1-collapse-1"
@@ -197,7 +199,7 @@ bg-sidebar border-e border-sidebar-line"
 
                                  <li className="hs-accordion" id="users-accordion-sub-2">
                                     <Link
-                                       to="/user/account/addresses"
+                                       to={`/user/${user?._id}/account/addresses`}
                                        className="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
                                        aria-expanded="true"
                                        aria-controls="users-accordion-sub-2-collapse-1"

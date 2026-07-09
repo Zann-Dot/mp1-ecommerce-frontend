@@ -2,9 +2,11 @@ import { Link, useParams } from "react-router";
 import useCheckoutContext from "../../../../contexts/CheckoutProvider";
 import { format } from "date-fns";
 import { useEffect } from "react";
+import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function DeliveryDetails() {
     const { reviewInfo, getCheckoutData } = useCheckoutContext();
+    const { user } = useEcommerceContext();
     const { orderNumber } = useParams();
     useEffect(() => {
         getCheckoutData();
@@ -32,7 +34,7 @@ export default function DeliveryDetails() {
 
                 <div className="inline-flex flex-wrap gap-3">
                     <Link
-                        to="/user/account/myorders"
+                        to={`/user/${user?._id}/account/myorders`}
                         className="cursor-pointer py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-primary border border-primary-line text-primary-foreground hover:bg-primary-hover focus:outline-hidden focus:bg-primary-hover disabled:opacity-50 disabled:pointer-events-none"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="Print-Line--Streamline-Mingcute" height="16" width="16">

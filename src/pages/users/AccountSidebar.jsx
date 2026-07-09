@@ -1,6 +1,8 @@
 import { Link } from "react-router";
+import useEcommerceContext from "../../../contexts/EcommerceProvider";
 
 export default function AccountSidebar() {
+    const { user } = useEcommerceContext();
     return (
         <>
             {/* Navigation Toggle */}
@@ -71,7 +73,7 @@ bg-sidebar border-e pe-3 border-sidebar-line"
                                 <li>
                                     <Link
                                         className=" flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
-                                        to="/user/account/personal-information"
+                                        to={`/user/${user?._id}/account/personal-information`}
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +104,7 @@ bg-sidebar border-e pe-3 border-sidebar-line"
                                 <li>
                                     <Link
                                         className=" w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
-                                        to="/user/account/myorders"
+                                        to={`/user/${user?._id}/account/myorders`}
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +135,7 @@ bg-sidebar border-e pe-3 border-sidebar-line"
                                 <li>
                                     <Link
                                         className=" w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-sidebar-nav-foreground rounded-lg hover:bg-sidebar-nav-hover focus:outline-hidden focus:bg-sidebar-nav-focus"
-                                        to="/user/account/addresses"
+                                        to={`/user/${user?._id}//account/addresses`}
                                     >
                                         <svg
                                             className="zeqf6 c51lg kh2c5"

@@ -99,7 +99,7 @@ export default function CustomerAccount() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                             <Link
-                                to="/user/account/personal-information"
+                                to={`/user/${user?._id}/account/personal-information`}
                                 className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg"
                             >
                                 <div className="px-6 py-6">
@@ -138,7 +138,7 @@ export default function CustomerAccount() {
                             </Link>
 
                             <Link
-                                to="/user/account/myorders"
+                                to={`/user/${user?._id}/account/myorders`}
                                 className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg"
                             >
                                 <div className="px-6 py-6">
@@ -178,7 +178,7 @@ export default function CustomerAccount() {
                             </Link>
 
                             <Link
-                                to="/user/account/addresses"
+                                to={`/user/${user?._id}//account/addresses`}
                                 className="flex flex-col relative bg-card border border-card-line shadow-xs rounded-xl cursor-pointer before:absolute before:inset-0 before:z-10 before:border before:border-card-line before:rounded-xl before:transition hover:before:border-2 hover:before:border-primary-hover hover:before:shadow-lg focus:before:border-2 focus:before:border-primary-focus focus:before:shadow-lg"
                             >
                                 <div className="px-6 py-6">

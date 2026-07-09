@@ -1,11 +1,16 @@
+import { useEffect } from "react";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import OrderCard from "./OrderCard";
 import OrderCardSkeleton from "./OrderCardSkeleton";
+import { useParams } from "react-router";
 
 export default function OrdersHistory() {
-    const { orders, loading } = useEcommerceContext();
-    console.log(orders);
+    const { orders, loading, getOrdersDetails } = useEcommerceContext();
+    const { userId } = useParams();
 
+    useEffect(() => {
+        getOrdersDetails(userId);
+    }, [])
     return (
         <main className="w-full">
             <h1 className="text-lg font-semibold text-foreground ps-2">
@@ -36,7 +41,7 @@ export default function OrdersHistory() {
             {/* order history */}
             <div className="flex flex-col mt-6 gap-10">
                 {loading && (<OrderCardSkeleton />)}
-                {!loading && !orders || orders.length === 0 && (
+                {!loading && (!orders || orders.length === 0) && (
                     <p className="text-2xl ps-2 font-medium">No Orders!</p>
                 )}
                 {!loading && orders?.map(order => (

@@ -2,9 +2,7 @@ import { format } from "date-fns";
 import calculateDiscountedPrice from "../../../utilis/calculateDiscountedPrice";
 
 export default function OrderCard({ order }) {
-    console.log(order?.orderSummary.paymentSummary.subTotal);
-
-    const totalOrderAmount = 0
+    const totalOrderAmount = order.orderSummary.paymentSummary.subTotal
 
     function calculateDeliveryTime() {
         const orderDate = order?.orderSummary.orderDate;
