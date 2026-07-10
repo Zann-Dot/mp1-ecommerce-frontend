@@ -249,7 +249,7 @@ export default function OrderCard({ order }) {
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-wrap gap-2 pt-1 text-xs lg:text-sm">
+                                    {/* <div className="flex flex-wrap gap-2 pt-1 text-xs lg:text-sm">
                                         <button
                                             type="button"
                                             className="hover:bg-layer-hover py-1.5 px-2 inline-flex justify-center items-center rounded-lg border border-layer-line transition cursor-pointer"
@@ -262,7 +262,7 @@ export default function OrderCard({ order }) {
                                         >
                                             Write a product review
                                         </button>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </section>
