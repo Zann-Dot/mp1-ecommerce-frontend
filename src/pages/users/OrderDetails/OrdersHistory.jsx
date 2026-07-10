@@ -47,7 +47,6 @@ export default function OrdersHistory() {
                 {!loading && orders?.map(order => (
                     <OrderCard key={order._id} order={order} />
                 ))}
-
             </div>
         </main>
     );

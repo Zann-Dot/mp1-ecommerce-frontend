@@ -166,7 +166,7 @@ export default function PaymentSummary() {
                 >
                     Checkout
                 </Link>
-                <button
+                {/* <button
                     type="button"
                     className="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-layer border border-layer-line text-layer-foreground shadow-2xs hover:bg-layer-hover focus:outline-hidden focus:bg-layer-hover disabled:opacity-50 disabled:pointer-events-none"
                 >
@@ -175,7 +175,7 @@ export default function PaymentSummary() {
                         alt="paypal"
                         className="h-5"
                     />
-                </button>
+                </button> */}
             </div>
         </div>
     );
