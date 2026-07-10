@@ -1,20 +1,22 @@
 import { useEffect } from "react";
-import { useSearchParams } from "react-router"
 import Navbar from "./components/Header/Navbar";
 import Footer from "./components/Footer/Footer";
 import ProductCard from "./productListing/ProductCard";
 import useEcommerceContext from "../../contexts/EcommerceProvider";
 import Sidebar from "./productListing/FiltereOption/SIdebar";
 import AlertComponent from "./components/AlertComponent";
+import CategorySelection from "./components/CategorySelection";
+import { useSearchParams } from "react-router";
 
 export default function CategoryPage() {
+    const { loading, products, alert, getProductsByCategory } = useEcommerceContext();
     const [searchParams] = useSearchParams();
     const category = searchParams.get("c");
-    const { loading, products, alert } = useEcommerceContext();
 
     useEffect(() => {
+        getProductsByCategory(category);
         window.scrollTo(top);
-    }, []);
+    }, [category]);
 
     return (
         <>
@@ -34,7 +36,7 @@ export default function CategoryPage() {
                             <Sidebar />
                         </div>
                         <div className="overflow-hidden pt-16 pb-10 lg:pt-5 px-0 lg:px-8 lg:ps-4 xl:ps-8">
-                            <h1 className="text-foreground font-medium text-lg mb-10">{category}</h1>
+                            <CategorySelection />
                             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:max-[1180px]:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-10">
                                 {loading && Array.from({ length: 6 }).map((_, i) => (
                                     <div key={i} className="ms-0 lg:ms-4 flex flex-col gap-y-4 animate-pulse">
