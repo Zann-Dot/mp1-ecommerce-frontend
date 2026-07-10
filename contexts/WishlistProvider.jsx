@@ -85,7 +85,8 @@ export function WishlistProvider({ children }) {
                 wishlists,
                 handleWishlist,
                 wishlistLoading,
-                updateWishlist
+                updateWishlist,
+                wishlist
             }}
         >
             {children}

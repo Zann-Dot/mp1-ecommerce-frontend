@@ -8,7 +8,7 @@ export default function AddToCart({ productId }) {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const { user, dispatch, loading } = useEcommerceContext();
-    const { addToCart } = useCartContext();
+    const { addToCart, updateCartQuantity } = useCartContext();
     const { handleWishlist } = useWishlistContext();
     const [goToCart, setGoToCart] = useState(false);
     const [wishlistState, setWishlistState] = useState(true);
@@ -25,7 +25,10 @@ export default function AddToCart({ productId }) {
                 userId: user._id,
             };
 
-            const response = await addToCart(payload);
+            const response =
+                location.pathname === "/wishlist"
+                    ? await updateCartQuantity(payload)
+                    : await addToCart(payload);
 
             if (response?.success) {
                 location.pathname === "/wishlist" &&
@@ -45,9 +48,11 @@ export default function AddToCart({ productId }) {
                     });
                 }, 2500);
                 setGoToCart(true);
+
+                location.pathname === "/wishlist" && navigate("/cart");
             }
 
-            goToCart && navigate("/cart");
+            location.pathname !== "/wishlist" && goToCart && navigate("/cart");
         } else {
             navigate("/customer/login");
         }

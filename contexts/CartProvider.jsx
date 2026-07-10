@@ -78,6 +78,43 @@ export function CartProvider({ children }) {
         }
     }
 
+    async function updateCartQuantity(payload) {
+        try {
+            setLoading(true)
+            const res = await fetch("/api/cart", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                dispatch({
+                    type: "selectSize",
+                    heading: "Please select size",
+                    subHeading: ""
+                })
+
+                setTimeout(() => {
+                    dispatch({
+                        type: "",
+                        heading: "",
+                        subHeading: ""
+                    });
+                }, 3000);
+
+                throw new Error(data.message)
+            };
+
+            await loadCart();
+            await getPaymentSummary();
+            return data;
+        } catch (error) {
+            console.error(error.message);
+        } finally {
+            setLoading(false)
+        }
+    }
+
     async function deleteFromCart(productId) {
         try {
             setLoading(true);
@@ -135,6 +172,7 @@ export function CartProvider({ children }) {
                 deleteFromCart,
                 emptyCart,
                 deleteCart,
+                updateCartQuantity
             }}
         >
             {children}

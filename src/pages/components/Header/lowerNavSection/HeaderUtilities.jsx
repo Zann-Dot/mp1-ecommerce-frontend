@@ -5,7 +5,7 @@ import useWishlistContext from "../../../../../contexts/WishlistProvider";
 
 export default function HeaderUtilities() {
     const { user } = useEcommerceContext();
-    const { wishlists } = useWishlistContext();
+    const { wishlist } = useWishlistContext();
     const { totalQuantity, cart } = useCartContext();
 
     return (
@@ -73,9 +73,9 @@ export default function HeaderUtilities() {
                     className="text-foreground flex flex-col justify-center items-center gap-1 text-xs hover:text-primary-hover"
                 >
                     <div className="indicator">
-                        {wishlists.length !== 0 && (
+                        {wishlist.length !== 0 && (
                             <span className="indicator-item badge badge-primary scale-70 px-2 py-0 rounded-full text-primary-foreground text-">
-                                {wishlists?.length}
+                                {wishlist?.length}
                             </span>
                         )}
                         <div className="p-0.5">

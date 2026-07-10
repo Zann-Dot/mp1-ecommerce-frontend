@@ -10,9 +10,8 @@ import { useEffect } from "react";
 import useCartContext from "../../../contexts/CartProvider";
 
 export default function Wishlist() {
-    const { wishlists } = useWishlistContext();
+    const { wishlist } = useWishlistContext();
     const { alert } = useEcommerceContext();
-    const { cart } = useCartContext();
 
     const [searchParams, setSearchParams] = useSearchParams();
     const params = new URLSearchParams(searchParams);
@@ -48,12 +47,12 @@ export default function Wishlist() {
                 <main className="w-full p-3 mb-20 sm:p-6 md:p-8">
                     <div className="flex flex-col items-center gap-5">
                         <h1 className="text-2xl font-semibold text-foreground">
-                            {wishlists && wishlists.length !== 0
+                            {wishlist && wishlist.length !== 0
                                 ? "Favorites"
                                 : "Add items to wishlist"}
                         </h1>
 
-                        {wishlists.length !== 0 && wishlists && (
+                        {wishlist.length !== 0 && wishlist && (
                             <p className="text-muted-foreground-1 text-sm text-center w-100">
                                 So that you can access your favorites later please log in or
                                 create account
@@ -61,7 +60,7 @@ export default function Wishlist() {
                         )}
 
                         <div className="relative mt-5 grid grid-cols-2 max-[1160px]:sm:grid-cols-3 min-[1160px]:grid-cols-4 gap-x-6 gap-y-12">
-                            {wishlists?.map((product) => (
+                            {wishlist?.map((product) => (
                                 <ProductCard key={product._id} product={product} />
                             ))}
                         </div>
