@@ -4,8 +4,8 @@ import useSidebar from "../../../../contexts/SidebarProvider";
 import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 
 export default function FilterByPrice() {
-    const sliderRef = useRef(null);
-    const { minPrice, maxPrice, setMaxPrice, setMinPrice } = useSidebar();
+
+    const { minPrice, maxPrice, setMaxPrice, setMinPrice, sliderRef } = useSidebar();
     const { sort, setSort, products } = useEcommerceContext();
 
     function handleProductSort(e) {
@@ -31,6 +31,7 @@ export default function FilterByPrice() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-default-radio"
                     value="asec"
+                    checked={sort === "asec"}
                     onChange={handleProductSort}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
@@ -45,6 +46,7 @@ export default function FilterByPrice() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-default-radio"
                     value="desc"
+                    checked={sort === "desc"}
                     onChange={handleProductSort}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
@@ -58,7 +60,7 @@ export default function FilterByPrice() {
                     <div className="flex items-center text-sm text-foreground">
                         <div className="text-center min-w-16">₹{minPrice}</div>-
                         <div className="text-center min-w-16">
-                            ₹{maxPrice === 2000 ? "2000+" : maxPrice}
+                            ₹{maxPrice == 2000 ? "2000+" : maxPrice}
                         </div>
                     </div>
                 </div>

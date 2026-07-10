@@ -1,7 +1,7 @@
 import useSidebar from "../../../../contexts/SidebarProvider";
 
 export default function FilterByRating() {
-    const { setRating } = useSidebar();
+    const { setRating, rating } = useSidebar();
     function handleRating(e) {
         e.target.checked && setRating(e.target.value);
     }
@@ -17,6 +17,7 @@ export default function FilterByRating() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-default-radio"
                     value="4"
+                    checked={rating === "4"}
                     onChange={handleRating}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
@@ -31,6 +32,7 @@ export default function FilterByRating() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-default-radio"
                     value="3"
+                    checked={rating === "3"}
                     onChange={handleRating}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
@@ -45,6 +47,7 @@ export default function FilterByRating() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-default-radio"
                     value="2"
+                    checked={rating === "2"}
                     onChange={handleRating}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">
@@ -59,6 +62,7 @@ export default function FilterByRating() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-default-radio"
                     value="1"
+                    checked={rating === "1"}
                     onChange={handleRating}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">

@@ -2,7 +2,7 @@ import useEcommerceContext from "../../../../contexts/EcommerceProvider";
 import useSidebar from "../../../../contexts/SidebarProvider";
 
 export default function FilterByCategory() {
-    const { setCategory } = useSidebar();
+    const { setCategory, category } = useSidebar();
     const { products } = useEcommerceContext();
 
     function handleCategory(e) {
@@ -24,6 +24,7 @@ export default function FilterByCategory() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-sm shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-vertical-checkbox-in-form"
                     value="Men's Clothing"
+                    checked={category?.includes("Men's Clothing")}
                     onChange={handleCategory}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">Men</span>
@@ -42,6 +43,7 @@ export default function FilterByCategory() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-sm shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-vertical-checkbox-in-form"
                     value="Women's Clothing"
+                    checked={category?.includes("Women's Clothing")}
                     onChange={handleCategory}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">Women</span>
@@ -60,6 +62,7 @@ export default function FilterByCategory() {
                     className="shrink-0 size-4 bg-transparent border-line-3 rounded-sm shadow-2xs text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-vertical-checkbox-in-form"
                     value="Accessories"
+                    checked={category?.includes("Accessories")}
                     onChange={handleCategory}
                 />
                 <span className="text-sm ms-3 text-muted-foreground-1">

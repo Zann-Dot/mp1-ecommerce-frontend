@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import useEcommerceContext from "./EcommerceProvider";
 import { useLocation, useSearchParams } from "react-router";
 
@@ -7,7 +7,7 @@ const useSidebar = () => useContext(SidebarContext);
 export default useSidebar;
 
 export function SidebarProvider({ children }) {
-    const { setProducts, fetchProducts, setLoading, getProductsByCategory } =
+    const { setProducts, fetchProducts, setLoading, getProductsByCategory, setSort } =
         useEcommerceContext();
 
     const location = useLocation();
@@ -16,6 +16,7 @@ export function SidebarProvider({ children }) {
     const [minPrice, setMinPrice] = useState("");
     const [maxPrice, setMaxPrice] = useState("");
     const [rating, setRating] = useState("all");
+    const [resetInput, setResetInput] = useState(false);
 
     const [searchParams, setSearchParams] = useSearchParams();
     const productByCategory = searchParams.get("c");
@@ -50,7 +51,15 @@ export function SidebarProvider({ children }) {
         setSearchParams(params);
     }
 
+    const sliderRef = useRef(null);
+
     function resetFilter() {
+        setSort("");
+        sliderRef.current.noUiSlider.set([0, 2000]);
+        setMinPrice("0");
+        setMaxPrice("2000");
+        setRating("all");
+        setCategory([]);
         isPageCategory
             ? setSearchParams(`c=${productByCategory}`)
             : setSearchParams("");
@@ -62,6 +71,7 @@ export function SidebarProvider({ children }) {
         <SidebarContext.Provider
             value={{
                 setCategory,
+                category,
                 filterProducts,
                 setMaxPrice,
                 setMinPrice,
@@ -69,6 +79,10 @@ export function SidebarProvider({ children }) {
                 maxPrice,
                 resetFilter,
                 setRating,
+                resetInput,
+                setResetInput,
+                sliderRef,
+                rating
             }}
         >
             {children}
