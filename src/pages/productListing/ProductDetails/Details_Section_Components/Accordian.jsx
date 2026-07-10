@@ -1,6 +1,12 @@
-import React from 'react'
+import { useEffect } from 'react';
 
 export default function Accordian({ data }) {
+    useEffect(() => {
+        if (window.HSStaticMethods) {
+            window.HSStaticMethods.autoInit();
+        }
+    }, [data]);
+
     return (
         <div className="hs-accordion-group mt-8">
             <div className=" hs-accordion" id="hs-basic-heading-one">
@@ -149,9 +155,9 @@ export default function Accordian({ data }) {
                 >
                     <p className="text-muted-foreground-1 text-sm">
                         Free standard shipping on orders over $50 and free 30-day returns.{" "}
-                        <span className="underline underline-offset-4 cursor-pointer">
+                        {/* <span className="underline underline-offset-4 cursor-pointer">
                             Learn more
-                        </span>
+                        </span> */}
                         . <br />
                         <br />
                         Returns must be received within 30 days of shipping confirmation.

@@ -223,12 +223,12 @@ export default function CustomerAccount() {
                                 </div>
                             </section>
                             <p>
-                                <a
+                                {/* <a
                                     className="text-primary font-medium text-sm underline  underline-offset-4 decoration-line-8 hover:opacity-80 focus:outline-hidden focus:opacity-80"
                                     href="#"
                                 >
                                     Contact us
-                                </a>
+                                </a> */}
                             </p>
                         </div>
                     </div>
