@@ -43,7 +43,7 @@ export default function PersonalDetails() {
                         <p className="text-sm text-muted-foreground-1">{user?.firstName} {user?.lastName}</p>
                     </section>
 
-                    <div
+                    {/* <div
                         className="hs-collapse-toggle ms-auto text-primary text-sm underline underline-offset-4 cursor-pointer decoration-primary hover:opacity-80 focus:outline-hidden focus:opacity-80"
                         id="hs-collapse"
                         aria-expanded="false"
@@ -51,7 +51,7 @@ export default function PersonalDetails() {
                         data-hs-collapse="#hs-collapse-heading"
                     >
                         Edit
-                    </div>
+                    </div> */}
                 </div>
                 <div
                     id="hs-collapse-heading"
@@ -86,7 +86,7 @@ export default function PersonalDetails() {
                         <p className="text-sm text-muted-foreground-1">{user?.email}</p>
                     </section>
 
-                    <div
+                    {/* <div
                         className="hs-collapse-toggle ms-auto text-primary text-sm underline underline-offset-4 cursor-pointer decoration-primary hover:opacity-80 focus:outline-hidden focus:opacity-80"
                         id="hs-collapse"
                         aria-expanded="false"
@@ -94,7 +94,7 @@ export default function PersonalDetails() {
                         data-hs-collapse="#hs-collapse-heading-email"
                     >
                         Edit
-                    </div>
+                    </div> */}
                 </div>
                 <div
                     id="hs-collapse-heading-email"
@@ -131,7 +131,7 @@ export default function PersonalDetails() {
                         <p className="text-sm text-muted-foreground-1">{user?.ISDCode}{user?.phoneNumber}</p>
                     </section>
 
-                    <div
+                    {/* <div
                         className="hs-collapse-toggle ms-auto text-primary text-sm underline underline-offset-4 cursor-pointer decoration-primary hover:opacity-80 focus:outline-hidden focus:opacity-80"
                         id="hs-collapse"
                         aria-expanded="false"
@@ -139,7 +139,7 @@ export default function PersonalDetails() {
                         data-hs-collapse="#hs-collapse-heading-phone"
                     >
                         Edit
-                    </div>
+                    </div> */}
                 </div>
                 <div
                     id="hs-collapse-heading-phone"
@@ -174,7 +174,7 @@ export default function PersonalDetails() {
                         <p className="text-sm text-muted-foreground-1">*********</p>
                     </section>
 
-                    <div
+                    {/* <div
                         className="hs-collapse-toggle ms-auto text-primary text-sm underline underline-offset-4 cursor-pointer decoration-primary hover:opacity-80 focus:outline-hidden focus:opacity-80"
                         id="hs-collapse"
                         aria-expanded="false"
@@ -182,7 +182,7 @@ export default function PersonalDetails() {
                         data-hs-collapse="#hs-collapse-heading-password"
                     >
                         Edit
-                    </div>
+                    </div> */}
                 </div>
                 <div
                     id="hs-collapse-heading-password"
@@ -221,7 +221,7 @@ export default function PersonalDetails() {
                 </div>
             </div>
 
-            <hr />
+            {/* <hr />
             <div className="py-4">
                 <div className="flex flex-wrap gap-y-2 items-center">
                     <section>
@@ -280,7 +280,7 @@ export default function PersonalDetails() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </main>
     );
 }
