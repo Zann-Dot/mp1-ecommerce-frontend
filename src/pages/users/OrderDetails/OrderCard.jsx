@@ -235,10 +235,10 @@ export default function OrderCard({ order }) {
                                     </div>
 
                                     <div className="w-full flex gap-x-4 max-w-md text-sm text-foreground">
-                                        <div className="flex flex-col gap-y-0.5">
+                                        {/* <div className="flex flex-col gap-y-0.5">
                                             <span className="text-muted-foreground">Color</span>
-                                            {/* <span>{product.color}</span> */}
-                                        </div>
+                                            <span>{product.color}</span>
+                                        </div> */}
                                         <div className="flex flex-col gap-y-0.5">
                                             <span className="text-muted-foreground">Size</span>
                                             <span>{item.size}</span>

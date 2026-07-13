@@ -63,14 +63,14 @@ export default function CheckoutProducts({ cartItem }) {
                 </div>
 
                 <div className="w-full grid grid-cols-3 gap-x-4 sm:gap-x-8">
-                    <div className="flex flex-col items-start gap-y-1">
+                    {/* <div className="flex flex-col items-start gap-y-1">
                         <span className="text-sm font-medium text-muted-foreground dark:text-neutral-400">
                             Color
                         </span>
                         <div className="p-2 inline-flex items-center justify-center rounded-lg border border-line-3 text-xs text-foreground bg-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-300">
                             White
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="flex flex-col items-start gap-y-1">
                         <span className="text-sm font-medium text-muted-foreground dark:text-neutral-400">

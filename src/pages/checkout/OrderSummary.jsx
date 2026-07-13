@@ -65,7 +65,7 @@ export default function OrderSummary() {
                                     <h1 className="text-foreground text-base">
                                         {item.product.productName.split(" ").splice(0, 3).join(" ")}
                                     </h1>
-                                    <h4>Color: red</h4>
+                                    {/* <h4>Color: red</h4> */}
                                     <h4>Size: {item.size}</h4>
                                     <h4>Qty: {item.quantity}</h4>
                                     <h2 className="text-foreground text-base">
